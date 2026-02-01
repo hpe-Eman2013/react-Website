@@ -101,12 +101,32 @@ export default function TestimonyFormEnhanced({
       }
     }
   }
+  function sanitizeStateProvince({ country, stateProvince, statesByCountry }) {
+    const raw = (stateProvince || "").trim();
+    if (!raw) return null;
+
+    const options = statesByCountry[country] || [];
+    const hasDropdown = options.length > 0;
+
+    // If we have a dropdown list for the selected country,
+    // only accept values that exist in the list.
+    if (hasDropdown) {
+      return options.some((s) => s.code === raw) ? raw : null;
+    }
+
+    // If we don't have a dropdown list, treat it as free-text.
+    return raw;
+  }
+  function sanitizeCountry(country, countries) {
+    return countries.some((c) => c.code === country) ? country : "OTHER";
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
     setFormError("");
 
     const nextErrors = validate();
+    const safeCountry = sanitizeCountry(country, countries);
     setErrors(nextErrors);
 
     // include avatarError if you want to block submission
@@ -120,8 +140,13 @@ export default function TestimonyFormEnhanced({
         name: name.trim(),
         message: message.trim(),
         location: {
-          country,
-          stateProvince: stateProvince || null,
+          country: safeCountry,
+          stateProvince: sanitizeStateProvince({
+            country: safeCountry,
+            stateProvince,
+            statesByCountry,
+          }),
+
           city: city.trim() || null,
           postalCode: postalCode.trim() || null,
         },
