@@ -5,18 +5,21 @@ import Testimonies from "./pages/Testimonies";
 import SubmitTestimony from "./pages/SubmitTestimony";
 import AdminTestimonies from "./pages/AdminTestimonies";
 import AdminLogin from "./pages/admin/AdminLogin";
+import { AdminAuthProvider } from "./context/AdminAuthProvider";
 
 function App() {
   return (
     <BrowserRouter>
       <AppNavbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/testimonies" element={<Testimonies />} />
-        <Route path="/submit" element={<SubmitTestimony />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/testimonies" element={<AdminTestimonies />} />
-      </Routes>
+      <AdminAuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/testimonies" element={<Testimonies />} />
+          <Route path="/submit" element={<SubmitTestimony />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/testimonies" element={<AdminTestimonies />} />
+        </Routes>
+      </AdminAuthProvider>
     </BrowserRouter>
   );
 }

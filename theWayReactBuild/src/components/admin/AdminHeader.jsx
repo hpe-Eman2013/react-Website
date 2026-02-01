@@ -1,7 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  faArrowsRotate,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import { useAdminAuth } from "../../context/useAdminAuth";
+import { useNavigate } from "react-router-dom";
 const AdminHeader = ({ pendingCount, selectedCount, onRefresh, disabled }) => {
+  const { logout } = useAdminAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/admin/login", { replace: true });
+  };
   return (
     <div className="d-flex align-items-center justify-content-between mb-3">
       {/* LEFT: Title + subtitle */}
@@ -22,6 +33,16 @@ const AdminHeader = ({ pendingCount, selectedCount, onRefresh, disabled }) => {
               spin={disabled}
               className="fs-5"
             />
+          </button>
+          {/* Logout icon */}
+          <button
+            className="btn btn-outline-danger btn-sm d-flex align-items-center justify-content-center"
+            onClick={handleLogout} // ✅ LOGOUT HANDLER
+            disabled={disabled}
+            title="Logout"
+            aria-label="Logout"
+          >
+            <FontAwesomeIcon icon={faRightFromBracket} className="fs-5" />
           </button>
         </div>
 
