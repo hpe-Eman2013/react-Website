@@ -30,10 +30,18 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "Message is required." });
     }
 
+    const wordCount = message.trim().split(/\s+/).filter(Boolean).length;
+
+    if (wordCount > 100) {
+      return res
+        .status(400)
+        .json({ message: "Message must be 100 words or less." });
+    }
+
     const created = await Testimony.create({
       name: name?.trim() || "Anonymous",
       message: message.trim(),
-      approved: false, // public list is approved-only
+      approved: false,
     });
 
     return res.status(201).json(created);
