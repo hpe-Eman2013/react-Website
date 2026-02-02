@@ -1,5 +1,4 @@
 import React from "react";
-import { Field } from "./Field";
 
 export function StateProvinceField({
   id,
@@ -12,14 +11,20 @@ export function StateProvinceField({
   const options = statesByCountry[countryCode] || [];
   const hasDropdown = options.length > 0;
 
-  if (hasDropdown) {
-    return (
-      <Field id={id} label="State / Province" error={error}>
+  return (
+    <div className="mb-3">
+      <label className="form-label" htmlFor={id}>
+        State / Province (optional)
+      </label>
+
+      {hasDropdown ? (
         <select
-          className="tf-input"
+          id={id}
+          className={`form-select ${error ? "is-invalid" : ""}`}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           autoComplete="address-level1"
+          aria-invalid={Boolean(error)}
         >
           <option value="">Select…</option>
           {options.map((s) => (
@@ -28,19 +33,19 @@ export function StateProvinceField({
             </option>
           ))}
         </select>
-      </Field>
-    );
-  }
+      ) : (
+        <input
+          id={id}
+          className={`form-control ${error ? "is-invalid" : ""}`}
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          autoComplete="address-level1"
+          aria-invalid={Boolean(error)}
+        />
+      )}
 
-  return (
-    <Field id={id} label="State / Province (optional)" error={error}>
-      <input
-        className="tf-input"
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        autoComplete="address-level1"
-      />
-    </Field>
+      {error ? <div className="invalid-feedback">{error}</div> : null}
+    </div>
   );
 }

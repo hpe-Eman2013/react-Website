@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Field } from "./Field";
 
 export function AvatarUploader({
-  id,
   file,
-  onFileChange,
   error,
-  help = "JPG, PNG, or WebP. Max 4MB.",
+  onFileChange,
   maxBytes = 4 * 1024 * 1024,
 }) {
   const inputRef = useRef(null);
@@ -22,22 +19,14 @@ export function AvatarUploader({
     return () => URL.revokeObjectURL(url);
   }, [file]);
 
-  function pick() {
-    inputRef.current?.click();
-  }
-
-  function remove() {
-    onFileChange(null);
-    if (inputRef.current) inputRef.current.value = "";
-  }
-
   function handleChange(e) {
     const f = e.target.files?.[0];
     if (!f) return;
 
     const allowed = ["image/jpeg", "image/png", "image/webp"];
+
     if (!allowed.includes(f.type)) {
-      onFileChange({
+      onFileChange?.({
         file: null,
         error: "Please upload a JPG, PNG, or WebP image.",
       });
@@ -45,7 +34,7 @@ export function AvatarUploader({
       return;
     }
     if (f.size > maxBytes) {
-      onFileChange({
+      onFileChange?.({
         file: null,
         error: "Image is too large. Please upload a file under 4MB.",
       });
@@ -53,35 +42,60 @@ export function AvatarUploader({
       return;
     }
 
-    onFileChange({ file: f, error: "" });
+    onFileChange?.({ file: f, error: "" });
+  }
+
+  function remove() {
+    onFileChange?.({ file: null, error: "" });
+    if (inputRef.current) inputRef.current.value = "";
   }
 
   return (
-    <fieldset className="tf-fieldset">
-      <legend className="tf-legend">Photo (optional)</legend>
+    <fieldset className="border rounded-3 p-3 mb-3">
+      <legend className="float-none w-auto px-2 fs-6 mb-0">
+        Photo (optional)
+      </legend>
 
-      <div className="tf-avatarRow">
-        <div className="tf-avatarPreview" aria-hidden="true">
+      <div className="d-flex gap-3 align-items-start flex-wrap">
+        {/* Preview */}
+        <div
+          className="border rounded-3 d-flex align-items-center justify-content-center bg-light"
+          style={{ width: 96, height: 96, overflow: "hidden" }}
+          aria-hidden="true"
+        >
           {previewUrl ? (
-            <img src={previewUrl} alt="" className="tf-avatarImg" />
+            <img
+              src={previewUrl}
+              alt=""
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
           ) : (
-            <div className="tf-avatarPlaceholder">No photo</div>
+            <span className="text-secondary small text-center px-2">
+              No photo
+            </span>
           )}
         </div>
 
-        <div className="tf-avatarControls">
-          <Field id={id} label=" " help={help} error={error}>
-            <input className="sr-only" readOnly tabIndex={-1} />
-          </Field>
+        {/* Input + actions */}
+        <div style={{ minWidth: 280, flex: 1 }}>
+          <label htmlFor="avatarFile" className="form-label">
+            Upload a photo
+          </label>
 
-          <div className="tf-avatarBtnRow">
-            <button type="button" className="tf-button" onClick={pick}>
-              Upload photo
-            </button>
+          <div className="d-flex gap-2 align-items-center">
+            <input
+              ref={inputRef}
+              id="avatarFile"
+              type="file"
+              className={`form-control ${error ? "is-invalid" : ""}`}
+              accept="image/jpeg,image/png,image/webp"
+              onChange={handleChange}
+            />
+
             {previewUrl ? (
               <button
                 type="button"
-                className="tf-button tf-buttonSecondary"
+                className="btn btn-outline-secondary"
                 onClick={remove}
               >
                 Remove
@@ -89,14 +103,11 @@ export function AvatarUploader({
             ) : null}
           </div>
 
-          <input
-            ref={inputRef}
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            className="sr-only"
-            tabIndex={-1}
-            onChange={handleChange}
-          />
+          <div className="form-text">JPG, PNG, or WebP. Max 4MB.</div>
+
+          {error ? (
+            <div className="invalid-feedback d-block">{error}</div>
+          ) : null}
         </div>
       </div>
     </fieldset>

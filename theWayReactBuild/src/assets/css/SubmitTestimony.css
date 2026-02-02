@@ -1,0 +1,67 @@
+/* Page background */
+.submit-page {
+  min-height: calc(100vh - 64px); /* adjust if navbar height differs */
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+  background: #f7f8fa;
+}
+
+/* Card container */
+.submit-card {
+  width: 100%;
+  max-width: 760px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 2rem 2.5rem;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.submit-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.submit-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.submit-subtitle {
+  color: #555;
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Alerts */
+.submit-success {
+  background: #e6f6ec;
+  color: #1a7f37;
+  border: 1px solid #b7e1c1;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.submit-error {
+  background: #fdeaea;
+  color: #a11a1a;
+  border: 1px solid #f5bcbc;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .submit-card {
+    padding: 1.25rem 1rem 2rem;
+  }
+
+  .submit-header h1 {
+    font-size: 1.6rem;
+  }
+}

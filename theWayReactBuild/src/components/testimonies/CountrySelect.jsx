@@ -1,21 +1,19 @@
 import React from "react";
-import { Field } from "./Field";
 
-export function CountrySelect({
-  id,
-  value,
-  onChange,
-  countries,
-  error,
-  help = "You may leave location blank if you prefer.",
-}) {
+export function CountrySelect({ id, value, onChange, countries, error }) {
   return (
-    <Field id={id} label="Country" help={help} error={error}>
+    <div className="mb-3">
+      <label className="form-label" htmlFor={id}>
+        Country
+      </label>
+
       <select
-        className="tf-input"
+        id={id}
+        className={`form-select ${error ? "is-invalid" : ""}`}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         autoComplete="country"
+        aria-invalid={Boolean(error)}
       >
         {countries.map((c) => (
           <option key={c.code} value={c.code}>
@@ -23,6 +21,12 @@ export function CountrySelect({
           </option>
         ))}
       </select>
-    </Field>
+
+      <div className="form-text">
+        You may leave location blank if you prefer.
+      </div>
+
+      {error ? <div className="invalid-feedback">{error}</div> : null}
+    </div>
   );
 }

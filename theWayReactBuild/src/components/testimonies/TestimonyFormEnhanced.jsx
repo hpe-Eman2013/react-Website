@@ -3,7 +3,6 @@ import { CountrySelect } from "./CountrySelect";
 import { StateProvinceField } from "./StateProvinceField";
 import { CityField, PostalCodeField } from "./CityPostalFields";
 import { AvatarUploader } from "./AvatarUploader";
-import { Field } from "./Field";
 
 export default function TestimonyFormEnhanced({
   onSubmit,
@@ -161,13 +160,14 @@ export default function TestimonyFormEnhanced({
 
   return (
     <form onSubmit={handleSubmit} className="tf-card" noValidate>
-      <h2 className="tf-title">Share Your Testimony</h2>
-
       {formError ? (
         <div className="tf-alert" role="alert">
           {formError}
         </div>
       ) : null}
+      <p className="visually-hidden" aria-live="polite">
+        {isSubmitting ? "Submitting testimony" : ""}
+      </p>
 
       <AvatarUploader
         id={`${formId}-avatar`}
@@ -184,15 +184,25 @@ export default function TestimonyFormEnhanced({
         }}
       />
 
-      <Field id={`${formId}-name`} label="Name" required error={errors.name}>
+      <div className="mb-3">
+        <label className="form-label" htmlFor={`${formId}-name`}>
+          Name <span aria-hidden="true">*</span>
+        </label>
+
         <input
-          className="tf-input"
+          id={`${formId}-name`}
+          className={`form-control ${errors.name ? "is-invalid" : ""}`}
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           autoComplete="name"
+          aria-invalid={Boolean(errors.name)}
         />
-      </Field>
+
+        {errors.name ? (
+          <div className="invalid-feedback">{errors.name}</div>
+        ) : null}
+      </div>
 
       <fieldset className="tf-fieldset">
         <legend className="tf-legend">Location (optional)</legend>
@@ -214,38 +224,89 @@ export default function TestimonyFormEnhanced({
           error={errors.stateProvince}
         />
 
-        <CityField
-          id={`${formId}-city`}
-          value={city}
-          onChange={setCity}
-          error={errors.city}
-        />
+        <div className="row">
+          {/* City */}
+          <div className="col-md-6">
+            <div className="mb-3">
+              <label className="form-label" htmlFor={`${formId}-city`}>
+                City (optional)
+              </label>
 
-        <PostalCodeField
-          id={`${formId}-postalCode`}
-          value={postalCode}
-          onChange={setPostalCode}
-          error={errors.postalCode}
-        />
+              <input
+                id={`${formId}-city`}
+                className={`form-control ${errors.city ? "is-invalid" : ""}`}
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                autoComplete="address-level2"
+                aria-invalid={Boolean(errors.city)}
+              />
+
+              {errors.city ? (
+                <div className="invalid-feedback">{errors.city}</div>
+              ) : null}
+            </div>
+          </div>
+
+          {/* Postal Code */}
+          <div className="col-md-6">
+            <div className="mb-3">
+              <label className="form-label" htmlFor={`${formId}-postalCode`}>
+                Postal Code (optional)
+              </label>
+
+              <input
+                id={`${formId}-postalCode`}
+                className={`form-control ${errors.postalCode ? "is-invalid" : ""}`}
+                type="text"
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
+                autoComplete="postal-code"
+                aria-invalid={Boolean(errors.postalCode)}
+              />
+
+              {errors.postalCode ? (
+                <div className="invalid-feedback">{errors.postalCode}</div>
+              ) : (
+                <div className="form-text">
+                  Format varies by country (e.g., 48104 or SW1A 1AA)
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </fieldset>
 
-      <Field
-        id={`${formId}-message`}
-        label="Testimony"
-        required
-        help="Please avoid sharing private info (phone, address, banking details)."
-        error={errors.message}
-      >
+      <div className="mt-4">
+        <label className="form-label" htmlFor={`${formId}-message`}>
+          Testimony <span aria-hidden="true">*</span>
+        </label>
+
         <textarea
-          className="tf-textarea"
-          rows={8}
+          id={`${formId}-message`}
+          className={`form-control ${errors.message ? "is-invalid" : ""}`}
+          rows={6}
+          placeholder="Share your testimony here"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          aria-invalid={Boolean(errors.message)}
         />
-      </Field>
+
+        {errors.message ? (
+          <div className="invalid-feedback">{errors.message}</div>
+        ) : (
+          <div className="form-text">
+            Please avoid sharing private info (phone, address, banking details).
+          </div>
+        )}
+      </div>
 
       <div className="tf-actions">
-        <button className="tf-submit" type="submit" disabled={isSubmitting}>
+        <button
+          className="btn btn-primary w-100 mt-3"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Submitting…" : "Submit Testimony"}
         </button>
       </div>
