@@ -124,7 +124,7 @@ router.post(
       if (wordCount > 100) {
         return res
           .status(400)
-          .json({ message: "Comment must be 100 words or less." });
+          .json({ message: "Testimony must be 100 words or less." });
       }
 
       // Request response + email validation

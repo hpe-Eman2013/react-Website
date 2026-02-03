@@ -10,9 +10,6 @@ const TestimonySchema = new mongoose.Schema(
     // NEW: photo/avatar (store URL/path)
     avatarUrl: { type: String, default: "" },
 
-    // NEW: short comment (100 words max enforced server-side too)
-    comment: { type: String, trim: true, default: "" },
-
     // NEW: location
     location: {
       country: { type: String, trim: true, default: "" },
