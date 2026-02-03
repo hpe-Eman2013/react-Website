@@ -14,6 +14,41 @@ export const createTestimony = async (payload) => {
   const res = await apiClient.post("/api/testimonies", payload);
   return res.data;
 };
+// added to address avatar upload in SubmitTestimony.jsx
+export const createTestimonyFormData = async ({
+  name,
+  message,
+  location,
+  avatarFile,
+  website,
+  requestResponse,
+  contactEmail,
+}) => {
+  const fd = new FormData();
+
+  fd.append("name", name || "");
+  fd.append("message", message || "");
+  fd.append("location", JSON.stringify(location || {}));
+
+  // honeypot
+  fd.append("website", website || "");
+
+  // response request
+  fd.append("requestResponse", String(Boolean(requestResponse)));
+
+  // only send email if requestResponse is true (keeps payload clean)
+  if (requestResponse) {
+    fd.append("contactEmail", contactEmail || "");
+  }
+
+  if (avatarFile) fd.append("avatar", avatarFile);
+
+  const res = await apiClient.post("/api/testimonies", fd, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+  return res.data;
+};
 
 /**
  * ADMIN (requires auth cookie)

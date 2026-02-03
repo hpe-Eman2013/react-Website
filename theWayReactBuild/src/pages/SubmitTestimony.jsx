@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TestimonyFormEnhanced from "../components/testimonies/TestimonyFormEnhanced";
 import "../assets/css/SubmitTestimony.css";
+import { createTestimonyFormData } from "../services/testimonyService";
 
 export default function SubmitTestimony() {
   const navigate = useNavigate();
@@ -15,36 +16,30 @@ export default function SubmitTestimony() {
     setErrorMsg("");
 
     try {
-      const fd = new FormData();
+      await createTestimonyFormData({
+        name: payload.name,
+        message: payload.message,
+        location: payload.location,
+        avatarFile: payload.avatarFile,
 
-      // Text fields
-      fd.append("name", payload.name);
-      fd.append("message", payload.message);
+        website: payload.website, // honeypot
 
-      // Location (send as JSON string for simplicity)
-      fd.append("location", JSON.stringify(payload.location || {}));
-
-      // File (optional)
-      if (payload.avatarFile) {
-        fd.append("avatar", payload.avatarFile); // field name must match backend
-      }
-
-      const res = await fetch("/api/testimonies", {
-        method: "POST",
-        body: fd, // DO NOT set Content-Type for FormData; browser sets boundary
+        requestResponse: payload.requestResponse,
+        contactEmail: payload.contactEmail,
       });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        throw new Error(data?.message || `Request failed: ${res.status}`);
-      }
 
       setSuccessMsg(
         "Thank you! Your testimony was submitted and will appear after admin approval.",
       );
+
       navigate("/testimonies?submitted=1");
     } catch (err) {
-      setErrorMsg(err?.message || "Something went wrong. Please try again.");
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        "Something went wrong. Please try again.";
+
+      setErrorMsg(msg);
     } finally {
       setIsSubmitting(false);
     }
@@ -67,7 +62,7 @@ export default function SubmitTestimony() {
         )}
 
         {errorMsg && (
-          <div className="submit-error" role="alert">
+          <div className="alert alert-danger" role="alert">
             {errorMsg}
           </div>
         )}

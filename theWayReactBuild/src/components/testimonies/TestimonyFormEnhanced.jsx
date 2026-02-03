@@ -1,4 +1,4 @@
-import React, { useId, useMemo, useState } from "react";
+import React, { useId, useMemo, useState, useRef, useEffect } from "react";
 import { CountrySelect } from "./CountrySelect";
 import { StateProvinceField } from "./StateProvinceField";
 import { CityField, PostalCodeField } from "./CityPostalFields";
@@ -53,6 +53,11 @@ export default function TestimonyFormEnhanced({
 
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState("");
+  const [website, setWebsite] = useState("");
+  const [requestResponse, setRequestResponse] = useState(false);
+  const [contactEmail, setContactEmail] = useState("");
+  const contactEmailRef = useRef(null);
+
   // in TestimonyFormEnhanced.jsx
 
   function handleCountryChange(nextCountry) {
@@ -71,6 +76,11 @@ export default function TestimonyFormEnhanced({
     // If dropdown does NOT exist, keep stateProvince as free text (no need to clear).
     // If you want to clear it on country change anyway, do it here intentionally.
   }
+  useEffect(() => {
+    if (requestResponse) {
+      contactEmailRef.current?.focus();
+    }
+  }, [requestResponse]);
 
   function validate() {
     const next = {};
@@ -80,6 +90,14 @@ export default function TestimonyFormEnhanced({
       next.postalCode = "Postal code looks too short.";
     if (city && city.trim().length < 2)
       next.city = "City name looks too short.";
+    if (requestResponse) {
+      const email = (contactEmail || "").trim();
+      if (!email)
+        next.contactEmail = "Email is required if you request a response.";
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        next.contactEmail = "Please enter a valid email address.";
+    }
+
     return next;
   }
 
@@ -150,6 +168,9 @@ export default function TestimonyFormEnhanced({
           postalCode: postalCode.trim() || null,
         },
         avatarFile,
+        website: website.trim(), // honeypot
+        requestResponse,
+        contactEmail: contactEmail.trim(),
       });
     } catch {
       setFormError(
@@ -168,6 +189,17 @@ export default function TestimonyFormEnhanced({
       <p className="visually-hidden" aria-live="polite">
         {isSubmitting ? "Submitting testimony" : ""}
       </p>
+      <div className="visually-hidden" aria-hidden="true">
+        <label htmlFor={`${formId}-website`}>Website</label>
+        <input
+          id={`${formId}-website`}
+          type="text"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
 
       <AvatarUploader
         id={`${formId}-avatar`}
@@ -300,6 +332,46 @@ export default function TestimonyFormEnhanced({
           </div>
         )}
       </div>
+      <div className="mb-3 form-check">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id={`${formId}-requestResponse`}
+          checked={requestResponse}
+          onChange={(e) => setRequestResponse(e.target.checked)}
+        />
+        <label
+          className="form-check-label"
+          htmlFor={`${formId}-requestResponse`}
+        >
+          I would like a response
+        </label>
+      </div>
+
+      {requestResponse && (
+        <div className="mb-3">
+          <label className="form-label" htmlFor={`${formId}-contactEmail`}>
+            Email for response <span aria-hidden="true">*</span>
+          </label>
+          <input
+            ref={contactEmailRef}
+            id={`${formId}-contactEmail`}
+            className={`form-control ${errors.contactEmail ? "is-invalid" : ""}`}
+            type="email"
+            value={contactEmail}
+            onChange={(e) => setContactEmail(e.target.value)}
+            autoComplete="email"
+            aria-invalid={Boolean(errors.contactEmail)}
+          />
+          {errors.contactEmail ? (
+            <div className="invalid-feedback">{errors.contactEmail}</div>
+          ) : (
+            <div className="form-text">
+              We’ll only use this to reply to your testimony request.
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="tf-actions">
         <button
