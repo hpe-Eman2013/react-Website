@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -7,7 +7,6 @@ import cookieParser from "cookie-parser";
 import adminAuthRoutes from "./routes/adminAuthRoutes.js";
 import { requireAdminAuth } from "./middleware/requireAdminAuth.js";
 import adminTestimonyRoutes from "./routes/adminTestimonyRoutes.js";
-dotenv.config();
 
 const app = express();
 
