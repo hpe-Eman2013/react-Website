@@ -4,6 +4,27 @@ import pluginReact from "eslint-plugin-react";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs,jsx}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.node } },
-  pluginReact.configs.flat.recommended,
+  // Backend (Node)
+  {
+    files: ["backend/**/*.{js,mjs,cjs}"],
+    languageOptions: { globals: globals.node },
+    rules: {
+      ...js.configs.recommended.rules,
+    },
+  },
+
+  // Frontend (Browser + React)
+  {
+    files: ["src/**/*.{js,jsx}"],
+    languageOptions: { globals: globals.browser },
+    rules: {
+      ...js.configs.recommended.rules,
+    },
+  },
+
+  // React recommended rules (apply to frontend files)
+  {
+    files: ["src/**/*.{js,jsx}"],
+    ...pluginReact.configs.flat.recommended,
+  },
 ]);
