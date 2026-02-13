@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import adminAuthRoutes from "./routes/adminAuthRoutes.js";
 import { requireAdminAuth } from "./middleware/requireAdminAuth.js";
 import adminTestimonyRoutes from "./routes/adminTestimonyRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use("/api/admin/auth", adminAuthRoutes);
 // Routes
 app.use("/api/admin/testimonies", requireAdminAuth, adminTestimonyRoutes);
 app.use("/api/testimonies", testimonyRoutes);
-
+app.use("/api/upload", uploadRoutes);
 // Health check
 app.get("/api/health", (req, res) => {
   res.json({ ok: true });
