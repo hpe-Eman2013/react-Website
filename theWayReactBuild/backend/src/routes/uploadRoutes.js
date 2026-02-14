@@ -14,8 +14,17 @@ router.post("/image", upload.single("image"), async (req, res) => {
     if (!req.file)
       return res.status(400).json({ message: "No file uploaded." });
 
-    const allowed = new Set(["image/jpeg/jpg", "image/png", "image/webp"]);
-    if (!allowed.has(req.file.mimetype)) {
+    const allowedMime = new Set(["image/jpeg", "image/png", "image/webp"]);
+    const allowedExt = new Set([".jpg", ".jpeg", ".png", ".webp"]);
+
+    const ext = (req.file.originalname || "")
+      .toLowerCase()
+      .slice((req.file.originalname || "").lastIndexOf("."));
+
+    const mimeOk = allowedMime.has(req.file.mimetype);
+    const extOk = allowedExt.has(ext);
+
+    if (!mimeOk && !extOk) {
       return res
         .status(400)
         .json({ message: "Only JPG/JPEG, PNG, or WebP allowed." });
@@ -36,8 +45,8 @@ router.post("/image", upload.single("image"), async (req, res) => {
       height: result.height,
       format: result.format,
     });
-  } catch {
-    return res.status(500).json({ message: "Upload failed." });
+  } catch (err) {
+    return res.status(500).json({ message: err.message || "Upload failed." });
   }
 });
 
