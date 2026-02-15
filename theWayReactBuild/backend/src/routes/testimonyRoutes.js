@@ -83,7 +83,7 @@ router.get("/", async (req, res) => {
 
     const items = await Testimony.find(filter).sort({ createdAt: -1 });
     res.json(items);
-  } catch (err) {
+  } catch {
     res.status(500).json({ message: "Failed to fetch testimonies" });
   }
 });
@@ -154,10 +154,20 @@ router.post(
       if (req.file) {
         avatarUrl = "";
       }
+      const imageUrl = safeStr(req.body.imageUrl, 500);
+      const imagePublicId = safeStr(req.body.imagePublicId, 300);
+
+      // Optional safety check (BEFORE create)
+      const prefix = "https://res.cloudinary.com/dwzmuk4fi/";
+      if (imageUrl && !imageUrl.startsWith(prefix)) {
+        return res.status(400).json({ message: "Invalid image URL." });
+      }
 
       const created = await Testimony.create({
         name: name || "Anonymous",
         message,
+        imageUrl: imageUrl || undefined,
+        imagePublicId: imagePublicId || undefined,
         approved: false,
         avatarUrl,
         location: location || undefined,

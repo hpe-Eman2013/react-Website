@@ -10,6 +10,10 @@ const TestimonySchema = new mongoose.Schema(
     // NEW: photo/avatar (store URL/path)
     avatarUrl: { type: String, default: "" },
 
+    // Image fields
+    imageUrl: { type: String, trim: true },
+    imagePublicId: { type: String, trim: true },
+
     // NEW: location
     location: {
       country: { type: String, trim: true, default: "" },
