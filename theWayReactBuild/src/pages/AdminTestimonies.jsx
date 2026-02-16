@@ -1,3 +1,4 @@
+import React from "react";
 import { useCallback, useEffect, useState, useMemo } from "react";
 import {
   fetchPendingTestimonies,
@@ -20,6 +21,8 @@ const AdminTestimonies = () => {
   const [items, setItems] = useState([]);
   const [query, setQuery] = useState("");
   const [view, setView] = useState("pending"); // "pending" | "approved"
+  const [responseOnly, setResponseOnly] = useState(false);
+
   const isPendingView = view === "pending";
 
   // Modal state
@@ -58,13 +61,22 @@ const AdminTestimonies = () => {
   } = useSelection(items);
 
   const pendingCount = items.length;
+  const responseRequestedCount = useMemo(
+    () => items.filter((t) => !!t?.requestResponse).length,
+    [items],
+  );
+
   // Add filtering logic for query of testimonies if needed
   const normalizedQuery = query.trim().toLowerCase();
 
   const filteredItems = useMemo(() => {
-    if (!normalizedQuery) return items;
+    const base = responseOnly
+      ? items.filter((t) => !!t?.requestResponse)
+      : items;
 
-    return items.filter((t) => {
+    if (!normalizedQuery) return base;
+
+    return base.filter((t) => {
       // Pick fields that exist in your testimony schema
       // (safe fallbacks so it never crashes)
       const haystack = [
@@ -82,7 +94,7 @@ const AdminTestimonies = () => {
 
       return haystack.includes(normalizedQuery);
     });
-  }, [items, normalizedQuery]);
+  }, [items, normalizedQuery, responseOnly]);
   // Add counts based on filtered items
   const shownCount = filteredItems.length;
 
@@ -190,7 +202,25 @@ const AdminTestimonies = () => {
               />
             </div>
 
-            <div className="col-12 col-md-4 d-flex gap-2 justify-content-md-end">
+            <div className="col-12 col-md-4 d-flex gap-3 justify-content-md-end align-items-center flex-wrap">
+              <div className="form-check form-switch m-0">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="responseOnly"
+                  checked={responseOnly}
+                  onChange={(e) => setResponseOnly(e.target.checked)}
+                  disabled={isLoading}
+                />
+                <label
+                  className="form-check-label small"
+                  htmlFor="responseOnly"
+                >
+                  Response requested ({responseRequestedCount})
+                </label>
+              </div>
+
               {query.trim().length > 0 && (
                 <button
                   type="button"
@@ -202,7 +232,7 @@ const AdminTestimonies = () => {
                 </button>
               )}
 
-              <span className="small text-muted align-self-center">
+              <span className="small text-muted">
                 Showing {shownCount} of {pendingCount}
               </span>
             </div>
