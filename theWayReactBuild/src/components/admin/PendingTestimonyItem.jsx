@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 
 const PendingTestimonyItem = ({
   testimony,
@@ -21,13 +21,20 @@ const PendingTestimonyItem = ({
     testimony?.requestResponse === "1";
 
   const email = (testimony?.contactEmail || "").trim();
+  const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
     if (!email) return;
+
     try {
       await navigator.clipboard.writeText(email);
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 1500);
     } catch {
-      // optional: add a toast later if you want
+      // optional: toast later
     }
   }
 
@@ -80,13 +87,15 @@ const PendingTestimonyItem = ({
 
                   <button
                     type="button"
-                    className="btn btn-sm btn-outline-secondary"
+                    className={`btn btn-sm ${
+                      copied ? "btn-success" : "btn-outline-secondary"
+                    }`}
                     onClick={copyEmail}
                     disabled={!email}
                     aria-label={`Copy email ${email}`}
                     title="Copy email"
                   >
-                    Copy
+                    {copied ? "Copied" : "Copy"}
                   </button>
                 </>
               ) : (
