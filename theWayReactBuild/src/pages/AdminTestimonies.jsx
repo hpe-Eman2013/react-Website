@@ -16,6 +16,11 @@ import useSelection from "../hooks/useSelection";
 import Toast from "../components/common/Toast";
 import { useAsyncStatus } from "../hooks/useAsyncStatus";
 
+function isResponseRequested(t) {
+  const v = t?.requestResponse;
+  return v === true || v === "true" || v === 1 || v === "1";
+}
+
 const AdminTestimonies = () => {
   // Server state
   const [items, setItems] = useState([]);
@@ -62,7 +67,7 @@ const AdminTestimonies = () => {
 
   const pendingCount = items.length;
   const responseRequestedCount = useMemo(
-    () => items.filter((t) => !!t?.requestResponse).length,
+    () => items.filter(isResponseRequested).length,
     [items],
   );
 
@@ -70,9 +75,7 @@ const AdminTestimonies = () => {
   const normalizedQuery = query.trim().toLowerCase();
 
   const filteredItems = useMemo(() => {
-    const base = responseOnly
-      ? items.filter((t) => !!t?.requestResponse)
-      : items;
+    const base = responseOnly ? items.filter(isResponseRequested) : items;
 
     if (!normalizedQuery) return base;
 
