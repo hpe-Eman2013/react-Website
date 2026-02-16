@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const AppNavbar = () => {
@@ -40,6 +41,21 @@ const AppNavbar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" to="/admin/testimonies">
                 Admin
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/statement-of-faith">
+                Statement Of Faith
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/about">
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contact">
+                Contact
               </NavLink>
             </li>
           </ul>
