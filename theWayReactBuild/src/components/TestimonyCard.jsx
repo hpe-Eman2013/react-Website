@@ -1,52 +1,72 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import PropTypes from "prop-types";
+import { toCloudinaryTransformedUrl } from "../../utils/cloudinary"; // adjust path if needed
 
 const TestimonyCard = ({ testimony }) => {
   const name = testimony?.name?.trim() || "Anonymous";
   const message = testimony?.message || "";
 
-  // ✅ Use Cloudinary imageUrl first (what your form is saving),
-  // fallback to avatarUrl if you ever use it later.
-  const photoUrl =
-    testimony?.imageUrl?.trim() || testimony?.avatarUrl?.trim() || "";
+  // Prefer Cloudinary imageUrl (new flow). Fall back to avatarUrl if you ever use it.
+  const rawAvatar =
+    (testimony?.imageUrl && testimony.imageUrl.trim()) ||
+    (testimony?.avatarUrl && testimony.avatarUrl.trim()) ||
+    "";
+
+  // Build a small circle thumbnail (face-centered if possible)
+  const avatarThumb = useMemo(() => {
+    if (!rawAvatar) return "";
+    // g_face is nice if faces exist; otherwise Cloudinary will still behave fine.
+    const transform = "w_200,h_200,c_fill,g_face,f_auto,q_auto";
+    return toCloudinaryTransformedUrl(rawAvatar, transform);
+  }, [rawAvatar]);
+
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
 
   const location = testimony?.location || null;
-
   const locationText =
-    location &&
-    (location.city ||
-      location.state ||
-      location.stateProvince ||
-      location.country)
-      ? [
-          location.city,
-          // backend schema uses `state`
-          location.state || location.stateProvince,
-          location.country,
-        ]
+    location && (location.city || location.state || location.country)
+      ? [location.city, location.state, location.country]
           .filter(Boolean)
           .join(", ")
       : null;
 
+  const showImage = Boolean(avatarThumb) && !imgFailed;
+
   return (
     <article className="card shadow-sm" aria-label={`Testimony from ${name}`}>
       <div className="card-body d-flex gap-3">
-        {/* Avatar / Photo */}
+        {/* Avatar */}
         <div className="flex-shrink-0" style={{ width: 56 }}>
-          {photoUrl ? (
-            <img
-              src={photoUrl}
-              alt={`Photo of ${name}`}
-              className="rounded-circle border"
-              style={{ width: 56, height: 56, objectFit: "cover" }}
-              loading="lazy"
-            />
+          {showImage ? (
+            <div
+              className="rounded-circle border position-relative overflow-hidden"
+              style={{ width: 56, height: 56 }}
+            >
+              {/* Shimmer placeholder (visible until image loads) */}
+              {!imgLoaded && <div className="wom-shimmer" aria-hidden="true" />}
+
+              <img
+                src={avatarThumb}
+                alt={`Avatar of ${name}`}
+                className="w-100 h-100"
+                style={{
+                  objectFit: "cover",
+                  display: imgLoaded ? "block" : "none",
+                }}
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
+                onLoad={() => setImgLoaded(true)}
+                onError={() => setImgFailed(true)}
+              />
+            </div>
           ) : (
             <div
               className="rounded-circle border bg-light d-flex align-items-center justify-content-center text-secondary fw-semibold"
               style={{ width: 56, height: 56 }}
+              aria-hidden="true"
               title={name}
-              aria-label={`No photo for ${name}`}
             >
               {name.charAt(0).toUpperCase()}
             </div>
@@ -77,13 +97,10 @@ TestimonyCard.propTypes = {
     message: PropTypes.string,
     avatarUrl: PropTypes.string,
     imageUrl: PropTypes.string,
-    imagePublicId: PropTypes.string,
     location: PropTypes.shape({
       country: PropTypes.string,
-      state: PropTypes.string, // ✅ backend field
-      stateProvince: PropTypes.string, // tolerate legacy
+      state: PropTypes.string,
       city: PropTypes.string,
-      postalCode: PropTypes.string,
     }),
   }).isRequired,
 };
