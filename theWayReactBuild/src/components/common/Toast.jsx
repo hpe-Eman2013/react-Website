@@ -1,12 +1,7 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
-const Toast = ({
-  show,
-  message,
-  variant = "success",
-  durationMs = 2500,
-  onClose,
-}) => {
+const Toast = ({ show, message, variant, durationMs, onClose }) => {
   useEffect(() => {
     if (!show) return;
 
@@ -15,7 +10,7 @@ const Toast = ({
     }, durationMs);
 
     return () => clearTimeout(t);
-  }, [show, durationMs, onClose]); // dependencies
+  }, [show, durationMs, onClose]);
 
   if (!show) return null;
 
@@ -41,6 +36,19 @@ const Toast = ({
       </div>
     </div>
   );
+};
+
+Toast.propTypes = {
+  show: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  durationMs: PropTypes.number,
+  onClose: PropTypes.func.isRequired,
+};
+
+Toast.defaultProps = {
+  variant: "success",
+  durationMs: 2500,
 };
 
 export default Toast;

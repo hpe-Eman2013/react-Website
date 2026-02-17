@@ -1,4 +1,6 @@
+import React from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import PropTypes from "prop-types";
 import apiClient from "../services/apiClient";
 import { AdminAuthContext } from "./AdminAuthContext";
 
@@ -41,4 +43,8 @@ export const AdminAuthProvider = ({ children }) => {
       {children}
     </AdminAuthContext.Provider>
   );
+};
+
+AdminAuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

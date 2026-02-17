@@ -9,7 +9,7 @@ export async function getPendingTestimonies(req, res) {
       .lean();
 
     return res.json(items);
-  } catch (err) {
+  } catch {
     return res
       .status(500)
       .json({ message: "Failed to load pending testimonies." });
@@ -36,7 +36,7 @@ export async function approveOne(req, res) {
     }
 
     return res.json({ ok: true, testimony: updated });
-  } catch (err) {
+  } catch {
     return res.status(500).json({ message: "Approve failed." });
   }
 }
@@ -65,7 +65,7 @@ export async function approveBulk(req, res) {
       matched: result.matchedCount ?? result.n ?? 0,
       modified: result.modifiedCount ?? result.nModified ?? 0,
     });
-  } catch (err) {
+  } catch {
     return res.status(500).json({ message: "Bulk approve failed." });
   }
 }
@@ -85,7 +85,7 @@ export async function deleteOne(req, res) {
     }
 
     return res.json({ ok: true });
-  } catch (err) {
+  } catch {
     return res.status(500).json({ message: "Delete failed." });
   }
 }
@@ -110,7 +110,7 @@ export async function deleteBulk(req, res) {
       ok: true,
       deleted: result.deletedCount ?? 0,
     });
-  } catch (err) {
+  } catch {
     return res.status(500).json({ message: "Bulk delete failed." });
   }
 }

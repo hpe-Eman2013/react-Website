@@ -1,67 +1,51 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const AppNavbar = () => {
+  const linkClass = ({ isActive }) => `wom-link ${isActive ? "active" : ""}`;
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <Link className="navbar-brand" to="/">
+    <header className="wom-sticky-nav">
+      <div className="wom-nav-inner">
+        <NavLink to="/" className="wom-brand">
           Way of Messiah
-        </Link>
+        </NavLink>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#womNav"
-          aria-controls="womNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+        <nav className="wom-links" aria-label="Main navigation">
+          <NavLink to="/" end className={linkClass}>
+            Home
+          </NavLink>
 
-        <div className="collapse navbar-collapse" id="womNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/" end>
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/testimonies">
-                Testimonies
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/submit">
-                Submit
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/admin/testimonies">
-                Admin
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/statement-of-faith">
-                Statement Of Faith
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/contact">
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+          <NavLink to="/testimonies" className={linkClass}>
+            Testimonies
+          </NavLink>
+
+          <NavLink to="/submit" className={linkClass}>
+            Submit
+          </NavLink>
+
+          <NavLink to="/admin/testimonies" className={linkClass}>
+            Admin
+          </NavLink>
+
+          <NavLink to="/statement-of-faith" className={linkClass}>
+            Statement Of Faith
+          </NavLink>
+
+          <NavLink to="/about" className={linkClass}>
+            About
+          </NavLink>
+
+          <NavLink to="/contact" className={linkClass}>
+            Contact
+          </NavLink>
+        </nav>
+
+        {/* right spacer keeps center true */}
+        <div className="wom-right" />
       </div>
-    </nav>
+    </header>
   );
 };
+
 export default AppNavbar;

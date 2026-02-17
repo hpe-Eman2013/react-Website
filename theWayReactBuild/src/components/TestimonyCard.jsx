@@ -1,14 +1,29 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 const TestimonyCard = ({ testimony }) => {
   const name = testimony?.name?.trim() || "Anonymous";
   const message = testimony?.message || "";
 
-  // Optional fields that may be added later
-  const avatarUrl = testimony?.avatarUrl || null;
+  // ✅ Use Cloudinary imageUrl first (what your form is saving),
+  // fallback to avatarUrl if you ever use it later.
+  const photoUrl =
+    testimony?.imageUrl?.trim() || testimony?.avatarUrl?.trim() || "";
+
   const location = testimony?.location || null;
 
   const locationText =
-    location && (location.city || location.stateProvince || location.country)
-      ? [location.city, location.stateProvince, location.country]
+    location &&
+    (location.city ||
+      location.state ||
+      location.stateProvince ||
+      location.country)
+      ? [
+          location.city,
+          // backend schema uses `state`
+          location.state || location.stateProvince,
+          location.country,
+        ]
           .filter(Boolean)
           .join(", ")
       : null;
@@ -16,16 +31,12 @@ const TestimonyCard = ({ testimony }) => {
   return (
     <article className="card shadow-sm" aria-label={`Testimony from ${name}`}>
       <div className="card-body d-flex gap-3">
-        {/* Avatar (optional) */}
-        <div
-          className="flex-shrink-0"
-          style={{ width: 56 }}
-          aria-hidden={avatarUrl ? "false" : "true"}
-        >
-          {avatarUrl ? (
+        {/* Avatar / Photo */}
+        <div className="flex-shrink-0" style={{ width: 56 }}>
+          {photoUrl ? (
             <img
-              src={avatarUrl}
-              alt={`Avatar of ${name}`}
+              src={photoUrl}
+              alt={`Photo of ${name}`}
               className="rounded-circle border"
               style={{ width: 56, height: 56, objectFit: "cover" }}
               loading="lazy"
@@ -34,8 +45,8 @@ const TestimonyCard = ({ testimony }) => {
             <div
               className="rounded-circle border bg-light d-flex align-items-center justify-content-center text-secondary fw-semibold"
               style={{ width: 56, height: 56 }}
-              aria-hidden="true"
               title={name}
+              aria-label={`No photo for ${name}`}
             >
               {name.charAt(0).toUpperCase()}
             </div>
@@ -58,6 +69,23 @@ const TestimonyCard = ({ testimony }) => {
       </div>
     </article>
   );
+};
+
+TestimonyCard.propTypes = {
+  testimony: PropTypes.shape({
+    name: PropTypes.string,
+    message: PropTypes.string,
+    avatarUrl: PropTypes.string,
+    imageUrl: PropTypes.string,
+    imagePublicId: PropTypes.string,
+    location: PropTypes.shape({
+      country: PropTypes.string,
+      state: PropTypes.string, // ✅ backend field
+      stateProvince: PropTypes.string, // tolerate legacy
+      city: PropTypes.string,
+      postalCode: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default TestimonyCard;

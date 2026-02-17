@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export function CountrySelect({ id, value, onChange, countries, error }) {
   return (
@@ -30,3 +31,16 @@ export function CountrySelect({ id, value, onChange, countries, error }) {
     </div>
   );
 }
+
+CountrySelect.propTypes = {
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  countries: PropTypes.arrayOf(
+    PropTypes.shape({
+      code: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  error: PropTypes.string,
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export function StateProvinceField({
   id,
@@ -8,7 +9,7 @@ export function StateProvinceField({
   statesByCountry,
   error,
 }) {
-  const options = statesByCountry[countryCode] || [];
+  const options = statesByCountry?.[countryCode] || [];
   const hasDropdown = options.length > 0;
 
   return (
@@ -49,3 +50,26 @@ export function StateProvinceField({
     </div>
   );
 }
+
+StateProvinceField.propTypes = {
+  id: PropTypes.string.isRequired,
+  countryCode: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+
+  // { US: [{ code, name }], CA: [...], ... }
+  statesByCountry: PropTypes.objectOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        code: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
+  ).isRequired,
+
+  error: PropTypes.string,
+};
+
+StateProvinceField.defaultProps = {
+  error: undefined,
+};

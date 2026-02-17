@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 const BulkActionsBar = ({
   allSelected,
   selectedCount,
@@ -15,6 +18,7 @@ const BulkActionsBar = ({
           id="selectAll"
           checked={allSelected}
           onChange={onToggleAll}
+          disabled={disabled}
         />
         <label className="form-check-label" htmlFor="selectAll">
           Select all
@@ -22,6 +26,7 @@ const BulkActionsBar = ({
       </div>
 
       <button
+        type="button"
         className="btn btn-success"
         onClick={onApproveSelected}
         disabled={selectedCount === 0 || disabled}
@@ -30,6 +35,7 @@ const BulkActionsBar = ({
       </button>
 
       <button
+        type="button"
         className="btn btn-danger"
         onClick={onDeleteSelected}
         disabled={selectedCount === 0 || disabled}
@@ -42,6 +48,19 @@ const BulkActionsBar = ({
       </div>
     </div>
   );
+};
+
+BulkActionsBar.propTypes = {
+  allSelected: PropTypes.bool.isRequired,
+  selectedCount: PropTypes.number.isRequired,
+  onToggleAll: PropTypes.func.isRequired,
+  onApproveSelected: PropTypes.func.isRequired,
+  onDeleteSelected: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+};
+
+BulkActionsBar.defaultProps = {
+  disabled: false,
 };
 
 export default BulkActionsBar;

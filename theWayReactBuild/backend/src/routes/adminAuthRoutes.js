@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
         role: admin.role,
       },
     });
-  } catch (err) {
+  } catch {
     return res.status(500).json({ message: "Login failed." });
   }
 });

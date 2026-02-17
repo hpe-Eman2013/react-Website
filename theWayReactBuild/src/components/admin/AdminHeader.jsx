@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowsRotate,
@@ -5,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAdminAuth } from "../../context/useAdminAuth";
 import { useNavigate } from "react-router-dom";
+
 const AdminHeader = ({ pendingCount, selectedCount, onRefresh, disabled }) => {
   const { logout } = useAdminAuth();
   const navigate = useNavigate();
@@ -13,15 +16,15 @@ const AdminHeader = ({ pendingCount, selectedCount, onRefresh, disabled }) => {
     await logout();
     navigate("/admin/login", { replace: true });
   };
+
   return (
     <div className="d-flex align-items-center justify-content-between mb-3">
-      {/* LEFT: Title + subtitle */}
       <div>
         <div className="d-flex align-items-center gap-3">
           <h1 className="mb-0">Admin: Pending Testimonies</h1>
 
-          {/* Refresh icon aligned with title */}
           <button
+            type="button"
             className="btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-center"
             onClick={onRefresh}
             disabled={disabled}
@@ -34,10 +37,11 @@ const AdminHeader = ({ pendingCount, selectedCount, onRefresh, disabled }) => {
               className="fs-5"
             />
           </button>
-          {/* Logout icon */}
+
           <button
+            type="button"
             className="btn btn-outline-danger btn-sm d-flex align-items-center justify-content-center"
-            onClick={handleLogout} // ✅ LOGOUT HANDLER
+            onClick={handleLogout}
             disabled={disabled}
             title="Logout"
             aria-label="Logout"
@@ -53,6 +57,17 @@ const AdminHeader = ({ pendingCount, selectedCount, onRefresh, disabled }) => {
       </div>
     </div>
   );
+};
+
+AdminHeader.propTypes = {
+  pendingCount: PropTypes.number.isRequired,
+  selectedCount: PropTypes.number.isRequired,
+  onRefresh: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+};
+
+AdminHeader.defaultProps = {
+  disabled: false,
 };
 
 export default AdminHeader;

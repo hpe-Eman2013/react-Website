@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export function Field({ id, label, required, help, error, children }) {
   const helpId = help ? `${id}-help` : undefined;
@@ -32,3 +33,18 @@ export function Field({ id, label, required, help, error, children }) {
     </div>
   );
 }
+
+Field.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  help: PropTypes.string,
+  error: PropTypes.string,
+  children: PropTypes.element.isRequired, // must be a single React element (because of cloneElement)
+};
+
+Field.defaultProps = {
+  required: false,
+  help: undefined,
+  error: undefined,
+};

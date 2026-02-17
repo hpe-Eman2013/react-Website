@@ -1,13 +1,11 @@
 import React, { useId, useMemo, useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { CountrySelect } from "./CountrySelect";
 import { StateProvinceField } from "./StateProvinceField";
 import { CityField, PostalCodeField } from "./CityPostalFields";
 import { AvatarUploader } from "./AvatarUploader";
 
-export default function TestimonyFormEnhanced({
-  onSubmit,
-  isSubmitting = false,
-}) {
+export default function TestimonyFormEnhanced({ onSubmit, isSubmitting }) {
   const formId = useId();
 
   const countries = useMemo(
@@ -58,44 +56,47 @@ export default function TestimonyFormEnhanced({
   const [contactEmail, setContactEmail] = useState("");
   const contactEmailRef = useRef(null);
 
-  // in TestimonyFormEnhanced.jsx
-
   function handleCountryChange(nextCountry) {
     setCountry(nextCountry);
 
     const options = statesByCountry[nextCountry] || [];
     const hasDropdown = options.length > 0;
 
-    // If dropdown exists and current selection is not valid for that dropdown, clear it.
     if (hasDropdown) {
       setStateProvince((prev) =>
         options.some((s) => s.code === prev) ? prev : "",
       );
     }
-
-    // If dropdown does NOT exist, keep stateProvince as free text (no need to clear).
-    // If you want to clear it on country change anyway, do it here intentionally.
   }
+
   useEffect(() => {
-    if (requestResponse) {
-      contactEmailRef.current?.focus();
-    }
+    if (requestResponse) contactEmailRef.current?.focus();
   }, [requestResponse]);
 
   function validate() {
     const next = {};
     if (!name.trim()) next.name = "Please enter your name.";
     if (!message.trim()) next.message = "Please enter your testimony.";
-    if (postalCode && postalCode.trim().length < 3)
+
+    if (postalCode && postalCode.trim().length < 3) {
       next.postalCode = "Postal code looks too short.";
-    if (city && city.trim().length < 2)
+    }
+    if (city && city.trim().length < 2) {
       next.city = "City name looks too short.";
+    }
+
+    // Optional: block submit if avatar validation failed
+    if (avatarError) {
+      next.avatar = avatarError;
+    }
+
     if (requestResponse) {
       const email = (contactEmail || "").trim();
       if (!email)
         next.contactEmail = "Email is required if you request a response.";
-      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         next.contactEmail = "Please enter a valid email address.";
+      }
     }
 
     return next;
@@ -109,7 +110,9 @@ export default function TestimonyFormEnhanced({
       "stateProvince",
       "city",
       "postalCode",
+      "contactEmail",
     ];
+
     for (const key of order) {
       if (nextErrors[key]) {
         const el = document.getElementById(`${formId}-${key}`);
@@ -118,24 +121,26 @@ export default function TestimonyFormEnhanced({
       }
     }
   }
-  function sanitizeStateProvince({ country, stateProvince, statesByCountry }) {
-    const raw = (stateProvince || "").trim();
+
+  function sanitizeStateProvince({
+    country: ctry,
+    stateProvince: sp,
+    statesByCountry: map,
+  }) {
+    const raw = (sp || "").trim();
     if (!raw) return null;
 
-    const options = statesByCountry[country] || [];
+    const options = map[ctry] || [];
     const hasDropdown = options.length > 0;
 
-    // If we have a dropdown list for the selected country,
-    // only accept values that exist in the list.
     if (hasDropdown) {
       return options.some((s) => s.code === raw) ? raw : null;
     }
-
-    // If we don't have a dropdown list, treat it as free-text.
     return raw;
   }
-  function sanitizeCountry(country, countries) {
-    return countries.some((c) => c.code === country) ? country : "OTHER";
+
+  function sanitizeCountry(ctry, list) {
+    return list.some((c) => c.code === ctry) ? ctry : "OTHER";
   }
 
   async function handleSubmit(e) {
@@ -144,16 +149,16 @@ export default function TestimonyFormEnhanced({
 
     const nextErrors = validate();
     const safeCountry = sanitizeCountry(country, countries);
+
     setErrors(nextErrors);
 
-    // include avatarError if you want to block submission
     if (Object.keys(nextErrors).length) {
       focusFirstError(nextErrors);
       return;
     }
 
     try {
-      await onSubmit?.({
+      await onSubmit({
         name: name.trim(),
         message: message.trim(),
         location: {
@@ -163,7 +168,6 @@ export default function TestimonyFormEnhanced({
             stateProvince,
             statesByCountry,
           }),
-
           city: city.trim() || null,
           postalCode: postalCode.trim() || null,
         },
@@ -186,9 +190,12 @@ export default function TestimonyFormEnhanced({
           {formError}
         </div>
       ) : null}
+
       <p className="visually-hidden" aria-live="polite">
         {isSubmitting ? "Submitting testimony" : ""}
       </p>
+
+      {/* Honeypot */}
       <div className="visually-hidden" aria-hidden="true">
         <label htmlFor={`${formId}-website`}>Website</label>
         <input
@@ -202,7 +209,6 @@ export default function TestimonyFormEnhanced({
       </div>
 
       <AvatarUploader
-        id={`${formId}-avatar`}
         file={avatarFile}
         error={avatarError}
         onFileChange={(res) => {
@@ -211,11 +217,12 @@ export default function TestimonyFormEnhanced({
             setAvatarError("");
             return;
           }
-          setAvatarFile(res.file);
+          setAvatarFile(res.file || null);
           setAvatarError(res.error || "");
         }}
       />
 
+      {/* Name */}
       <div className="mb-3">
         <label className="form-label" htmlFor={`${formId}-name`}>
           Name <span aria-hidden="true">*</span>
@@ -236,6 +243,7 @@ export default function TestimonyFormEnhanced({
         ) : null}
       </div>
 
+      {/* Location */}
       <fieldset className="tf-fieldset">
         <legend className="tf-legend">Location (optional)</legend>
 
@@ -257,58 +265,27 @@ export default function TestimonyFormEnhanced({
         />
 
         <div className="row">
-          {/* City */}
           <div className="col-md-6">
-            <div className="mb-3">
-              <label className="form-label" htmlFor={`${formId}-city`}>
-                City (optional)
-              </label>
-
-              <input
-                id={`${formId}-city`}
-                className={`form-control ${errors.city ? "is-invalid" : ""}`}
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                autoComplete="address-level2"
-                aria-invalid={Boolean(errors.city)}
-              />
-
-              {errors.city ? (
-                <div className="invalid-feedback">{errors.city}</div>
-              ) : null}
-            </div>
+            <CityField
+              id={`${formId}-city`}
+              value={city}
+              onChange={setCity}
+              error={errors.city}
+            />
           </div>
 
-          {/* Postal Code */}
           <div className="col-md-6">
-            <div className="mb-3">
-              <label className="form-label" htmlFor={`${formId}-postalCode`}>
-                Postal Code (optional)
-              </label>
-
-              <input
-                id={`${formId}-postalCode`}
-                className={`form-control ${errors.postalCode ? "is-invalid" : ""}`}
-                type="text"
-                value={postalCode}
-                onChange={(e) => setPostalCode(e.target.value)}
-                autoComplete="postal-code"
-                aria-invalid={Boolean(errors.postalCode)}
-              />
-
-              {errors.postalCode ? (
-                <div className="invalid-feedback">{errors.postalCode}</div>
-              ) : (
-                <div className="form-text">
-                  Format varies by country (e.g., 48104 or SW1A 1AA)
-                </div>
-              )}
-            </div>
+            <PostalCodeField
+              id={`${formId}-postalCode`}
+              value={postalCode}
+              onChange={setPostalCode}
+              error={errors.postalCode}
+            />
           </div>
         </div>
       </fieldset>
 
+      {/* Message */}
       <div className="mt-4">
         <label className="form-label" htmlFor={`${formId}-message`}>
           Testimony <span aria-hidden="true">*</span>
@@ -332,7 +309,9 @@ export default function TestimonyFormEnhanced({
           </div>
         )}
       </div>
-      <div className="mb-3 form-check">
+
+      {/* Response requested */}
+      <div className="mb-3 form-check mt-3">
         <input
           className="form-check-input"
           type="checkbox"
@@ -348,7 +327,7 @@ export default function TestimonyFormEnhanced({
         </label>
       </div>
 
-      {requestResponse && (
+      {requestResponse ? (
         <div className="mb-3">
           <label className="form-label" htmlFor={`${formId}-contactEmail`}>
             Email for response <span aria-hidden="true">*</span>
@@ -367,11 +346,11 @@ export default function TestimonyFormEnhanced({
             <div className="invalid-feedback">{errors.contactEmail}</div>
           ) : (
             <div className="form-text">
-              We’ll only use this to reply to your testimony request.
+              We’ll only use this to reply to your request.
             </div>
           )}
         </div>
-      )}
+      ) : null}
 
       <div className="tf-actions">
         <button
@@ -385,3 +364,12 @@ export default function TestimonyFormEnhanced({
     </form>
   );
 }
+
+TestimonyFormEnhanced.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool,
+};
+
+TestimonyFormEnhanced.defaultProps = {
+  isSubmitting: false,
+};

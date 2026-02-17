@@ -1,17 +1,19 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 const ConfirmModal = ({
   show,
-  title = "Confirm",
-  message = "Are you sure?",
-  confirmText = "Confirm",
-  cancelText = "Cancel",
-  confirmVariant = "danger",
+  title,
+  message,
+  confirmText,
+  cancelText,
+  confirmVariant,
   onConfirm,
   onCancel,
   disabled,
 }) => {
   if (!show) return null;
 
-  // Simple "modal" overlay without bootstrap JS (pure React controlled UI)
   return (
     <div
       className="modal fade show"
@@ -59,6 +61,27 @@ const ConfirmModal = ({
       </div>
     </div>
   );
+};
+
+ConfirmModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  message: PropTypes.string,
+  confirmText: PropTypes.string,
+  cancelText: PropTypes.string,
+  confirmVariant: PropTypes.string,
+  onConfirm: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+};
+
+ConfirmModal.defaultProps = {
+  title: "Confirm",
+  message: "Are you sure?",
+  confirmText: "Confirm",
+  cancelText: "Cancel",
+  confirmVariant: "danger",
+  disabled: false,
 };
 
 export default ConfirmModal;

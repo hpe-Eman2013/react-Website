@@ -1,8 +1,20 @@
 import apiClient from "./apiClient";
+import axios from "axios";
 
-/**
- * PUBLIC (no auth)
- */
+const API = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3000";
+
+// -------- Upload avatar/image to Cloudinary --------
+export async function uploadTestimonyImage(file) {
+  const fd = new FormData();
+  fd.append("image", file); // IMPORTANT: must match upload.single("image") on backend
+
+  const res = await axios.post(`${API}/api/upload/image`, fd, {
+    headers: { "Content-Type": "multipart/form-data" },
+    withCredentials: true,
+  });
+
+  return res.data; // expects { url, publicId, width, height, format }
+}
 
 // Public: approved-only
 export const fetchApprovedTestimonies = async () => {
@@ -15,40 +27,44 @@ export const createTestimony = async (payload) => {
   return res.data;
 };
 // added to address avatar upload in SubmitTestimony.jsx
-export const createTestimonyFormData = async ({
-  name,
-  message,
-  location,
-  avatarFile,
-  website,
-  requestResponse,
-  contactEmail,
-}) => {
+// -------- Create testimony (multipart) --------
+export async function createTestimonyFormData(payload) {
   const fd = new FormData();
 
-  fd.append("name", name || "");
-  fd.append("message", message || "");
-  fd.append("location", JSON.stringify(location || {}));
+  fd.append("name", payload.name ?? "");
+  fd.append("message", payload.message ?? "");
 
-  // honeypot
-  fd.append("website", website || "");
-
-  // response request
-  fd.append("requestResponse", String(Boolean(requestResponse)));
-
-  // only send email if requestResponse is true (keeps payload clean)
-  if (requestResponse) {
-    fd.append("contactEmail", contactEmail || "");
+  // send location as JSON string (your backend parseLocation supports this)
+  if (payload.location) {
+    fd.append("location", JSON.stringify(payload.location));
   }
 
-  if (avatarFile) fd.append("avatar", avatarFile);
+  // honeypot
+  if (payload.website) fd.append("website", payload.website);
 
-  const res = await apiClient.post("/api/testimonies", fd, {
+  // response requested
+  fd.append("requestResponse", String(!!payload.requestResponse));
+  if (payload.requestResponse && payload.contactEmail) {
+    fd.append("contactEmail", payload.contactEmail);
+  }
+
+  // ✅ If user attached an avatar, upload it first
+  if (payload.avatarFile instanceof File) {
+    const uploaded = await uploadTestimonyImage(payload.avatarFile);
+
+    // ✅ These match what your testimonies route reads:
+    // const { imageUrl, imagePublicId } = req.body;
+    fd.append("imageUrl", uploaded.url);
+    fd.append("imagePublicId", uploaded.publicId);
+  }
+
+  const res = await axios.post(`${API}/api/testimonies`, fd, {
     headers: { "Content-Type": "multipart/form-data" },
+    withCredentials: true,
   });
 
   return res.data;
-};
+}
 
 /**
  * ADMIN (requires auth cookie)

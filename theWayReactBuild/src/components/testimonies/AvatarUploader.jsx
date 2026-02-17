@@ -1,11 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 
-export function AvatarUploader({
-  file,
-  error,
-  onFileChange,
-  maxBytes = 4 * 1024 * 1024,
-}) {
+export function AvatarUploader({ file, error, onFileChange, maxBytes }) {
   const inputRef = useRef(null);
   const [previewUrl, setPreviewUrl] = useState("");
 
@@ -26,15 +22,16 @@ export function AvatarUploader({
     const allowed = ["image/jpeg", "image/png", "image/webp"];
 
     if (!allowed.includes(f.type)) {
-      onFileChange?.({
+      onFileChange({
         file: null,
         error: "Please upload a JPG, PNG, or WebP image.",
       });
       e.target.value = "";
       return;
     }
+
     if (f.size > maxBytes) {
-      onFileChange?.({
+      onFileChange({
         file: null,
         error: "Image is too large. Please upload a file under 4MB.",
       });
@@ -42,11 +39,11 @@ export function AvatarUploader({
       return;
     }
 
-    onFileChange?.({ file: f, error: "" });
+    onFileChange({ file: f, error: "" });
   }
 
   function remove() {
-    onFileChange?.({ file: null, error: "" });
+    onFileChange({ file: null, error: "" });
     if (inputRef.current) inputRef.current.value = "";
   }
 
@@ -113,3 +110,16 @@ export function AvatarUploader({
     </fieldset>
   );
 }
+
+AvatarUploader.propTypes = {
+  file: PropTypes.instanceOf(File),
+  error: PropTypes.string,
+  onFileChange: PropTypes.func.isRequired,
+  maxBytes: PropTypes.number,
+};
+
+AvatarUploader.defaultProps = {
+  file: null,
+  error: "",
+  maxBytes: 4 * 1024 * 1024,
+};

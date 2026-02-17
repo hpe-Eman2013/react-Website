@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Field } from "./Field";
 
 export function CityField({ id, value, onChange, error }) {
   return (
     <Field id={id} label="City (optional)" error={error}>
       <input
+        id={id}
         className="tf-input"
         type="text"
         value={value}
@@ -14,6 +16,13 @@ export function CityField({ id, value, onChange, error }) {
     </Field>
   );
 }
+
+CityField.propTypes = {
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
 
 export function PostalCodeField({
   id,
@@ -25,6 +34,7 @@ export function PostalCodeField({
   return (
     <Field id={id} label="Postal Code (optional)" help={help} error={error}>
       <input
+        id={id}
         className="tf-input"
         type="text"
         value={value}
@@ -34,3 +44,11 @@ export function PostalCodeField({
     </Field>
   );
 }
+
+PostalCodeField.propTypes = {
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  help: PropTypes.string,
+};
