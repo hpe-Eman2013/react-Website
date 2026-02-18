@@ -1,22 +1,36 @@
-// Inject Cloudinary transformations into a Cloudinary delivery URL.
-// Example transform: "w_200,h_200,c_fill,g_face,f_auto,q_auto"
-
-export function toCloudinaryTransformedUrl(url, transform) {
+export function toCloudinaryTransformedUrl(url, opts = {}) {
   if (!url || typeof url !== "string") return "";
 
-  // Only transform Cloudinary URLs
-  if (!url.includes("/upload/")) return url;
+  // Only transform Cloudinary URLs that include "/upload/"
+  const marker = "/upload/";
+  const i = url.indexOf(marker);
+  if (i === -1) return url;
 
-  // If already has a transform, you can decide to keep or replace.
-  // We'll *replace* anything between /upload/ and the next /.
-  // But safest is: insert transform directly after /upload/ if not present.
-  const parts = url.split("/upload/");
-  if (parts.length !== 2) return url;
+  const {
+    width,
+    height,
+    crop = "fill",
+    gravity,
+    quality = "auto",
+    format = "auto",
+  } = opts;
 
-  const [prefix, suffix] = parts;
+  const parts = [];
 
-  // If suffix already begins with something like "w_..." (i.e. transform exists),
-  // you can still force our transform by checking first segment.
-  // Here we insert ours *before* existing content.
-  return `${prefix}/upload/${transform}/${suffix}`;
+  if (width) parts.push(`w_${width}`);
+  if (height) parts.push(`h_${height}`);
+  if (crop) parts.push(`c_${crop}`);
+  if (gravity) parts.push(`g_${gravity}`);
+  if (quality) parts.push(`q_${quality}`);
+  if (format) parts.push(`f_${format}`);
+
+  const transform = parts.join(",");
+
+  // Insert transformation right after /upload/
+  return (
+    url.slice(0, i + marker.length) +
+    transform +
+    "/" +
+    url.slice(i + marker.length)
+  );
 }
