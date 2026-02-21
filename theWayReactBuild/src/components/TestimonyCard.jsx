@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import { toCloudinaryTransformedUrl } from "../utils/cloudinary";
 import { likeTestimony, dislikeTestimony } from "../services/testimonyService";
 
-const TestimonyCard = ({ testimony, userVote, onVoteUpdated }) => {
+const TestimonyCard = ({
+  testimony,
+  userVote,
+  onVoteUpdated,
+  onCountsUpdated,
+}) => {
   const name = testimony?.name?.trim() || "Anonymous";
   const message = testimony?.message || "";
   const id = testimony?._id;
@@ -25,9 +30,14 @@ const TestimonyCard = ({ testimony, userVote, onVoteUpdated }) => {
       setVoting(true);
       const updated = await likeTestimony(id); // { likes, dislikes, userVote, message? }
 
-      setLikes(typeof updated.likes === "number" ? updated.likes : 0);
-      setDislikes(typeof updated.dislikes === "number" ? updated.dislikes : 0);
+      setLikes(typeof updated.likes === "number" ? updated.likes : likes);
+      setDislikes(
+        typeof updated.dislikes === "number" ? updated.dislikes : dislikes,
+      );
 
+      if (typeof onCountsUpdated === "function") {
+        onCountsUpdated(id, updated.likes, updated.dislikes);
+      }
       // ✅ update parent vote map (per testimony)
       if (typeof onVoteUpdated === "function") {
         onVoteUpdated(id, updated.userVote || "like");
@@ -50,6 +60,10 @@ const TestimonyCard = ({ testimony, userVote, onVoteUpdated }) => {
       setDislikes(
         typeof updated.dislikes === "number" ? updated.dislikes : dislikes,
       );
+
+      if (typeof onCountsUpdated === "function") {
+        onCountsUpdated(id, updated.likes, updated.dislikes);
+      }
 
       if (typeof onVoteUpdated === "function") {
         onVoteUpdated(id, updated.userVote || "dislike");
@@ -159,11 +173,12 @@ TestimonyCard.propTypes = {
     dislikes: PropTypes.number,
   }).isRequired,
 
-  // ✅ per-testimony vote from server session map
+  // per-testimony vote from server session map
   userVote: PropTypes.oneOf(["like", "dislike", null]),
 
-  // ✅ callback to update votesById in parent
+  // callbacks from parent
   onVoteUpdated: PropTypes.func.isRequired,
+  onCountsUpdated: PropTypes.func.isRequired,
 };
 
 export default TestimonyCard;

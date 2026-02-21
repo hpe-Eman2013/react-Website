@@ -61,6 +61,14 @@ const Testimonies = () => {
   function onVoteUpdated(id, vote) {
     setVotesById((prev) => ({ ...prev, [id]: vote }));
   }
+  function onCountsUpdated(id, likes, dislikes) {
+    setItems((prev) =>
+      prev.map((t) => {
+        const tid = t._id || t.id;
+        return tid === id ? { ...t, likes, dislikes } : t;
+      }),
+    );
+  }
 
   return (
     <main className="container py-4" id="main-content">
@@ -128,6 +136,7 @@ const Testimonies = () => {
               testimony={t}
               userVote={tid ? votesById[tid] || null : null}
               onVoteUpdated={onVoteUpdated}
+              onCountsUpdated={onCountsUpdated}
             />
           );
         })}
