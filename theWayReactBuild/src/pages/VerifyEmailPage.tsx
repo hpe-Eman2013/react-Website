@@ -26,7 +26,7 @@ export default function VerifyEmailPage() {
     return email.trim().length > 3 && code.trim().length === 6 && !loading;
   }, [email, code, loading]);
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
     setOkMsg("");
@@ -54,14 +54,14 @@ export default function VerifyEmailPage() {
   }
 
   return (
-    <div className="container py-5" style={{ maxWidth: 520 }}>
+    <div className="auth-container verify-page">
       <h1 className="h3 mb-3">Verify your email</h1>
       <p className="text-muted">Enter the 6-digit code sent to your email.</p>
 
       {error ? <div className="alert alert-danger">{error}</div> : null}
       {okMsg ? <div className="alert alert-success">{okMsg}</div> : null}
 
-      <form onSubmit={onSubmit} className="card p-3">
+      <form onSubmit={onSubmit} className="auth-card">
         <div className="mb-3">
           <label className="form-label" htmlFor="email">
             Email
@@ -90,7 +90,7 @@ export default function VerifyEmailPage() {
           <div className="form-text">Code is 6 digits.</div>
         </div>
 
-        <button className="btn btn-primary w-100" disabled={!canSubmit}>
+        <button className="btn btn-primary auth-btn" disabled={!canSubmit}>
           {loading ? "Verifying…" : "Verify Email"}
         </button>
 

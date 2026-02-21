@@ -25,7 +25,7 @@ export default function LoginPage() {
     return isEmail(email) && password.length > 0 && !loading;
   }, [email, password, loading]);
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
 
@@ -49,12 +49,12 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container py-5" style={{ maxWidth: 520 }}>
+    <div className="auth-container login-page">
       <h1 className="h3 mb-3">Login</h1>
 
       {error ? <div className="alert alert-danger">{error}</div> : null}
 
-      <form onSubmit={onSubmit} className="card p-3">
+      <form onSubmit={onSubmit} className="auth-card">
         <div className="mb-3">
           <label className="form-label" htmlFor="email">
             Email
@@ -84,7 +84,7 @@ export default function LoginPage() {
           />
         </div>
 
-        <button className="btn btn-primary w-100" disabled={!canSubmit}>
+        <button className="btn btn-primary auth-btn" disabled={!canSubmit}>
           {loading ? "Logging in…" : "Login"}
         </button>
 
