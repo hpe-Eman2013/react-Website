@@ -196,6 +196,11 @@ router.post("/votes/reset", (req, res) => {
   req.session.testimonyVotes = {};
   return res.json({ ok: true });
 });
+router.get("/votes", (req, res) => {
+  const votes = (req.session && req.session.testimonyVotes) || {};
+  res.json({ ok: true, votes });
+});
+
 // helper
 function getVoteMap(req) {
   if (!req.session) return null;
@@ -233,6 +238,12 @@ router.post("/:id/like", async (req, res) => {
       { $inc: inc },
       { new: true },
     ).select("likes dislikes");
+    // Safety clamp
+    if (updated.likes < 0 || updated.dislikes < 0) {
+      updated.likes = Math.max(0, updated.likes);
+      updated.dislikes = Math.max(0, updated.dislikes);
+      await updated.save();
+    }
 
     if (!updated) return res.status(404).json({ message: "Not found." });
 
@@ -280,6 +291,12 @@ router.post("/:id/dislike", async (req, res) => {
       { $inc: inc },
       { new: true },
     ).select("likes dislikes");
+    // Safety clamp
+    if (updated.likes < 0 || updated.dislikes < 0) {
+      updated.likes = Math.max(0, updated.likes);
+      updated.dislikes = Math.max(0, updated.dislikes);
+      await updated.save();
+    }
 
     if (!updated) return res.status(404).json({ message: "Not found." });
 
