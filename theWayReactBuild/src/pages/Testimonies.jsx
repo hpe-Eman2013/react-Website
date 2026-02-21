@@ -32,13 +32,14 @@ const Testimonies = () => {
         setStatus("loading");
         setError("");
 
-        const [testimoniesData, votesRes] = await Promise.all([
+        const [testimoniesData, votesData] = await Promise.all([
           fetchApprovedTestimonies(),
-          fetchVoteMap().catch(() => ({ ok: true, votes: {} })), // don't fail page if votes fails
+          fetchVoteMap().catch(() => ({ ok: true, votes: {} })),
         ]);
+        const v = votesData?.votes ? votesData : votesData?.data;
 
         setItems(Array.isArray(testimoniesData) ? testimoniesData : []);
-        setVotesById(votesRes?.votes || {});
+        setVotesById(v?.votes || {});
         setStatus("success");
       } catch (e) {
         setStatus("error");
