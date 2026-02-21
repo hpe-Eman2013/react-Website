@@ -2,12 +2,16 @@ import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import TestimonyCard from "../components/TestimonyCard";
-import { fetchApprovedTestimonies } from "../services/testimonyService";
+import {
+  fetchApprovedTestimonies,
+  fetchVoteMap,
+} from "../services/testimonyService";
 
 const Testimonies = () => {
   const [items, setItems] = useState([]);
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [error, setError] = useState("");
+  const [votesById, setVotesById] = useState({}); // { [id]: "like" | "dislike" }
 
   const [searchParams, setSearchParams] = useSearchParams();
   const submitted = searchParams.get("submitted") === "1";
@@ -28,8 +32,13 @@ const Testimonies = () => {
         setStatus("loading");
         setError("");
 
-        const data = await fetchApprovedTestimonies();
-        setItems(Array.isArray(data) ? data : []);
+        const [testimoniesData, votesRes] = await Promise.all([
+          fetchApprovedTestimonies(),
+          fetchVoteMap().catch(() => ({ ok: true, votes: {} })), // don't fail page if votes fails
+        ]);
+
+        setItems(Array.isArray(testimoniesData) ? testimoniesData : []);
+        setVotesById(votesRes?.votes || {});
         setStatus("success");
       } catch (e) {
         setStatus("error");
@@ -47,6 +56,9 @@ const Testimonies = () => {
     const next = new URLSearchParams(searchParams);
     next.delete("submitted");
     setSearchParams(next, { replace: true });
+  }
+  function onVoteUpdated(id, vote) {
+    setVotesById((prev) => ({ ...prev, [id]: vote }));
   }
 
   return (
@@ -107,9 +119,17 @@ const Testimonies = () => {
 
       {/* Cards */}
       <div className="d-grid gap-3" aria-busy={status === "loading"}>
-        {items.map((t) => (
-          <TestimonyCard key={t._id || t.id} testimony={t} />
-        ))}
+        {items.map((t) => {
+          const tid = t._id || t.id;
+          return (
+            <TestimonyCard
+              key={tid}
+              testimony={t}
+              userVote={tid ? votesById[tid] || null : null}
+              onVoteUpdated={onVoteUpdated}
+            />
+          );
+        })}
       </div>
     </main>
   );

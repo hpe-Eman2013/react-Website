@@ -25,13 +25,15 @@ const TestimonyCard = ({ testimony, userVote, onVoteUpdated }) => {
       setVoting(true);
       const updated = await likeTestimony(id); // { likes, dislikes, userVote, message? }
 
-      setLikes(updated.likes ?? likes);
-      setDislikes(updated.dislikes ?? dislikes);
+      setLikes(typeof updated.likes === "number" ? updated.likes : 0);
+      setDislikes(typeof updated.dislikes === "number" ? updated.dislikes : 0);
 
       // ✅ update parent vote map (per testimony)
       if (typeof onVoteUpdated === "function") {
         onVoteUpdated(id, updated.userVote || "like");
       }
+    } catch (e) {
+      console.error("Like failed", e);
     } finally {
       setVoting(false);
     }
@@ -44,12 +46,16 @@ const TestimonyCard = ({ testimony, userVote, onVoteUpdated }) => {
       setVoting(true);
       const updated = await dislikeTestimony(id);
 
-      setLikes(updated.likes ?? likes);
-      setDislikes(updated.dislikes ?? dislikes);
+      setLikes(typeof updated.likes === "number" ? updated.likes : likes);
+      setDislikes(
+        typeof updated.dislikes === "number" ? updated.dislikes : dislikes,
+      );
 
       if (typeof onVoteUpdated === "function") {
         onVoteUpdated(id, updated.userVote || "dislike");
       }
+    } catch (e) {
+      console.error("Like failed", e);
     } finally {
       setVoting(false);
     }
@@ -121,7 +127,6 @@ const TestimonyCard = ({ testimony, userVote, onVoteUpdated }) => {
             >
               👍 Like <span className="ms-1">{likes}</span>
             </button>
-            jkk
             <button
               type="button"
               className="btn btn-sm btn-outline-danger"
