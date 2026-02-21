@@ -69,7 +69,7 @@ const TestimonyCard = ({
         onVoteUpdated(id, updated.userVote || "dislike");
       }
     } catch (e) {
-      console.error("Like failed", e);
+      console.error("Dislike failed", e);
     } finally {
       setVoting(false);
     }
