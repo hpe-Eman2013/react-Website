@@ -189,21 +189,55 @@ router.post(
     }
   },
 );
+// helper
+function getVoteMap(req) {
+  if (!req.session) return null;
+  if (!req.session.testimonyVotes) req.session.testimonyVotes = {};
+  return req.session.testimonyVotes;
+}
 // ✅ POST /api/testimonies/:id/like
 router.post("/:id/like", async (req, res) => {
   try {
     const { id } = req.params;
 
+    const votes = getVoteMap(req);
+    if (!votes)
+      return res.status(500).json({ message: "Session not available." });
+
+    const prev = votes[id]; // "like" | "dislike" | undefined
+
+    // already liked → block (or no-op)
+    if (prev === "like") {
+      const t = await Testimony.findById(id).select("likes dislikes");
+      if (!t) return res.status(404).json({ message: "Not found." });
+      return res.status(200).json({
+        likes: t.likes,
+        dislikes: t.dislikes,
+        userVote: "like",
+        message: "Already liked in this session.",
+      });
+    }
+
+    // switching from dislike → like
+    const inc = prev === "dislike" ? { likes: 1, dislikes: -1 } : { likes: 1 };
+
     const updated = await Testimony.findByIdAndUpdate(
       id,
-      { $inc: { likes: 1 } },
+      { $inc: inc },
       { new: true },
     ).select("likes dislikes");
 
     if (!updated) return res.status(404).json({ message: "Not found." });
 
-    return res.json({ likes: updated.likes, dislikes: updated.dislikes });
-  } catch {
+    votes[id] = "like";
+
+    return res.json({
+      likes: updated.likes,
+      dislikes: updated.dislikes,
+      userVote: "like",
+    });
+  } catch (err) {
+    console.error(err);
     return res.status(500).json({ message: "Server error" });
   }
 });
@@ -213,16 +247,44 @@ router.post("/:id/dislike", async (req, res) => {
   try {
     const { id } = req.params;
 
+    const votes = getVoteMap(req);
+    if (!votes)
+      return res.status(500).json({ message: "Session not available." });
+
+    const prev = votes[id]; // "like" | "dislike" | undefined
+
+    // already disliked → block (or no-op)
+    if (prev === "dislike") {
+      const t = await Testimony.findById(id).select("likes dislikes");
+      if (!t) return res.status(404).json({ message: "Not found." });
+      return res.status(200).json({
+        likes: t.likes,
+        dislikes: t.dislikes,
+        userVote: "dislike",
+        message: "Already disliked in this session.",
+      });
+    }
+
+    // switching from like → dislike
+    const inc = prev === "like" ? { dislikes: 1, likes: -1 } : { dislikes: 1 };
+
     const updated = await Testimony.findByIdAndUpdate(
       id,
-      { $inc: { dislikes: 1 } },
+      { $inc: inc },
       { new: true },
     ).select("likes dislikes");
 
     if (!updated) return res.status(404).json({ message: "Not found." });
 
-    return res.json({ likes: updated.likes, dislikes: updated.dislikes });
-  } catch {
+    votes[id] = "dislike";
+
+    return res.json({
+      likes: updated.likes,
+      dislikes: updated.dislikes,
+      userVote: "dislike",
+    });
+  } catch (err) {
+    console.error(err);
     return res.status(500).json({ message: "Server error" });
   }
 });

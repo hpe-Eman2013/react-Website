@@ -8,8 +8,10 @@ import adminAuthRoutes from "./routes/adminAuthRoutes.js";
 import { requireAdminAuth } from "./middleware/requireAdminAuth.js";
 import adminTestimonyRoutes from "./routes/adminTestimonyRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
+import session from "express-session";
 
 const app = express();
+app.set("trust proxy", 1); // important if behind Render/Proxy
 
 // Middleware
 app.use(express.json());
@@ -20,6 +22,20 @@ app.use(
   }),
 );
 app.use(cookieParser());
+// ensure express-session is installed and mounted before routes
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      sameSite: "lax", // for same-site dev
+      secure: false, // set true in production HTTPS
+      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+    },
+  }),
+);
 app.use("/api/admin/auth", adminAuthRoutes);
 
 // Routes
