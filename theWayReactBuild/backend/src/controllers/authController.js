@@ -3,6 +3,7 @@ import User from "../models/User.js";
 import EmailVerification from "../models/EmailVerification.js";
 import { sendMail } from "../utils/mailer.js";
 import { hashCode, make6DigitCode } from "../utils/codeHash.js";
+import { signUserToken, userCookieOptions } from "../utils/userJwt.js";
 
 const VERIFICATION_EXPIRY_MINUTES = 15;
 const MAX_ATTEMPTS = 6;
@@ -176,5 +177,64 @@ export async function verifyEmail(req, res) {
       ok: false,
       message: "Verification failed.",
     });
+  }
+}
+/**
+ * POST /api/auth/login
+ * body: { email, password }
+ */
+export async function login(req, res) {
+  try {
+    const email = String(req.body?.email || "")
+      .trim()
+      .toLowerCase();
+    const password = String(req.body?.password || "");
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ ok: false, message: "Email and password are required." });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ ok: false, message: "Invalid credentials." });
+    }
+
+    if (!user.emailVerified) {
+      return res.status(403).json({
+        ok: false,
+        message: "Please verify your email before logging in.",
+      });
+    }
+
+    const ok = await bcrypt.compare(password, user.passwordHash);
+    if (!ok) {
+      return res
+        .status(401)
+        .json({ ok: false, message: "Invalid credentials." });
+    }
+
+    const token = signUserToken(user);
+
+    // httpOnly cookie
+    res.cookie("user_token", token, userCookieOptions());
+
+    return res.json({
+      ok: true,
+      message: "Logged in.",
+      data: {
+        user: {
+          id: user._id,
+          email: user.email,
+          displayName: user.displayName,
+        },
+      },
+    });
+  } catch (err) {
+    console.error("login error:", err);
+    return res.status(500).json({ ok: false, message: "Login failed." });
   }
 }

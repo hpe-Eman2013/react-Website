@@ -10,6 +10,9 @@ import { AdminAuthProvider } from "./context/AdminAuthProvider";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import StatementOfFaith from "./pages/StatementOfFaith";
+import RegisterPage from "./pages/RegisterPage";
+import VerifyEmailPage from "./pages/VerifyEmailPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/statement-of-faith" element={<StatementOfFaith />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/verify-email" element={<VerifyEmailPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </AdminAuthProvider>
     </BrowserRouter>

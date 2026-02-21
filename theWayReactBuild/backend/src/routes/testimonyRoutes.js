@@ -2,6 +2,8 @@ import express from "express";
 import Testimony from "../models/Testimony.js";
 import multer from "multer";
 import rateLimit from "express-rate-limit";
+import requireUserAuth from "../middleware/requireUserAuth.js";
+import TestimonyPrayer from "../models/TestimonyPrayer.js";
 
 const router = express.Router();
 
@@ -312,5 +314,31 @@ router.post("/:id/dislike", async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 });
+router.post("/:id/prayers", requireUserAuth, async (req, res) => {
+  try {
+    const testimonyId = req.params.id;
+    const text = String(req.body?.text || "").trim();
 
+    if (!text) {
+      return res
+        .status(400)
+        .json({ ok: false, message: "Prayer text is required." });
+    }
+
+    const created = await TestimonyPrayer.create({
+      testimonyId,
+      userId: req.user._id,
+      posterDisplayName: req.user.displayName || "",
+      text,
+      status: "pending",
+    });
+
+    return res.json({ ok: true, data: created });
+  } catch (err) {
+    console.error("submit prayer error:", err);
+    return res
+      .status(500)
+      .json({ ok: false, message: "Failed to submit prayer." });
+  }
+});
 export default router;

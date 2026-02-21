@@ -9,6 +9,7 @@ import { requireAdminAuth } from "./middleware/requireAdminAuth.js";
 import adminTestimonyRoutes from "./routes/adminTestimonyRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import session from "express-session";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 app.set("trust proxy", 1); // important if behind Render/Proxy
@@ -40,6 +41,7 @@ app.use("/api/admin/auth", adminAuthRoutes);
 
 // Routes
 app.use("/api/admin/testimonies", requireAdminAuth, adminTestimonyRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/testimonies", testimonyRoutes);
 app.use("/api/upload", uploadRoutes);
 // Health check
