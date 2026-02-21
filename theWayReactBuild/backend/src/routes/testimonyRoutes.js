@@ -189,6 +189,7 @@ router.post(
     }
   },
 );
+
 // helper
 function getVoteMap(req) {
   if (!req.session) return null;
@@ -289,4 +290,11 @@ router.post("/:id/dislike", async (req, res) => {
   }
 });
 
+// DEV ONLY: clear vote memory for this session
+router.post("/votes/reset", (req, res) => {
+  if (!req.session)
+    return res.status(500).json({ message: "Session not available." });
+  req.session.testimonyVotes = {};
+  return res.json({ ok: true });
+});
 export default router;
