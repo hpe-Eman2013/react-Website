@@ -101,3 +101,13 @@ export const deleteBulk = async (ids) => {
   });
   return res.data;
 };
+// add likes and dislikes
+export async function likeTestimony(id) {
+  const res = await apiClient.post(`/api/testimonies/${id}/like`);
+  return res.data; // { likes }
+}
+
+export async function dislikeTestimony(id) {
+  const res = await apiClient.post(`/api/testimonies/${id}/dislike`);
+  return res.data; // { dislikes }
+}

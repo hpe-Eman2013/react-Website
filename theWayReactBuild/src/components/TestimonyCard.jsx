@@ -1,11 +1,53 @@
 import React, { useMemo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { toCloudinaryTransformedUrl } from "../utils/cloudinary";
+import { likeTestimony, dislikeTestimony } from "../services/testimonyService";
 
 const TestimonyCard = ({ testimony }) => {
   const name = testimony?.name?.trim() || "Anonymous";
   const message = testimony?.message || "";
+  const storageKeyFor = (id) => `wom_vote_${id}`; // value: "like" | "dislike"
+  // code for likes and dislikes
+  const id = testimony?._id;
 
+  const [likes, setLikes] = useState(testimony?.likes ?? 0);
+  const [dislikes, setDislikes] = useState(testimony?.dislikes ?? 0);
+  const [voting, setVoting] = useState(false);
+
+  const existingVote = useMemo(() => {
+    if (!id) return "";
+    return localStorage.getItem(storageKeyFor(id)) || "";
+  }, [id]);
+
+  async function onLike() {
+    if (!id || voting) return;
+    if (existingVote) return; // already voted
+
+    try {
+      setVoting(true);
+      const updated = await likeTestimony(id);
+      setLikes(updated.likes ?? likes + 1);
+      setDislikes(updated.dislikes ?? dislikes);
+      localStorage.setItem(storageKeyFor(id), "like");
+    } finally {
+      setVoting(false);
+    }
+  }
+
+  async function onDislike() {
+    if (!id || voting) return;
+    if (existingVote) return; // already voted
+
+    try {
+      setVoting(true);
+      const updated = await dislikeTestimony(id);
+      setLikes(updated.likes ?? likes);
+      setDislikes(updated.dislikes ?? dislikes + 1);
+      localStorage.setItem(storageKeyFor(id), "dislike");
+    } finally {
+      setVoting(false);
+    }
+  }
   // Prefer Cloudinary imageUrl (DB stores this), then avatarUrl if you still use it
   const rawAvatarUrl = testimony?.imageUrl || testimony?.avatarUrl || "";
 
@@ -61,16 +103,44 @@ const TestimonyCard = ({ testimony }) => {
           </p>
         </div>
       </div>
+      <div className="d-flex gap-2 mt-3 align-items-center">
+        <button
+          type="button"
+          className="btn btn-sm btn-outline-success"
+          onClick={onLike}
+          disabled={voting || !!existingVote}
+          title={existingVote ? "You already voted." : "Like"}
+        >
+          👍 Like <span className="ms-1">{likes}</span>
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-sm btn-outline-danger"
+          onClick={onDislike}
+          disabled={voting || !!existingVote}
+          title={existingVote ? "You already voted." : "Dislike"}
+        >
+          👎 Dislike <span className="ms-1">{dislikes}</span>
+        </button>
+
+        {existingVote ? (
+          <span className="badge bg-secondary ms-2">Voted: {existingVote}</span>
+        ) : null}
+      </div>
     </article>
   );
 };
 
 TestimonyCard.propTypes = {
   testimony: PropTypes.shape({
+    _id: PropTypes.string.isRequired, // needed for voting
     name: PropTypes.string,
     message: PropTypes.string,
     avatarUrl: PropTypes.string,
     imageUrl: PropTypes.string,
+    likes: PropTypes.number,
+    dislikes: PropTypes.number,
   }).isRequired,
 };
 

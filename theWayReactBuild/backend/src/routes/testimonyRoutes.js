@@ -189,5 +189,42 @@ router.post(
     }
   },
 );
+// ✅ POST /api/testimonies/:id/like
+router.post("/:id/like", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const updated = await Testimony.findByIdAndUpdate(
+      id,
+      { $inc: { likes: 1 } },
+      { new: true },
+    ).select("likes dislikes");
+
+    if (!updated) return res.status(404).json({ message: "Not found." });
+
+    return res.json({ likes: updated.likes, dislikes: updated.dislikes });
+  } catch {
+    return res.status(500).json({ message: "Server error" });
+  }
+});
+
+// ✅ POST /api/testimonies/:id/dislike
+router.post("/:id/dislike", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const updated = await Testimony.findByIdAndUpdate(
+      id,
+      { $inc: { dislikes: 1 } },
+      { new: true },
+    ).select("likes dislikes");
+
+    if (!updated) return res.status(404).json({ message: "Not found." });
+
+    return res.json({ likes: updated.likes, dislikes: updated.dislikes });
+  } catch {
+    return res.status(500).json({ message: "Server error" });
+  }
+});
 
 export default router;
