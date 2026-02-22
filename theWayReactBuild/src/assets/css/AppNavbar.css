@@ -214,7 +214,11 @@
 .wom-summary::-webkit-details-marker {
   display: none;
 }
-
+.wom-caret {
+  margin-left: 6px;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
 /* Panel */
 .wom-mega-panel {
   position: absolute;
@@ -223,13 +227,20 @@
   transform: translateX(-50%);
   background: #000;
   color: #fff;
-  padding: 18px;
+  padding: 18px 20px;
   min-width: 220px;
   border-radius: 4px;
   display: none;
   flex-direction: column;
   gap: 10px;
   z-index: 9999;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+/* Right-aligned panel (Accounts) */
+.wom-mega-panel-right {
+  left: auto;
+  right: 0;
+  transform: none;
 }
 
 /* Show when open */
@@ -239,14 +250,16 @@
 
 /* Items */
 .wom-mega-item {
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
+  font-weight: 600;
   font-size: 1rem;
   padding: 6px 8px;
+  border-radius: 4px;
 }
 
 .wom-mega-item:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* Mobile: allow horizontal scroll if too many links */

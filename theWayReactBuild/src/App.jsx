@@ -13,9 +13,12 @@ import StatementOfFaith from "./pages/StatementOfFaith";
 import RegisterPage from "./pages/RegisterPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import LoginPage from "./pages/LoginPage";
-import OldCovenant from "./pages/bible/OldCovenant";
-import RenewedCovenant from "./pages/bible/RenewedCovenant";
-import Apocrypha from "./pages/bible/Apocrypha";
+import BibleLayout from "./pages/bible/index";
+import OldCovenant from "./pages/bible/old-covenant";
+import RenewedCovenant from "./pages/bible/renewed-covenant";
+import Apocrypha from "./pages/bible/apocrypha";
+import Lectures from "./pages/bible/lectures";
+import Studies from "./pages/bible/studies";
 
 function App() {
   return (
@@ -34,9 +37,13 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/verify-email" element={<VerifyEmailPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/bible/old-covenant" element={<OldCovenant />} />
-          <Route path="/bible/renewed-covenant" element={<RenewedCovenant />} />
-          <Route path="/bible/apocrypha" element={<Apocrypha />} />
+          <Route path="/scriptural-discussions" element={<BibleLayout />}>
+            <Route path="old-covenant" element={<OldCovenant />} />
+            <Route path="renewed-covenant" element={<RenewedCovenant />} />
+            <Route path="apocrypha" element={<Apocrypha />} />
+            <Route path="lectures" element={<Lectures />} />
+            <Route path="studies" element={<Studies />} />
+          </Route>
         </Routes>
       </AdminAuthProvider>
     </BrowserRouter>
