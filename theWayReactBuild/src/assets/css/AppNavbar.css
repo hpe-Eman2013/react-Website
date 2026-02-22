@@ -160,6 +160,46 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
+/* Native dropdown wrapper */
+.wom-details {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Remove default marker */
+.wom-summary {
+  list-style: none;
+}
+.wom-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Make summary behave like your links */
+.wom-summary {
+  cursor: pointer;
+}
+
+/* Dropdown open state */
+.wom-details[open] .wom-dd-menu {
+  display: block;
+}
+
+/* Keep menu hidden by default */
+.wom-details .wom-dd-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 220px;
+  background: #111318;
+  border: 1px solid #263041;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+}
+
 /* Mobile: allow horizontal scroll if too many links */
 @media (max-width: 768px) {
   .wom-sticky-nav .wom-nav-inner {

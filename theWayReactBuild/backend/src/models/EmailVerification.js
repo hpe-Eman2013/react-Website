@@ -9,7 +9,6 @@ const EmailVerificationSchema = new mongoose.Schema(
       index: true,
     },
     codeHash: { type: String, required: true },
-    expiresAt: { type: Date, required: true, index: true },
     attempts: { type: Number, default: 0 },
     resendCount: { type: Number, default: 0 },
   },
