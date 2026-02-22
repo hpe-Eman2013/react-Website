@@ -13,6 +13,9 @@ import StatementOfFaith from "./pages/StatementOfFaith";
 import RegisterPage from "./pages/RegisterPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import LoginPage from "./pages/LoginPage";
+import OldCovenant from "./pages/bible/OldCovenant";
+import RenewedCovenant from "./pages/bible/RenewedCovenant";
+import Apocrypha from "./pages/bible/Apocrypha";
 
 function App() {
   return (
@@ -31,6 +34,9 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/verify-email" element={<VerifyEmailPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/bible/old-covenant" element={<OldCovenant />} />
+          <Route path="/bible/renewed-covenant" element={<RenewedCovenant />} />
+          <Route path="/bible/apocrypha" element={<Apocrypha />} />
         </Routes>
       </AdminAuthProvider>
     </BrowserRouter>

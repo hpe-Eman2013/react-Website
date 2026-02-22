@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../api/auth";
-import "../styles/AuthLayout.css";
-import "../styles/RegisterPage.css";
+import "../assets/css/AuthLayout.css";
+import "../assets/css/RegisterPage.css";
 
 function isEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
