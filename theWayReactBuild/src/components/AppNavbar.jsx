@@ -12,49 +12,31 @@ export default function AppNavbar() {
     const root = rootRef.current;
     if (!root) return;
 
-    const getDetails = () =>
-      Array.from(root.querySelectorAll("details.wom-mega"));
-
-    const closeAll = (except = null) => {
-      getDetails().forEach((d) => {
-        if (d !== except) d.removeAttribute("open");
-      });
-    };
-
-    const onToggle = (e) => {
-      const d = e.target;
-      if (!(d instanceof HTMLDetailsElement)) return;
-      if (!d.classList.contains("wom-mega")) return;
-
-      if (d.open) closeAll(d);
-    };
-
-    const onDocMouseDown = (e) => {
+    function onDocMouseDown(e) {
       if (!root.contains(e.target)) closeAll(null);
-    };
+    }
 
-    const onKeyDown = (e) => {
+    function onKeyDown(e) {
       if (e.key === "Escape") closeAll(null);
-    };
+    }
 
-    // capture phase helps ensure we see the event reliably
-    root.addEventListener("toggle", onToggle, true);
     document.addEventListener("mousedown", onDocMouseDown);
     document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      root.removeEventListener("toggle", onToggle, true);
       document.removeEventListener("mousedown", onDocMouseDown);
       document.removeEventListener("keydown", onKeyDown);
     };
   }, []);
-  const closeMenus = () => {
+
+  function closeAll(except = null) {
     const root = rootRef.current;
     if (!root) return;
+
     root.querySelectorAll("details.wom-mega[open]").forEach((d) => {
-      d.removeAttribute("open");
+      if (d !== except) d.removeAttribute("open");
     });
-  };
+  }
   return (
     <header className="wom-sticky-nav" ref={rootRef}>
       <div className="wom-nav-inner">
@@ -69,7 +51,13 @@ export default function AppNavbar() {
           </NavLink>
 
           {/* Who Are We */}
-          <details className="wom-mega">
+          <details
+            className="wom-mega"
+            onToggle={(e) => {
+              // Only when this one opens, close the others
+              if (e.currentTarget.open) closeAll(e.currentTarget);
+            }}
+          >
             <summary className="wom-link wom-summary">
               Who Are We <span className="wom-caret">▾</span>
             </summary>
@@ -77,35 +65,35 @@ export default function AppNavbar() {
               <NavLink
                 to="/about"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 About
               </NavLink>
               <NavLink
                 to="/statement-of-faith"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Statement of Faith
               </NavLink>
               <NavLink
                 to="/mission"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Mission &amp; Vision
               </NavLink>
               <NavLink
                 to="/outreach"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Outreach
               </NavLink>
               <NavLink
                 to="/education"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Education
               </NavLink>
@@ -113,7 +101,13 @@ export default function AppNavbar() {
           </details>
 
           {/* Scriptural Discussions */}
-          <details className="wom-mega">
+          <details
+            className="wom-mega"
+            onToggle={(e) => {
+              // Only when this one opens, close the others
+              if (e.currentTarget.open) closeAll(e.currentTarget);
+            }}
+          >
             <summary className="wom-link wom-summary">
               Scriptural Discussions <span className="wom-caret">▾</span>
             </summary>
@@ -121,35 +115,35 @@ export default function AppNavbar() {
               <NavLink
                 to="/bible/old-covenant"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Old Covenant
               </NavLink>
               <NavLink
                 to="/bible/renewed-covenant"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Renewed Covenant
               </NavLink>
               <NavLink
                 to="/bible/apocrypha"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Apocrypha Material
               </NavLink>
               <NavLink
                 to="/lectures"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Lectures
               </NavLink>
               <NavLink
                 to="/bible-study"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Bible Study
               </NavLink>
@@ -157,7 +151,13 @@ export default function AppNavbar() {
           </details>
 
           {/* The Assembly */}
-          <details className="wom-mega">
+          <details
+            className="wom-mega"
+            onToggle={(e) => {
+              // Only when this one opens, close the others
+              if (e.currentTarget.open) closeAll(e.currentTarget);
+            }}
+          >
             <summary className="wom-link wom-summary">
               The Assembly <span className="wom-caret">▾</span>
             </summary>
@@ -165,42 +165,42 @@ export default function AppNavbar() {
               <NavLink
                 to="/testimonies"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Testimonies
               </NavLink>
               <NavLink
                 to="/submit"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Submissions
               </NavLink>
               <NavLink
                 to="/memberships"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Memberships
               </NavLink>
               <NavLink
                 to="/positions"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Positions
               </NavLink>
               <NavLink
                 to="/ministries"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Ministries
               </NavLink>
               <NavLink
                 to="/assemblies"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Local Assemblies
               </NavLink>
@@ -208,7 +208,13 @@ export default function AppNavbar() {
           </details>
 
           {/* Accounts */}
-          <details className="wom-mega">
+          <details
+            className="wom-mega"
+            onToggle={(e) => {
+              // Only when this one opens, close the others
+              if (e.currentTarget.open) closeAll(e.currentTarget);
+            }}
+          >
             <summary className="wom-link wom-summary">
               Accounts <span className="wom-caret">▾</span>
             </summary>
@@ -216,21 +222,21 @@ export default function AppNavbar() {
               <NavLink
                 to="/register"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Register
               </NavLink>
               <NavLink
                 to="/login"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Login
               </NavLink>
               <NavLink
                 to="/profile"
                 className="wom-mega-item"
-                onClick={closeMenus}
+                onClick={() => closeAll(null)}
               >
                 Profile
               </NavLink>
