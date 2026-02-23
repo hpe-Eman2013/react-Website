@@ -1,54 +1,112 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar";
+
+// existing top-level pages you already had
 import Home from "./pages/Home";
-import Testimonies from "./pages/Testimonies";
 import SubmitTestimony from "./pages/SubmitTestimony";
+import Testimonies from "./pages/Testimonies";
+
+// admin
 import AdminTestimonies from "./pages/AdminTestimonies";
 import AdminLogin from "./pages/admin/AdminLogin";
 import { AdminAuthProvider } from "./context/AdminAuthProvider";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import StatementOfFaith from "./pages/StatementOfFaith";
-import RegisterPage from "./pages/RegisterPage";
-import VerifyEmailPage from "./pages/VerifyEmailPage";
-import LoginPage from "./pages/LoginPage";
-import BibleLayout from "./pages/bible/index";
-import OldCovenant from "./pages/bible/old-covenant";
-import RenewedCovenant from "./pages/bible/renewed-covenant";
-import Apocrypha from "./pages/bible/apocrypha";
-import Lectures from "./pages/bible/lectures";
-import Studies from "./pages/bible/studies";
+
+// ---- Domain layouts (index.jsx) ----
 import WhoAreWeLayout from "./pages/who-are-we";
-import MissionVision from "./pages/who-are-we/mission";
+import AssemblyLayout from "./pages/the-assembly";
+import AccountsLayout from "./pages/accounts";
+import BibleLayout from "./pages/bible";
+
+// ---- Who Are We children ----
+import AboutPage from "./pages/who-are-we/about";
+import EducationPage from "./pages/who-are-we/education";
+import MissionPage from "./pages/who-are-we/mission";
+import OutreachPage from "./pages/who-are-we/outreach";
+import StatementOfFaithPage from "./pages/who-are-we/statement-of-faith";
+
+// ---- The Assembly children ----
+import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
+import AssemblyMemberships from "./pages/the-assembly/memberships";
+import AssemblyMinistries from "./pages/the-assembly/ministries";
+import AssemblyPositions from "./pages/the-assembly/positions";
+import AssemblySubmissions from "./pages/the-assembly/submissions";
+import AssemblyTestimonies from "./pages/the-assembly/testimonies";
+
+// ---- Accounts children ----
+import LoginPage from "./pages/accounts/login";
+import ProfilePage from "./pages/accounts/profile";
+import RegisterPage from "./pages/accounts/register";
+
+// ---- Bible children (Scriptural Discussions) ----
+import ApocryphaPage from "./pages/bible/apocrypha";
+import LecturesPage from "./pages/bible/lectures";
+import OldCovenantPage from "./pages/bible/old-covenant";
+import RenewedCovenantPage from "./pages/bible/renewed-covenant";
+import StudiesPage from "./pages/bible/studies";
 
 function App() {
   return (
     <BrowserRouter>
       <AppNavbar />
+
       <AdminAuthProvider>
         <Routes>
+          {/* ===== top-level existing ===== */}
           <Route path="/" element={<Home />} />
+
+          {/* Keeping your existing direct pages for now (optional) */}
           <Route path="/testimonies" element={<Testimonies />} />
           <Route path="/submit" element={<SubmitTestimony />} />
+
+          {/* ===== Who Are We ===== */}
+          <Route path="/who-are-we" element={<WhoAreWeLayout />}>
+            <Route index element={<AboutPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route
+              path="statement-of-faith"
+              element={<StatementOfFaithPage />}
+            />
+            <Route path="mission" element={<MissionPage />} />
+            <Route path="outreach" element={<OutreachPage />} />
+            <Route path="education" element={<EducationPage />} />
+          </Route>
+
+          {/* ===== Scriptural Discussions (Bible) ===== */}
+          <Route path="/scriptural-discussions" element={<BibleLayout />}>
+            <Route index element={<StudiesPage />} />
+            <Route path="old-covenant" element={<OldCovenantPage />} />
+            <Route path="renewed-covenant" element={<RenewedCovenantPage />} />
+            <Route path="apocrypha" element={<ApocryphaPage />} />
+            <Route path="lectures" element={<LecturesPage />} />
+            <Route path="studies" element={<StudiesPage />} />
+          </Route>
+
+          {/* ===== The Assembly ===== */}
+          <Route path="/the-assembly" element={<AssemblyLayout />}>
+            <Route index element={<AssemblyTestimonies />} />
+            <Route path="testimonies" element={<AssemblyTestimonies />} />
+            <Route path="submissions" element={<AssemblySubmissions />} />
+            <Route path="memberships" element={<AssemblyMemberships />} />
+            <Route path="positions" element={<AssemblyPositions />} />
+            <Route path="ministries" element={<AssemblyMinistries />} />
+            <Route
+              path="local-assemblies"
+              element={<AssemblyLocalAssemblies />}
+            />
+          </Route>
+
+          {/* ===== Accounts ===== */}
+          <Route path="/accounts" element={<AccountsLayout />}>
+            <Route index element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+          </Route>
+
+          {/* ===== Admin ===== */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/testimonies" element={<AdminTestimonies />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/who-are-we" element={<WhoAreWeLayout />}>
-            <Route path="mission" element={<MissionVision />} />
-          </Route>
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/statement-of-faith" element={<StatementOfFaith />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/verify-email" element={<VerifyEmailPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/scriptural-discussions" element={<BibleLayout />}>
-            <Route path="old-covenant" element={<OldCovenant />} />
-            <Route path="renewed-covenant" element={<RenewedCovenant />} />
-            <Route path="apocrypha" element={<Apocrypha />} />
-            <Route path="lectures" element={<Lectures />} />
-            <Route path="studies" element={<Studies />} />
-          </Route>
         </Routes>
       </AdminAuthProvider>
     </BrowserRouter>

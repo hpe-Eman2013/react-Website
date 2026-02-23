@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function About() {
+export default function AboutPage() {
   return (
     <div className="container py-4">
-      <h1 className="h3 mb-3">About</h1>
+      <h2 className="h3 mb-3">About</h2>
 
       <div className="card shadow-sm">
         <div className="card-body">
