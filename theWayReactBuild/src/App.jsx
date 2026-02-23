@@ -19,7 +19,8 @@ import RenewedCovenant from "./pages/bible/renewed-covenant";
 import Apocrypha from "./pages/bible/apocrypha";
 import Lectures from "./pages/bible/lectures";
 import Studies from "./pages/bible/studies";
-import MissionVision from "./pages/MissionVision";
+import WhoAreWeLayout from "./pages/who-are-we";
+import MissionVision from "./pages/who-are-we/mission";
 
 function App() {
   return (
@@ -33,7 +34,9 @@ function App() {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/testimonies" element={<AdminTestimonies />} />
           <Route path="/about" element={<About />} />
-          <Route path="/mission-vision" element={<MissionVision />} />
+          <Route path="/who-are-we" element={<WhoAreWeLayout />}>
+            <Route path="mission" element={<MissionVision />} />
+          </Route>
           <Route path="/contact" element={<Contact />} />
           <Route path="/statement-of-faith" element={<StatementOfFaith />} />
           <Route path="/register" element={<RegisterPage />} />
