@@ -114,6 +114,20 @@ export default function Testimonies() {
     );
   }
 
+  // Build cards once (avoids duplicated map + keeps TS happy)
+  const cards = items.map((t) => {
+    const tid = getId(t);
+    return (
+      <TestimonyCard
+        key={tid || Math.random().toString(36)}
+        testimony={t}
+        userVote={tid ? (votesById[tid] ?? null) : null}
+        onVoteUpdated={onVoteUpdated}
+        onCountsUpdated={onCountsUpdated}
+      />
+    );
+  });
+
   return (
     <main className="container py-4" id="main-content">
       <h1 className="mb-3">Testimonies</h1>
@@ -170,21 +184,14 @@ export default function Testimonies() {
         </div>
       )}
 
-      {/* Cards */}
-      <div className="d-grid gap-3" aria-busy={status === "loading"}>
-        {items.map((t) => {
-          const tid = getId(t);
-          return (
-            <TestimonyCard
-              key={tid || Math.random().toString(36)}
-              testimony={t}
-              userVote={tid ? (votesById[tid] ?? null) : null}
-              onVoteUpdated={onVoteUpdated}
-              onCountsUpdated={onCountsUpdated}
-            />
-          );
-        })}
-      </div>
+      {/* Cards (Axe-safe aria-busy: literal when loading, omitted otherwise) */}
+      {status === "loading" ? (
+        <div className="d-grid gap-3" aria-busy="true">
+          {cards}
+        </div>
+      ) : (
+        <div className="d-grid gap-3">{cards}</div>
+      )}
     </main>
   );
 }
