@@ -141,11 +141,11 @@ export default function AppNavbar() {
                 Lectures
               </NavLink>
               <NavLink
-                to="/bible/bible-study"
+                to="/bible/studies"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
-                Bible Study
+                Scriptual Studies
               </NavLink>
             </div>
           </details>

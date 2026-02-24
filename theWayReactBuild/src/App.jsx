@@ -44,7 +44,7 @@ import ApocryphaPage from "./pages/bible/apocrypha";
 import LecturesPage from "./pages/bible/lectures";
 import OldCovenantPage from "./pages/bible/old-covenant";
 import RenewedCovenantPage from "./pages/bible/renewed-covenant";
-import StudiesPage from "./pages/bible/studies";
+import ScriptualStudies from "./pages/bible/studies";
 
 function App() {
   return (
@@ -76,12 +76,12 @@ function App() {
 
           {/* ===== Scriptural Discussions (Bible) ===== */}
           <Route path="/bible" element={<BibleLayout />}>
-            <Route index element={<StudiesPage />} />
+            <Route index element={<ScriptualStudies />} />
             <Route path="old-covenant" element={<OldCovenantPage />} />
             <Route path="renewed-covenant" element={<RenewedCovenantPage />} />
             <Route path="apocrypha" element={<ApocryphaPage />} />
             <Route path="lectures" element={<LecturesPage />} />
-            <Route path="studies" element={<StudiesPage />} />
+            <Route path="studies" element={<ScriptualStudies />} />
           </Route>
 
           {/* ===== The Assembly ===== */}
