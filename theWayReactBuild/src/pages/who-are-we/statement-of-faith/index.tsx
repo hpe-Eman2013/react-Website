@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../assets/css/StatementOfFaith.css";
 
 type ScriptureProps = {
   reference: string;
@@ -19,8 +20,14 @@ function Scripture({ reference, verse, version }: ScriptureProps) {
 
       <span className="scripture-tooltip">
         <strong>{reference}</strong>
-        <div className="mt-1 small">{verse}</div>
-        <div className="mt-1 fst-italic text-muted small">— {version}</div>
+
+        {/* was: <div className="mt-1 small">{verse}</div> */}
+        <span className="mt-1 small scripture-tooltip-verse">{verse}</span>
+
+        {/* was: <div className="mt-1 fst-italic text-muted small">— {version}</div> */}
+        <span className="mt-1 fst-italic text-muted small scripture-tooltip-version">
+          — {version}
+        </span>
       </span>
     </span>
   );

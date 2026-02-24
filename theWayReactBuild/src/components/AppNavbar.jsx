@@ -63,35 +63,35 @@ export default function AppNavbar() {
             </summary>
             <div className="wom-mega-panel">
               <NavLink
-                to="/about"
+                to="/who-are-we/about"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 About
               </NavLink>
               <NavLink
-                to="/statement-of-faith"
+                to="/who-are-we/statement-of-faith"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Statement of Faith
               </NavLink>
               <NavLink
-                to="/mission"
+                to="/who-are-we/mission"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Mission &amp; Vision
               </NavLink>
               <NavLink
-                to="/outreach"
+                to="/who-are-we/outreach"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Outreach
               </NavLink>
               <NavLink
-                to="/education"
+                to="/who-are-we/education"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
@@ -134,14 +134,14 @@ export default function AppNavbar() {
                 Apocrypha Material
               </NavLink>
               <NavLink
-                to="/lectures"
+                to="/bible/lectures"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Lectures
               </NavLink>
               <NavLink
-                to="/bible-study"
+                to="/bible/bible-study"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
@@ -163,42 +163,42 @@ export default function AppNavbar() {
             </summary>
             <div className="wom-mega-panel">
               <NavLink
-                to="/testimonies"
+                to="/the-assembly/testimonies"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Testimonies
               </NavLink>
               <NavLink
-                to="/submit"
+                to="/the-assembly/submissions"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Submissions
               </NavLink>
               <NavLink
-                to="/memberships"
+                to="/the-assembly/memberships"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Memberships
               </NavLink>
               <NavLink
-                to="/positions"
+                to="/the-assembly/positions"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Positions
               </NavLink>
               <NavLink
-                to="/ministries"
+                to="/the-assembly/ministries"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Ministries
               </NavLink>
               <NavLink
-                to="/assemblies"
+                to="/the-assembly/local-assemblies"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
@@ -220,21 +220,21 @@ export default function AppNavbar() {
             </summary>
             <div className="wom-mega-panel wom-mega-panel-right">
               <NavLink
-                to="/register"
+                to="/accounts/register"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Register
               </NavLink>
               <NavLink
-                to="/login"
+                to="/accounts/login"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Login
               </NavLink>
               <NavLink
-                to="/profile"
+                to="/accounts/profile"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >

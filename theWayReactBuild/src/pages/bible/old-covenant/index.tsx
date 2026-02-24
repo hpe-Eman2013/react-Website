@@ -1,10 +1,12 @@
 import React from "react";
+import "@/assets/css/OldCovenant.css";
+
 export default function OldCovenant() {
   return (
-    <div>
-      <h2>Old Covenant Material</h2>
+    <div className="old-covenant-container">
+      <h2 className="old-covenant-title">Old Covenant Material</h2>
       <p>Old Covenant content will be displayed here.</p>
-      <div style={{ marginTop: "2rem" }}>
+      <div>
         <p>
           <strong>Coming Soon:</strong>
         </p>

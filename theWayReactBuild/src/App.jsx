@@ -4,8 +4,8 @@ import AppNavbar from "./components/AppNavbar";
 
 // existing top-level pages you already had
 import Home from "./pages/Home";
-import SubmitTestimony from "./pages/SubmitTestimony";
-import Testimonies from "./pages/Testimonies";
+// import SubmitTestimony from "./pages/SubmitTestimony";
+// import Testimonies from "./pages/Testimonies";
 
 // admin
 import AdminTestimonies from "./pages/AdminTestimonies";
@@ -57,8 +57,8 @@ function App() {
           <Route path="/" element={<Home />} />
 
           {/* Keeping your existing direct pages for now (optional) */}
-          <Route path="/testimonies" element={<Testimonies />} />
-          <Route path="/submit" element={<SubmitTestimony />} />
+          {/* <Route path="/testimonies" element={<Testimonies />} />
+          <Route path="/submit" element={<SubmitTestimony />} /> */}
 
           {/* ===== Who Are We ===== */}
           <Route path="/who-are-we" element={<WhoAreWeLayout />}>
@@ -75,7 +75,7 @@ function App() {
           </Route>
 
           {/* ===== Scriptural Discussions (Bible) ===== */}
-          <Route path="/scriptural-discussions" element={<BibleLayout />}>
+          <Route path="/bible" element={<BibleLayout />}>
             <Route index element={<StudiesPage />} />
             <Route path="old-covenant" element={<OldCovenantPage />} />
             <Route path="renewed-covenant" element={<RenewedCovenantPage />} />
