@@ -240,6 +240,13 @@ export default function AppNavbar() {
               >
                 Profile
               </NavLink>
+              <NavLink
+                to="/accounts/verify-email"
+                className="wom-mega-item"
+                onClick={() => closeAll(null)}
+              >
+                Verify Email
+              </NavLink>
             </div>
           </details>
 

@@ -1,20 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { loginUser } from "../../../api/auth";
+import { verifyEmail } from "@/api/auth";
 
-function isEmail(s: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
+function digitsOnly(s: string) {
+  return s.replace(/[^\d]/g, "").slice(0, 6);
 }
 
-export default function LoginPage() {
+export default function VerifyEmailPage() {
   const nav = useNavigate();
   const location = useLocation() as any;
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [okMsg, setOkMsg] = useState("");
 
   useEffect(() => {
     const maybeEmail = location?.state?.email;
@@ -22,37 +23,43 @@ export default function LoginPage() {
   }, [location?.state]);
 
   const canSubmit = useMemo(() => {
-    return isEmail(email) && password.length > 0 && !loading;
-  }, [email, password, loading]);
+    return email.trim().length > 3 && code.trim().length === 6 && !loading;
+  }, [email, code, loading]);
 
   async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
+    setOkMsg("");
 
-    if (!isEmail(email)) return setError("Enter a valid email.");
+    if (code.trim().length !== 6) return setError("Enter the 6-digit code.");
 
     setLoading(true);
     try {
-      const resp = await loginUser({ email: email.trim(), password });
+      const resp = await verifyEmail({
+        email: email.trim(),
+        code: code.trim(),
+      });
       if (!resp.ok) {
-        setError(resp.message || "Login failed.");
+        setError(resp.message || "Verification failed.");
         return;
       }
 
-      // Cookie is set by server. Navigate to where you want users to land.
-      nav("/testimonies", { replace: true });
+      setOkMsg("Email verified. You can now login.");
+      nav("accounts/login", { replace: true, state: { email } });
     } catch (err: any) {
-      setError(err?.message || "Login failed.");
+      setError(err?.message || "Verification failed.");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="auth-container login-page">
-      <h1 className="h3 mb-3">Login</h1>
+    <div className="auth-container verify-page">
+      <h1 className="h3 mb-3">Verify your email</h1>
+      <p className="text-muted">Enter the 6-digit code sent to your email.</p>
 
       {error ? <div className="alert alert-danger">{error}</div> : null}
+      {okMsg ? <div className="alert alert-success">{okMsg}</div> : null}
 
       <form onSubmit={onSubmit} className="auth-card">
         <div className="mb-3">
@@ -65,34 +72,30 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="email"
-            inputMode="email"
-            placeholder="name@example.com"
           />
         </div>
 
         <div className="mb-3">
-          <label className="form-label" htmlFor="password">
-            Password
+          <label className="form-label" htmlFor="code">
+            Verification code
           </label>
           <input
-            id="password"
-            type="password"
+            id="code"
             className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
+            value={code}
+            onChange={(e) => setCode(digitsOnly(e.target.value))}
+            inputMode="numeric"
+            placeholder="123456"
           />
+          <div className="form-text">Code is 6 digits.</div>
         </div>
 
         <button className="btn btn-primary auth-btn" disabled={!canSubmit}>
-          {loading ? "Logging in…" : "Login"}
+          {loading ? "Verifying…" : "Verify Email"}
         </button>
 
         <div className="mt-3 text-center">
-          <span className="text-muted">Need an account? </span>
-          <Link to="/accounts/register">Register</Link>
-          <span className="text-muted"> · </span>
-          <Link to="/accounts/verify-email">Verify Email</Link>
+          <Link to="/accounts/register">Back to Register</Link>
         </div>
       </form>
     </div>

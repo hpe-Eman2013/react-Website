@@ -38,6 +38,7 @@ import AssemblyTestimonies from "./pages/the-assembly/testimonies";
 import LoginPage from "./pages/accounts/login";
 import ProfilePage from "./pages/accounts/profile";
 import RegisterPage from "./pages/accounts/register";
+import VerifyEmailPage from "./pages/accounts/verify-email";
 
 // ---- Bible children (Scriptural Discussions) ----
 import ApocryphaPage from "./pages/bible/apocrypha";
@@ -104,6 +105,7 @@ function App() {
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="verify-email" element={<VerifyEmailPage />} />
           </Route>
 
           {/* ===== Admin ===== */}

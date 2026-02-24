@@ -116,7 +116,7 @@ export default function RegisterPage() {
 
         <div className="mt-3 text-center">
           <span className="text-muted">Already have an account? </span>
-          <Link to="/login">Login</Link>
+          <Link to="/accounts/login">Login</Link>
         </div>
       </form>
     </div>

@@ -70,32 +70,31 @@ export default function StatementOfFaith() {
 
           <p>
             However, Scripture records that believers were called{" "}
-            <strong>“The Way”</strong>
-            <br />
+            <strong>“The Way”</strong>.
+          </p>
+
+          <div className="mt-2 d-flex flex-column gap-2">
             <Scripture
               reference="Acts 9:1–2"
               verse="Now Saul, still breathing a threat even of murder to the disciples of the Master, having approaching the high priest, He requested from him letters to Damascus to the synagogues, that if someone he should find of the way being, both men and women, having been bound he may lead them to Jerusalem."
               version="Bayithamashiyach Paleo Hebrew Version"
             />
-            <br />
             <Scripture
               reference="Acts 19:8–9, 23"
               verse="And he went into the synagogue, and spoke boldly for the space of three months, disputing and persuading the things concerning the Kingdom of Elohiym. But when diverse were hardened, and believe not, but spoke evil of the Way before the multitude, he departed from them, and separated the Talmidiym (disciples), disputing daily in the school of one Tyrannus. And the same time there arose no small stir about the Way."
               version="The Cepher Version"
             />
-            <br />
             <Scripture
               reference="Acts 22:4–5"
               verse="I shall purse the strongholds of that Way to the death, binding and delivering up into the prison both men and women, as also the high priest testified to me and all the house of the elders, from whom I received letters to the brothers, and went to Damascus to arrest even those who were present there to bring them to Jerusalem, so that they may be punished."
               version="Bayithamashiyach Paleo Hebrew Version"
             />
-            <br />
             <Scripture
               reference="Acts 24:14–15, 22"
               verse="And this I confess to you, that according to the Way which they call a sect, so I worship the Elohim of my fathers, believing all that has been written in the Torah and in the Nebi’im (prophets). And having heard this, having known more exactly about the Way, Phelix put them off, saying, ‘When Lusias the commander comes down, I shall decide your case'"
               version="YAH Scriptures Version"
             />
-          </p>
+          </div>
         </div>
       </div>
 
