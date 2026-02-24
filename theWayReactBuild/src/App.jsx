@@ -24,6 +24,7 @@ import EducationPage from "./pages/who-are-we/education";
 import MissionPage from "./pages/who-are-we/mission";
 import OutreachPage from "./pages/who-are-we/outreach";
 import StatementOfFaithPage from "./pages/who-are-we/statement-of-faith";
+import ContactPage from "./pages/who-are-we/contact";
 
 // ---- The Assembly children ----
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
@@ -70,6 +71,7 @@ function App() {
             <Route path="mission" element={<MissionPage />} />
             <Route path="outreach" element={<OutreachPage />} />
             <Route path="education" element={<EducationPage />} />
+            <Route path="contact" element={<ContactPage />} />
           </Route>
 
           {/* ===== Scriptural Discussions (Bible) ===== */}
