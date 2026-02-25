@@ -1,0 +1,19 @@
+.education-quote {
+  padding-left: 1rem;
+  border-left: 4px solid rgba(0, 0, 0, 0.15);
+}
+
+.education-module ul {
+  margin-bottom: 0;
+}
+
+.education-details {
+  border: 0; /* card already provides border/shadow */
+}
+
+.education-summary {
+  cursor: pointer;
+  -webkit-user-select: none; /* iOS Safari */
+  user-select: none;
+  font-weight: 600;
+}

@@ -1,0 +1,20 @@
+.mission-quote {
+  padding-left: 1rem;
+  border-left: 4px solid rgba(0, 0, 0, 0.15);
+}
+
+.mission-details {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.mission-summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mission-table th {
+  white-space: nowrap;
+}

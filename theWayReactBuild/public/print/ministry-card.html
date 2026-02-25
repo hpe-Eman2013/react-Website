@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ministry Card — The Way of Messiah</title>
+    <style>
+      /* ===== Print setup ===== */
+      @page {
+        size: letter;
+        margin: 0.5in;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Georgia", "Times New Roman", serif;
+        color: #111;
+      }
+
+      /* ===== Page layout ===== */
+      .sheet {
+        display: grid;
+        gap: 0.35in;
+        justify-content: start;
+        align-content: start;
+      }
+
+      /* Business card size: 3.5 x 2 inches */
+      .card {
+        width: 3.5in;
+        height: 2in;
+        border: 1px solid rgba(0, 0, 0, 0.35);
+        border-radius: 0.12in;
+        padding: 0.14in;
+        position: relative;
+        overflow: hidden;
+        background: #f5efe3; /* kraft/cream vibe */
+      }
+
+      /* Optional “kraft texture” feel without images */
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 15% 30%,
+            rgba(0, 0, 0, 0.03),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(0, 0, 0, 0.02),
+            transparent 60%
+          ),
+          linear-gradient(0deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0));
+        pointer-events: none;
+      }
+
+      .front,
+      .back {
+        display: flex;
+        flex-direction: column;
+        gap: 0.06in;
+      }
+      .brandline {
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.75);
+      }
+
+      .paleo {
+        text-align: center;
+        font-size: 30px;
+        line-height: 1;
+        margin-top: 0.05in;
+        margin-bottom: 0.02in;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .tagline {
+        text-align: center;
+        font-weight: 700;
+        font-size: 12px;
+        margin-top: 0.02in;
+      }
+
+      .subtitle {
+        text-align: center;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.75);
+      }
+
+      .verse {
+        margin-top: auto;
+        border-top: 1px solid rgba(0, 0, 0, 0.18);
+        padding-top: 0.08in;
+        font-size: 9px;
+        line-height: 1.25;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      .verse em {
+        font-style: italic;
+      }
+      .ref {
+        display: block;
+        margin-top: 0.04in;
+        font-size: 9px;
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      /* Back side */
+      .back h3 {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .pillars {
+        margin: 0.05in 0 0.05in 0;
+        padding-left: 0.16in;
+        font-size: 9.5px; /* slightly smaller */
+        line-height: 1.18; /* tighter */
+      }
+
+      .qrRow {
+        margin-top: auto;
+        display: grid;
+        grid-template-columns: 0.72in 1fr; /* smaller QR column */
+        gap: 0.1in;
+        align-items: center;
+        border-top: 1px solid rgba(0, 0, 0, 0.18);
+        padding-top: 0.06in; /* tighter */
+      }
+
+      .qr {
+        width: 0.72in;
+        height: 0.72in;
+        font-size: 8px;
+      }
+
+      .connect {
+        font-size: 8.8px;
+        line-height: 1.15;
+      }
+
+      .connect strong {
+        font-size: 9.5px;
+      }
+
+      /* Cut guides (optional) */
+      .label {
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        font-size: 11px;
+        margin: 0 0 0.12in 0;
+        color: rgba(0, 0, 0, 0.75);
+      }
+      .foot {
+        font-size: 9px;
+        color: rgba(0, 0, 0, 0.7);
+      }
+      @media print {
+        .label {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="label">
+      Ministry Card — print on kraft/cream paper • cut along borders • (front +
+      back)
+    </div>
+
+    <div class="sheet">
+      <!-- FRONT -->
+      <section class="card front" aria-label="Ministry Card Front">
+        <div class="brandline">The Way of Messiah</div>
+
+        <!-- Paleo Hebrew names -->
+        <div class="paleo">יהוה&nbsp;&nbsp;יהושע</div>
+
+        <div class="tagline">The Way: Ancient Paths for Modern Sovereignty</div>
+        <div class="subtitle">Education in Word, Law, and Land</div>
+
+        <div class="verse">
+          <em
+            >“Stand ye in the ways, and see, and ask for the old paths, where is
+            the good way, and walk therein.”</em
+          >
+          <span class="ref">— Yirmeyahu (Jeremiah) 6:16</span>
+        </div>
+      </section>
+
+      <!-- BACK -->
+      <section class="card back" aria-label="Ministry Card Back">
+        <h3>Restoring the Three Pillars</h3>
+
+        <ul class="pillars">
+          <li>
+            <strong>THE WORD:</strong> Returning to the Paleo Hebrew foundations
+            of our Faith.
+          </li>
+          <li>
+            <strong>THE LAW:</strong> Moving from worldly debt to Kingdom Equity
+            &amp; Trust.
+          </li>
+          <li>
+            <strong>THE LAND:</strong> Biblical Agriculture and the Dominion
+            Mandate.
+          </li>
+        </ul>
+
+        <div class="qrRow">
+          <div class="qr">QR</div>
+          <div class="connect">
+            <strong>Connect with the Remnant</strong><br />
+            Scan to join our Virtual Classrooms &amp; Local Fellowships<br />
+            <span class="foot">wayofmessiah.net</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

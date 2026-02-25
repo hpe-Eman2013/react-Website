@@ -3,8 +3,12 @@ import React from "react";
 export default function AboutPage() {
   return (
     <div className="container py-4">
-      <h2 className="h3 mb-3">About</h2>
-
+      <div className="mb-4">
+        <h1 className="h3 mb-1">About</h1>
+        <div className="text-muted">
+          The Way of Messiah — 508(c)(1)(A) Religious Ministry
+        </div>
+      </div>
       <div className="card shadow-sm">
         <div className="card-body">
           <h2 className="h5 mb-3">Purpose</h2>

@@ -101,6 +101,7 @@ export default function StatementOfFaith() {
       {/* CORE STATEMENT */}
       <div className="card shadow-sm mb-4">
         <div className="card-body">
+          <h2 className="h5 mb-3">Core Statement</h2>
           <p className="mb-4">
             Our faith is rooted in the eternal Word of Yahuah and the testimony
             of Yahusha the Messiah, guided by the Ruach Ha&apos;Qodesh, and
@@ -111,7 +112,143 @@ export default function StatementOfFaith() {
           <ol>{/* ... keep the rest of your list exactly as-is ... */}</ol>
         </div>
       </div>
+      {/* DOCTRINAL POINTS */}
+      <div className="card shadow-sm mb-4">
+        <div className="card-body">
+          <h2 className="h5 mb-3">Core Beliefs</h2>
 
+          <ol className="sofa-points">
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">Scriptures</h3>
+              <p className="mb-0">
+                We believe the Scriptures — Torah, Prophets, Writings, and
+                Apostolic Witness — are the inspired, infallible Word of Yahuah,
+                the final authority for life, faith, and practice.
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">Elohim (Yahuah)</h3>
+              <p className="mb-0">
+                We believe Yahuah Elohim is Creator of heaven and earth, eternal
+                and sovereign. He is “the Only True Elohim” (John 17:3). His
+                divine nature is expressed through His omnipotence,
+                omnipresence, and omniscience, made possible by the Ruach
+                Ha’Qodesh that emanates from Yahuah.
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">Messiah (Yahusha)</h3>
+              <p className="mb-0">
+                We believe Yahusha is the promised Messiah, the Word of Elohim
+                made flesh (John 1:1–14), through whom salvation and
+                reconciliation are given. He existed in the heavenly realm
+                before having his life transferred into the womb of a virgin
+                woman named Miryam (Mary) according to Luke 1:35. He was given
+                authority by the Father (Matt. 28:18; 1 Cor. 15:24–28), and will
+                return to restore all things.
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">Ruach Ha’Qodesh (Holy Spirit)</h3>
+              <p className="mb-0">
+                We believe the Ruach searches all things, quicken (make alive)
+                the spirits of believers in Yahusha, empowers believers, and
+                indwells the faithful as the Spirit of adoption (Rom. 8:15).
+                Through Him, the presence of Elohim and Yahusha the Messiah is
+                with us always (Matt. 28:20).
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">Salvation</h3>
+              <p className="mb-0">
+                We believe salvation is the gift of Yahuah’s grace, received
+                through faith, repentance, and obedience. It leads us to walk in
+                covenant relationship with Him. If we keep His Torah and keep
+                unspotted from this Devil controlled world, He prepares us to be
+                inhabitants and heirs of His coming Kingdom.
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">Morality &amp; Life</h3>
+              <p className="mb-2">
+                We believe Yahuah created mankind male and female (Gen. 1:27).
+                Marriage is between one man and one woman (Gen. 2:21–23; Matt.
+                19:4–5). Sexual sins such as fornication, adultery,
+                homosexuality, lesbianism, pedophilia, and bestiality are
+                forbidden (1 Cor. 6:9–10; Rom. 1:26–27; Matt. 18:6; Exod.
+                22:19).
+              </p>
+              <p className="mb-0">
+                We affirm the sanctity of human life, rejecting murder, abortion
+                (murder of the innocent), infanticide (killing a child under one
+                years old), and child sacrifice as violations of Yahuah’s law
+                (Exod. 21:22–23; 23:7; Lev. 20:2; Deut. 12:31).
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">Sabbaths &amp; Appointed Times</h3>
+              <p className="mb-2">
+                We believe the seventh-day Sabbath is a perpetual sign between
+                Yahuah and His people (Exod. 31:13). It is a day of rest,
+                worship, instruction, and good works. We affirm the annual
+                Feasts of Yahuah (Lev. 23) — Passover, Unleavened Bread, First
+                Fruits, Weeks (Shavuot), Trumpets, Atonement, Tabernacles
+                (Sukkot), and the Great Day (Shemini Atzeret) — as eternal
+                convocations pointing to the work of Messiah.
+              </p>
+              <p className="mb-0">
+                We reject man-made traditions and pagan holidays that mix false
+                worship with the truth of Yahuah (Exod. 32; Deut. 12:29–30).
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">The Assembly (Body of Messiah)</h3>
+              <p className="mb-2">
+                We believe all members are equal within the Body, and leadership
+                is given for service, not domination (Mark 9:35; Eph. 4:15–16).
+                Elders are accountable to higher judgment (James 3:1; 1 Tim.
+                5:17).
+              </p>
+              <p className="mb-0">
+                Discipline is necessary for unrepentant sin, but restoration is
+                the goal (Matt. 18:15–17; 1 Cor. 5:9–13).
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">The Future Hope</h3>
+              <p className="mb-0">
+                We believe in the resurrection of the righteous and the
+                unrighteous (Acts 24:15). The Messiah will reign during the
+                Millennial Kingdom, restoring dominion to mankind under Yahuah’s
+                covenant promises (Isa. 11:11–12; Jer. 23:7–8).
+              </p>
+            </li>
+
+            <li className="sofa-point">
+              <h3 className="h6 mb-2">The Regathering</h3>
+              <p className="mb-0">
+                We believe that Yahuah will gather Yashar’el, the true people of
+                Yahuah from all nations and bring them into the land that He
+                promised Avraham (Abraham) and his descendants in the last days,
+                according to these verses: (Deut. 30:1-10; Neh. 1:8-9; Isa.
+                11:10-12; 43:5-7; 60:4, 9-22; Jer. 23:3-8; 29:11-14; 30:1-11;
+                31:7-11; 32:37-41; 46:27-28; Ezek. 11:16-21; 20:23-24,33-44;
+                28:25-26; 34:11-17; 36:19-34; 37:21-23; Hosea. 3:4-5; Joel
+                3:1-3; Amos 9:14-15; Micah 2:12; Zep. 3:17-20; Zech. 2:1-13;
+                8:7-8; 10:8-12; Matt. 24:31; John 11:49-52).
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
       {/* COVENANT */}
       <div className="card shadow-sm mb-4">
         <div className="card-body">
@@ -119,8 +256,13 @@ export default function StatementOfFaith() {
           <ul>
             <li>Walk in obedience to Yahuah&apos;s Torah.</li>
             <li>Gather faithfully for worship and teaching.</li>
-            <li>Support the ministry through prayer and service.</li>
-            <li>Live as witnesses of Messiah&apos;s truth.</li>
+            <li>
+              Support the ministry through prayer, sacrificial giving, and
+              physical acts of service.
+            </li>
+            <li>
+              Live as ambassadors and witnesses of the Messiah&apos;s truth.
+            </li>
           </ul>
         </div>
       </div>
