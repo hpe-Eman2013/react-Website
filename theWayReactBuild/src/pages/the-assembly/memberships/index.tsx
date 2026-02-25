@@ -482,7 +482,7 @@ export default function MembershipPage() {
           <div className="d-flex gap-2 flex-wrap mt-3">
             <Link
               className={`btn btn-primary ${accepted ? "" : "disabled"}`}
-              to="/membership/request"
+              to="/the-assembly/memberships/request"
               aria-disabled={!accepted}
             >
               Request Membership
@@ -490,7 +490,7 @@ export default function MembershipPage() {
 
             <Link
               className="btn btn-outline-secondary"
-              to="/membership/question"
+              to="/the-assembly/memberships/question"
             >
               Ask a Question
             </Link>

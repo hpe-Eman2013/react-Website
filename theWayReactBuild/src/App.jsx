@@ -29,8 +29,8 @@ import ContactPage from "./pages/who-are-we/contact";
 // ---- The Assembly children ----
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
 import AssemblyMemberships from "./pages/the-assembly/memberships";
-import RequestMembershipPage from "./pages/membership/RequestMembershipPage";
-import AskQuestionPage from "./pages/membership/AskQuestionPage";
+import RequestMembershipPage from "./pages/the-assembly/memberships/RequestMembershipPage";
+import AskQuestionPage from "./pages/the-assembly/memberships/AskQuestionPage";
 import AssemblyMinistries from "./pages/the-assembly/ministries";
 import AssemblyPositions from "./pages/the-assembly/positions";
 import AssemblySubmissions from "./pages/the-assembly/submissions";
@@ -94,10 +94,10 @@ function App() {
             <Route path="submissions" element={<AssemblySubmissions />} />
             <Route path="memberships" element={<AssemblyMemberships />} />
             <Route
-              path="/membership/request"
+              path="memberships/request"
               element={<RequestMembershipPage />}
             />
-            <Route path="/membership/question" element={<AskQuestionPage />} />
+            <Route path="memberships/question" element={<AskQuestionPage />} />
             <Route path="positions" element={<AssemblyPositions />} />
             <Route path="ministries" element={<AssemblyMinistries />} />
             <Route

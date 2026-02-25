@@ -140,7 +140,7 @@ export default function AskQuestionPage() {
       )}
 
       <div className="mt-3">
-        <Link to="/membership">Back to Covenant</Link>
+        <Link to="/the-assembly/memberships">Back to Covenant</Link>
       </div>
     </div>
   );
