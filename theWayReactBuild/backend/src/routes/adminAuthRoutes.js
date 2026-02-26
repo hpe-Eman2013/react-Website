@@ -6,7 +6,7 @@ import {
   getAdminCookieName,
   getAdminCookieOptions,
 } from "../utils/adminCookie.js";
-import { requireAdminAuth } from "../middleware/requireAdminAuth.js";
+import requireAdminAuth from "../middleware/requireAdminAuth.js";
 
 const router = express.Router();
 

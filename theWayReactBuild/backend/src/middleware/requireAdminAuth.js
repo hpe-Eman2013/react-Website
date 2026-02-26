@@ -26,8 +26,11 @@ export async function requireAdminAuth(req, res, next) {
       username: admin.username,
       role: admin.role,
     };
-    next();
+
+    return next();
   } catch {
     return res.status(401).json({ message: "Authentication failed." });
   }
 }
+
+export default requireAdminAuth;

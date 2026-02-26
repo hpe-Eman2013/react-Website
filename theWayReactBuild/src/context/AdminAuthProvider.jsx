@@ -1,5 +1,5 @@
 import React from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import apiClient from "../services/apiClient";
 import { AdminAuthContext } from "./AdminAuthContext";
@@ -48,3 +48,9 @@ export const AdminAuthProvider = ({ children }) => {
 AdminAuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+export function useAdminAuth() {
+  const ctx = useContext(AdminAuthContext);
+  if (!ctx)
+    throw new Error("useAdminAuth must be used within AdminAuthProvider");
+  return ctx;
+}
