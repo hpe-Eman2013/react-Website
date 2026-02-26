@@ -1,27 +1,25 @@
+import apiClient from "@/services/apiClient";
+
 export type ApiResponse<T> = { ok: boolean; message?: string; data?: T };
 
-const API_BASE =
-  (import.meta as any).env?.VITE_API_BASE_URL?.replace(/\/$/, "") || "";
-
 async function postJson<T>(path: string, body: any): Promise<ApiResponse<T>> {
-  const res = await fetch(`${API_BASE}${path}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include", // ✅ send/receive cookies
-    body: JSON.stringify(body),
-  });
+  try {
+    const res = await apiClient.post<ApiResponse<T>>(path, body);
 
-  const json = (await res.json().catch(() => null)) as ApiResponse<T> | null;
+    const data = res.data;
+    if (data) return data;
 
-  if (!res.ok) {
-    return (
-      json ?? {
-        ok: false,
-        message: `Request failed (${res.status})`,
-      }
-    );
+    return { ok: true };
+  } catch (err: any) {
+    const data = err?.response?.data as ApiResponse<T> | undefined;
+    if (data) return data;
+
+    const status = err?.response?.status;
+    return {
+      ok: false,
+      message: `Request failed (${status ?? "network"})`,
+    };
   }
-  return json ?? { ok: true };
 }
 
 export function registerUser(input: {

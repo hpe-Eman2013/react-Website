@@ -40,19 +40,22 @@ function getTransporter() {
  * @param {string} options.text
  * @param {string} [options.html]
  */
-export async function sendMail({ to, subject, text, html }) {
+export async function sendMail({ to, subject, text, html, replyTo }) {
   if (!to) {
     throw new Error("Recipient email (to) is required.");
   }
+
   // ✅ DEVELOPMENT SAFETY BLOCK
   if (process.env.NODE_ENV === "development") {
     console.log("📧 DEV EMAIL PREVIEW");
     console.log("To:", to);
     console.log("Subject:", subject);
+    console.log("Reply-To:", replyTo);
     console.log("Text:", text);
     console.log("HTML:", html);
     return; // Prevent real email from sending in dev
   }
+
   const fromName = process.env.MAIL_FROM_NAME || "The Way of Messiah";
   const fromEmail = process.env.MAIL_FROM_EMAIL || process.env.SMTP_USER;
 
@@ -64,5 +67,6 @@ export async function sendMail({ to, subject, text, html }) {
     subject,
     text,
     html,
+    ...(replyTo ? { replyTo } : {}),
   });
 }

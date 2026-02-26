@@ -1,5 +1,7 @@
+import apiClient from "@/services/apiClient";
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import "@/assets/css/RequestMembershipPage.css"; // Optional: for signature preview styling
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -75,7 +77,6 @@ export default function RequestMembershipPage() {
       fd.append("email", email);
       fd.append("phone", phone || "");
 
-      // If you want to store these too, add them to your backend/model later
       fd.append("cityState", cityState || "");
       fd.append("howHeard", howHeard || "");
 
@@ -89,20 +90,14 @@ export default function RequestMembershipPage() {
         fd.append("attachments", file);
       }
 
-      const res = await fetch("/api/membership/submit", {
-        method: "POST",
-        body: fd,
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}) as any);
-        throw new Error(data?.message || "Submission failed.");
-      }
-
+      await apiClient.post("/api/membership/submit", fd);
       setStatus("success");
     } catch (err: any) {
+      const msg =
+        err?.response?.data?.message || err?.message || "Submission failed.";
+
       setStatus("error");
-      setError(err?.message ?? "Submission failed.");
+      setError(msg);
     }
   }
 
@@ -281,11 +276,7 @@ export default function RequestMembershipPage() {
                 <img
                   src={signatureDataUrl}
                   alt="Signature Preview"
-                  style={{
-                    maxWidth: 420,
-                    height: "auto",
-                    border: "1px solid #ddd",
-                  }}
+                  className="signature-preview"
                 />
               </div>
             ) : null}

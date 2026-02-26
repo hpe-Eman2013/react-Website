@@ -1,3 +1,4 @@
+import apiClient from "@/services/apiClient";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -28,16 +29,20 @@ export default function AskQuestionPage() {
     setError("");
 
     try {
-      await fetch("/api/membership/questions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName, email, topic, question }),
+      await apiClient.post("/api/membership/questions", {
+        fullName,
+        email,
+        topic,
+        question,
       });
 
       setStatus("success");
     } catch (err: any) {
+      const msg =
+        err?.response?.data?.message || err?.message || "Submission failed.";
+
       setStatus("error");
-      setError(err?.message ?? "Submission failed.");
+      setError(msg);
     }
   }
 

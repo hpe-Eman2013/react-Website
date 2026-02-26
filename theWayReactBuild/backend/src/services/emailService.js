@@ -133,10 +133,19 @@ export async function sendQuestionNotification(qDoc) {
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <p><strong>Question:</strong></p>
     <p>${escapeHtml(question).replace(/\n/g, "<br/>")}</p>
-    <p><strong>Question ID:</strong> ${qDoc._id}</p>
+    <p><strong>Question ID:</strong> ${escapeHtml(String(qDoc._id))}</p>
+    <p style="margin-top:12px;">
+      <em>Tip:</em> Click “Reply” to respond directly to the sender.
+    </p>
   `;
 
-  return sendMail({ to, subject, text, html });
+  return sendMail({
+    to,
+    subject,
+    text,
+    html,
+    replyTo: email || undefined, // ✅ makes Reply go to the user
+  });
 }
 
 function escapeHtml(str) {

@@ -1,0 +1,8 @@
+.signature-preview {
+  max-width: 420px;
+  height: auto;
+  border: 1px solid #ddd;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+}
