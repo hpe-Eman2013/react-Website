@@ -118,8 +118,8 @@ button:focus-visible {
   bottom: 125%;
   left: 0;
   width: 340px;
-  background: var(--color-primary);
-  color: var(--color-text-light);
+  background: var(--color-surface) !important;
+  color: var(--color-text-dark) !important;
   padding: 12px;
   border-radius: 6px;
   font-size: 0.85rem;
