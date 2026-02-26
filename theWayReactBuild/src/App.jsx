@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar";
+import Footer from "./components/Footer";
 
 // existing top-level pages you already had
 import Home from "./pages/Home";
@@ -133,6 +134,7 @@ function App() {
           />
         </Routes>
       </AdminAuthProvider>
+      <Footer />
     </BrowserRouter>
   );
 }

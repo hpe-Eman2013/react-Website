@@ -14,6 +14,12 @@
 }
 
 /* Page baseline */
+/* Smooth theme transitions */
+html, body, .card, .card-body, .dropdown-menu, .modal-content,
+.form-control, .form-select, button, a {
+  transition: background-color 1080ms ease, color 180ms ease, border-color 180ms ease;
+}
+
 html,
 body {
   color: var(--text);
@@ -227,4 +233,43 @@ input::placeholder {
 .form-check-input:focus {
   border-color: var(--color-accent) !important;
   box-shadow: 0 0 0 0.2rem rgba(140, 90, 43, 0.25) !important;
+}
+/* ==============================
+   Buttons: match our palette
+================================= */
+
+.btn-primary {
+  background-color: var(--color-secondary) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-light) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-border) !important;
+}
+
+.btn-outline-primary {
+  color: var(--color-primary) !important;
+  border-color: var(--color-border) !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: rgba(201, 162, 39, 0.18) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Optional: make secondary buttons consistent too */
+.btn-secondary {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-light) !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: rgba(15, 30, 46, 0.85) !important;
 }
