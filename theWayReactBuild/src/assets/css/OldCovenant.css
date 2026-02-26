@@ -4,5 +4,5 @@
 }
 
 .old-covenant-title {
-  color: #0c0101;
+  color: var(--text);
 }

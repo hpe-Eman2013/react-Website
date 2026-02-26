@@ -2,10 +2,12 @@
   padding: 16px;
   max-width: 1100px;
   margin: 0 auto;
+  color: var(--color-text-dark);
 }
 
 .amp-title {
   margin-top: 0;
+  color: var(--color-primary);
 }
 
 .amp-toolbar {
@@ -16,7 +18,7 @@
 }
 
 .amp-error {
-  color: crimson;
+  color: var(--color-danger);
 }
 
 .amp-grid {
@@ -26,13 +28,15 @@
 }
 
 .amp-card {
-  border: 1px solid #ddd;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 12px;
 }
 
 .amp-card-title {
   margin-top: 0;
+  color: var(--color-primary);
 }
 
 .amp-muted {
@@ -46,13 +50,18 @@
 }
 
 .amp-row {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
   padding: 10px 0;
   cursor: pointer;
 }
 
+.amp-row:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
 .amp-name {
   font-weight: 700;
+  color: var(--color-primary);
 }
 
 .amp-email {
@@ -78,7 +87,8 @@
 
 .amp-pre {
   white-space: pre-wrap;
-  border: 1px solid #eee;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   padding: 10px;
   margin-top: 6px;
@@ -87,10 +97,41 @@
 .amp-signature-img {
   display: block;
   max-width: 100%;
-  border: 1px solid #eee;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   margin-top: 8px;
 }
+
 .signature {
-     margin-top: 6px;
+  margin-top: 6px;
+}
+
+/* ---------- Controls (local to this page) ---------- */
+
+.amp-toolbar select {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: var(--color-surface);
+  color: var(--color-text-dark);
+}
+
+.amp-toolbar button,
+.amp-actions button {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 7px 10px;
+  background: var(--color-secondary);
+  color: var(--color-text-light);
+  cursor: pointer;
+}
+
+.amp-toolbar button:hover,
+.amp-actions button:hover {
+  background: var(--color-accent);
+}
+
+.amp-toolbar button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }

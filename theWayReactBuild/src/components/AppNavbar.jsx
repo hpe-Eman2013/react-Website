@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import "../assets/css/AppNavbar.css";
+import "@/assets/css/AppNavbar.css";
+import { useTheme } from "@/context/ThemeProvider";
 
 export default function AppNavbar() {
   const rootRef = useRef(null);
-
+  const { theme, toggleTheme } = useTheme();
   const linkClass = ({ isActive }) => `wom-link ${isActive ? "active" : ""}`;
 
   // Close other dropdowns when one opens + close on outside click / Escape
@@ -254,6 +255,11 @@ export default function AppNavbar() {
           <NavLink to="/admin/testimonies" className={linkClass}>
             Admin
           </NavLink>
+          <div className="wom-right">
+            <button onClick={toggleTheme} className="wom-theme-toggle">
+              {theme === "light" ? "🌙" : "☀️"}
+            </button>
+          </div>
         </nav>
 
         <div className="wom-right" />

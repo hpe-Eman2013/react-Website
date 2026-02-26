@@ -1,0 +1,50 @@
+/* ==============================
+   Light Theme (Default)
+================================= */
+:root {
+  --color-primary: #0F1E2E;
+  --color-secondary: #C9A227;
+  --color-accent: #8C5A2B;
+  --color-surface: #F4F1EA;
+
+  --color-success: #2E7D32;
+  --color-danger: #B71C1C;
+  --color-border: #D8D3C6;
+
+  --color-text-dark: #1A1A1A;
+  --color-text-light: #FFFFFF;
+
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --radius: 10px;
+
+  --text: var(--color-text-dark);
+  --text-muted: rgba(26, 26, 26, 0.72);
+
+   --avatar-bg: var(--color-primary);
+  --avatar-fg: var(--color-text-light);
+}
+
+/* ==============================
+   Dark Theme Override
+================================= */
+[data-theme="dark"] {
+  --color-primary: #E9EEF5;
+  --color-secondary: #B8921F;
+  --color-accent: #C9A227;
+  --color-surface: #12161C;
+
+  --color-success: #4CAF50;
+  --color-danger: #E57373;
+  --color-border: #2C3542;
+
+  --color-text-dark: #E9EEF5;
+  --color-text-light: #FFFFFF;
+
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+  --text: var(--color-text-dark); /* in dark, your color-text-dark is already light */
+  --text-muted: rgba(233, 238, 245, 0.88);
+
+  --avatar-bg: var(--color-secondary);
+  --avatar-fg: #111111;
+}

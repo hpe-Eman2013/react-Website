@@ -1,0 +1,35 @@
+/* Wrapper tweaks (keeps Bootstrap card styling intact) */
+.wom-testimony-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+/* Avatar slot */
+.wom-avatar-slot {
+  width: 56px;
+  height: 56px;
+}
+
+/* Avatar image */
+.wom-avatar-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+}
+
+/* Initials fallback avatar (theme-aware) */
+.wom-avatar-fallback {
+  width: 56px;
+  height: 56px;
+
+  background: var(--avatar-bg) !important;
+  color: var(--avatar-fg) !important;
+
+  border: 1px solid var(--color-border) !important;
+}
+
+/* Message text */
+.wom-testimony-message {
+  line-height: 1.6;
+  font-size: 1rem;
+}

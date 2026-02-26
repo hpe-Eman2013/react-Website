@@ -30,7 +30,7 @@
 }
 
 .submit-subtitle {
-  color: #555;
+  color: var(--text);
   font-size: 1rem;
   max-width: 520px;
   margin: 0 auto;

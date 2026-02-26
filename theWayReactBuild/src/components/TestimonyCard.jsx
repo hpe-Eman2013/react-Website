@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { toCloudinaryTransformedUrl } from "../utils/cloudinary";
 import { likeTestimony, dislikeTestimony } from "../services/testimonyService";
+import "@/assets/css/TestimonyCard.css";
 
 const TestimonyCard = ({
   testimony,
@@ -99,22 +100,23 @@ const TestimonyCard = ({
   const dislikeDisabled = voting || userVote === "dislike";
 
   return (
-    <article className="card shadow-sm" aria-label={`Testimony from ${name}`}>
+    <article
+      className="card shadow-sm wom-testimony-card"
+      aria-label={`Testimony from ${name}`}
+    >
       <div className="card-body d-flex gap-3">
-        <div className="flex-shrink-0" style={{ width: 56, height: 56 }}>
+        <div className="flex-shrink-0 wom-avatar-slot">
           {avatarUrl && imgOk ? (
             <img
               src={avatarUrl}
               alt={`Avatar of ${name}`}
-              className="rounded-circle border"
-              style={{ width: 56, height: 56, objectFit: "cover" }}
+              className="rounded-circle wom-avatar-img"
               loading="lazy"
               onError={() => setImgOk(false)}
             />
           ) : (
             <div
-              className="rounded-circle border bg-light d-flex align-items-center justify-content-center text-secondary fw-semibold"
-              style={{ width: 56, height: 56 }}
+              className="rounded-circle d-flex align-items-center justify-content-center fw-semibold wom-avatar-fallback"
               title={name}
             >
               {name.charAt(0).toUpperCase()}
@@ -127,9 +129,7 @@ const TestimonyCard = ({
             <h2 className="h5 mb-1">{name}</h2>
           </header>
 
-          <p className="mb-0" style={{ lineHeight: 1.6, fontSize: "1rem" }}>
-            {message}
-          </p>
+          <p className="mb-0 wom-testimony-message">{message}</p>
 
           <div className="d-flex gap-2 mt-3 align-items-center">
             <button
@@ -141,6 +141,7 @@ const TestimonyCard = ({
             >
               👍 Like <span className="ms-1">{likes}</span>
             </button>
+
             <button
               type="button"
               className="btn btn-sm btn-outline-danger"
@@ -152,6 +153,7 @@ const TestimonyCard = ({
             >
               👎 Dislike <span className="ms-1">{dislikes}</span>
             </button>
+
             {userVote ? (
               <span className="badge bg-secondary ms-2">Voted: {userVote}</span>
             ) : null}
