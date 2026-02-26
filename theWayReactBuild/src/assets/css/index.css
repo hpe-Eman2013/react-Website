@@ -160,3 +160,71 @@ label,
 .form-label {
   color: var(--text) !important;
 }
+/* ==============================
+   Bootstrap Theme Bridge (Forms)
+   Makes Bootstrap forms/cards follow our variables
+================================= */
+
+/* Cards / panels */
+.card,
+.card-body,
+.modal-content,
+.dropdown-menu {
+  background-color: var(--color-surface) !important;
+  color: var(--text) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* Auth-ish containers sometimes use bg-white */
+.bg-white,
+.bg-light {
+  background-color: var(--color-surface) !important;
+}
+
+/* Inputs */
+.form-control,
+.form-select,
+.form-control:disabled,
+.form-select:disabled,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"] {
+  background-color: var(--color-surface) !important;
+  color: var(--text) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* Placeholder */
+.form-control::placeholder,
+textarea::placeholder,
+input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.9;
+}
+
+/* Input group addons */
+.input-group-text {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  color: var(--text) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* Checkboxes / radios */
+.form-check-input {
+  background-color: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+.form-check-label {
+  color: var(--text) !important;
+}
+
+/* Focus */
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 0.2rem rgba(140, 90, 43, 0.25) !important;
+}
