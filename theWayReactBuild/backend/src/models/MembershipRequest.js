@@ -35,6 +35,7 @@ const MembershipRequestSchema = new mongoose.Schema(
       type: String,
       enum: ["pending", "approved", "denied"],
       default: "pending",
+      index: true,
     },
 
     // ✅ Review tracking (AdminUser)

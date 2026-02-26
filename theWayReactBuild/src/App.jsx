@@ -11,6 +11,9 @@ import Home from "./pages/Home";
 import AdminTestimonies from "./pages/AdminTestimonies";
 import AdminLogin from "./pages/admin/AdminLogin";
 import { AdminAuthProvider } from "./context/AdminAuthProvider";
+import AdminMembershipPage from "./pages/admin/AdminMembershipPage";
+import RequireAuth from "./auth/RequireAuth";
+import RequireAdmin from "./auth/RequireAdmin";
 
 // ---- Domain layouts (index.jsx) ----
 import WhoAreWeLayout from "./pages/who-are-we";
@@ -118,6 +121,16 @@ function App() {
           {/* ===== Admin ===== */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/testimonies" element={<AdminTestimonies />} />
+          <Route
+            path="/admin/membership"
+            element={
+              <RequireAuth>
+                <RequireAdmin>
+                  <AdminMembershipPage />
+                </RequireAdmin>
+              </RequireAuth>
+            }
+          />
         </Routes>
       </AdminAuthProvider>
     </BrowserRouter>
