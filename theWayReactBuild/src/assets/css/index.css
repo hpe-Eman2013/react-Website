@@ -155,3 +155,8 @@ button:focus-visible {
 .form-text {
   color: var(--text-muted) !important;
 }
+/* Labels should be readable in both themes */
+label,
+.form-label {
+  color: var(--text) !important;
+}

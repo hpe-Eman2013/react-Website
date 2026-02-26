@@ -22,6 +22,11 @@
 
    --avatar-bg: var(--color-primary);
   --avatar-fg: var(--color-text-light);
+
+  --nav-panel-bg: #0F1E2E;          /* deep navy */
+  --nav-panel-fg: #FFFFFF;          /* white text */
+  --nav-panel-hover: rgba(255, 255, 255, 0.12);
+  --nav-panel-border: rgba(255, 255, 255, 0.18);
 }
 
 /* ==============================
@@ -47,4 +52,9 @@
 
   --avatar-bg: var(--color-secondary);
   --avatar-fg: #111111;
+
+  --nav-panel-bg: #0B0F14;          /* keep panel dark in dark mode */
+  --nav-panel-fg: #E9EEF5;
+  --nav-panel-hover: rgba(255, 255, 255, 0.12);
+  --nav-panel-border: rgba(255, 255, 255, 0.18);
 }
