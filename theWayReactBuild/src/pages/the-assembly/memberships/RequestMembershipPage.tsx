@@ -7,6 +7,16 @@ function isEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 }
 
+// Convert a File -> base64 dataUrl
+function fileToDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result || ""));
+    r.onerror = () => reject(new Error("Failed to read file."));
+    r.readAsDataURL(file);
+  });
+}
+
 export default function RequestMembershipPage() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
@@ -17,18 +27,39 @@ export default function RequestMembershipPage() {
   const [cityState, setCityState] = useState("");
   const [howHeard, setHowHeard] = useState("");
   const [message, setMessage] = useState("");
+
   const [ackReadCovenant, setAckReadCovenant] = useState(false);
   const [ackArbitration, setAckArbitration] = useState(false);
 
+  // ✅ Digital signature fields
+  const [signatureName, setSignatureName] = useState("");
+  const [signatureConsent, setSignatureConsent] = useState(false);
+  const [signatureDataUrl, setSignatureDataUrl] = useState(""); // base64 dataUrl string
+
+  // ✅ Optional attachments
+  const [attachments, setAttachments] = useState<File[]>([]);
+
   const canSubmit = useMemo(() => {
     return (
-      fullName.trim() &&
+      fullName.trim().length > 0 &&
       isEmail(email) &&
       message.trim().length >= 20 &&
       ackReadCovenant &&
-      ackArbitration
+      ackArbitration &&
+      signatureName.trim().length > 0 &&
+      signatureConsent &&
+      signatureDataUrl.startsWith("data:image/")
     );
-  }, [fullName, email, message, ackReadCovenant, ackArbitration]);
+  }, [
+    fullName,
+    email,
+    message,
+    ackReadCovenant,
+    ackArbitration,
+    signatureName,
+    signatureConsent,
+    signatureDataUrl,
+  ]);
 
   async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,18 +69,35 @@ export default function RequestMembershipPage() {
     setError("");
 
     try {
-      await fetch("/api/membership/requests", {
+      const fd = new FormData();
+
+      fd.append("fullName", fullName);
+      fd.append("email", email);
+      fd.append("phone", phone || "");
+
+      // If you want to store these too, add them to your backend/model later
+      fd.append("cityState", cityState || "");
+      fd.append("howHeard", howHeard || "");
+
+      fd.append("statement", message);
+
+      fd.append("signatureName", signatureName);
+      fd.append("signatureConsent", String(signatureConsent));
+      fd.append("signatureDataUrl", signatureDataUrl);
+
+      for (const file of attachments) {
+        fd.append("attachments", file);
+      }
+
+      const res = await fetch("/api/membership/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName,
-          email,
-          phone,
-          cityState,
-          howHeard,
-          message,
-        }),
+        body: fd,
       });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}) as any);
+        throw new Error(data?.message || "Submission failed.");
+      }
 
       setStatus("success");
     } catch (err: any) {
@@ -58,9 +106,41 @@ export default function RequestMembershipPage() {
     }
   }
 
+  async function onPickSignatureFile(file: File | null) {
+    if (!file) {
+      setSignatureDataUrl("");
+      return;
+    }
+
+    // Optional: basic type gate
+    if (!file.type.startsWith("image/")) {
+      setError("Signature file must be an image (PNG/JPG).");
+      setSignatureDataUrl("");
+      return;
+    }
+
+    try {
+      setError("");
+      const dataUrl = await fileToDataUrl(file);
+      setSignatureDataUrl(dataUrl);
+    } catch (e: any) {
+      setError(e?.message ?? "Failed to load signature image.");
+      setSignatureDataUrl("");
+    }
+  }
+
+  function onPickAttachments(files: FileList | null) {
+    if (!files) return;
+    setAttachments(Array.from(files));
+  }
+
   return (
     <div className="container py-4">
       <h1>Request Membership</h1>
+
+      {status === "error" && error ? (
+        <div className="alert alert-danger">{error}</div>
+      ) : null}
 
       {status === "success" ? (
         <div className="alert alert-success">
@@ -160,7 +240,95 @@ export default function RequestMembershipPage() {
               onChange={(e) => setMessage(e.target.value)}
               required
             />
+            <div className="form-text">Minimum 20 characters.</div>
           </div>
+
+          <hr />
+
+          <h5>Digital Signature</h5>
+
+          <div className="mb-3">
+            <label htmlFor="signatureName" className="form-label">
+              Type Your Full Name (Signature) *
+            </label>
+            <input
+              id="signatureName"
+              name="signatureName"
+              className="form-control"
+              value={signatureName}
+              onChange={(e) => setSignatureName(e.target.value)}
+              placeholder="John Doe"
+              required
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="signatureFile" className="form-label">
+              Upload Signature Image (PNG/JPG) *
+            </label>
+            <input
+              id="signatureFile"
+              name="signatureFile"
+              type="file"
+              accept="image/*"
+              className="form-control"
+              onChange={(e) => onPickSignatureFile(e.target.files?.[0] ?? null)}
+              required
+            />
+            {signatureDataUrl ? (
+              <div className="mt-2">
+                <div className="form-text">Preview:</div>
+                <img
+                  src={signatureDataUrl}
+                  alt="Signature Preview"
+                  style={{
+                    maxWidth: 420,
+                    height: "auto",
+                    border: "1px solid #ddd",
+                  }}
+                />
+              </div>
+            ) : null}
+          </div>
+
+          <div className="form-check mb-3">
+            <input
+              id="signatureConsent"
+              name="signatureConsent"
+              className="form-check-input"
+              type="checkbox"
+              checked={signatureConsent}
+              onChange={(e) => setSignatureConsent(e.target.checked)}
+            />
+            <label htmlFor="signatureConsent" className="form-check-label">
+              I understand that my electronic signature is legally binding to
+              the same extent as a handwritten signature.
+            </label>
+          </div>
+
+          <hr />
+
+          <h5>Attachments (Optional)</h5>
+          <div className="mb-3">
+            <label htmlFor="attachments" className="form-label">
+              Upload supporting documents (PDF/DOCX/etc)
+            </label>
+            <input
+              id="attachments"
+              name="attachments"
+              type="file"
+              multiple
+              className="form-control"
+              onChange={(e) => onPickAttachments(e.target.files)}
+            />
+            {attachments.length ? (
+              <div className="form-text mt-2">
+                Selected: {attachments.map((f) => f.name).join(", ")}
+              </div>
+            ) : null}
+          </div>
+
+          <hr />
 
           <div className="form-check mb-2">
             <input
@@ -195,7 +363,7 @@ export default function RequestMembershipPage() {
             type="submit"
             disabled={!canSubmit}
           >
-            Submit Request
+            {status === "submitting" ? "Submitting…" : "Submit Request"}
           </button>
         </form>
       )}
