@@ -151,3 +151,7 @@ button:focus-visible {
 .card-footer {
   color: var(--text) !important;
 }
+/* Bootstrap helper text should follow our theme */
+.form-text {
+  color: var(--text-muted) !important;
+}

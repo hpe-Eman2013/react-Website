@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TestimonyFormEnhanced from "../../../components/testimonies/TestimonyFormEnhanced";
-import "../../../assets/css/SubmitTestimony.css";
-import { createTestimonyFormData } from "../../../services/testimonyService";
+import TestimonyFormEnhanced from "@/components/testimonies/TestimonyFormEnhanced";
+import "@/assets/css/SubmitTestimony.css";
+import { createTestimonyFormData } from "@/services/testimonyService";
 
 // Match what your form actually sends into onSubmit
 type SubmitTestimonyPayload = {
@@ -73,32 +73,34 @@ export default function SubmitTestimony() {
   }
 
   return (
-    <main className="submit-page">
-      <section className="submit-card">
-        <header className="submit-header">
-          <h1>Share Your Testimony</h1>
-          <p className="submit-subtitle">
-            Your words may encourage, heal, and strengthen others.
-          </p>
-        </header>
+    <div className="wom-submissions">
+      <main className="submit-page">
+        <section className="submit-card">
+          <header className="submit-header">
+            <h1>Share Your Testimony</h1>
+            <p className="submit-subtitle">
+              Your words may encourage, heal, and strengthen others.
+            </p>
+          </header>
 
-        {successMsg && (
-          <div className="submit-success" role="status" aria-live="polite">
-            {successMsg}
-          </div>
-        )}
+          {successMsg && (
+            <div className="submit-success" role="status" aria-live="polite">
+              {successMsg}
+            </div>
+          )}
 
-        {errorMsg && (
-          <div className="alert alert-danger" role="alert">
-            {errorMsg}
-          </div>
-        )}
+          {errorMsg && (
+            <div className="alert alert-danger" role="alert">
+              {errorMsg}
+            </div>
+          )}
 
-        <TestimonyFormEnhanced
-          onSubmit={handleSubmit}
-          isSubmitting={isSubmitting}
-        />
-      </section>
-    </main>
+          <TestimonyFormEnhanced
+            onSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
+          />
+        </section>
+      </main>
+    </div>
   );
 }

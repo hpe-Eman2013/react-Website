@@ -14,7 +14,7 @@
   --color-text-dark: #1A1A1A;
   --color-text-light: #FFFFFF;
 
-  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
   --radius: 10px;
 
   --text: var(--color-text-dark);
@@ -40,7 +40,7 @@
   --color-text-dark: #E9EEF5;
   --color-text-light: #FFFFFF;
 
-  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
 
   --text: var(--color-text-dark); /* in dark, your color-text-dark is already light */
   --text-muted: rgba(233, 238, 245, 0.88);
