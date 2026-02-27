@@ -3,11 +3,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar";
 import Footer from "./components/Footer";
 
+// Legal pages
 import Privacy from "./pages/legal/Privacy";
 import Terms from "./pages/legal/Terms";
 import Copyright from "./pages/legal/Copyright";
 import FAQ from "./pages/legal/FAQ";
 import SiteMap from "./pages/legal/SiteMap";
+
+// Giving Pages
+import GivingPage from "./pages/giving/GivingPage";
+import GivingSuccess from "./pages/giving/GivingSuccess";
+import GivingCancel from "./pages/giving/GivingCancel";
 
 // existing top-level pages you already had
 import Home from "./pages/Home";
@@ -124,6 +130,11 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="verify-email" element={<VerifyEmailPage />} />
           </Route>
+
+          {/* ===== Giving ===== */}
+          <Route path="/giving" element={<GivingPage />} />
+          <Route path="/giving/success" element={<GivingSuccess />} />
+          <Route path="/giving/cancel" element={<GivingCancel />} />
 
           {/* ===== Admin ===== */}
           <Route path="/admin/login" element={<AdminLogin />} />

@@ -250,7 +250,9 @@ export default function AppNavbar() {
               </NavLink>
             </div>
           </details>
-
+          <NavLink to="/giving" className={linkClass}>
+            Giving
+          </NavLink>
           {/* Admin */}
           <NavLink to="/admin/testimonies" className={linkClass}>
             Admin

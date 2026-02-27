@@ -14,6 +14,7 @@ import membershipRoutes from "./routes/membershipRoutes.js";
 import questionRoutes from "./routes/questionRoutes.js";
 import membershipAdminRoutes from "./routes/membershipAdminRoutes.js";
 import questionAdminRoutes from "./routes/questionAdminRoutes.js";
+import donationRoutes from "./routes/donationRoutes.js";
 
 const app = express();
 app.set("trust proxy", 1); // important if behind Render/Proxy
@@ -58,6 +59,8 @@ app.get("/api/health", (req, res) => {
 app.use("/api/membership", membershipRoutes);
 app.use("/api/questions", questionRoutes);
 app.use("/api/admin/questions", questionAdminRoutes);
+// Donations
+app.use("/api/donations", donationRoutes);
 
 // Start
 const PORT = process.env.PORT || 8080;
