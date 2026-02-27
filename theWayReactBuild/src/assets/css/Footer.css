@@ -19,6 +19,7 @@
 .wom-footer-brand {
   font-weight: 800;
   color: var(--color-primary);
+  letter-spacing: 0.2px;
 }
 
 .wom-footer-copy {
@@ -37,7 +38,7 @@
 .wom-footer-link {
   color: var(--text);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
 }
 
@@ -55,16 +56,23 @@
 .wom-social {
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  padding: 6px 10px;
+  padding: 8px 10px;
   color: var(--text);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .wom-social:hover {
   background: rgba(201, 162, 39, 0.18);
-  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.wom-social-icon {
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 860px) {

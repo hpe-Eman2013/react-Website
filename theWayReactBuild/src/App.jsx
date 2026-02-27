@@ -3,6 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar";
 import Footer from "./components/Footer";
 
+import Privacy from "./pages/legal/Privacy";
+import Terms from "./pages/legal/Terms";
+import Copyright from "./pages/legal/Copyright";
+import FAQ from "./pages/legal/FAQ";
+import SiteMap from "./pages/legal/SiteMap";
+
 // existing top-level pages you already had
 import Home from "./pages/Home";
 // import SubmitTestimony from "./pages/SubmitTestimony";
@@ -132,6 +138,11 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route path="/legal/privacy" element={<Privacy />} />
+          <Route path="/legal/terms" element={<Terms />} />
+          <Route path="/legal/copyright" element={<Copyright />} />
+          <Route path="/legal/faq" element={<FAQ />} />
+          <Route path="/legal/sitemap" element={<SiteMap />} />
         </Routes>
       </AdminAuthProvider>
       <Footer />
