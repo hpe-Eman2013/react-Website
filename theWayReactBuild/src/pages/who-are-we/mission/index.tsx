@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../assets/css/MissionVision.css";
+import "../../../assets/css/who-are-we/MissionVision.css";
 
 export default function MissionVision() {
   return (

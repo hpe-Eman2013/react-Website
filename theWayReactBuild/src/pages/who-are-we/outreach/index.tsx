@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/css/Outreach.css";
+import "@/assets/css/who-are-we/Outreach.css";
 
 export default function Outreach() {
   return (

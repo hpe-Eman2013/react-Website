@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TestimonyFormEnhanced from "@/components/testimonies/TestimonyFormEnhanced";
-import "@/assets/css/SubmitTestimony.css";
+import "@/assets/css/the-assembly/SubmitTestimony.css";
 import { createTestimonyFormData } from "@/services/testimonyService";
 
 // Match what your form actually sends into onSubmit

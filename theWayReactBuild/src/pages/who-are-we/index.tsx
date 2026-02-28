@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "@/assets/css/WhoAreWe.css";
+import "@/assets/css/who-are-we/WhoAreWe.css";
 
 // ✅ Image imports (symbol-free stock only)
 import heroBg from "@/assets/images/who-are-we/about/hero.jpg";

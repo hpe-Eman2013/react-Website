@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import "@/assets/css/AdminMembershipPage.css";
+import "@/assets/css/admin/AdminMembershipPage.css";
 import {
   approveMembershipRequest,
   fetchMembershipRequests,

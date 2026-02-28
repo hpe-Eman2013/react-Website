@@ -1,7 +1,7 @@
 import apiClient from "@/services/apiClient";
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import "@/assets/css/RequestMembershipPage.css"; // Optional: for signature preview styling
+import "@/assets/css/the-assembly/RequestMembershipPage.css"; // Optional: for signature preview styling
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 

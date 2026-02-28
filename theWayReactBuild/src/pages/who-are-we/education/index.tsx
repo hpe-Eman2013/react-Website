@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/css/Education.css";
+import "@/assets/css/who-are-we/Education.css";
 
 export default function Education() {
   return (

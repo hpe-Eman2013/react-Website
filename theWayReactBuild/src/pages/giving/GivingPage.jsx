@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cashappQr from "@/assets/images/giving/cashapp-qr.png";
-import "@/assets/css/GivingPage.css";
+import "@/assets/css/giving/GivingPage.css";
 import {
   CreditCard,
   QrCode,
