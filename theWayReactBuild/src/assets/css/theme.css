@@ -2,17 +2,17 @@
    Light Theme (Default)
 ================================= */
 :root {
-  --color-primary: #0F1E2E;
-  --color-secondary: #C9A227;
-  --color-accent: #8C5A2B;
-  --color-surface: #F4F1EA;
+  --color-primary: #0f1e2e;
+  --color-secondary: #c9a227;
+  --color-accent: #8c5a2b;
+  --color-surface: #f4f1ea;
 
-  --color-success: #2E7D32;
-  --color-danger: #B71C1C;
-  --color-border: #D8D3C6;
+  --color-success: #2e7d32;
+  --color-danger: #b71c1c;
+  --color-border: #d8d3c6;
 
-  --color-text-dark: #1A1A1A;
-  --color-text-light: #FFFFFF;
+  --color-text-dark: #1a1a1a;
+  --color-text-light: #ffffff;
 
   --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
   --radius: 10px;
@@ -20,11 +20,14 @@
   --text: var(--color-text-dark);
   --text-muted: rgba(26, 26, 26, 0.72);
 
-   --avatar-bg: var(--color-primary);
+  --text-on-dark: var(--color-text-light);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.82);
+
+  --avatar-bg: var(--color-primary);
   --avatar-fg: var(--color-text-light);
 
-  --nav-panel-bg: #0F1E2E;          /* deep navy */
-  --nav-panel-fg: #FFFFFF;          /* white text */
+  --nav-panel-bg: #0f1e2e; /* deep navy */
+  --nav-panel-fg: #ffffff; /* white text */
   --nav-panel-hover: rgba(255, 255, 255, 0.12);
   --nav-panel-border: rgba(255, 255, 255, 0.18);
 }
@@ -33,28 +36,33 @@
    Dark Theme Override
 ================================= */
 [data-theme="dark"] {
-  --color-primary: #E9EEF5;
-  --color-secondary: #B8921F;
-  --color-accent: #C9A227;
-  --color-surface: #12161C;
+  --color-primary: #e9eef5;
+  --color-secondary: #b8921f;
+  --color-accent: #c9a227;
+  --color-surface: #12161c;
 
-  --color-success: #4CAF50;
-  --color-danger: #E57373;
-  --color-border: #2C3542;
+  --color-success: #4caf50;
+  --color-danger: #e57373;
+  --color-border: #2c3542;
 
-  --color-text-dark: #E9EEF5;
-  --color-text-light: #FFFFFF;
+  --color-text-dark: #e9eef5;
+  --color-text-light: #ffffff;
 
   --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
 
-  --text: var(--color-text-dark); /* in dark, your color-text-dark is already light */
+  --text: var(
+    --color-text-dark
+  ); /* in dark, your color-text-dark is already light */
   --text-muted: rgba(233, 238, 245, 0.88);
+
+  --text-on-dark: var(--color-text-light);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.82);
 
   --avatar-bg: var(--color-secondary);
   --avatar-fg: #111111;
 
-  --nav-panel-bg: #0B0F14;          /* keep panel dark in dark mode */
-  --nav-panel-fg: #E9EEF5;
+  --nav-panel-bg: #0b0f14; /* keep panel dark in dark mode */
+  --nav-panel-fg: #e9eef5;
   --nav-panel-hover: rgba(255, 255, 255, 0.12);
   --nav-panel-border: rgba(255, 255, 255, 0.18);
 }

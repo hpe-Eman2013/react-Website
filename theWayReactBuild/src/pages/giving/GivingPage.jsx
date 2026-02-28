@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import cashappQr from "@/assets/images/cashapp-qr.png";
+import cashappQr from "@/assets/images/giving/cashapp-qr.png";
 import "@/assets/css/GivingPage.css";
+import {
+  CreditCard,
+  QrCode,
+  Mail,
+  Landmark,
+  HeartHandshake,
+} from "lucide-react";
 
 const CASHAPP_TAG = "$theWayOfYah";
 
@@ -55,142 +62,225 @@ export default function GivingPage() {
   }
 
   return (
-    <main className="container wom-giving">
-      <header className="wom-giving-header">
-        <h1>Giving / Donations</h1>
-        <p className="text-muted">
-          Thank you for supporting the work of The Way of Messiah.
-        </p>
+    <main className="wom-giving">
+      <header className="wom-giving-hero">
+        <div className="wom-giving-hero-inner">
+          <div className="wom-giving-hero-icon" aria-hidden="true">
+            <HeartHandshake />
+          </div>
+
+          <div>
+            <h1 className="wom-giving-title">Giving / Donations</h1>
+
+            <p className="wom-giving-subtitle">
+              Thank you for supporting the work of The Way of Messiah.
+            </p>
+
+            <p className="wom-giving-purpose">
+              Your gifts help build and share practical education that equips
+              families and communities: trust and estate planning foundations,
+              principles of equity law, agricultural planting and harvesting
+              guidance, outreach preparation, and more. As Hosea 4:6 warns, “My
+              people are destroyed for lack of knowledge.” Your contribution
+              helps restore knowledge and strengthen stewardship—so men and
+              women can walk wisely with what Yahuah has entrusted to them.
+            </p>
+          </div>
+        </div>
       </header>
 
-      <section className="wom-giving-grid">
-        {/* CashApp */}
-        <article className="card wom-giving-card">
-          <div className="card-body">
-            <h2 className="h4">CashApp</h2>
-            <p className="text-muted">Send directly via CashApp:</p>
+      <section className="wom-giving-section container">
+        <div className="wom-giving-section-head">
+          <h2 className="wom-section-title">Ways to Give</h2>
+          <p className="wom-section-muted">
+            Choose the method that works best for you.
+          </p>
+        </div>
 
-            <div className="wom-cashapp-row">
-              <code className="wom-cashapp-tag">{CASHAPP_TAG}</code>
-              <button
-                type="button"
-                className="btn btn-sm btn-primary"
-                onClick={copyCashTag}
-              >
-                {copied ? "Copied" : "Copy"}
-              </button>
+        <div className="wom-giving-grid">
+          {/* Stripe */}
+          <article
+            className="wom-giving-card"
+            aria-label="Give Online using Stripe"
+          >
+            <div className="wom-card-top">
+              <div className="wom-card-icon" aria-hidden="true">
+                <CreditCard />
+              </div>
+              <div>
+                <h3 className="wom-card-title">Give Online</h3>
+                <p className="wom-card-muted">Secure checkout (Stripe)</p>
+              </div>
             </div>
 
-            {/* Optional QR block: add an image later */}
-            <div
-              className="wom-qr-placeholder"
-              aria-label="CashApp QR placeholder"
-            >
+            <div className="wom-card-body">
+              <label className="form-label" htmlFor="donationAmount">
+                One-time amount (USD)
+              </label>
+
+              <div className="wom-amount-row">
+                <span className="wom-dollar">$</span>
+                <input
+                  id="donationAmount"
+                  className="form-control"
+                  inputMode="numeric"
+                  value={amount}
+                  onChange={(e) =>
+                    setAmount(e.target.value.replace(/[^\d]/g, ""))
+                  }
+                  placeholder="25"
+                />
+              </div>
+
+              <div className="mt-3">
+                <label className="form-label" htmlFor="monthlyTier">
+                  Monthly giving (choose a tier)
+                </label>
+
+                <select
+                  id="monthlyTier"
+                  className="form-select"
+                  value={monthlyTier}
+                  onChange={(e) => setMonthlyTier(e.target.value)}
+                >
+                  {MONTHLY_TIERS.map((t) => (
+                    <option key={t.priceKey} value={t.priceKey}>
+                      {t.label}
+                    </option>
+                  ))}
+                </select>
+
+                <div className="form-text">
+                  Monthly donations use fixed tiers for consistency and
+                  subscription management.
+                </div>
+              </div>
+
+              <div className="wom-btn-row">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  disabled={loading}
+                  onClick={() => startCheckout("one_time")}
+                >
+                  {loading ? "Redirecting..." : "Give One-Time"}
+                </button>
+
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  disabled={loading}
+                  onClick={() => startCheckout("monthly")}
+                >
+                  {loading ? "Redirecting..." : "Give Monthly"}
+                </button>
+              </div>
+
+              <p className="wom-help">
+                You’ll be redirected to Stripe Checkout to complete your gift.
+              </p>
+            </div>
+          </article>
+
+          {/* CashApp */}
+          <article className="wom-giving-card" aria-label="Give via CashApp">
+            <div className="wom-card-top">
+              <div className="wom-card-icon" aria-hidden="true">
+                <QrCode />
+              </div>
+              <div>
+                <h3 className="wom-card-title">CashApp</h3>
+                <p className="wom-card-muted">Fast &amp; simple</p>
+              </div>
+            </div>
+
+            <div className="wom-card-body">
               <img
                 src={cashappQr}
                 alt="CashApp QR code for $theWayOfYah"
                 className="wom-qr"
               />
+
+              <div className="wom-cashapp-row">
+                <code className="wom-cashapp-tag">{CASHAPP_TAG}</code>
+
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-primary"
+                  onClick={copyCashTag}
+                  title="Copy CashApp tag"
+                >
+                  {copied ? "Copied" : "Copy Tag"}
+                </button>
+              </div>
+
+              <p className="wom-help mb-0">
+                Tip: include a note like “Donation” in your CashApp memo.
+              </p>
             </div>
+          </article>
 
-            <p className="wom-help">
-              Tip: include a note like “Donation” in your CashApp memo.
-            </p>
-          </div>
-        </article>
-
-        {/* Stripe */}
-        <article className="card wom-giving-card">
-          <div className="card-body">
-            <h2 className="h4">Give Online (Stripe)</h2>
-            <p className="text-muted">
-              Choose one-time or monthly giving using our secure online
-              platform.
-            </p>
-
-            {/* One-time amount */}
-            <label className="form-label" htmlFor="donationAmount">
-              One-time amount (USD)
-            </label>
-
-            <div className="wom-amount-row">
-              <span className="wom-dollar">$</span>
-              <input
-                id="donationAmount"
-                className="form-control"
-                inputMode="numeric"
-                value={amount}
-                onChange={(e) =>
-                  setAmount(e.target.value.replace(/[^\d]/g, ""))
-                }
-                placeholder="25"
-              />
-            </div>
-
-            {/* Monthly tiers (best practice) */}
-            <div className="mt-3">
-              <label className="form-label" htmlFor="monthlyTier">
-                Monthly giving (choose a tier)
-              </label>
-
-              <select
-                id="monthlyTier"
-                className="form-select"
-                value={monthlyTier}
-                onChange={(e) => setMonthlyTier(e.target.value)}
-              >
-                {MONTHLY_TIERS.map((t) => (
-                  <option key={t.priceKey} value={t.priceKey}>
-                    {t.label}
-                  </option>
-                ))}
-              </select>
-
-              <div className="form-text">
-                Monthly donations use fixed tiers for consistency and
-                subscription management.
+          {/* Give by Mail */}
+          <article className="wom-giving-card" aria-label="Give by Mail">
+            <div className="wom-card-top">
+              <div className="wom-card-icon" aria-hidden="true">
+                <Mail />
+              </div>
+              <div>
+                <h3 className="wom-card-title">Give by Mail</h3>
+                <p className="wom-card-muted">Check or money order</p>
               </div>
             </div>
 
-            <div className="wom-btn-row">
-              <button
-                type="button"
-                className="btn btn-primary"
-                disabled={loading}
-                onClick={() => startCheckout("one_time")}
-              >
-                {loading ? "Redirecting..." : "Give One-Time"}
-              </button>
+            <div className="wom-card-body">
+              <p className="wom-card-text">
+                Mail a check or money order payable to{" "}
+                <strong>The Way of Messiah Ministries</strong>.
+              </p>
 
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                disabled={loading}
-                onClick={() => startCheckout("monthly")}
-              >
-                {loading ? "Redirecting..." : "Give Monthly"}
-              </button>
+              <div className="wom-mail-box">
+                <div className="wom-mail-line">
+                  <strong>The Way of Messiah Ministries</strong>
+                </div>
+                <div className="wom-mail-line">P.O. BOX 46</div>
+                <div className="wom-mail-line">
+                  Sterling Heights, Michigan 48311
+                </div>
+              </div>
+
+              <p className="wom-help mb-0">
+                Please write “Donation” in the memo line.
+              </p>
+            </div>
+          </article>
+
+          {/* Non-cash */}
+          <article
+            className="wom-giving-card"
+            aria-label="Non-cash contributions"
+          >
+            <div className="wom-card-top">
+              <div className="wom-card-icon" aria-hidden="true">
+                <Landmark />
+              </div>
+              <div>
+                <h3 className="wom-card-title">Non-Cash</h3>
+                <p className="wom-card-muted">Stock, funds, trusts</p>
+              </div>
             </div>
 
-            <p className="wom-help">
-              You’ll be redirected to Stripe Checkout to complete your gift.
-            </p>
-          </div>
-        </article>
+            <div className="wom-card-body">
+              <p className="wom-card-text">
+                You can also donate stock, mutual funds, trusts, and other
+                assets. Contact us and we’ll provide instructions.
+              </p>
 
-        {/* Non-cash contributions */}
-        <article className="card wom-giving-card wom-giving-wide">
-          <div className="card-body">
-            <h2 className="h4">Non-Cash Contributions</h2>
-            <p className="text-muted">
-              You can also donate stock, mutual funds, trusts, etc. Please
-              contact us and we’ll provide instructions.
-            </p>
-            <a className="btn btn-outline-primary" href="/who-are-we/contact">
-              Contact Us
-            </a>
-          </div>
-        </article>
+              <a className="btn btn-outline-primary" href="/who-are-we/contact">
+                Contact Us
+              </a>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
   );

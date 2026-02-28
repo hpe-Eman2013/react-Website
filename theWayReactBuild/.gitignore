@@ -30,3 +30,6 @@ dist-ssr
 
 # Upload folder and files
 uploads/
+
+# Temp-File
+temp-file.css

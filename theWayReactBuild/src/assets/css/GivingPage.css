@@ -1,59 +1,146 @@
-.wom-giving-header {
-  margin-top: 18px;
-  margin-bottom: 18px;
+/* Page wrapper */
+.wom-giving {
+  padding-bottom: 28px;
 }
 
-.wom-giving-grid {
+/* Hero */
+.wom-giving-hero {
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.10), rgba(0, 0, 0, 0));
+  border-bottom: 1px solid var(--color-border);
+}
+
+.wom-giving-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 22px 14px;
+
   display: grid;
-  gap: 16px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  align-items: start;
 }
 
-.wom-giving-card {
+.wom-giving-hero-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
-}
-
-.wom-giving-wide {
-  grid-column: 1 / -1;
-}
-
-.wom-cashapp-row {
-  display: flex;
+  background: rgba(201, 162, 39, 0.12);
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 10px 0 12px;
+  justify-content: center;
+  color: var(--color-primary);
 }
 
-.wom-cashapp-tag {
-  font-size: 1.05rem;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-  background: rgba(0, 0, 0, 0.03);
+.wom-giving-hero-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.wom-giving-title {
+  margin: 0;
+}
+
+.wom-giving-subtitle {
+  margin: 6px 0 10px;
+  color: var(--text-muted);
+}
+
+.wom-giving-purpose {
+  margin: 0;
+  max-width: 900px;
+  line-height: 1.6;
   color: var(--text);
 }
 
-.wom-qr {
-  width: 140px;
-  height: 180px;
-  object-fit: contain;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 5px;
-  background: rgba(0, 0, 0, 0.03);
-  display: block;
-  margin: 10px 0 12px;
+/* Section */
+.wom-giving-section-head {
+  margin: 18px 0 12px;
+  text-align: center;
 }
 
+.wom-section-title {
+  margin: 0;
+}
+
+.wom-section-muted {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+}
+
+/* Grid: centered cards */
+.wom-giving-grid {
+  display: grid;
+  gap: 16px;
+
+  /* Center the whole grid and cards */
+  justify-content: center;
+
+  /* responsive columns */
+  grid-template-columns: repeat(2, minmax(320px, 520px));
+}
+
+/* Card */
+.wom-giving-card {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+  padding: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Card header */
+.wom-card-top {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.wom-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: rgba(15, 30, 46, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.wom-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.wom-card-title {
+  margin: 0;
+}
+
+.wom-card-muted {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.wom-card-body {
+  display: grid;
+  gap: 10px;
+}
+
+.wom-card-text {
+  margin: 0;
+  color: var(--text);
+}
+
+/* Stripe amount row */
 .wom-amount-row {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
 }
 
 .wom-dollar {
@@ -65,17 +152,67 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .wom-help {
-  margin-top: 10px;
+  margin: 0;
   color: var(--text-muted);
   font-size: 0.95rem;
 }
 
-@media (max-width: 900px) {
+/* CashApp */
+.wom-qr {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.wom-cashapp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.wom-cashapp-tag {
+  font-size: 1.05rem;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--text);
+}
+
+/* Mail */
+.wom-mail-box {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--text);
+}
+
+.wom-mail-line {
+  line-height: 1.45;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
   .wom-giving-grid {
     grid-template-columns: 1fr;
+  }
+
+  .wom-qr {
+    width: 160px;
+    height: 160px;
+  }
+
+  .wom-giving-section-head {
+    text-align: left;
   }
 }
