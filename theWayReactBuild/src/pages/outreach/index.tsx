@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/css/who-are-we/Outreach.css";
+import "@/assets/css/the-way/Outreach.css";
 
 import heroImg from "@/assets/images/who-are-we/outreach/preview.jpg";
 

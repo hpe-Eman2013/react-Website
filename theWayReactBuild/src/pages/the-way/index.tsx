@@ -1,6 +1,6 @@
 import ScriptureQuotes from "../../components/the-way/ScriptureQuotes";
 import PillarGrid from "../../components/the-way/PillarGrid";
-import "./TheWay.css";
+import "@/assets/css/the-way/TheWay.css";
 
 export default function TheWayPage() {
   return (

@@ -7,14 +7,14 @@ import {
   approveBulk,
   deleteTestimony,
   deleteBulk,
-} from "../services/testimonyService";
-import AdminHeader from "../components/admin/AdminHeader";
-import BulkActionsBar from "../components/admin/BulkActionsBar";
-import PendingTestimonyItem from "../components/admin/PendingTestimonyItem";
-import ConfirmModal from "../components/common/ConfirmModal";
-import useSelection from "../hooks/useSelection";
-import Toast from "../components/common/Toast";
-import { useAsyncStatus } from "../hooks/useAsyncStatus";
+} from "@/services/testimonyService";
+import AdminHeader from "@/components/admin/AdminHeader";
+import BulkActionsBar from "@/components/admin/BulkActionsBar";
+import PendingTestimonyItem from "@/components/admin/PendingTestimonyItem";
+import ConfirmModal from "@/components/common/ConfirmModal";
+import useSelection from "@/hooks/useSelection";
+import Toast from "@/components/common/Toast";
+import { useAsyncStatus } from "@/hooks/useAsyncStatus";
 
 function isResponseRequested(t) {
   const v = t?.requestResponse;

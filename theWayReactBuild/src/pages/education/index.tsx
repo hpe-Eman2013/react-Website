@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/css/who-are-we/Education.css";
+import "@/assets/css/the-way/Education.css";
 
 import heroImg from "@/assets/images/who-are-we/education/preview.jpg";
 

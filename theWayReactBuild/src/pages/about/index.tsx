@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/css/who-are-we/About.css";
+import "@/assets/css/the-way/About.css";
 
 import heroImg from "@/assets/images/who-are-we/about/preview.jpg";
 

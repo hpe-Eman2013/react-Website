@@ -21,7 +21,7 @@ import Home from "./pages/home";
 // import Testimonies from "./pages/Testimonies";
 
 // admin
-import AdminTestimonies from "./pages/AdminTestimonies";
+import AdminTestimonies from "./pages/admin/AdminTestimonies";
 import AdminLogin from "./pages/admin/AdminLogin";
 import { AdminAuthProvider } from "./context/AdminAuthProvider";
 import AdminMembershipPage from "./pages/admin/AdminMembershipPage";
@@ -36,10 +36,10 @@ import BibleLayout from "./pages/bible";
 
 // ---- Who Are We children ----
 import AboutPage from "./pages/about";
-import EducationPage from "./pages/the-way/education";
-import MissionVision from "./pages/the-way/mission";
-import OutreachPage from "./pages/the-way/outreach";
-import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
+import EducationPage from "./pages/education";
+import MissionVision from "./pages/mission";
+import OutreachPage from "./pages/outreach";
+import StatementOfFaithPage from "./pages/statement-of-faith";
 import ContactPage from "./pages/contact";
 
 // ---- The Assembly children ----

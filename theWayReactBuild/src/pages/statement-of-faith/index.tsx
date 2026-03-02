@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import "@/assets/css/who-are-we/StatementOfFaith.css";
+import "@/assets/css/the-way/StatementOfFaith.css";
 
 type ScriptureProps = {
   reference: string;

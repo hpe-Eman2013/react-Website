@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/css/who-are-we/MissionVision.css";
+import "@/assets/css/the-way/MissionVision.css";
 
 import heroImg from "@/assets/images/who-are-we/mission-vision/preview.jpg";
 
