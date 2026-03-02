@@ -1,20 +1,81 @@
-.mission-quote {
-  padding-left: 1rem;
-  border-left: 4px solid rgba(0, 0, 0, 0.15);
+/* Mission & Vision page layout enhancements (chunked sections) */
+
+.mission-page .card-body {
+  padding: 1.25rem;
 }
 
-.mission-details {
+.mission-section + .mission-section {
+  margin-top: 1.25rem;
+}
+
+.mission-hero {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.mission-hero__media {
+  position: relative;
+  height: 260px;
+}
+
+.mission-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mission-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 30, 46, 0.15),
+    rgba(15, 30, 46, 0.65)
+  );
+}
+
+.mission-hero__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem 1rem 1.1rem;
+  color: var(--color-text-light);
+}
+
+.mission-hero__title {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.15;
+}
+
+.mission-hero__subtitle {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.mission-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.mission-panel {
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1rem;
   background: rgba(0, 0, 0, 0.02);
 }
 
-.mission-summary {
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.mission-table th {
-  white-space: nowrap;
+@media (max-width: 900px) {
+  .mission-split {
+    grid-template-columns: 1fr;
+  }
+  .mission-hero__media {
+    height: 220px;
+  }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import "@/assets/css/who-are-we/WhoAreWe.css";
 
 // ✅ Image imports (symbol-free stock only)
@@ -10,7 +10,13 @@ import imgMission from "@/assets/images/who-are-we/mission-vision/preview.jpg";
 import imgOutreach from "@/assets/images/who-are-we/outreach/preview.jpg";
 import imgEducation from "@/assets/images/who-are-we/education/preview.jpg";
 
-const WhoAreWe = () => {
+export default function WhoAreWeLayout() {
+  const location = useLocation();
+
+  // Show landing only on /who-are-we (and optionally /who-are-we/)
+  const isIndex =
+    location.pathname === "/who-are-we" || location.pathname === "/who-are-we/";
+
   const blocks = [
     {
       title: "About",
@@ -27,7 +33,8 @@ const WhoAreWe = () => {
     {
       title: "Mission & Vision",
       desc: "Our purpose, long-term direction, and the kind of community we aim to build—faithful, steady, and fruitful.",
-      to: "/who-are-we/mission-vision",
+      // ✅ MUST match App.jsx child route: "mission"
+      to: "/who-are-we/mission",
       img: imgMission,
     },
     {
@@ -44,6 +51,10 @@ const WhoAreWe = () => {
     },
   ];
 
+  // ✅ If not index, render the nested route page
+  if (!isIndex) return <Outlet />;
+
+  // ✅ Index landing page
   return (
     <main className="waw">
       {/* HERO */}
@@ -70,7 +81,9 @@ const WhoAreWe = () => {
               <Link className="btn-primary" to="/who-are-we/statement-of-faith">
                 Read Our Statement of Faith
               </Link>
-              <Link className="btn-secondary" to="/assembly">
+
+              {/* ✅ MUST match App.jsx base route */}
+              <Link className="btn-secondary" to="/the-assembly">
                 Visit The Assembly
               </Link>
             </div>
@@ -125,7 +138,7 @@ const WhoAreWe = () => {
               <h3 className="waw-h3">Prefer a quick overview?</h3>
               <p className="waw-muted">
                 If you want the shortest path, start with Statement of Faith and
-                Mission & Vision.
+                Mission &amp; Vision.
               </p>
             </div>
 
@@ -136,8 +149,9 @@ const WhoAreWe = () => {
               >
                 Statement of Faith
               </Link>
-              <Link className="btn-tertiary" to="/who-are-we/mission-vision">
-                Mission & Vision
+              {/* ✅ MUST match App.jsx child route */}
+              <Link className="btn-tertiary" to="/who-are-we/mission">
+                Mission &amp; Vision
               </Link>
             </div>
           </div>
@@ -145,6 +159,4 @@ const WhoAreWe = () => {
       </section>
     </main>
   );
-};
-
-export default WhoAreWe;
+}

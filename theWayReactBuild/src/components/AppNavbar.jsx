@@ -6,12 +6,18 @@ import { useTheme } from "@/context/ThemeProvider";
 export default function AppNavbar() {
   const rootRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
+
   const linkClass = ({ isActive }) => `wom-link ${isActive ? "active" : ""}`;
 
-  // Close other dropdowns when one opens + close on outside click / Escape
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+
+    function closeAll(except = null) {
+      root.querySelectorAll("details.wom-mega[open]").forEach((d) => {
+        if (d !== except) d.removeAttribute("open");
+      });
+    }
 
     function onDocMouseDown(e) {
       if (!root.contains(e.target)) closeAll(null);
@@ -38,31 +44,42 @@ export default function AppNavbar() {
       if (d !== except) d.removeAttribute("open");
     });
   }
+
   return (
     <header className="wom-sticky-nav" ref={rootRef}>
       <div className="wom-nav-inner">
-        <NavLink to="/" className="wom-brand">
-          {/* If you have a logo, swap this text for an <img/> + text */}
+        <NavLink to="/" className="wom-brand" onClick={() => closeAll(null)}>
           The Way of Messiah
         </NavLink>
 
         <nav className="wom-links" aria-label="Main navigation">
-          <NavLink to="/" end className={linkClass}>
+          <NavLink
+            to="/"
+            end
+            className={linkClass}
+            onClick={() => closeAll(null)}
+          >
             Home
           </NavLink>
 
           {/* Who Are We */}
+
           <details
             className="wom-mega"
-            onToggle={(e) => {
-              // Only when this one opens, close the others
-              if (e.currentTarget.open) closeAll(e.currentTarget);
-            }}
+            onToggle={(e) => e.currentTarget.open && closeAll(e.currentTarget)}
           >
             <summary className="wom-link wom-summary">
-              Who Are We <span className="wom-caret">▾</span>
+              The Way <span className="wom-caret">▾</span>
             </summary>
+
             <div className="wom-mega-panel">
+              <NavLink
+                to="/who-are-we"
+                className="wom-mega-item"
+                onClick={() => closeAll(null)}
+              >
+                Who Are We
+              </NavLink>
               <NavLink
                 to="/who-are-we/about"
                 className="wom-mega-item"
@@ -70,6 +87,7 @@ export default function AppNavbar() {
               >
                 About
               </NavLink>
+
               <NavLink
                 to="/who-are-we/statement-of-faith"
                 className="wom-mega-item"
@@ -77,6 +95,8 @@ export default function AppNavbar() {
               >
                 Statement of Faith
               </NavLink>
+
+              {/* ✅ FIXED: was /who-are-we/mission */}
               <NavLink
                 to="/who-are-we/mission"
                 className="wom-mega-item"
@@ -84,6 +104,7 @@ export default function AppNavbar() {
               >
                 Mission &amp; Vision
               </NavLink>
+
               <NavLink
                 to="/who-are-we/outreach"
                 className="wom-mega-item"
@@ -91,6 +112,7 @@ export default function AppNavbar() {
               >
                 Outreach
               </NavLink>
+
               <NavLink
                 to="/who-are-we/education"
                 className="wom-mega-item"
@@ -98,20 +120,25 @@ export default function AppNavbar() {
               >
                 Education
               </NavLink>
+              <NavLink
+                to="/who-are-we/contact"
+                className="wom-mega-item"
+                onClick={() => closeAll(null)}
+              >
+                Contact
+              </NavLink>
             </div>
           </details>
 
           {/* Scriptural Discussions */}
           <details
             className="wom-mega"
-            onToggle={(e) => {
-              // Only when this one opens, close the others
-              if (e.currentTarget.open) closeAll(e.currentTarget);
-            }}
+            onToggle={(e) => e.currentTarget.open && closeAll(e.currentTarget)}
           >
             <summary className="wom-link wom-summary">
               Scriptural Discussions <span className="wom-caret">▾</span>
             </summary>
+
             <div className="wom-mega-panel">
               <NavLink
                 to="/bible/old-covenant"
@@ -146,7 +173,7 @@ export default function AppNavbar() {
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
-                Scriptual Studies
+                Scriptural Studies
               </NavLink>
             </div>
           </details>
@@ -154,14 +181,12 @@ export default function AppNavbar() {
           {/* The Assembly */}
           <details
             className="wom-mega"
-            onToggle={(e) => {
-              // Only when this one opens, close the others
-              if (e.currentTarget.open) closeAll(e.currentTarget);
-            }}
+            onToggle={(e) => e.currentTarget.open && closeAll(e.currentTarget)}
           >
             <summary className="wom-link wom-summary">
               The Assembly <span className="wom-caret">▾</span>
             </summary>
+
             <div className="wom-mega-panel">
               <NavLink
                 to="/the-assembly/testimonies"
@@ -211,14 +236,12 @@ export default function AppNavbar() {
           {/* Accounts */}
           <details
             className="wom-mega"
-            onToggle={(e) => {
-              // Only when this one opens, close the others
-              if (e.currentTarget.open) closeAll(e.currentTarget);
-            }}
+            onToggle={(e) => e.currentTarget.open && closeAll(e.currentTarget)}
           >
             <summary className="wom-link wom-summary">
               Accounts <span className="wom-caret">▾</span>
             </summary>
+
             <div className="wom-mega-panel wom-mega-panel-right">
               <NavLink
                 to="/accounts/register"
@@ -250,15 +273,31 @@ export default function AppNavbar() {
               </NavLink>
             </div>
           </details>
-          <NavLink to="/giving" className={linkClass}>
+
+          <NavLink
+            to="/giving"
+            className={linkClass}
+            onClick={() => closeAll(null)}
+          >
             Giving
           </NavLink>
-          {/* Admin */}
-          <NavLink to="/admin/testimonies" className={linkClass}>
+
+          <NavLink
+            to="/admin/testimonies"
+            className={linkClass}
+            onClick={() => closeAll(null)}
+          >
             Admin
           </NavLink>
+
           <div className="wom-right">
-            <button onClick={toggleTheme} className="wom-theme-toggle">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="wom-theme-toggle"
+              aria-label="Toggle theme"
+              title="Toggle theme"
+            >
               {theme === "light" ? "🌙" : "☀️"}
             </button>
           </div>

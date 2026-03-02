@@ -1,15 +1,19 @@
-/* Outreach page - hero + section rhythm */
+/* About page - warm narrative layout */
 
-.outreach-page .card-body {
+.about-page .card-body {
   padding: 1.25rem;
 }
 
-.outreach-section + .outreach-section {
+.about-section + .about-section {
   margin-top: 1.25rem;
 }
 
+.about-list li + li {
+  margin-top: 0.35rem;
+}
+
 /* Hero */
-.outreach-hero {
+.about-hero {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
@@ -17,19 +21,19 @@
   position: relative;
 }
 
-.outreach-hero__media {
+.about-hero__media {
   position: relative;
   height: 260px;
 }
 
-.outreach-hero__img {
+.about-hero__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.outreach-hero__overlay {
+.about-hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -39,7 +43,7 @@
   );
 }
 
-.outreach-hero__content {
+.about-hero__content {
   position: absolute;
   left: 0;
   right: 0;
@@ -48,39 +52,37 @@
   color: var(--color-text-light);
 }
 
-.outreach-hero__title {
+.about-hero__title {
   margin: 0 0 0.25rem;
   font-size: clamp(1.4rem, 2.4vw, 2rem);
   line-height: 1.15;
 }
 
-.outreach-hero__subtitle {
+.about-hero__subtitle {
   margin: 0;
   opacity: 0.9;
 }
 
-/* Optional: soften the bordered pillar boxes */
-.outreach-box {
-  background: rgba(0, 0, 0, 0.02);
-  border-color: var(--color-border) !important;
+.waw,
+.sofa-page,
+.education-page,
+.outreach-page,
+.mission-page,
+.about-page {
+  color: var(--text);
 }
 
-/* Tables */
-.outreach-table th {
-  white-space: nowrap;
-}
-
-.outreach-summary {
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.outreach-details[open] .outreach-summary {
-  border-bottom: 1px solid var(--color-border);
+.waw h1, .waw h2, .waw h3,
+.sofa-page h1, .sofa-page h2, .sofa-page h3,
+.education-page h1, .education-page h2, .education-page h3,
+.outreach-page h1, .outreach-page h2, .outreach-page h3,
+.mission-page h1, .mission-page h2, .mission-page h3,
+.about-page h1, .about-page h2, .about-page h3 {
+  color: var(--text);
 }
 
 @media (max-width: 900px) {
-  .outreach-hero__media {
+  .about-hero__media {
     height: 220px;
   }
 }

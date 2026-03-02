@@ -2,3 +2,158 @@
 .scripture-tooltip-version {
   display: block;
 }
+/* Page spacing */
+.sofa-page .card-body {
+  padding: 1.25rem;
+}
+
+/* Hero */
+.sofa-hero {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.sofa-hero__media {
+  position: relative;
+  height: 260px;
+}
+
+.sofa-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sofa-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 30, 46, 0.10),
+    rgba(15, 30, 46, 0.68)
+  );
+}
+
+.sofa-hero__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem 1rem 1.1rem;
+  color: var(--color-text-light);
+}
+
+.sofa-hero__title {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.15;
+}
+
+.sofa-hero__subtitle {
+  margin: 0;
+  opacity: 0.9;
+}
+.sofa-scriptures {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.scripture {
+  position: relative;
+  display: block; /* makes it “box-like” */
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(0,0,0,0.02);
+}
+
+[data-theme="dark"] .scripture {
+  background: rgba(255,255,255,0.04);
+}
+
+.scripture-ref {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--color-secondary);
+  text-decoration: underline;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .sofa-hero__media {
+    height: 220px;
+  }
+}
+
+/* Scripture tooltip system */
+.sofa-scriptures {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+/* wrapper */
+.scripture {
+  position: relative;
+  display: inline-block;
+}
+
+/* clickable reference */
+.scripture-ref {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--color-accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.scripture-ref:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* tooltip */
+.scripture-tooltip {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  top: calc(100% + 8px);
+  width: min(520px, 86vw);
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  color: var(--text);
+  display: none;
+}
+
+/* show on hover OR focus-within */
+.scripture:hover .scripture-tooltip,
+.scripture:focus-within .scripture-tooltip {
+  display: block;
+}
+
+.scripture-tooltip-verse,
+.scripture-tooltip-version {
+  display: block;
+  margin-top: 0.35rem;
+}
+
+/* Keep version a bit softer, even in dark mode */
+.scripture-tooltip-version {
+  opacity: 0.85;
+}

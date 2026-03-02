@@ -37,7 +37,7 @@ import BibleLayout from "./pages/bible";
 // ---- Who Are We children ----
 import AboutPage from "./pages/who-are-we/about";
 import EducationPage from "./pages/who-are-we/education";
-import MissionPage from "./pages/who-are-we/mission";
+import MissionVision from "./pages/who-are-we/mission";
 import OutreachPage from "./pages/who-are-we/outreach";
 import StatementOfFaithPage from "./pages/who-are-we/statement-of-faith";
 import ContactPage from "./pages/who-are-we/contact";
@@ -87,7 +87,7 @@ function App() {
               path="statement-of-faith"
               element={<StatementOfFaithPage />}
             />
-            <Route path="mission" element={<MissionPage />} />
+            <Route path="mission" element={<MissionVision />} />
             <Route path="outreach" element={<OutreachPage />} />
             <Route path="education" element={<EducationPage />} />
             <Route path="contact" element={<ContactPage />} />
