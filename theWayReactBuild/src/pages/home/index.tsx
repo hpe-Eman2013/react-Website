@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import "@/assets/css/home/Home.css";
+import "@/assets/css/ui/Accordion.css";
+
+import { AccordionGroup } from "@/components/ui/AccordionGroup";
+import AccordionSection from "@/components/ui/AccordionSection";
 
 export default function HomePage() {
   return (
@@ -49,6 +53,57 @@ export default function HomePage() {
           preserving the original pronunciation rather than replacing it with a
           title.
         </p>
+
+        {/* Accordions for Father section */}
+        <AccordionGroup>
+          <AccordionSection
+            id="tetragrammaton-letters"
+            title="Paleo Hebrew letters of the Tetragrammaton (𐤉𐤄𐤅𐤄)"
+          >
+            <p>
+              The Hebrew language is read from right to left. The characters are
+              explained as:
+            </p>
+
+            <ul>
+              <li>𐤉 = Yad (Ya sound)</li>
+              <li>𐤄 = Hay (Ah sound)</li>
+              <li>𐤅 = uau (oo sound)</li>
+              <li>𐤄 = Hay (Ah sound)</li>
+            </ul>
+
+            <p>
+              Placed together produces the (Ya-ah-oo-ah) sound:{" "}
+              <strong>Yahuah</strong>.
+            </p>
+          </AccordionSection>
+
+          <AccordionSection
+            id="transliteration-definition"
+            title="What is transliteration (and why it matters)?"
+          >
+            <p>
+              Transliteration is converting text from one writing system to
+              another character-by-character to preserve spelling and
+              approximate pronunciation, unlike translation which conveys
+              meaning.
+            </p>
+          </AccordionSection>
+
+          <AccordionSection
+            id="pictogram-meaning"
+            title="Pictogram meaning and the Messiah connection"
+          >
+            <p>
+              In pictogram form, these characters convey the idea: “Behold, the
+              nail, behold, the hands.”
+            </p>
+
+            <blockquote>
+              “Behold my hands and my feet, that it is I myself…” (Luke 24:39)
+            </blockquote>
+          </AccordionSection>
+        </AccordionGroup>
       </section>
 
       {/* SON NAME SECTION */}
@@ -69,6 +124,32 @@ export default function HomePage() {
         <p>
           The name Yahusha carries the declaration that Yahuah is salvation.
         </p>
+
+        {/* Accordions for Son section */}
+        <AccordionGroup>
+          <AccordionSection
+            id="yahusha-letter-sounds"
+            title="Hebrew character sounds for the Messiah’s name (Yahusha)"
+          >
+            <p>
+              The sound of characters for the name of the Messiah is: Yod He Waw
+              Sin (or Shin) Ayin.
+            </p>
+
+            <ul>
+              <li>Yod = Ya / Yay</li>
+              <li>He = a / eh</li>
+              <li>Waw = o / u</li>
+              <li>Sin/Shin = sh</li>
+              <li>Ayin = ah</li>
+            </ul>
+
+            <p>
+              Putting together the sounds: <strong>Ya-a-u-sh-ah</strong> →{" "}
+              <strong>Yahusha</strong>.
+            </p>
+          </AccordionSection>
+        </AccordionGroup>
       </section>
 
       {/* INVITATION */}

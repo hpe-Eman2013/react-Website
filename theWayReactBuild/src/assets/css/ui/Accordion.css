@@ -1,0 +1,49 @@
+.acc {
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0;
+  background: #fff;
+}
+
+.acc-btn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.95rem 1rem;
+  cursor: pointer;
+  border: 0;
+  background: #f7f7f7;
+  text-align: left;
+}
+
+.acc-btn:hover {
+  background: #f1f1f1;
+}
+
+.acc-icon {
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 160ms ease;
+  font-size: 0.9rem;
+}
+
+.acc-icon.is-open {
+  transform: rotate(90deg);
+}
+
+.acc-title {
+  font-weight: 700;
+}
+
+.acc-action {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.acc-content {
+  padding: 1rem;
+  line-height: 1.7;
+}
