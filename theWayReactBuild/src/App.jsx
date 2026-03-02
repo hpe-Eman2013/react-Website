@@ -16,7 +16,7 @@ import GivingSuccess from "./pages/giving/GivingSuccess";
 import GivingCancel from "./pages/giving/GivingCancel";
 
 // existing top-level pages you already had
-import Home from "./pages/Home";
+import Home from "./pages/home";
 // import SubmitTestimony from "./pages/SubmitTestimony";
 // import Testimonies from "./pages/Testimonies";
 

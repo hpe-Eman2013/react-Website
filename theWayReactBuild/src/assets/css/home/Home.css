@@ -1,0 +1,50 @@
+.home-hero {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #0f172a;
+  color: white;
+  padding: 2rem;
+}
+
+.home-hero-inner h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.6rem;
+  background: #d4af37;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.home-section {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  line-height: 1.7;
+}
+
+.home-section.alt {
+  background: #f7f7f7;
+  padding: 4rem 1.5rem;
+}
+
+blockquote {
+  border-left: 4px solid #d4af37;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.home-invite {
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
