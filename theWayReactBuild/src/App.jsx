@@ -29,18 +29,18 @@ import RequireAuth from "./auth/RequireAuth";
 import RequireAdmin from "./auth/RequireAdmin";
 
 // ---- Domain layouts (index.jsx) ----
-import WhoAreWeLayout from "./pages/who-are-we";
+import WhoAreWeLayout from "./pages/the-way";
 import AssemblyLayout from "./pages/the-assembly";
 import AccountsLayout from "./pages/accounts";
 import BibleLayout from "./pages/bible";
 
 // ---- Who Are We children ----
-import AboutPage from "./pages/who-are-we/about";
-import EducationPage from "./pages/who-are-we/education";
-import MissionVision from "./pages/who-are-we/mission";
-import OutreachPage from "./pages/who-are-we/outreach";
-import StatementOfFaithPage from "./pages/who-are-we/statement-of-faith";
-import ContactPage from "./pages/who-are-we/contact";
+import AboutPage from "./pages/about";
+import EducationPage from "./pages/the-way/education";
+import MissionVision from "./pages/the-way/mission";
+import OutreachPage from "./pages/the-way/outreach";
+import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
+import ContactPage from "./pages/contact";
 
 // ---- The Assembly children ----
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
