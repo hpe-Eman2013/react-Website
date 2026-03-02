@@ -29,12 +29,12 @@ import RequireAuth from "./auth/RequireAuth";
 import RequireAdmin from "./auth/RequireAdmin";
 
 // ---- Domain layouts (index.jsx) ----
-import WhoAreWeLayout from "./pages/the-way";
+import TheWayPage from "./pages/the-way";
 import AssemblyLayout from "./pages/the-assembly";
 import AccountsLayout from "./pages/accounts";
 import BibleLayout from "./pages/bible";
 
-// ---- Who Are We children ----
+// ---- The Way children ----
 import AboutPage from "./pages/about";
 import EducationPage from "./pages/education";
 import MissionVision from "./pages/mission";
@@ -79,8 +79,8 @@ function App() {
           {/* <Route path="/testimonies" element={<Testimonies />} />
           <Route path="/submit" element={<SubmitTestimony />} /> */}
 
-          {/* ===== Who Are We ===== */}
-          <Route path="/who-are-we" element={<WhoAreWeLayout />}>
+          {/* ===== The Way ===== */}
+          <Route path="/the-way" element={<TheWayPage />}>
             <Route index element={<AboutPage />} />
             <Route path="about" element={<AboutPage />} />
             <Route

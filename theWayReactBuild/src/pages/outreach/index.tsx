@@ -1,7 +1,7 @@
 import React from "react";
 import "@/assets/css/the-way/Outreach.css";
 
-import heroImg from "@/assets/images/who-are-we/outreach/preview.jpg";
+import heroImg from "@/assets/images/the-way/outreach/preview.jpg";
 
 export default function Outreach() {
   return (

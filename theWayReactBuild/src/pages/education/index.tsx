@@ -1,7 +1,7 @@
 import React from "react";
 import "@/assets/css/the-way/Education.css";
 
-import heroImg from "@/assets/images/who-are-we/education/preview.jpg";
+import heroImg from "@/assets/images/the-way/education/preview.jpg";
 
 export default function Education() {
   return (

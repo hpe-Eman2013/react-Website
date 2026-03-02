@@ -275,7 +275,7 @@ export default function GivingPage() {
                 assets. Contact us and we’ll provide instructions.
               </p>
 
-              <a className="btn btn-outline-primary" href="/who-are-we/contact">
+              <a className="btn btn-outline-primary" href="/the-way/contact">
                 Contact Us
               </a>
             </div>

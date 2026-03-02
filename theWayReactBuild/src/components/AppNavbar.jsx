@@ -62,7 +62,7 @@ export default function AppNavbar() {
             Home
           </NavLink>
 
-          {/* Who Are We */}
+          {/* The Way */}
 
           <details
             className="wom-mega"
@@ -74,14 +74,14 @@ export default function AppNavbar() {
 
             <div className="wom-mega-panel">
               <NavLink
-                to="/who-are-we"
+                to="/the-way"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
-                Who Are We
+                The Way
               </NavLink>
               <NavLink
-                to="/who-are-we/about"
+                to="/the-way/about"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
@@ -89,16 +89,16 @@ export default function AppNavbar() {
               </NavLink>
 
               <NavLink
-                to="/who-are-we/statement-of-faith"
+                to="/the-way/statement-of-faith"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Statement of Faith
               </NavLink>
 
-              {/* ✅ FIXED: was /who-are-we/mission */}
+              {/* ✅ FIXED: was /the-way/mission */}
               <NavLink
-                to="/who-are-we/mission"
+                to="/the-way/mission"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
@@ -106,7 +106,7 @@ export default function AppNavbar() {
               </NavLink>
 
               <NavLink
-                to="/who-are-we/outreach"
+                to="/the-way/outreach"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
@@ -114,14 +114,14 @@ export default function AppNavbar() {
               </NavLink>
 
               <NavLink
-                to="/who-are-we/education"
+                to="/the-way/education"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >
                 Education
               </NavLink>
               <NavLink
-                to="/who-are-we/contact"
+                to="/the-way/contact"
                 className="wom-mega-item"
                 onClick={() => closeAll(null)}
               >

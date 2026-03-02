@@ -1,7 +1,7 @@
 import React from "react";
 import "@/assets/css/the-way/About.css";
 
-import heroImg from "@/assets/images/who-are-we/about/preview.jpg";
+import heroImg from "@/assets/images/the-way/about/preview.jpg";
 
 export default function AboutPage() {
   return (

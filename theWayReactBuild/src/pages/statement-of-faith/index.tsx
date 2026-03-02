@@ -25,7 +25,7 @@ function Scripture({ reference, verse, version }: ScriptureProps) {
   );
 }
 
-import heroImg from "@/assets/images/who-are-we/statement-of-faith/preview.jpg";
+import heroImg from "@/assets/images/the-way/statement-of-faith/preview.jpg";
 
 export default function StatementOfFaith() {
   return (

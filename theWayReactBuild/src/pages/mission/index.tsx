@@ -1,7 +1,7 @@
 import React from "react";
 import "@/assets/css/the-way/MissionVision.css";
 
-import heroImg from "@/assets/images/who-are-we/mission-vision/preview.jpg";
+import heroImg from "@/assets/images/the-way/mission-vision/preview.jpg";
 
 export default function MissionVision() {
   return (

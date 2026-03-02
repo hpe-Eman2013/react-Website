@@ -10,23 +10,23 @@ export default function SiteMap() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/who-are-we/about">Who Are We → About</NavLink>
+          <NavLink to="/the-way/about">The Way → About</NavLink>
         </li>
         <li>
-          <NavLink to="/who-are-we/statement-of-faith">
-            Who Are We → Statement of Faith
+          <NavLink to="/the-way/statement-of-faith">
+            The Way → Statement of Faith
           </NavLink>
         </li>
         <li>
-          <NavLink to="/who-are-we/mission">
-            Who Are We → Mission &amp; Vision
+          <NavLink to="/the-way/mission">
+            The Way → Mission &amp; Vision
           </NavLink>
         </li>
         <li>
-          <NavLink to="/who-are-we/outreach">Who Are We → Outreach</NavLink>
+          <NavLink to="/the-way/outreach">The Way → Outreach</NavLink>
         </li>
         <li>
-          <NavLink to="/who-are-we/education">Who Are We → Education</NavLink>
+          <NavLink to="/the-way/education">The Way → Education</NavLink>
         </li>
         <li>
           <NavLink to="/bible/old-covenant">Bible → Old Covenant</NavLink>
