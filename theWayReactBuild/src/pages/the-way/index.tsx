@@ -1,37 +1,220 @@
-import ScriptureQuotes from "../../components/the-way/ScriptureQuotes";
-import PillarGrid from "../../components/the-way/PillarGrid";
+import React from "react";
+import { Link } from "react-router-dom";
 import "@/assets/css/the-way/TheWay.css";
+
+type Pillar = {
+  title: string;
+  description: string;
+  to: string;
+};
+
+const PILLARS: Pillar[] = [
+  {
+    title: "About Us",
+    description: "Who we are, why we exist, and what we’re building together.",
+    to: "/about-us",
+  },
+  {
+    title: "Statement of Faith",
+    description: "What we believe — anchored in Scripture, tested, and lived.",
+    to: "/statement-of-faith",
+  },
+  {
+    title: "Outreach",
+    description:
+      "Serving, teaching, and strengthening families and communities.",
+    to: "/outreach",
+  },
+  {
+    title: "Education",
+    description:
+      "Training for wisdom, stewardship, and practical righteousness.",
+    to: "/education",
+  },
+  {
+    title: "Lectures",
+    description:
+      "Long-form teaching: structured series, topics, and deep dives.",
+    to: "/lectures",
+  },
+  {
+    title: "Scriptural Studies",
+    description: "Study guides, reading plans, and verse-by-verse exploration.",
+    to: "/scriptural-studies",
+  },
+  {
+    title: "Memberships",
+    description:
+      "Covenant community: commitments, conduct, and accountability.",
+    to: "/memberships",
+  },
+  {
+    title: "Giving",
+    description:
+      "Support the work—help us build tools, teaching, and outreach.",
+    to: "/giving",
+  },
+];
 
 export default function TheWayPage() {
   return (
-    <div className="tw-page">
-      <header className="tw-hero">
-        <div className="tw-hero-inner">
-          <h1 className="tw-title">THE WAY</h1>
-          <p className="tw-subtitle">Come learn with us!</p>
+    <main className="theway">
+      {/* HERO */}
+      <section className="theway-hero">
+        <div className="theway-hero-overlay" />
+        <div className="theway-hero-inner">
+          <p className="theway-eyebrow">THE WAY</p>
+
+          <h1 className="theway-title">
+            Restoring the Ancient Paths — Returning to the Names &amp; the Word
+          </h1>
+
+          <p className="theway-subtitle">
+            We’re rebuilding what was fractured by compromise: recovering the
+            Hebraic foundation of faith, confronting Hellenization where it
+            altered doctrine, and honoring the Names as Scripture reveals.
+          </p>
+
+          <div className="theway-hero-ctas">
+            <Link className="theway-btn theway-btn-primary" to="#pillars">
+              Explore the 8 Pillars
+            </Link>
+            <Link
+              className="theway-btn theway-btn-ghost"
+              to="/statement-of-faith"
+            >
+              Read the Statement of Faith
+            </Link>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main className="tw-main">
-        <section className="tw-overview" aria-label="Overview">
-          <h2>Why this website exists</h2>
-          <p>
-            We believe Hellenization has replaced the worship and traditions of
-            the Hebrew people with Greek cultural frameworks—obscuring key
-            truths and even changing the Names of the Most High and His Son, the
-            Messiah. This has led to confusion and idolatry among the Gentiles.
-          </p>
-          <p>
-            We seek to rectify this error by returning to the ancient paths,
-            beginning with the faith of the first-century disciples of the
-            Messiah, Yahusha.
-          </p>
-        </section>
+      {/* INTRO */}
+      <section className="theway-section">
+        <div className="theway-container">
+          <h2 className="theway-h2">Why “The Way”</h2>
 
-        <ScriptureQuotes />
+          <div className="theway-prose">
+            <p>
+              “The Way” is a return: to the pattern of Scripture, the
+              commandments of Elohim, the witness of Messiah, and the covenant
+              rhythms of Sabbaths and Feasts. We seek alignment — not novelty —
+              because truth doesn’t need reinvention.
+            </p>
+            <p>
+              Over time, layers of philosophy and tradition have shaped modern
+              faith practice. We openly examine those layers, compare everything
+              with the Word, and restore what is ancient, faithful, and clean.
+            </p>
+            <p>
+              This page is your springboard. Each pillar below is a focused
+              path: learn who we are, what we believe, how we serve, how we
+              teach, how we study, how we gather, and how you can participate.
+            </p>
+          </div>
 
-        <PillarGrid />
-      </main>
-    </div>
+          {/* SCRIPTURE PANELS */}
+          <div className="theway-scripture-grid" aria-label="Scripture panels">
+            <figure className="theway-quote">
+              <blockquote>
+                “Stand in the ways and see, and ask for the old paths, where is
+                the good way, and walk therein…”
+              </blockquote>
+              <figcaption>Jeremiah 6:16</figcaption>
+            </figure>
+
+            <figure className="theway-quote">
+              <blockquote>
+                “To the Torah and to the testimony: if they speak not according
+                to this word, it is because there is no light in them.”
+              </blockquote>
+              <figcaption>Isaiah 8:20</figcaption>
+            </figure>
+
+            <figure className="theway-quote">
+              <blockquote>
+                “This is My Name forever, and this is My memorial unto all
+                generations.”
+              </blockquote>
+              <figcaption>Exodus 3:15</figcaption>
+            </figure>
+
+            <figure className="theway-quote">
+              <blockquote>
+                “Here are they that keep the commandments of Elohim, and the
+                faith of Messiah.”
+              </blockquote>
+              <figcaption>Revelation 14:12</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* PILLARS */}
+      <section className="theway-section theway-section-alt" id="pillars">
+        <div className="theway-container">
+          <div className="theway-section-head">
+            <h2 className="theway-h2">The 8 Pillars</h2>
+            <p className="theway-muted">
+              Choose a path. Each pillar is short, focused, and built for
+              navigation—not information overload.
+            </p>
+          </div>
+
+          <div
+            className="theway-grid"
+            role="list"
+            aria-label="Eight pillar navigation"
+          >
+            {PILLARS.map((p) => (
+              <article className="theway-card" role="listitem" key={p.title}>
+                <h3 className="theway-card-title">{p.title}</h3>
+                <p className="theway-card-desc">{p.description}</p>
+                <div className="theway-card-actions">
+                  <Link
+                    className="theway-btn theway-btn-small theway-btn-primary"
+                    to={p.to}
+                  >
+                    Open
+                  </Link>
+                  <Link
+                    className="theway-btn theway-btn-small theway-btn-ghost"
+                    to={p.to}
+                  >
+                    Learn more
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOTTOM CTA */}
+      <section className="theway-section">
+        <div className="theway-container">
+          <div className="theway-cta">
+            <div className="theway-cta-text">
+              <h2 className="theway-h2">Start with what matters most</h2>
+              <p className="theway-muted">
+                If you’re new here, begin with our Statement of Faith, then
+                Memberships if you’re ready to walk with us.
+              </p>
+            </div>
+            <div className="theway-cta-actions">
+              <Link
+                className="theway-btn theway-btn-primary"
+                to="/statement-of-faith"
+              >
+                Statement of Faith
+              </Link>
+              <Link className="theway-btn theway-btn-ghost" to="/memberships">
+                Memberships
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
