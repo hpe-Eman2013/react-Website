@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { toCloudinaryTransformedUrl } from "../utils/cloudinary";
-import { likeTestimony, dislikeTestimony } from "../services/testimonyService";
+import { toCloudinaryTransformedUrl } from "@/utils/cloudinary";
+import { likeTestimony, dislikeTestimony } from "@/services/testimonyService";
 import "@/assets/css/the-assembly/TestimonyCard.css";
 
 const TestimonyCard = ({

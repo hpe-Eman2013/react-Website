@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import TestimonyCard from "../../../components/TestimonyCard";
+import TestimonyCard from "@/components/testimonies/TestimonyCard";
 import {
   fetchApprovedTestimonies,
   fetchVoteMap,
