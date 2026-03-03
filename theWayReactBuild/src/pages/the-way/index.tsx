@@ -76,9 +76,9 @@ export default function TheWayPage() {
           </p>
 
           <div className="theway-hero-ctas">
-            <Link className="theway-btn theway-btn-ghost" to="#pillars">
+            <a href="#pillars" className="theway-btn theway-btn-ghost">
               Explore the 8 Pillars
-            </Link>
+            </a>
             <Link
               className="theway-btn theway-btn-primary"
               to="/statement-of-faith"
@@ -117,8 +117,9 @@ export default function TheWayPage() {
           <div className="theway-scripture-grid" aria-label="Scripture panels">
             <figure className="theway-quote">
               <blockquote>
-                “Stand in the ways and see, and ask for the old paths, where is
-                the good way, and walk therein…”
+                “Thus said Yahuah, “Stand in the ways and see, and ask for the
+                old paths, where the good way is, and walk in it; and find rest
+                for yourselves. …”
               </blockquote>
               <figcaption>Jeremiah 6:16</figcaption>
             </figure>
@@ -133,16 +134,19 @@ export default function TheWayPage() {
 
             <figure className="theway-quote">
               <blockquote>
-                “This is My Name forever, and this is My memorial unto all
-                generations.”
+                “"And Elohim said further to Mosheh, “Thus you are to say to the
+                children of Yisra’ĕl, ‘Yahuah Elohim of your fathers, the Elohim
+                of Aḇraham, the Elohim of Yitsḥaq, and the Elohim of Ya’aqoḇ,
+                has sent me to you. This is My Name forever, and this is My
+                remembrance to all generations.’"
               </blockquote>
               <figcaption>Exodus 3:15</figcaption>
             </figure>
 
             <figure className="theway-quote">
               <blockquote>
-                “Here are they that keep the commandments of Elohim, and the
-                faith of Messiah.”
+                “"Here is the endurance of the qodeshim, here are those guarding
+                the Commands of Yahuah and the belief of Yahusha."”
               </blockquote>
               <figcaption>Revelation 14:12</figcaption>
             </figure>
@@ -171,17 +175,8 @@ export default function TheWayPage() {
                 <h3 className="theway-card-title">{p.title}</h3>
                 <p className="theway-card-desc">{p.description}</p>
                 <div className="theway-card-actions">
-                  <Link
-                    className="theway-btn theway-btn-small theway-btn-primary"
-                    to={p.to}
-                  >
-                    Open
-                  </Link>
-                  <Link
-                    className="theway-btn theway-btn-small theway-btn-ghost"
-                    to={p.to}
-                  >
-                    Learn more
+                  <Link className="theway-card-link" to={p.to}>
+                    Learn more →
                   </Link>
                 </div>
               </article>

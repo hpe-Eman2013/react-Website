@@ -68,6 +68,7 @@
   padding: 0.85rem 1.1rem;
 
   font-weight: 700;
+  font-family: inherit;
   text-decoration: none;
   cursor: pointer;
 
@@ -225,6 +226,9 @@
   border-radius: 18px;
   padding: 1.25rem;
   box-shadow: var(--shadow-soft);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .theway-card:hover {
@@ -243,14 +247,27 @@
   margin: 0 0 1rem;
   color: var(--muted);
   line-height: 1.55;
+  flex-grow: 1;
 }
 
 .theway-card-actions {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
+.theway-card-link {
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--color-secondary);
+  transition: color 160ms ease;
+}
+
+.theway-card-link:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
 /* CTA BOX */
 .theway-cta {
   display: flex;
