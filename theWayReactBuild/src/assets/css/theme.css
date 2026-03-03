@@ -13,7 +13,9 @@
 
   --color-text-dark: #1a1a1a;
   --color-text-light: #ffffff;
-
+  --surface: var(--color-surface); /* page background */
+   --surface-panel: #ffffff; /* elevated panels/cards */
+  --btn-color: #91c7f6;
   --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
   --radius: 10px;
 
@@ -47,7 +49,9 @@
 
   --color-text-dark: #e9eef5;
   --color-text-light: #ffffff;
-
+  --surface-panel: #1b1f24;
+  --btn-color: #4fa3f7;
+  --surface: var(--color-surface);
   --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
 
   --text: var(

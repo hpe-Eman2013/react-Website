@@ -63,7 +63,7 @@ export default function TheWayPage() {
       <section className="theway-hero">
         <div className="theway-hero-overlay" />
         <div className="theway-hero-inner">
-          <p className="theway-eyebrow">THE WAY</p>
+          <h2 className="theway-eyebrow">THE WAY</h2>
 
           <h1 className="theway-title">
             Restoring the Ancient Paths — Returning to the Names &amp; the Word
@@ -76,11 +76,11 @@ export default function TheWayPage() {
           </p>
 
           <div className="theway-hero-ctas">
-            <Link className="theway-btn theway-btn-primary" to="#pillars">
+            <Link className="theway-btn theway-btn-ghost" to="#pillars">
               Explore the 8 Pillars
             </Link>
             <Link
-              className="theway-btn theway-btn-ghost"
+              className="theway-btn theway-btn-primary"
               to="/statement-of-faith"
             >
               Read the Statement of Faith
