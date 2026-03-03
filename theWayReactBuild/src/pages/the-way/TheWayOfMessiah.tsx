@@ -12,41 +12,41 @@ const PILLARS: Pillar[] = [
   {
     title: "About Us",
     description: "Who we are, why we exist, and what we’re building together.",
-    to: "/about-us",
+    to: "/the-way/about",
   },
   {
     title: "Statement of Faith",
     description: "What we believe — anchored in Scripture, tested, and lived.",
-    to: "/statement-of-faith",
+    to: "/the-way/statement-of-faith",
   },
   {
     title: "Outreach",
     description:
       "Serving, teaching, and strengthening families and communities.",
-    to: "/outreach",
+    to: "/the-way/outreach",
   },
   {
     title: "Education",
     description:
       "Training for wisdom, stewardship, and practical righteousness.",
-    to: "/education",
+    to: "/the-way/education",
   },
   {
     title: "Lectures",
     description:
       "Long-form teaching: structured series, topics, and deep dives.",
-    to: "/lectures",
+    to: "/the-way/lectures",
   },
   {
     title: "Scriptural Studies",
     description: "Study guides, reading plans, and verse-by-verse exploration.",
-    to: "/scriptural-studies",
+    to: "/the-way/scriptural-studies",
   },
   {
     title: "Memberships",
     description:
       "Covenant community: commitments, conduct, and accountability.",
-    to: "/memberships",
+    to: "/the-way/memberships",
   },
   {
     title: "Giving",

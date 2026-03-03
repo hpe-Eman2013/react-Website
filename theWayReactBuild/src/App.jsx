@@ -29,18 +29,19 @@ import RequireAuth from "./auth/RequireAuth";
 import RequireAdmin from "./auth/RequireAdmin";
 
 // ---- Domain layouts (index.jsx) ----
-import TheWayPage from "./pages/the-way";
+import TheWayLayout from "./pages/the-way/Layout";
+import TheWayPage from "./pages/the-way/TheWayOfMessiah";
 import AssemblyLayout from "./pages/the-assembly";
 import AccountsLayout from "./pages/accounts";
 import BibleLayout from "./pages/bible";
 
 // ---- The Way children ----
-import AboutPage from "./pages/about";
-import EducationPage from "./pages/education";
-import MissionVision from "./pages/mission";
-import OutreachPage from "./pages/outreach";
-import StatementOfFaithPage from "./pages/statement-of-faith";
-import ContactPage from "./pages/contact";
+import AboutPage from "./pages/the-way/about";
+import EducationPage from "./pages/the-way/education";
+import MissionVision from "./pages/the-way/mission";
+import OutreachPage from "./pages/the-way/outreach";
+import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
+import ContactPage from "./pages/the-way/contact";
 
 // ---- The Assembly children ----
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
@@ -80,16 +81,29 @@ function App() {
           <Route path="/submit" element={<SubmitTestimony />} /> */}
 
           {/* ===== The Way ===== */}
-          <Route path="/the-way" element={<TheWayPage />}>
-            <Route index element={<AboutPage />} />
+          <Route path="/the-way" element={<TheWayLayout />}>
+            {/* ✅ /the-way */}
+            <Route index element={<TheWayPage />} />
+
+            {/* ✅ /the-way/about */}
             <Route path="about" element={<AboutPage />} />
+
+            {/* ✅ /the-way/statement-of-faith */}
             <Route
               path="statement-of-faith"
               element={<StatementOfFaithPage />}
             />
+
+            {/* ✅ /the-way/mission */}
             <Route path="mission" element={<MissionVision />} />
+
+            {/* ✅ /the-way/outreach */}
             <Route path="outreach" element={<OutreachPage />} />
+
+            {/* ✅ /the-way/education */}
             <Route path="education" element={<EducationPage />} />
+
+            {/* ✅ /the-way/contact */}
             <Route path="contact" element={<ContactPage />} />
           </Route>
 
