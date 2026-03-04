@@ -65,10 +65,13 @@ export default function AboutPage() {
           </p>
 
           <div className="about-hero-actions">
-            <Link className="theway-btn" to="/statement-of-faith">
+            <Link className="theway-btn" to="/the-way/statement-of-faith">
               Statement of Faith
             </Link>
-            <Link className="theway-btn theway-btn-ghost" to="/memberships">
+            <Link
+              className="theway-btn theway-btn-ghost"
+              to="/the-way/memberships"
+            >
               Membership
             </Link>
           </div>
