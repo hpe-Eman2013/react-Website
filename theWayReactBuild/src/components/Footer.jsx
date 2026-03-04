@@ -38,7 +38,11 @@ export default function Footer() {
     <footer className="wom-footer" role="contentinfo">
       <div className="wom-footer-inner">
         <div className="wom-footer-left">
-          <div className="wom-footer-brand">The Way of Messiah</div>
+          <div className="wom-footer-brand">
+            <NavLink to="/" className="wom-footer-brand">
+              The Way of Messiah
+            </NavLink>
+          </div>
           <div className="wom-footer-copy">
             © {year} The Way of Messiah. All rights reserved.
           </div>

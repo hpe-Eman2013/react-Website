@@ -37,8 +37,9 @@
   margin: 0.75rem auto 0;
   max-width: 60ch;
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-weight: bold;
   line-height: 1.6;
-  color: var(--text-on-dark-muted);
+  color: var(--text-on-dark-muted) !important;
   text-align: center;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }

@@ -19,7 +19,7 @@ export default function HomePage() {
         <div className="home-hero-inner">
           <h1 className="home-hero-title">The Way of Messiah</h1>
 
-          <p>
+          <p className="home-hero-inner p">
             Returning to the ancient paths and restoring the Name of the Father
             and His Son.
           </p>
@@ -185,7 +185,7 @@ export default function HomePage() {
             <ul>
               <li>Yod = Ya / Yay</li>
               <li>He = a / eh</li>
-              <li>Waw = o / u</li>
+              <li>Vav = oo / u</li>
               <li>Sin/Shin = sh</li>
               <li>Ayin = ah</li>
             </ul>
