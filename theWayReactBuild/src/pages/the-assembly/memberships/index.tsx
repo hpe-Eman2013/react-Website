@@ -20,8 +20,8 @@ export default function MembershipPage() {
             <p>
               We, the undersigned, being called out of the nations and restored
               to <strong>The Way</strong> (Acts 24:14), acknowledge that the
-              earth and all fullness thereof belong to Yahuah Elohim. We confess
-              that we are sojourners and stewards upon His land.
+              earth and all fullness thereof belong to Yahuah Elohiym. We
+              confess that we are sojourners and stewards upon His land.
             </p>
             <p>
               Having been redeemed by the blood of Messiah Yahusha, we renounce
@@ -381,7 +381,7 @@ export default function MembershipPage() {
             <ul>
               <li>
                 I am transitioning my life, labor, and legacy into the
-                jurisdiction of Yahuah Elohim.
+                jurisdiction of Yahuah Elohiym.
               </li>
               <li>I stand as a trustee of His Word.</li>
               <li>I practice His Equity.</li>
@@ -424,7 +424,7 @@ export default function MembershipPage() {
         <h1 className="mb-2">Membership Covenant & Articles of Stewardship</h1>
         <p className="text-muted mb-0">
           The Way of Messiah — A Declaration of Faith, Jurisdiction, Fellowship,
-          and Stewardship under Yahuah Elohim.
+          and Stewardship under Yahuah Elohiym.
         </p>
       </header>
 

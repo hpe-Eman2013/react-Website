@@ -35,10 +35,10 @@ export default function HomePage() {
         <h2>The Name of the Father</h2>
 
         <p>
-          We begin with the name of Elohim. When Elohim commanded Mosheh to go
+          We begin with the name of Elohiym. When Elohiym commanded Mosheh to go
           to Mitsrayim and bring the children of Yashar'el out, Mosheh wanted to
           know what name would he give them, in case they wanted to know in
-          whose name and authority was he speaking in. This is what Elohim told
+          whose name and authority was he speaking in. This is what Elohiym told
           Mosheh:
         </p>
 

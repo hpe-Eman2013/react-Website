@@ -97,7 +97,7 @@ export default function TheWayPage() {
           <div className="theway-prose">
             <p>
               “The Way” is a return: to the pattern of Scripture, the
-              commandments of Elohim, the witness of Messiah, and the covenant
+              commandments of Elohiym, the witness of Messiah, and the covenant
               rhythms of Sabbaths and Feasts. We seek alignment — not novelty —
               because truth doesn’t need reinvention.
             </p>
@@ -134,11 +134,11 @@ export default function TheWayPage() {
 
             <figure className="theway-quote">
               <blockquote>
-                “"And Elohim said further to Mosheh, “Thus you are to say to the
-                children of Yisra’ĕl, ‘Yahuah Elohim of your fathers, the Elohim
-                of Aḇraham, the Elohim of Yitsḥaq, and the Elohim of Ya’aqoḇ,
-                has sent me to you. This is My Name forever, and this is My
-                remembrance to all generations.’"
+                “"And Elohiym said further to Mosheh, “Thus you are to say to
+                the children of Yisra’ĕl, ‘Yahuah Elohiym of your fathers, the
+                Elohiym of Aḇraham, the Elohiym of Yitsḥaq, and the Elohiym of
+                Ya’aqoḇ, has sent me to you. This is My Name forever, and this
+                is My remembrance to all generations.’"
               </blockquote>
               <figcaption>Exodus 3:15</figcaption>
             </figure>

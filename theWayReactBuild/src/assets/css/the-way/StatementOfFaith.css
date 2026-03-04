@@ -1,159 +1,458 @@
-.scripture-tooltip-verse,
-.scripture-tooltip-version {
-  display: block;
-}
-/* Page spacing */
-.sofa-page .card-body {
-  padding: 1.25rem;
+/* =========================
+   Statement of Faith Page
+   ========================= */
+
+/* Page shell */
+.sofa-page {
+  --radius: 18px;
+  --radius-sm: 14px;
 }
 
-/* Hero */
+/* =========================
+   HERO
+   ========================= */
+
 .sofa-hero {
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 1rem;
   position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 18px;
+
+  /* +~1/3 taller */
+  min-height: 75vh;
 }
 
 .sofa-hero__media {
-  position: relative;
-  height: 260px;
+  position: absolute;
+  inset: 0;
 }
 
 .sofa-hero__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transform: scale(1.02);
 }
 
 .sofa-hero__overlay {
   position: absolute;
   inset: 0;
+  /* readable without heavy gradients, but strong enough for white text */
   background: linear-gradient(
     180deg,
-    rgba(15, 30, 46, 0.10),
-    rgba(15, 30, 46, 0.68)
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.55)
   );
 }
 
 .sofa-hero__content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem 1rem 1.1rem;
-  color: var(--color-text-light);
+  position: relative;
+  z-index: 1;
+  padding: clamp(18px, 3vw, 28px);
+  min-height: 240px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Force hero text to stay white regardless of theme */
+.sofa-hero__content,
+.sofa-hero__content * {
+  color: #fff;
 }
 
 .sofa-hero__title {
-  margin: 0 0 0.25rem;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  line-height: 1.15;
+  margin: 0;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .sofa-hero__subtitle {
   margin: 0;
-  opacity: 0.9;
-}
-.sofa-scriptures {
-  display: grid;
-  gap: 0.75rem;
+  max-width: 72ch;
+  color: rgba(255, 255, 255, 0.88);
 }
 
-.scripture {
-  position: relative;
-  display: block; /* makes it “box-like” */
-  padding: 0.85rem 0.95rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background: rgba(0,0,0,0.02);
+.sofa-hero__cta {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-[data-theme="dark"] .scripture {
-  background: rgba(255,255,255,0.04);
+/* Ensure hero buttons remain white + readable */
+.sofa-hero__cta .theway-btn,
+.sofa-hero__cta .theway-btn:visited {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
-.scripture-ref {
-  display: inline-block;
-  font-weight: 700;
-  color: var(--color-secondary);
-  text-decoration: underline;
+.sofa-hero__cta .theway-btn:hover,
+.sofa-hero__cta .theway-btn:focus-visible {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.sofa-hero__cta .theway-btn-ghost {
   background: transparent;
-  border: 0;
-  padding: 0;
+}
+
+/* =========================
+   Intro Panel
+   ========================= */
+
+.sofa-panel {
+  border: 1px solid var(--color-border);
+  background: var(--surface-panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.sofa-panel__title {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.sofa-panel__text {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* =========================
+   Controls
+   ========================= */
+
+.sofa-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px 0 14px;
+}
+
+.sofa-muted {
+  color: var(--text-muted);
+}
+
+.sofa-controls__right {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Theme-safe small buttons */
+.sofa-btn {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--surface-panel);
+  color: var(--color-primary);
+  border-radius: 999px;
+  padding: 8px 12px;
   cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 150ms ease, background 150ms ease;
 }
 
-@media (max-width: 900px) {
-  .sofa-hero__media {
-    height: 220px;
-  }
+.sofa-btn:hover {
+  transform: translateY(-1px);
 }
 
-/* Scripture tooltip system */
-.sofa-scriptures {
+.sofa-btn:active {
+  transform: translateY(0);
+}
+
+.sofa-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sofa-btn--ghost {
+  background: transparent;
+}
+
+/* =========================
+   Accordion Stack
+   ========================= */
+
+/* Stack cards (1–5) centered */
+.sofa-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 0.75rem;
+  gap: 14px;
+  align-items: center;
 }
 
-/* wrapper */
-.scripture {
-  position: relative;
-  display: inline-block;
+/* Control card width */
+.sofa-doctrine,
+.sofa-accordion {
+  width: 100%;
+  max-width: 880px;
 }
 
-/* clickable reference */
-.scripture-ref {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: var(--color-accent);
-  text-decoration: underline;
-  cursor: pointer;
+.sofa-doctrine {
+  border-radius: var(--radius);
 }
 
-.scripture-ref:focus-visible {
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
-/* tooltip */
-.scripture-tooltip {
-  position: absolute;
-  z-index: 20;
-  left: 0;
-  top: calc(100% + 8px);
-  width: min(520px, 86vw);
-  padding: 0.75rem 0.85rem;
-  border-radius: 0.75rem;
+/* Native details accordion */
+.sofa-accordion {
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--surface-panel);
+  border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
-  color: var(--text);
+  overflow: visible;
+}
+
+/* Remove default marker */
+.sofa-accordion > summary {
+  list-style: none;
+}
+
+.sofa-accordion > summary::-webkit-details-marker {
   display: none;
 }
 
-/* show on hover OR focus-within */
+.sofa-accordion__summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  cursor: pointer;
+
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
+}
+
+.sofa-accordion__summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.sofa-accordion__badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  background: var(--surface);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.sofa-accordion__title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sofa-accordion__chev {
+  opacity: 0.8;
+  transition: transform 160ms ease;
+}
+
+.sofa-accordion[open] .sofa-accordion__chev {
+  transform: rotate(180deg);
+}
+
+.sofa-accordion__panel {
+  border-top: 1px solid var(--color-border);
+  padding: 14px 14px 16px;
+  color: var(--text);
+  line-height: 1.6;
+  overflow: visible;
+}
+
+.sofa-accordion__panel p {
+  margin-top: 0;
+}
+
+/* =========================
+   Lists + Content blocks
+   ========================= */
+
+.sofa-list {
+  padding-left: 1.1rem;
+}
+
+/* Existing list hook (compat with older markup) */
+.sofa-points {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+/* Lead paragraph inside a doctrine */
+.sofa-lead {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Core Beliefs list */
+.sofa-beliefs {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 12px;
+}
+
+.sofa-belief {
+  margin: 0;
+}
+
+.sofa-belief__title {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+/* Subsections in “Differences…” */
+.sofa-subsections {
+  display: grid;
+  gap: 14px;
+}
+
+.sofa-subsection__title {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+}
+
+.sofa-bullets {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text);
+}
+
+.sofa-bullets ul {
+  margin: 6px 0 0;
+  padding-left: 1.1rem;
+}
+
+/* =========================
+   Scripture tooltip
+   ========================= */
+
+.sofa-scriptures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.scripture {
+  position: relative;
+  display: inline-block;
+}
+
+.scripture-ref {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--surface);
+  color: var(--color-primary);
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: transform 150ms ease, background 150ms ease;
+}
+
+.scripture-ref:hover {
+  transform: translateY(-1px);
+}
+
+.scripture-ref:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.scripture-tooltip strong {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 10px);
+  z-index: 9999;
+  display: block;
+  margin-bottom: 6px;
+
+  width: min(520px, 86vw);
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  /* Force visible background */
+  background: var(--surface-panel, #1e1f24);
+  border: 1px solid var(--color-border, rgba(255,255,255,0.12));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+
+  color: var(--text, #eaeaea);
+  line-height: 1.55;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  font-weight: 800;
+
+  transition: opacity 140ms ease, transform 140ms ease, visibility 0s linear 140ms;
+}
+.scripture-tooltip em {
+  font-style: italic;
+}
+/* Show tooltip when hovering/focusing the scripture button */
 .scripture:hover .scripture-tooltip,
 .scripture:focus-within .scripture-tooltip {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 
-.scripture-tooltip-verse,
-.scripture-tooltip-version {
-  display: block;
-  margin-top: 0.35rem;
+.scripture-tooltip-verse {
+  color: var(--text-muted);
 }
 
-/* Keep version a bit softer, even in dark mode */
 .scripture-tooltip-version {
-  opacity: 0.85;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* =========================
+   Closing CTA band
+   ========================= */
+
+.sofa-cta {
+  margin-top: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--surface-panel);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.sofa-cta__inner {
+  padding: 16px;
+}
+
+.sofa-cta__title {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+}
+
+.sofa-cta__text {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.sofa-cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }

@@ -146,7 +146,7 @@ export default function Education() {
 
           <blockquote className="blockquote education-quote mb-4">
             <p className="mb-2">
-              “And Yahuah Elohim took the man, and put him into the garden of
+              “And Yahuah Elohiym took the man, and put him into the garden of
               Aydan to dress it and to keep it.”
             </p>
             <footer className="blockquote-footer mb-0">

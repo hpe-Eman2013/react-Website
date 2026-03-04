@@ -142,7 +142,7 @@ export default function AboutPage() {
             <p className="about-copy">
               This ministry exists because many are hungry for clarity—how to
               obey, how to worship, how to build, and how to steward life in a
-              way that honors Elohim. We’re building a home for learning and
+              way that honors Elohiym. We’re building a home for learning and
               practice, not just ideas.
             </p>
 

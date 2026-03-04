@@ -65,7 +65,7 @@ export default function Outreach() {
                   <li>
                     <strong>The Method:</strong> Members create or share short
                     (60-second) videos or “carousels” explaining one Paleo
-                    Hebrew word per week (e.g., Elohim, Barakah, Shalom).
+                    Hebrew word per week (e.g., Elohiym, Barakah, Shalom).
                   </li>
                   <li>
                     <strong>The Goal:</strong> To de-mystify the “Greek”

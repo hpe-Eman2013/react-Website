@@ -45,7 +45,7 @@ export default function MissionVision() {
                 </h3>
                 <p className="mb-0">
                   To see a remnant restored to the ancient paths of Yahuah
-                  Elohim, walking in the fullness of truth as revealed through
+                  Elohiym, walking in the fullness of truth as revealed through
                   the Messiah Yahusha. We envision a community of believers who
                   are not only spiritually set apart but are also physically and
                   legally equipped to live as true stewards of the earth,
@@ -178,7 +178,7 @@ export default function MissionVision() {
             <blockquote className="blockquote mission-quote mb-4">
               <p className="mb-2">
                 “But this I confess unto thee, that after The Way which they
-                call heresy, so worship I the Elohim of my fathers, believing
+                call heresy, so worship I the Elohiym of my fathers, believing
                 all things which are written in the Law and in the Prophets.”
               </p>
               <footer className="blockquote-footer mb-0">Acts 24:14</footer>
@@ -239,7 +239,7 @@ export default function MissionVision() {
                     </strong>
                     <ul className="mt-2">
                       <li>
-                        <strong>The Settlor:</strong> Yahuah Elohim, who owns
+                        <strong>The Settlor:</strong> Yahuah Elohiym, who owns
                         the earth and everything in it (Tehillim / Psalms 24:1).
                       </li>
                       <li>

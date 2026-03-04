@@ -18,7 +18,7 @@ export const PILLARS: Pillar[] = [
     key: "statement-of-faith",
     title: "Statement of Faith",
     blurb:
-      "To see a remnant restored to the ancient paths of Yahuah Elohim, walking in the fullness of truth as revealed through the Messiah Yahusha.",
+      "To see a remnant restored to the ancient paths of Yahuah Elohiym, walking in the fullness of truth as revealed through the Messiah Yahusha.",
     href: "/statement-of-faith",
   },
   {
@@ -46,7 +46,7 @@ export const PILLARS: Pillar[] = [
     key: "lectures",
     title: "Lectures",
     blurb:
-      "Insightful, lively instruction designed to fill you with the knowledge of Elohim as the Word is expounded.",
+      "Insightful, lively instruction designed to fill you with the knowledge of Elohiym as the Word is expounded.",
     href: "/lectures",
   },
   {
