@@ -219,7 +219,7 @@ export default function AboutPage() {
           </div>
 
           <div className="about-cta-actions">
-            <Link className="theway-btn" to="/statement-of-faith">
+            <Link className="theway-btn" to="/the-way/statement-of-faith">
               Statement of Faith
             </Link>
             <Link className="theway-btn theway-btn-ghost" to="/memberships">

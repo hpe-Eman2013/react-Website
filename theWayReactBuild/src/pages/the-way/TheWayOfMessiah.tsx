@@ -81,7 +81,7 @@ export default function TheWayPage() {
             </a>
             <Link
               className="theway-btn theway-btn-primary"
-              to="/statement-of-faith"
+              to="/the-way/statement-of-faith"
             >
               Read the Statement of Faith
             </Link>
@@ -199,7 +199,7 @@ export default function TheWayPage() {
             <div className="theway-cta-actions">
               <Link
                 className="theway-btn theway-btn-primary"
-                to="/statement-of-faith"
+                to="/the-way/statement-of-faith"
               >
                 Statement of Faith
               </Link>

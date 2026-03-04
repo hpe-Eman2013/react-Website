@@ -19,35 +19,35 @@ export const PILLARS: Pillar[] = [
     title: "Statement of Faith",
     blurb:
       "To see a remnant restored to the ancient paths of Yahuah Elohiym, walking in the fullness of truth as revealed through the Messiah Yahusha.",
-    href: "/statement-of-faith",
+    href: "/the-way/statement-of-faith",
   },
   {
     key: "outreach",
     title: "Outreach",
     blurb:
       "The goal is to move people from “the system” back to the “Household of Yahuah” through progressive education and practical service.",
-    href: "/outreach",
+    href: "/the-way/outreach",
   },
   {
     key: "about",
     title: "About Us",
     blurb:
       "The first century disciples of the Messiah were in a faith known as “The Way”. We invite you to learn and worship the Most High with us.",
-    href: "/about",
+    href: "/the-way/about",
   },
   {
     key: "education",
     title: "Education",
     blurb:
       "Bridging the spiritual requirements of Yahuah with the functional mechanics of managing His estate on earth.",
-    href: "/education",
+    href: "/the-way/education",
   },
   {
     key: "lectures",
     title: "Lectures",
     blurb:
       "Insightful, lively instruction designed to fill you with the knowledge of Elohiym as the Word is expounded.",
-    href: "/lectures",
+    href: "/the-way/lectures",
   },
   {
     key: "scriptural-studies",
