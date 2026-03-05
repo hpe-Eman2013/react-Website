@@ -4,11 +4,6 @@ import lawImg from "@/assets/images/the-way/outreach/law.jpg";
 export default function EquityOutreach() {
   return (
     <article className="pillar-card" aria-labelledby="pillar-equity">
-      <div className="pillar-card__media" aria-hidden="true">
-        <img src={lawImg} alt="" loading="lazy" />
-        <div className="pillar-card__overlay" />
-      </div>
-
       <div className="pillar-card__content">
         <p className="pillar-card__tag">Pillar 2</p>
         <h3 id="pillar-equity" className="pillar-card__title">
@@ -16,8 +11,16 @@ export default function EquityOutreach() {
           <span className="pillar-card__muted">(Kingdom Governance)</span>
         </h3>
 
-        {/* Background image is now handled by CSS via .pillar-split--law */}
         <div className="pillar-split pillar-split--bg pillar-split--law">
+          <img
+            className="pillar-split__bgimg"
+            src={lawImg}
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+          />
+          <div className="pillar-split__bgshade" aria-hidden="true" />
+
           <section className="pillar-box" aria-label="Virtual Equity Outreach">
             <h4>Virtual: “Debt to Stewardship” Webinars</h4>
             <ul>

@@ -7,6 +7,39 @@
   color: var(--color-text);
 }
 
+/* -------------------------
+   Theme-aware glass variables
+-------------------------- */
+
+/* Default (light) */
+:root {
+  /* More transparent (so the image shows through) */
+  --pillar-glass-bg: rgba(255, 255, 255, 0.12);
+  --pillar-glass-text: rgba(15, 23, 42, 0.96);
+  --pillar-glass-border: rgba(255, 255, 255, 0.35);
+
+  --pillar-glass-blur: 6px;
+
+  /* Darkening wash behind panels (keeps text readable) */
+  --pillar-bgshade-top: rgba(0, 0, 0, 0.18);
+  --pillar-bgshade-bot: rgba(0, 0, 0, 0.55);
+}
+
+/* Dark mode (support common toggles) */
+html[data-theme="dark"],
+body[data-theme="dark"],
+[data-theme="dark"],
+html.dark,
+body.dark,
+.dark {
+  --pillar-glass-bg: rgba(0, 0, 0, 0.22);
+  --pillar-glass-text: rgba(255, 255, 255, 0.94);
+  --pillar-glass-border: rgba(255, 255, 255, 0.24);
+
+  --pillar-bgshade-top: rgba(0, 0, 0, 0.28);
+  --pillar-bgshade-bot: rgba(0, 0, 0, 0.70);
+}
+
 /* ---- HERO ---- */
 .outreach-hero {
   position: relative;
@@ -44,6 +77,7 @@
   padding: 30px 0 10px;
 }
 
+/* Move title/buttons up + left padding */
 .outreach-hero__content--top {
   align-items: start;
   padding-left: clamp(12px, 2.4vw, 34px);
@@ -84,7 +118,7 @@
   flex-wrap: wrap;
 }
 
-/* Buttons (fallback) */
+/* Buttons (safe fallback) */
 .btn-primary,
 .btn-ghost,
 .btn-tertiary {
@@ -98,39 +132,39 @@
   text-decoration: none;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease,
+    color 120ms ease;
 }
 
+/* Primary */
 .btn-primary {
   background: var(--btn-color, #91c7f6);
   color: #0b1a2a;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
-
 .btn-primary:hover {
   transform: translateY(-1px);
 }
 
+/* Ghost */
 .btn-ghost {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
-
 .btn-ghost:hover {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.12);
 }
 
+/* Tertiary */
 .btn-tertiary {
   background: transparent;
   border: 1px solid var(--color-border);
   color: var(--color-text);
 }
-
 .btn-tertiary:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ---- Sections ---- */
@@ -152,6 +186,7 @@
   line-height: 1.7;
 }
 
+/* ---- Section heading left padding ---- */
 .outreach-section-head .outreach-h2,
 .outreach-section-head .outreach-sub {
   padding-left: clamp(12px, 2.4vw, 34px);
@@ -202,19 +237,18 @@
   box-shadow: var(--shadow-sm, 0 10px 32px rgba(0, 0, 0, 0.10));
 }
 
+/* Default top media (Pillar 3 uses this) */
 .pillar-card__media {
   position: relative;
   height: 220px;
   overflow: hidden;
 }
-
 .pillar-card__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transform: scale(1.04);
 }
-
 .pillar-card__overlay {
   position: absolute;
   inset: 0;
@@ -237,7 +271,6 @@
 .pillar-card__title {
   margin: 0 0 14px;
   font-size: 1.35rem;
-  color: var(--color-text);
 }
 
 .pillar-card__muted {
@@ -246,12 +279,13 @@
   font-size: 0.95rem;
 }
 
-/* Split base */
+/* Split layout */
 .pillar-split {
   display: grid;
   gap: 12px;
   grid-template-columns: 1fr;
 }
+
 
 @media (min-width: 992px) {
   .pillar-split {
@@ -260,19 +294,17 @@
   }
 }
 
-/* Regular pillar boxes */
+/* Normal (non-background) box */
 .pillar-box {
   border: 1px solid var(--color-border);
   background: var(--color-bg);
   border-radius: 18px;
   padding: 14px 14px;
-  color: var(--color-text);
 }
 
 .pillar-box h4 {
   margin: 0 0 8px;
   font-size: 1.02rem;
-  color: var(--color-text);
 }
 
 .pillar-box ul {
@@ -285,102 +317,96 @@
   margin-top: 8px;
 }
 
-/* =========================
-   Split Background System
-   (Panels on top of image)
-========================= */
-
-:root {
-  --outreach-panel-bg: rgba(255, 255, 255, 0.78);
-  --outreach-panel-border: rgba(255, 255, 255, 0.28);
-  --outreach-panel-text: var(--color-text);
-
-  --outreach-split-shade: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.18),
-      rgba(0, 0, 0, 0.48)
-    ),
-    radial-gradient(circle at 25% 20%, rgba(0, 0, 0, 0.12), transparent 58%);
-}
-
-html[data-theme="dark"],
-body[data-theme="dark"],
-[data-theme="dark"] {
-  --outreach-panel-bg: rgba(12, 16, 20, 0.60);
-  --outreach-panel-border: rgba(255, 255, 255, 0.16);
-  --outreach-panel-text: var(--color-text);
-
-  --outreach-split-shade: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.52),
-      rgba(0, 0, 0, 0.82)
-    ),
-    radial-gradient(circle at 25% 20%, rgba(0, 0, 0, 0.18), transparent 58%);
-}
+/* -------------------------
+   Background-image split (Pillar 1 + Pillar 2)
+   Glass panels + theme-aware text
+-------------------------- */
 
 .pillar-split--bg {
   position: relative;
-  border-radius: 18px;
   overflow: hidden;
+  border-radius: 18px;
   padding: 14px;
-  border: 1px solid var(--color-border);
-  isolation: isolate; /* prevents any weird blending/bleed */
+  min-height: 220px;
 }
 
-/* The real background image element */
+@media (min-width: 992px) {
+  .pillar-split--bg {
+    padding: 16px;
+  }
+}
+
+/* Background image element */
 .pillar-split__bgimg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.92; /* image visibility */
-  transform: scale(1.02);
+  object-fit: cover;     /* prevents huge image behavior */
+  object-position: center;
+  transform: scale(1.03);
+  opacity: 0.92;
   z-index: 0;
 }
 
-/* The shade overlay */
+/* Darkening wash behind panels */
 .pillar-split__bgshade {
   position: absolute;
   inset: 0;
-  background: var(--outreach-split-shade);
+  background: linear-gradient(
+    to bottom,
+    var(--pillar-bgshade-top),
+    var(--pillar-bgshade-bot)
+  );
   z-index: 1;
-}
-
-/* Bring actual content above shade */
-.pillar-split--bg > section {
-  position: relative;
-  z-index: 2;
 }
 
 /* Glass panels */
 .pillar-split--bg .pillar-box {
-  background: var(--outreach-panel-bg) !important;
-  color: var(--outreach-panel-text) !important;
-  border: 1px solid var(--outreach-panel-border) !important;
-
+  background: var(--pillar-glass-bg) !important; /* transparent */
+  color: var(--pillar-glass-text);               /* theme-aware text */
+  border: 1px solid var(--pillar-glass-border);
   border-radius: 18px;
-  padding: 14px 14px;
+  padding: 16px;
 
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+  position: relative;
+  z-index: 2;
+
+  -webkit-backdrop-filter: blur(var(--pillar-glass-blur));
+  backdrop-filter: blur(var(--pillar-glass-blur));
 }
 
-/* Remove any unwanted “gray bars” / highlight backgrounds */
-.pillar-split--bg .pillar-box *,
-.pillar-split--bg .pillar-box strong {
-  background: transparent !important;
-  box-shadow: none !important;
+/* Make ALL inner text inherit the theme-aware color */
+.pillar-split--bg .pillar-box,
+.pillar-split--bg .pillar-box * {
   color: inherit !important;
 }
 
-/* ---- Mini media (agriculture) ---- */
+/* -------------------------
+   PILLAR 3 SAFETY NET
+   If an image accidentally lands in a pillar-box without the mini wrapper,
+   it will be cropped and NEVER explode.
+-------------------------- */
+.pillar-box > img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+  margin-top: 10px;
+}
+
+/* Mini media (Pillar 3) hard-locked */
 .pillar-mini-media {
   position: relative;
   margin-top: 10px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--color-border);
+
+  height: 140px !important;
+  max-height: 140px !important;
 }
 
 .pillar-mini-media::after {
@@ -393,13 +419,17 @@ body[data-theme="dark"],
     rgba(0,0,0,0.55)
   );
   pointer-events: none;
+  z-index: 1;
 }
 
 .pillar-mini-media img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 140px !important;
+  object-fit: cover !important;
+  object-position: center;
   display: block;
+  z-index: 0;
 }
 
 /* ---- Roles ---- */
@@ -445,88 +475,7 @@ body[data-theme="dark"],
   gap: 14px;
   grid-template-columns: 1fr;
 }
-/* =========================
-   Pillar 3: Two “image slab” panels
-========================= */
 
-.pillar-slab-grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: 1fr;
-  margin-top: 8px;
-}
-
-@media (min-width: 992px) {
-  .pillar-slab-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-}
-
-.pillar-slab {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid rgba(120, 170, 255, 0.55);
-  min-height: 190px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
-  isolation: isolate;
-}
-
-/* background image */
-.pillar-slab__bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.02);
-  z-index: 0;
-}
-
-/* dark overlay for readability */
-.pillar-slab__shade {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.20),
-      rgba(0, 0, 0, 0.68)
-    ),
-    radial-gradient(circle at 18% 18%, rgba(0, 0, 0, 0.18), transparent 60%);
-}
-
-/* content */
-.pillar-slab__content {
-  position: relative;
-  z-index: 2;
-  padding: 16px 16px;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.pillar-slab__content h4 {
-  margin: 0 0 10px;
-  color: #fff;
-  font-size: 1.05rem;
-}
-
-.pillar-slab__content ul {
-  margin: 0;
-  padding-left: 18px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.90);
-}
-
-.pillar-slab__content li + li {
-  margin-top: 8px;
-}
-
-/* Make <strong> pop without changing theme behavior */
-.pillar-slab__content strong {
-  color: #fff;
-  font-weight: 800;
-}
 @media (min-width: 992px) {
   .outreach-feature-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -675,4 +624,46 @@ body[data-theme="dark"],
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+/* =========================
+   Pillar 3: lock mini images (NO BLEED)
+   Place at VERY BOTTOM of Outreach.css
+========================= */
+
+.pillar-card .pillar-mini-media.pillar-mini-media--fixed {
+  height: 140px !important;
+  min-height: 140px !important;
+  max-height: 140px !important;
+
+  width: 100% !important;
+  display: block !important;
+
+  overflow: hidden !important;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  margin-top: 10px;
+  position: relative;
+}
+
+.pillar-card .pillar-mini-media.pillar-mini-media--fixed .pillar-mini-img {
+  width: 100% !important;
+  height: 100% !important;
+
+  max-width: 100% !important;
+  max-height: 100% !important;
+
+  object-fit: cover !important;
+  object-position: center !important;
+
+  display: block !important;
+}
+
+/* optional overlay wash */
+.pillar-card .pillar-mini-media.pillar-mini-media--fixed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.38));
+  pointer-events: none;
 }

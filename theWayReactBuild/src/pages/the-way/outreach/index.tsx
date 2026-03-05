@@ -40,7 +40,7 @@ export default function Outreach() {
               Explore the Pillars
             </a>
 
-            <Link className="btn-ghost" to="/contact">
+            <Link className="btn-ghost btn-inverse" to="/contact">
               Join the Work
             </Link>
           </div>
@@ -207,7 +207,7 @@ export default function Outreach() {
             <Link className="btn-primary" to="/membership">
               Become a Member
             </Link>
-            <Link className="btn-ghost" to="/donate">
+            <Link className="btn-ghost btn-inverse" to="/donate">
               Support the Work
             </Link>
           </div>
@@ -255,7 +255,7 @@ export default function Outreach() {
           <div className="outreach-details__body">
             <div className="outreach-actions">
               <a
-                className="btn-tertiary"
+                className="btn-tertiary btn-print"
                 href="/print/ministry-card"
                 target="_blank"
                 rel="noreferrer"
@@ -263,7 +263,7 @@ export default function Outreach() {
                 View Ministry Card
               </a>
               <a
-                className="btn-tertiary"
+                className="btn-tertiary btn-print"
                 href="/print/seed-flyer"
                 target="_blank"
                 rel="noreferrer"
@@ -271,7 +271,7 @@ export default function Outreach() {
                 View Seed &amp; Harvest Flyer
               </a>
               <a
-                className="btn-tertiary"
+                className="btn-tertiary btn-print"
                 href="/print/brochure"
                 target="_blank"
                 rel="noreferrer"
@@ -308,7 +308,10 @@ export default function Outreach() {
             <Link className="btn-primary" to="/contact">
               Contact Us
             </Link>
-            <Link className="btn-ghost btn-ghost--contrast" to="/the-way">
+            <Link
+              className="btn-ghost btn-ghost--contrast btn-inverse"
+              to="/the-way"
+            >
               Back to The Way
             </Link>
           </div>

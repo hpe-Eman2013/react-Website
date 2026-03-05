@@ -6,6 +6,11 @@ import cornImg from "@/assets/images/the-way/outreach/cornCrop.jpg";
 export default function AgricultureOutreach() {
   return (
     <article className="pillar-card" aria-labelledby="pillar-ag">
+      <div className="pillar-card__media" aria-hidden="true">
+        <img src={agricultureImg} alt="" loading="lazy" />
+        <div className="pillar-card__overlay" />
+      </div>
+
       <div className="pillar-card__content">
         <p className="pillar-card__tag">Pillar 3</p>
         <h3 id="pillar-ag" className="pillar-card__title">
@@ -13,15 +18,7 @@ export default function AgricultureOutreach() {
           <span className="pillar-card__muted">(The Living Estate)</span>
         </h3>
 
-        <div className="pillar-split pillar-split--bg pillar-split--word">
-          <img
-            className="pillar-split__bgimg"
-            src={cornImg}
-            alt=""
-            loading="lazy"
-            aria-hidden="true"
-          />
-          <div className="pillar-split__bgshade" aria-hidden="true" />
+        <div className="pillar-split">
           <section
             className="pillar-box"
             aria-label="Virtual Agriculture Outreach"
@@ -38,6 +35,18 @@ export default function AgricultureOutreach() {
                 spread the message through the physical seed.
               </li>
             </ul>
+
+            <div
+              className="pillar-mini-media pillar-mini-media--fixed"
+              aria-hidden="true"
+            >
+              <img
+                className="pillar-mini-img"
+                src={lettuceImg}
+                alt=""
+                loading="lazy"
+              />
+            </div>
           </section>
 
           <section
@@ -55,6 +64,18 @@ export default function AgricultureOutreach() {
                 19:9—giving away the corners sparks conversations.
               </li>
             </ul>
+
+            <div
+              className="pillar-mini-media pillar-mini-media--fixed"
+              aria-hidden="true"
+            >
+              <img
+                className="pillar-mini-img"
+                src={cornImg}
+                alt=""
+                loading="lazy"
+              />
+            </div>
           </section>
         </div>
       </div>

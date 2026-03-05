@@ -19,8 +19,7 @@ export default function ScriptureOutreach() {
           </span>
         </h3>
 
-        {/* Background image is now a REAL IMG (no inline styles, no CSS url path issues) */}
-        <div className="pillar-split pillar-split--bg">
+        <div className="pillar-split pillar-split--bg pillar-split--word">
           <img
             className="pillar-split__bgimg"
             src={givingBiblesImg}
