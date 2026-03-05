@@ -1,86 +1,678 @@
-/* Outreach page - hero + section rhythm */
+/* =========================
+   Outreach Page
+========================= */
 
-.outreach-page .card-body {
-  padding: 1.25rem;
+.outreach-page {
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
-.outreach-section + .outreach-section {
-  margin-top: 1.25rem;
-}
-
-/* Hero */
+/* ---- HERO ---- */
 .outreach-hero {
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 1rem;
   position: relative;
+  min-height: 72vh;
+  display: grid;
+  align-items: start;
+  overflow: hidden;
 }
 
 .outreach-hero__media {
-  position: relative;
-  height: 260px;
+  position: absolute;
+  inset: 0;
 }
 
 .outreach-hero__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transform: scale(1.02);
 }
 
 .outreach-hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    180deg,
-    rgba(15, 30, 46, 0.10),
-    rgba(15, 30, 46, 0.68)
-  );
+      to bottom,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.75)
+    ),
+    radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.25), transparent 55%);
 }
 
 .outreach-hero__content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem 1rem 1.1rem;
-  color: var(--color-text-light);
+  position: relative;
+  padding: 30px 0 10px;
+}
+
+.outreach-hero__content--top {
+  align-items: start;
+  padding-left: clamp(12px, 2.4vw, 34px);
+}
+
+.outreach-hero__kicker {
+  margin: 0 0 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .outreach-hero__title {
-  margin: 0 0 0.25rem;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  line-height: 1.15;
+  margin: 0 0 10px;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  color: #fff;
 }
 
 .outreach-hero__subtitle {
-  margin: 0;
-  opacity: 0.9;
+  margin: 0 0 14px;
+  max-width: 820px;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-/* Optional: soften the bordered pillar boxes */
-.outreach-box {
-  background: rgba(0, 0, 0, 0.02);
-  border-color: var(--color-border) !important;
+.outreach-hero__micro {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.82);
 }
 
-/* Tables */
-.outreach-table th {
-  white-space: nowrap;
+.outreach-hero__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.outreach-summary {
+/* Buttons (fallback) */
+.btn-primary,
+.btn-ghost,
+.btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: 999px;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.btn-primary {
+  background: var(--btn-color, #91c7f6);
+  color: #0b1a2a;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn-tertiary {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-tertiary:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Sections ---- */
+.outreach-h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  line-height: 1.2;
+}
+
+.outreach-sub {
+  margin-bottom: 10px;
+  color: var(--color-text-muted);
+  max-width: 900px;
+}
+
+.outreach-lead {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.outreach-section-head .outreach-h2,
+.outreach-section-head .outreach-sub {
+  padding-left: clamp(12px, 2.4vw, 34px);
+}
+
+.outreach-section-head {
+  align-items: start;
+}
+
+.outreach-panel {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 18px;
+  padding: 18px 18px;
+  box-shadow: var(--shadow-sm, 0 8px 26px rgba(0, 0, 0, 0.08));
+}
+
+/* ---- Intro ---- */
+.outreach-intro {
+  padding: 26px 0;
+}
+
+/* ---- Pillars ---- */
+.outreach-pillars {
+  padding: 10px 0 26px;
+}
+
+.outreach-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 992px) {
+  .outreach-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Pillar Card */
+.pillar-card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm, 0 10px 32px rgba(0, 0, 0, 0.10));
+}
+
+.pillar-card__media {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.pillar-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+}
+
+.pillar-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.72));
+}
+
+.pillar-card__content {
+  padding: 16px 16px 18px;
+}
+
+.pillar-card__tag {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 800;
+}
+
+.pillar-card__title {
+  margin: 0 0 14px;
+  font-size: 1.35rem;
+  color: var(--color-text);
+}
+
+.pillar-card__muted {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Split base */
+.pillar-split {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 992px) {
+  .pillar-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}
+
+/* Regular pillar boxes */
+.pillar-box {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: 18px;
+  padding: 14px 14px;
+  color: var(--color-text);
+}
+
+.pillar-box h4 {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  color: var(--color-text);
+}
+
+.pillar-box ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.55;
+}
+
+.pillar-box li + li {
+  margin-top: 8px;
+}
+
+/* =========================
+   Split Background System
+   (Panels on top of image)
+========================= */
+
+:root {
+  --outreach-panel-bg: rgba(255, 255, 255, 0.78);
+  --outreach-panel-border: rgba(255, 255, 255, 0.28);
+  --outreach-panel-text: var(--color-text);
+
+  --outreach-split-shade: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18),
+      rgba(0, 0, 0, 0.48)
+    ),
+    radial-gradient(circle at 25% 20%, rgba(0, 0, 0, 0.12), transparent 58%);
+}
+
+html[data-theme="dark"],
+body[data-theme="dark"],
+[data-theme="dark"] {
+  --outreach-panel-bg: rgba(12, 16, 20, 0.60);
+  --outreach-panel-border: rgba(255, 255, 255, 0.16);
+  --outreach-panel-text: var(--color-text);
+
+  --outreach-split-shade: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.52),
+      rgba(0, 0, 0, 0.82)
+    ),
+    radial-gradient(circle at 25% 20%, rgba(0, 0, 0, 0.18), transparent 58%);
+}
+
+.pillar-split--bg {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  isolation: isolate; /* prevents any weird blending/bleed */
+}
+
+/* The real background image element */
+.pillar-split__bgimg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.92; /* image visibility */
+  transform: scale(1.02);
+  z-index: 0;
+}
+
+/* The shade overlay */
+.pillar-split__bgshade {
+  position: absolute;
+  inset: 0;
+  background: var(--outreach-split-shade);
+  z-index: 1;
+}
+
+/* Bring actual content above shade */
+.pillar-split--bg > section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glass panels */
+.pillar-split--bg .pillar-box {
+  background: var(--outreach-panel-bg) !important;
+  color: var(--outreach-panel-text) !important;
+  border: 1px solid var(--outreach-panel-border) !important;
+
+  border-radius: 18px;
+  padding: 14px 14px;
+
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+/* Remove any unwanted “gray bars” / highlight backgrounds */
+.pillar-split--bg .pillar-box *,
+.pillar-split--bg .pillar-box strong {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+/* ---- Mini media (agriculture) ---- */
+.pillar-mini-media {
+  position: relative;
+  margin-top: 10px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.pillar-mini-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.10),
+    rgba(0,0,0,0.55)
+  );
+  pointer-events: none;
+}
+
+.pillar-mini-media img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Roles ---- */
+.outreach-roles {
+  padding: 10px 0 26px;
+}
+
+.outreach-table-wrap {
+  overflow: auto;
+  margin-top: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+}
+
+.outreach-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  background: var(--color-bg);
+}
+
+.outreach-table th,
+.outreach-table td {
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.outreach-table thead th {
+  background: var(--color-surface);
+}
+
+/* ---- Participate ---- */
+.outreach-participate {
+  padding: 34px 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
+}
+
+.outreach-feature-grid {
+  margin-top: 14px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+/* =========================
+   Pillar 3: Two “image slab” panels
+========================= */
+
+.pillar-slab-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  margin-top: 8px;
+}
+
+@media (min-width: 992px) {
+  .pillar-slab-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+}
+
+.pillar-slab {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(120, 170, 255, 0.55);
+  min-height: 190px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+  isolation: isolate;
+}
+
+/* background image */
+.pillar-slab__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  z-index: 0;
+}
+
+/* dark overlay for readability */
+.pillar-slab__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.20),
+      rgba(0, 0, 0, 0.68)
+    ),
+    radial-gradient(circle at 18% 18%, rgba(0, 0, 0, 0.18), transparent 60%);
+}
+
+/* content */
+.pillar-slab__content {
+  position: relative;
+  z-index: 2;
+  padding: 16px 16px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.pillar-slab__content h4 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.pillar-slab__content ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.90);
+}
+
+.pillar-slab__content li + li {
+  margin-top: 8px;
+}
+
+/* Make <strong> pop without changing theme behavior */
+.pillar-slab__content strong {
+  color: #fff;
+  font-weight: 800;
+}
+@media (min-width: 992px) {
+  .outreach-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.outreach-feature {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm, 0 8px 26px rgba(0, 0, 0, 0.08));
+}
+
+.outreach-feature img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.outreach-feature__body {
+  padding: 14px 14px 16px;
+}
+
+.outreach-feature__body h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.outreach-cta {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---- Quote ---- */
+.outreach-first-step {
+  padding: 10px 0 26px;
+}
+
+.outreach-quote {
+  margin: 14px 0 0;
+  padding: 14px 14px;
+  border-left: 4px solid var(--btn-color, #91c7f6);
+  border-radius: 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.outreach-quote p {
+  margin: 0;
   font-weight: 700;
 }
 
-.outreach-details[open] .outreach-summary {
+.outreach-quote footer {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ---- Details ---- */
+.outreach-print {
+  padding: 10px 0 34px;
+}
+
+.outreach-details {
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm, 0 8px 26px rgba(0, 0, 0, 0.08));
+  overflow: hidden;
+}
+
+.outreach-details__summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-weight: 800;
+}
+
+.outreach-details[open] .outreach-details__summary {
   border-bottom: 1px solid var(--color-border);
 }
 
-@media (max-width: 900px) {
-  .outreach-hero__media {
-    height: 220px;
+.outreach-details__body {
+  padding: 14px 16px 18px;
+}
+
+.outreach-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.outreach-note {
+  border: 1px dashed var(--color-border);
+  background: var(--color-bg);
+  border-radius: 14px;
+  padding: 12px 12px;
+}
+
+.outreach-note h3 {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+}
+
+.mb0 {
+  margin-bottom: 0;
+}
+
+/* ---- Footer CTA ---- */
+.outreach-footer-cta {
+  padding: 28px 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.outreach-footer-cta__inner {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 992px) {
+  .outreach-footer-cta__inner {
+    grid-template-columns: 1fr auto;
   }
+}
+
+.outreach-footer-cta h2 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.outreach-footer-cta p {
+  margin: 0;
+  color: var(--color-text-muted);
+  max-width: 820px;
+}
+
+.outreach-footer-cta__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
