@@ -2,6 +2,7 @@ import React from "react";
 import "@/assets/css/the-way/MissionVision.css";
 
 import heroImg from "@/assets/images/the-way/mission-vision/preview.jpg";
+import sharingTheWordImg from "@/assets/images/the-way/mission-vision/sharingTheWord.jpg";
 
 export default function MissionVision() {
   return (
@@ -20,9 +21,7 @@ export default function MissionVision() {
         </div>
 
         <div className="mission-hero__content">
-          <h1 className="mission-hero__title">
-            Mission &amp; Vision Statement
-          </h1>
+          <h1 className="mission-hero-title">Mission &amp; Vision Statement</h1>
           <p className="mission-hero__subtitle">
             The Way of Messiah — 508(c)(1)(A) Religious Ministry
           </p>
@@ -51,6 +50,12 @@ export default function MissionVision() {
                   legally equipped to live as true stewards of the earth,
                   independent of worldly systems and grounded in the Covenant.
                 </p>
+                <img
+                  className="mission-panel-img"
+                  src={sharingTheWordImg}
+                  alt="Having scriptural discussions with those unlearned"
+                  loading="lazy"
+                />
               </div>
 
               <div className="mission-panel">

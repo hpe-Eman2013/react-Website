@@ -61,10 +61,10 @@ import VerifyEmailPage from "./pages/accounts/verify-email";
 
 // ---- Bible children (Scriptural Discussions) ----
 import ApocryphaPage from "./pages/the-way/scriptural-discussions/apocrypha";
-import LecturesPage from "./pages/the-way/scriptural-discussions/lectures";
+import LecturesPage from "./pages/the-way/scriptural-discussions/lectures-sermons";
 import OldCovenantPage from "./pages/the-way/scriptural-discussions/old-covenant";
 import RenewedCovenantPage from "./pages/the-way/scriptural-discussions/renewed-covenant";
-import ScriptualStudies from "./pages/the-way/scriptural-discussions/studies";
+import ScriptualStudies from "./pages/the-way/scriptural-discussions/scriptural-studies";
 
 function App() {
   return (

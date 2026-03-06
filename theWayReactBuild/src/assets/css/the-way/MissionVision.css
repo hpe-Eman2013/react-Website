@@ -9,16 +9,35 @@
 }
 
 .mission-hero {
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 1rem;
+  background-size: stretch;
   position: relative;
+  background-position: center top;
 }
 
+
+.mission-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28); /* subtle dark overlay for readability */
+}
+
+.mission-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.mission-hero-title {
+  color: var(--text-on-dark-muted);
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.65),
+    0 1px 2px rgba(0, 0, 0, 0.55);
+}
 .mission-hero__media {
   position: relative;
-  height: 260px;
+  height: 60vh;
 }
 
 .mission-hero__img {
@@ -43,7 +62,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 1rem 1rem 1.1rem;
+  padding: 1rem 1rem 20rem;
   color: var(--color-text-light);
 }
 
@@ -56,6 +75,7 @@
 .mission-hero__subtitle {
   margin: 0;
   opacity: 0.9;
+  font-weight: 700;
 }
 
 .mission-split {
@@ -71,6 +91,13 @@
   background: rgba(0, 0, 0, 0.02);
 }
 
+.mission-panel-img {
+  width: 700px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  padding-top: 0.5rem;
+}
 @media (max-width: 900px) {
   .mission-split {
     grid-template-columns: 1fr;
