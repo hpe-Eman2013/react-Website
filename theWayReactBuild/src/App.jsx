@@ -41,13 +41,13 @@ import EducationPage from "./pages/the-way/education";
 import MissionVision from "./pages/the-way/mission";
 import OutreachPage from "./pages/the-way/outreach";
 import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
-import ContactPage from "./pages/the-way/contact";
+import ContactPage from "./pages/contact";
 
 // ---- The Assembly children ----
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
 import AssemblyMemberships from "./pages/the-assembly/memberships";
-import RequestMembershipPage from "./pages/the-assembly/memberships/RequestMembershipPage";
-import AskQuestionPage from "./pages/the-assembly/memberships/AskQuestionPage";
+import RequestMembershipPage from "./pages/the-assembly/memberships/requests";
+import AskQuestionPage from "./pages/the-assembly/memberships/questions";
 import AssemblyMinistries from "./pages/the-assembly/ministries";
 import AssemblyPositions from "./pages/the-assembly/positions";
 import AssemblySubmissions from "./pages/the-assembly/submissions";
