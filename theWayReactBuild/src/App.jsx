@@ -33,7 +33,7 @@ import TheWayLayout from "./pages/the-way/Layout";
 import TheWayPage from "./pages/the-way/TheWayOfMessiah";
 import AssemblyLayout from "./pages/the-assembly";
 import AccountsLayout from "./pages/accounts";
-import BibleLayout from "./pages/bible";
+import BibleLayout from "./pages/the-way/scriptural-discussions";
 
 // ---- The Way children ----
 import AboutPage from "./pages/the-way/about";
@@ -75,6 +75,8 @@ function App() {
         <Routes>
           {/* ===== top-level existing ===== */}
           <Route path="/" element={<Home />} />
+          {/* ✅ /contact */}
+          <Route path="contact" element={<ContactPage />} />
 
           {/* Keeping your existing direct pages for now (optional) */}
           {/* <Route path="/testimonies" element={<Testimonies />} />
@@ -103,18 +105,21 @@ function App() {
             {/* ✅ /the-way/education */}
             <Route path="education" element={<EducationPage />} />
 
-            {/* ✅ /the-way/contact */}
-            <Route path="contact" element={<ContactPage />} />
-          </Route>
-
-          {/* ===== Scriptural Discussions (Bible) ===== */}
-          <Route path="/scriptural-discussions" element={<BibleLayout />}>
-            <Route index element={<ScriptualStudies />} />
-            <Route path="old-covenant" element={<OldCovenantPage />} />
-            <Route path="renewed-covenant" element={<RenewedCovenantPage />} />
-            <Route path="apocrypha" element={<ApocryphaPage />} />
-            <Route path="lectures" element={<LecturesPage />} />
-            <Route path="studies" element={<ScriptualStudies />} />
+            {/* ===== Scriptural Discussions (Bible) ===== */}
+            <Route
+              path="/the-way/scriptural-discussions"
+              element={<BibleLayout />}
+            >
+              <Route index element={<ScriptualStudies />} />
+              <Route path="old-covenant" element={<OldCovenantPage />} />
+              <Route
+                path="renewed-covenant"
+                element={<RenewedCovenantPage />}
+              />
+              <Route path="apocrypha" element={<ApocryphaPage />} />
+              <Route path="lectures-sermons" element={<LecturesPage />} />
+              <Route path="scriptural-studies" element={<ScriptualStudies />} />
+            </Route>
           </Route>
 
           {/* ===== The Assembly ===== */}
