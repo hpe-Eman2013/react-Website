@@ -14,8 +14,8 @@
 /* Default (light) */
 :root {
   /* More transparent (so the image shows through) */
-  --pillar-glass-bg: rgba(255, 255, 255, 0.12);
-  --pillar-glass-text: rgba(15, 23, 42, 0.96);
+  --pillar-glass-bg: rgba(255, 255, 255, 0.08);
+  --pillar-glass-text: rgba(15, 23, 42, 0.92);
   --pillar-glass-border: rgba(255, 255, 255, 0.35);
 
   --pillar-glass-blur: 6px;
@@ -144,6 +144,8 @@ body.dark,
 }
 .btn-primary:hover {
   transform: translateY(-1px);
+  background-color: var(--color-primary) !important;
+  text-decoration: none;
 }
 
 /* Ghost */
@@ -220,13 +222,6 @@ body.dark,
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 992px) {
-  .outreach-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
 /* Pillar Card */
 .pillar-card {
   position: relative;
@@ -286,14 +281,6 @@ body.dark,
   grid-template-columns: 1fr;
 }
 
-
-@media (min-width: 992px) {
-  .pillar-split {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-}
-
 /* Normal (non-background) box */
 .pillar-box {
   border: 1px solid var(--color-border);
@@ -328,12 +315,6 @@ body.dark,
   border-radius: 18px;
   padding: 14px;
   min-height: 220px;
-}
-
-@media (min-width: 992px) {
-  .pillar-split--bg {
-    padding: 16px;
-  }
 }
 
 /* Background image element */
@@ -377,9 +358,18 @@ body.dark,
 }
 
 /* Make ALL inner text inherit the theme-aware color */
+/* Improve readability on glass panels */
+/* Force readable text on glass panels */
 .pillar-split--bg .pillar-box,
-.pillar-split--bg .pillar-box * {
-  color: inherit !important;
+.pillar-split--bg .pillar-box h4,
+.pillar-split--bg .pillar-box li,
+.pillar-split--bg .pillar-box strong {
+  color: #ffffff !important;
+
+  /* improves readability on mixed backgrounds */
+  text-shadow:
+    0 1px 3px rgba(0,0,0,0.55),
+    0 0 6px rgba(0,0,0,0.25);
 }
 
 /* -------------------------
@@ -474,13 +464,6 @@ body.dark,
   display: grid;
   gap: 14px;
   grid-template-columns: 1fr;
-}
-
-@media (min-width: 992px) {
-  .outreach-feature-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
 }
 
 .outreach-feature {
@@ -603,12 +586,6 @@ body.dark,
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 992px) {
-  .outreach-footer-cta__inner {
-    grid-template-columns: 1fr auto;
-  }
-}
-
 .outreach-footer-cta h2 {
   margin: 0 0 8px;
   font-size: 1.4rem;
@@ -666,4 +643,52 @@ body.dark,
   inset: 0;
   background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.38));
   pointer-events: none;
+}
+/* =========================
+   Inverse buttons for Outreach footer
+========================= */
+
+.btn-inverse {
+  background-color: var(--color-surface);
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+}
+
+.btn-inverse:hover {
+  background-color: var(--color-primary) !important;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* ==============================
+   Responsive overrides
+   (keep at BOTTOM of file)
+================================= */
+@media (min-width: 992px) {
+  .outreach-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .pillar-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}
+@media (min-width: 992px) {
+  .pillar-split--bg {
+    padding: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .outreach-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .outreach-footer-cta__inner {
+    grid-template-columns: 1fr auto;
+  }
 }
