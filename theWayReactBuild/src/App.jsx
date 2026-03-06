@@ -60,11 +60,11 @@ import RegisterPage from "./pages/accounts/register";
 import VerifyEmailPage from "./pages/accounts/verify-email";
 
 // ---- Bible children (Scriptural Discussions) ----
-import ApocryphaPage from "./pages/bible/apocrypha";
-import LecturesPage from "./pages/bible/lectures";
-import OldCovenantPage from "./pages/bible/old-covenant";
-import RenewedCovenantPage from "./pages/bible/renewed-covenant";
-import ScriptualStudies from "./pages/bible/studies";
+import ApocryphaPage from "./pages/the-way/scriptural-discussions/apocrypha";
+import LecturesPage from "./pages/the-way/scriptural-discussions/lectures";
+import OldCovenantPage from "./pages/the-way/scriptural-discussions/old-covenant";
+import RenewedCovenantPage from "./pages/the-way/scriptural-discussions/renewed-covenant";
+import ScriptualStudies from "./pages/the-way/scriptural-discussions/studies";
 
 function App() {
   return (
@@ -108,7 +108,7 @@ function App() {
           </Route>
 
           {/* ===== Scriptural Discussions (Bible) ===== */}
-          <Route path="/bible" element={<BibleLayout />}>
+          <Route path="/scriptural-discussions" element={<BibleLayout />}>
             <Route index element={<ScriptualStudies />} />
             <Route path="old-covenant" element={<OldCovenantPage />} />
             <Route path="renewed-covenant" element={<RenewedCovenantPage />} />
