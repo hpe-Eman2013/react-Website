@@ -37,7 +37,7 @@ import BibleLayout from "./pages/the-way/scriptural-discussions";
 
 // ---- The Way children ----
 import AboutPage from "./pages/the-way/about";
-import EducationPage from "./pages/the-way/education";
+import EducationPage from "./pages/the-way/education/index-old";
 import MissionVision from "./pages/the-way/mission";
 import OutreachPage from "./pages/the-way/outreach";
 import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
