@@ -63,9 +63,24 @@ export default function TopicGrid({
 
                 <p className="education-topic-card__summary">{topic.summary}</p>
 
+                {topic.featuredNote ? (
+                  <p className="education-topic-card__note">
+                    {topic.featuredNote}
+                  </p>
+                ) : null}
+
                 <div className="education-topic-card__footer">
                   <span className="education-topic-card__link">
                     {isActive ? "Currently Selected" : "View Overview"}
+                  </span>
+
+                  <span
+                    className={`education-topic-card__status education-topic-card__status--${topic.status}`}
+                  >
+                    {topic.status === "available" && "Available Now"}
+                    {topic.status === "in-development" && "In Development"}
+                    {topic.status === "members" && "Members Access"}
+                    {topic.status === "support-backed" && "Support-Backed"}
                   </span>
                 </div>
               </div>
