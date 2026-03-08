@@ -1,5 +1,10 @@
 import type { EducationTopic, EducationTopicKey } from "./types";
 
+import membershipImg from "@/assets/images/the-way/education/website-membership.jpg";
+import trustImg from "@/assets/images/the-way/education/trust-estate.jpg";
+import equityImg from "@/assets/images/the-way/education/law-of-equity.jpg";
+import agricultureImg from "@/assets/images/the-way/education/agriculture.jpg";
+
 export const educationTopics: EducationTopic[] = [
   {
     key: "website-membership",
@@ -28,6 +33,8 @@ export const educationTopics: EducationTopic[] = [
         to: "/accounts/register",
       },
     ],
+    image: membershipImg,
+    imageAlt: "Students entering a structured path of study",
   },
   {
     key: "trust-estate-planning",
@@ -56,6 +63,8 @@ export const educationTopics: EducationTopic[] = [
         to: "/the-way/education/website-membership",
       },
     ],
+    image: trustImg,
+    imageAlt: "Trust documents and stewardship study materials",
   },
   {
     key: "law-of-equity",
@@ -84,6 +93,8 @@ export const educationTopics: EducationTopic[] = [
         to: "/the-way/education/website-membership",
       },
     ],
+    image: equityImg,
+    imageAlt: "Books and legal study materials relating to equity",
   },
   {
     key: "agriculture-sustainability",
@@ -112,6 +123,8 @@ export const educationTopics: EducationTopic[] = [
         to: "/the-way/education/website-membership",
       },
     ],
+    image: agricultureImg,
+    imageAlt: "Cultivated land and agricultural stewardship",
   },
 ];
 

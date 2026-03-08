@@ -31,28 +31,43 @@ export default function TopicGrid({
               type="button"
               className="education-topic-card__button"
               onClick={() => onSelect(topic.key)}
-              aria-current={isActive ? "true" : undefined}
+              aria-label={
+                isActive
+                  ? `${topic.title} selected`
+                  : `View ${topic.title} overview`
+              }
             >
-              <div className="education-topic-card__top">
-                {topic.eyebrow ? (
-                  <div className="education-topic-card__eyebrow">
-                    {topic.eyebrow}
-                  </div>
-                ) : null}
-
-                <span className="education-topic-card__badge">
-                  {topic.accessLabel}
-                </span>
+              <div className="education-topic-card__media">
+                <img
+                  src={topic.image}
+                  alt={topic.imageAlt}
+                  className="education-topic-card__img"
+                />
+                <div className="education-topic-card__overlay" />
               </div>
 
-              <h2 className="education-topic-card__title">{topic.title}</h2>
+              <div className="education-topic-card__content">
+                <div className="education-topic-card__top">
+                  {topic.eyebrow ? (
+                    <div className="education-topic-card__eyebrow">
+                      {topic.eyebrow}
+                    </div>
+                  ) : null}
 
-              <p className="education-topic-card__summary">{topic.summary}</p>
+                  <span className="education-topic-card__badge">
+                    {topic.accessLabel}
+                  </span>
+                </div>
 
-              <div className="education-topic-card__footer">
-                <span className="education-topic-card__link">
-                  {isActive ? "Currently Selected" : "View Overview"}
-                </span>
+                <h2 className="education-topic-card__title">{topic.title}</h2>
+
+                <p className="education-topic-card__summary">{topic.summary}</p>
+
+                <div className="education-topic-card__footer">
+                  <span className="education-topic-card__link">
+                    {isActive ? "Currently Selected" : "View Overview"}
+                  </span>
+                </div>
               </div>
             </button>
           </article>

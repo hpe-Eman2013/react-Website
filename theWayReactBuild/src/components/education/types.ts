@@ -25,4 +25,7 @@ export type EducationTopic = {
   mission?: string;
   highlights: string[];
   ctas: EducationCta[];
+
+  image: string;
+  imageAlt: string;
 };

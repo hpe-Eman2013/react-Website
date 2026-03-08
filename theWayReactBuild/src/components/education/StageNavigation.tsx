@@ -17,7 +17,7 @@ export default function StageNavigation({
       aria-label="Education topic navigation"
     >
       <div className="education-stage-nav__list">
-        {educationTopicOrder.map((key) => {
+        {educationTopicOrder.map((key: EducationTopicKey) => {
           const topic = educationTopicMap[key];
           const isActive = key === activeKey;
 
@@ -28,7 +28,6 @@ export default function StageNavigation({
               className={`education-stage-btn${
                 isActive ? " education-stage-btn--active" : ""
               }`}
-              aria-current={isActive ? "true" : undefined}
               onClick={() => onSelect(key)}
             >
               {topic.title}
