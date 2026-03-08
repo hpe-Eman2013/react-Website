@@ -34,7 +34,12 @@ export const educationTopics: EducationTopic[] = [
       },
     ],
     image: membershipImg,
-    imageAlt: "Students entering a structured path of study",
+    imageAlt: "People engaged in guided study and online learning",
+    status: "available",
+    featuredNote:
+      "Begin here to access structured educational resources and guided study paths across the platform.",
+    supportNote:
+      "Website Membership serves as the entry point into deeper educational participation throughout The Way.",
   },
   {
     key: "trust-estate-planning",
@@ -64,7 +69,12 @@ export const educationTopics: EducationTopic[] = [
       },
     ],
     image: trustImg,
-    imageAlt: "Trust documents and stewardship study materials",
+    imageAlt: "Trust documents, books, and stewardship study materials",
+    status: "support-backed",
+    featuredNote:
+      "This study area helps restore lawful order, stewardship, and faithful administration of property, inheritance, and responsibility.",
+    supportNote:
+      "Support helps expand and maintain specialized stewardship materials in this area so they remain useful and responsibly developed.",
   },
   {
     key: "law-of-equity",
@@ -94,7 +104,13 @@ export const educationTopics: EducationTopic[] = [
       },
     ],
     image: equityImg,
-    imageAlt: "Books and legal study materials relating to equity",
+    imageAlt:
+      "Books, manuscripts, and legal study materials relating to equity",
+    status: "support-backed",
+    featuredNote:
+      "This course path introduces foundational equitable principles, remedies, duty, conscience, and jurisdictional understanding.",
+    supportNote:
+      "This area is being developed as a deeper structured educational offering and may grow over time through support-backed course development.",
   },
   {
     key: "agriculture-sustainability",
@@ -124,7 +140,12 @@ export const educationTopics: EducationTopic[] = [
       },
     ],
     image: agricultureImg,
-    imageAlt: "Cultivated land and agricultural stewardship",
+    imageAlt: "Cultivated land, seeds, and agricultural stewardship",
+    status: "members",
+    featuredNote:
+      "This path joins scriptural stewardship with practical cultivation, resilience, and care for the land as part of the living estate.",
+    supportNote:
+      "Website Membership supports fuller access to this growing body of agricultural study and stewardship instruction.",
   },
 ];
 

@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import "@/assets/css/the-way/Education.css";
 
 import heroImg from "@/assets/images/the-way/education/preview.jpg";
@@ -12,14 +13,67 @@ import {
   educationTopics,
 } from "@/components/education/registry";
 import type { EducationTopicKey } from "@/components/education/types";
-import { Link } from "react-router-dom";
+
+function isEducationTopicKey(value: string | null): value is EducationTopicKey {
+  if (!value) return false;
+  return value in educationTopicMap;
+}
 
 export default function Education() {
-  const [activeKey, setActiveKey] = useState<EducationTopicKey>(
-    defaultEducationTopicKey,
-  );
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialTopicParam = searchParams.get("topic");
+  const initialKey = isEducationTopicKey(initialTopicParam)
+    ? initialTopicParam
+    : defaultEducationTopicKey;
+
+  const [activeKey, setActiveKey] = useState<EducationTopicKey>(initialKey);
+
+  const viewerRef = useRef<HTMLElement | null>(null);
 
   const activeTopic = useMemo(() => educationTopicMap[activeKey], [activeKey]);
+
+  useEffect(() => {
+    const topicParam = searchParams.get("topic");
+
+    if (!isEducationTopicKey(topicParam)) {
+      if (topicParam !== null) {
+        setSearchParams(
+          (prev) => {
+            const next = new URLSearchParams(prev);
+            next.delete("topic");
+            return next;
+          },
+          { replace: true },
+        );
+      }
+      return;
+    }
+
+    if (topicParam !== activeKey) {
+      setActiveKey(topicParam);
+    }
+  }, [activeKey, searchParams, setSearchParams]);
+
+  function handleSelectTopic(key: EducationTopicKey) {
+    setActiveKey(key);
+
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.set("topic", key);
+        return next;
+      },
+      { replace: true },
+    );
+
+    window.requestAnimationFrame(() => {
+      viewerRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
 
   return (
     <main className="container py-4 education-page">
@@ -31,12 +85,9 @@ export default function Education() {
             className="education-hero__img"
             aria-hidden="true"
           />
-
           <div className="education-hero__overlay" />
-
           <div className="education-hero__content">
             <h1 className="education-hero__title">Education</h1>
-
             <p className="education-hero__subtitle">
               The Way of Messiah — 508(c)(1)(A) Religious Ministry
             </p>
@@ -125,15 +176,15 @@ export default function Education() {
         <TopicGrid
           topics={educationTopics}
           activeKey={activeKey}
-          onSelect={setActiveKey}
+          onSelect={handleSelectTopic}
         />
       </section>
 
       <section className="mb-4">
-        <StageNavigation activeKey={activeKey} onSelect={setActiveKey} />
+        <StageNavigation activeKey={activeKey} onSelect={handleSelectTopic} />
       </section>
 
-      <section className="mb-4">
+      <section ref={viewerRef} className="mb-4">
         <ContentStageViewer topic={activeTopic} />
       </section>
 

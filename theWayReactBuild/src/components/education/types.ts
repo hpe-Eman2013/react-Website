@@ -10,6 +10,12 @@ export type EducationAccessLabel =
   | "Website Members • Support Encouraged"
   | "Website Members • Course Support";
 
+export type EducationTopicStatus =
+  | "available"
+  | "in-development"
+  | "members"
+  | "support-backed";
+
 export type EducationCta = {
   label: string;
   to: string;
@@ -28,4 +34,8 @@ export type EducationTopic = {
 
   image: string;
   imageAlt: string;
+
+  status: EducationTopicStatus;
+  featuredNote?: string;
+  supportNote?: string;
 };
