@@ -13,6 +13,7 @@ import {
   educationTopics,
 } from "@/components/education/registry";
 import type { EducationTopicKey } from "@/components/education/types";
+import { Underline } from "lucide-react";
 
 function isEducationTopicKey(value: string | null): value is EducationTopicKey {
   if (!value) return false;
@@ -97,16 +98,26 @@ export default function Education() {
 
       <section
         className="card shadow-sm mb-4 education-intro"
-        aria-label="Education mission"
+        aria-labelledby="education-intro-title"
       >
-        <div className="card-body">
-          <p className="mb-0">
+        <div className="card-body education-intro__body">
+          <div className="education-intro__eyebrow" id="education-intro-title">
+            Education Mission
+          </div>
+
+          <p className="education-intro__lead mb-0">
             This educational work is designed to help move a believer from the
-            condition of a <strong>legal subject</strong> into the
-            responsibilities of a <strong>Kingdom Trustee</strong>. It seeks to
-            bridge the spiritual requirements of Yahuah with the practical
-            mechanics of stewardship, lawful order, scriptural understanding,
-            and care for the living estate.
+            condition of a{" "}
+            <strong>
+              <u>legal subject</u>
+            </strong>{" "}
+            into the responsibilities of a{" "}
+            <strong>
+              <u>Kingdom Trustee</u>
+            </strong>
+            . It seeks to bridge the spiritual requirements of Yahuah with the
+            practical mechanics of stewardship, lawful order, scriptural
+            understanding, and care for the living estate.
           </p>
         </div>
       </section>
@@ -126,35 +137,60 @@ export default function Education() {
           </div>
 
           <div className="education-access-grid">
-            <article className="education-access-item">
+            <button
+              type="button"
+              className="education-access-item education-access-item--link"
+              onClick={() => {
+                document.getElementById("education-topics")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+            >
+              <span className="education-access-item__step">01</span>
               <h3 className="education-access-item__title">
-                1. Learn the Purpose
+                Learn the Purpose
               </h3>
               <p className="mb-0">
                 Visitors can view general overviews of each study area and learn
                 why these forms of knowledge matter.
               </p>
-            </article>
+              <span className="education-access-item__cta">
+                Explore Study Areas
+              </span>
+            </button>
 
-            <article className="education-access-item">
+            <Link
+              to="/the-way/education/website-membership"
+              className="education-access-item education-access-item--link"
+            >
+              <span className="education-access-item__step">02</span>
               <h3 className="education-access-item__title">
-                2. Become a Website Member
+                Become a Website Member
               </h3>
               <p className="mb-0">
                 Website Membership provides access to participate more fully in
                 the educational resources offered on this platform.
               </p>
-            </article>
+              <span className="education-access-item__cta">
+                Learn About Membership
+              </span>
+            </Link>
 
-            <article className="education-access-item">
-              <h3 className="education-access-item__title">
-                3. Support the Work
-              </h3>
+            <Link
+              to="/contact"
+              className="education-access-item education-access-item--link"
+            >
+              <span className="education-access-item__step">03</span>
+              <h3 className="education-access-item__title">Support the Work</h3>
               <p className="mb-0">
                 Support helps maintain and update specialized materials so they
                 remain relevant, useful, and responsibly developed.
               </p>
-            </article>
+              <span className="education-access-item__cta">
+                Support Education
+              </span>
+            </Link>
           </div>
         </div>
       </section>
