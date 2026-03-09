@@ -1,11 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Instagram, Youtube, X } from "lucide-react";
+import { ArrowUp, Instagram, Youtube, X } from "lucide-react";
 import "@/assets/css/Footer.css";
 
 function TikTokIcon(props) {
-  // Lucide doesn't ship TikTok by default; simple SVG fallback.
-  // Replace later if you prefer a different icon set.
   return (
     <svg
       viewBox="0 0 24 24"
@@ -26,13 +24,20 @@ function TikTokIcon(props) {
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  // TODO: replace "#" with your real social URLs
   const socials = [
     { label: "TikTok", href: "#", Icon: TikTokIcon },
     { label: "X", href: "#", Icon: X },
     { label: "YouTube", href: "#", Icon: Youtube },
     { label: "Instagram", href: "#", Icon: Instagram },
   ];
+
+  function handleBackToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
 
   return (
     <footer className="wom-footer" role="contentinfo">
@@ -80,6 +85,16 @@ export default function Footer() {
               <Icon className="wom-social-icon" />
             </a>
           ))}
+
+          <button
+            type="button"
+            className="wom-social wom-social-button wom-back-to-top"
+            onClick={handleBackToTop}
+            aria-label="Back to top"
+            title="Back to top"
+          >
+            <ArrowUp className="wom-social-icon" />
+          </button>
         </div>
       </div>
     </footer>

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Legal pages
 import Privacy from "./pages/legal/Privacy";
@@ -17,8 +18,7 @@ import GivingCancel from "./pages/giving/GivingCancel";
 
 // existing top-level pages you already had
 import Home from "./pages/home";
-// import SubmitTestimony from "./pages/SubmitTestimony";
-// import Testimonies from "./pages/Testimonies";
+import ContactPage from "./pages/contact";
 
 // admin
 import AdminTestimonies from "./pages/admin/AdminTestimonies";
@@ -41,7 +41,6 @@ import EducationPage from "./pages/the-way/education";
 import MissionVision from "./pages/the-way/mission";
 import OutreachPage from "./pages/the-way/outreach";
 import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
-import ContactPage from "./pages/contact";
 
 // ---- The Assembly children ----
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
@@ -69,43 +68,25 @@ import ScriptualStudies from "./pages/the-way/scriptural-discussions/scriptural-
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AppNavbar />
 
       <AdminAuthProvider>
         <Routes>
-          {/* ===== top-level existing ===== */}
           <Route path="/" element={<Home />} />
-          {/* ✅ /contact */}
           <Route path="contact" element={<ContactPage />} />
 
-          {/* Keeping your existing direct pages for now (optional) */}
-          {/* <Route path="/testimonies" element={<Testimonies />} />
-          <Route path="/submit" element={<SubmitTestimony />} /> */}
-
-          {/* ===== The Way ===== */}
           <Route path="/the-way" element={<TheWayLayout />}>
-            {/* ✅ /the-way */}
             <Route index element={<TheWayPage />} />
-
-            {/* ✅ /the-way/about */}
             <Route path="about" element={<AboutPage />} />
-
-            {/* ✅ /the-way/statement-of-faith */}
             <Route
               path="statement-of-faith"
               element={<StatementOfFaithPage />}
             />
-
-            {/* ✅ /the-way/mission */}
             <Route path="mission" element={<MissionVision />} />
-
-            {/* ✅ /the-way/outreach */}
             <Route path="outreach" element={<OutreachPage />} />
-
-            {/* ✅ /the-way/education */}
             <Route path="education" element={<EducationPage />} />
 
-            {/* ===== Scriptural Discussions (Bible) ===== */}
             <Route
               path="/the-way/scriptural-discussions"
               element={<BibleLayout />}
@@ -122,7 +103,6 @@ function App() {
             </Route>
           </Route>
 
-          {/* ===== The Assembly ===== */}
           <Route path="/the-assembly" element={<AssemblyLayout />}>
             <Route index element={<AssemblyTestimonies />} />
             <Route path="testimonies" element={<AssemblyTestimonies />} />
@@ -141,7 +121,6 @@ function App() {
             />
           </Route>
 
-          {/* ===== Accounts ===== */}
           <Route path="/accounts" element={<AccountsLayout />}>
             <Route index element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
@@ -150,12 +129,10 @@ function App() {
             <Route path="verify-email" element={<VerifyEmailPage />} />
           </Route>
 
-          {/* ===== Giving ===== */}
           <Route path="/giving" element={<GivingPage />} />
           <Route path="/giving/success" element={<GivingSuccess />} />
           <Route path="/giving/cancel" element={<GivingCancel />} />
 
-          {/* ===== Admin ===== */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/testimonies" element={<AdminTestimonies />} />
           <Route
@@ -168,6 +145,7 @@ function App() {
               </RequireAuth>
             }
           />
+
           <Route path="/legal/privacy" element={<Privacy />} />
           <Route path="/legal/terms" element={<Terms />} />
           <Route path="/legal/copyright" element={<Copyright />} />
@@ -175,6 +153,7 @@ function App() {
           <Route path="/legal/sitemap" element={<SiteMap />} />
         </Routes>
       </AdminAuthProvider>
+
       <Footer />
     </BrowserRouter>
   );

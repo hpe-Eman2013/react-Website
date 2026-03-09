@@ -27,9 +27,10 @@
 }
 
 .theway-title {
-  font-size: clamp(2.2rem, 4vw, 2.5rem);
-  line-height: 1.08;
-  margin: 0 0 0.75rem;
+  font-size: clamp(1.9rem, 8vw, 2.6rem);
+  text-align: center;
+  max-width: 12ch;
+  color: var(--color-primary);
 }
 
 .theway-subtitle {
@@ -72,7 +73,10 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease;
 }
 
 .theway-btn:focus-visible {
@@ -107,10 +111,10 @@
 
   display: grid;
   place-items: center;
-  
+
   /* Replace this with your chosen image */
-  background:
-      url("../../images/the-way/hero-nature.jpg") center / cover no-repeat;
+  background: url("../../images/the-way/hero-nature.jpg") center / cover
+    no-repeat;
 }
 
 .theway-hero-overlay {
@@ -130,7 +134,7 @@
   display: grid;
   place-items: start center;
   padding-bottom: 9rem;
-   width: min(600px, calc(100% - 2rem));
+  width: min(600px, calc(100% - 2rem));
 }
 
 .theway-hero-ctas {
@@ -315,7 +319,10 @@
   text-decoration: none;
 
   box-shadow: var(--shadow-soft);
-  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
 }
 
 .theway .theway-hero-ctas a.theway-btn:hover,
@@ -355,5 +362,118 @@
 @media (min-width: 1024px) {
   .theway-card {
     grid-column: span 3;
+  }
+}
+
+/* =========================
+   MOBILE / TABLET FIXES
+========================= */
+@media (max-width: 1023px) {
+  .theway-card {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 767px) {
+  .theway-hero {
+    --webkit-min-height: auto;
+    padding: 2rem 0 2.5rem;
+    background-position: center center;
+  }
+
+  .theway-hero-inner {
+    width: min(92vw, 560px);
+    padding-bottom: 2rem;
+    place-items: center;
+    text-align: center;
+  }
+  .theway-eyebrow,
+  .theway-title {
+    color: var(--hero-text-dark);
+  }
+
+  .theway-subtitle {
+    color: var(--hero-text-dark-muted);
+  }
+
+  .theway-eyebrow {
+    text-align: center;
+  }
+
+  .theway-title {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+    line-height: 1.08;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 12ch;
+  }
+
+  .theway-subtitle {
+    max-width: 30ch;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .theway-hero-ctas {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .theway-hero-ctas .theway-btn {
+    width: min(100%, 320px);
+  }
+
+  .theway-section {
+    padding: 2.5rem 0;
+  }
+
+  .theway-container {
+    width: min(100%, calc(100% - 1.25rem));
+  }
+
+  .theway-card {
+    grid-column: span 12;
+    min-width: 0;
+  }
+
+  .theway-card-title,
+  .theway-card-desc,
+  .theway-card-actions,
+  .theway-card-link {
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  .theway-grid {
+    gap: 0.85rem;
+  }
+
+  .theway-card {
+    padding: 1rem;
+  }
+
+  .theway-card-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .theway-cta {
+    padding: 1rem;
+  }
+
+  .theway-cta-text {
+    min-width: 0;
+  }
+
+  .theway-cta-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .theway-cta-actions .theway-btn {
+    width: 100%;
   }
 }

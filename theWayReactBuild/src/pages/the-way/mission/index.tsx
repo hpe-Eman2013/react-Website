@@ -102,7 +102,7 @@ export default function MissionVision() {
             className="mission-section"
             aria-label="Public outreach summary"
           >
-            <div className="alert alert-light border mb-4" role="note">
+            <div className="mission-note mb-4" role="note">
               <p className="mb-2">
                 The mission of The Way of Messiah is to proclaim the truth of
                 Yahuah by reaching the public through:
@@ -136,7 +136,7 @@ export default function MissionVision() {
               Our Core Pillars
             </h2>
 
-            <div className="table-responsive mb-4">
+            <div className="table-responsive mb-4 mission-table-wrap mission-table-desktop">
               <table className="table table-sm align-middle mission-table">
                 <thead>
                   <tr>
@@ -180,13 +180,67 @@ export default function MissionVision() {
               </table>
             </div>
 
+            <div className="mission-pillars-mobile mb-4">
+              <article className="mission-pillar-card">
+                <div className="mission-pillar-card__label">Pillar</div>
+                <div className="mission-pillar-card__value">
+                  <strong>Spiritual Restoration</strong>
+                </div>
+
+                <div className="mission-pillar-card__label">Focus</div>
+                <div className="mission-pillar-card__value">
+                  The Word of Yahuah
+                </div>
+
+                <div className="mission-pillar-card__label">Purpose</div>
+                <div className="mission-pillar-card__value">
+                  Returning to the Paleo Hebrew foundations and the testimony of
+                  Yahusha.
+                </div>
+              </article>
+
+              <article className="mission-pillar-card">
+                <div className="mission-pillar-card__label">Pillar</div>
+                <div className="mission-pillar-card__value">
+                  <strong>Jurisdictional Wisdom</strong>
+                </div>
+
+                <div className="mission-pillar-card__label">Focus</div>
+                <div className="mission-pillar-card__value">
+                  Equity &amp; Trust Law
+                </div>
+
+                <div className="mission-pillar-card__label">Purpose</div>
+                <div className="mission-pillar-card__value">
+                  Moving from “debtors” to “creditors” and stewards under the
+                  Most High.
+                </div>
+              </article>
+
+              <article className="mission-pillar-card">
+                <div className="mission-pillar-card__label">Pillar</div>
+                <div className="mission-pillar-card__value">
+                  <strong>Physical Provision</strong>
+                </div>
+
+                <div className="mission-pillar-card__label">Focus</div>
+                <div className="mission-pillar-card__value">Agriculture</div>
+
+                <div className="mission-pillar-card__label">Purpose</div>
+                <div className="mission-pillar-card__value">
+                  Achieving food sovereignty and honoring the soil as a divine
+                  inheritance.
+                </div>
+              </article>
+            </div>
+
             <blockquote className="blockquote mission-quote mb-4">
-              <p className="mb-2">
+              <p className="mb-0">
                 “But this I confess unto thee, that after The Way which they
                 call heresy, so worship I the Elohiym of my fathers, believing
                 all things which are written in the Law and in the Prophets.”
+                <span className="mission-quote__ref"> — Acts 24:14</span>
               </p>
-              <footer className="blockquote-footer mb-0">Acts 24:14</footer>
             </blockquote>
           </section>
 
@@ -343,7 +397,7 @@ export default function MissionVision() {
               Kingdom vs. Worldly Jurisdiction
             </h2>
 
-            <div className="table-responsive">
+            <div className="table-responsive mission-table-desktop">
               <table className="table table-sm align-middle mission-table">
                 <thead>
                   <tr>
@@ -383,6 +437,94 @@ export default function MissionVision() {
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <div className="mission-jurisdiction-mobile">
+              <article className="mission-jurisdiction-card">
+                <div className="mission-jurisdiction-card__concept">
+                  Identity
+                </div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    Worldly System
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    Debtor / Citizen / Subject
+                  </span>
+                </div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    The Way
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    Trustee / Steward / Son
+                  </span>
+                </div>
+              </article>
+
+              <article className="mission-jurisdiction-card">
+                <div className="mission-jurisdiction-card__concept">
+                  Ownership
+                </div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    Worldly System
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    Legal Title (Subject to Tax)
+                  </span>
+                </div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    The Way
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    Equitable Title (Held for Yahuah)
+                  </span>
+                </div>
+              </article>
+
+              <article className="mission-jurisdiction-card">
+                <div className="mission-jurisdiction-card__concept">Law</div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    Worldly System
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    The Letter / Codes / Statutes
+                  </span>
+                </div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    The Way
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    The Torah / Equity / Conscience
+                  </span>
+                </div>
+              </article>
+
+              <article className="mission-jurisdiction-card">
+                <div className="mission-jurisdiction-card__concept">
+                  Provision
+                </div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    Worldly System
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    Debt-based Commerce
+                  </span>
+                </div>
+                <div className="mission-jurisdiction-card__row">
+                  <span className="mission-jurisdiction-card__label">
+                    The Way
+                  </span>
+                  <span className="mission-jurisdiction-card__value">
+                    Agriculture / Kingdom Increase
+                  </span>
+                </div>
+              </article>
             </div>
           </section>
 

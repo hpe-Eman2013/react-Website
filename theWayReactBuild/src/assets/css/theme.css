@@ -14,7 +14,7 @@
   --color-text-dark: #1a1a1a;
   --color-text-light: #ffffff;
   --surface: var(--color-surface); /* page background */
-   --surface-panel: #ffffff; /* elevated panels/cards */
+  --surface-panel: #ffffff; /* elevated panels/cards */
   --btn-color: #91c7f6;
   --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
   --radius: 10px;
@@ -69,6 +69,9 @@
   --nav-panel-fg: #e9eef5;
   --nav-panel-hover: rgba(255, 255, 255, 0.12);
   --nav-panel-border: rgba(255, 255, 255, 0.18);
+
+  --hero-text-dark: #0f1e2e;
+  --hero-text-dark-muted: rgba(15, 30, 46, 0.92);
 }
 body,
 main,
@@ -76,8 +79,7 @@ section,
 div,
 header,
 footer,
-nav 
-* {
+nav * {
   transition:
     background-color 1000ms ease,
     color 1000ms ease,

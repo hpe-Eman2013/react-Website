@@ -16,10 +16,15 @@
   align-items: center;
 }
 
+.wom-footer-left {
+  min-width: 0;
+}
+
 .wom-footer-brand {
   font-weight: 800;
   color: var(--color-primary);
   letter-spacing: 0.2px;
+  text-decoration: none;
 }
 
 .wom-footer-copy {
@@ -51,6 +56,7 @@
   display: flex;
   gap: 10px;
   justify-content: end;
+  align-items: center;
 }
 
 .wom-social {
@@ -62,7 +68,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 160ms ease, transform 160ms ease;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease,
+    border-color 160ms ease;
 }
 
 .wom-social:hover {
@@ -75,11 +84,34 @@
   height: 18px;
 }
 
+.wom-social-button {
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.wom-back-to-top {
+  color: var(--color-primary);
+}
+
+.wom-back-to-top:hover,
+.wom-back-to-top:focus-visible {
+  background: rgba(201, 162, 39, 0.18);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+  outline: none;
+}
+
 @media (max-width: 860px) {
   .wom-footer-inner {
     grid-template-columns: 1fr;
     text-align: center;
   }
+
+  .wom-footer-links {
+    justify-content: center;
+  }
+
   .wom-footer-social {
     justify-content: center;
   }
