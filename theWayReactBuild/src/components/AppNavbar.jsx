@@ -455,14 +455,14 @@ export default function AppNavbar() {
                   Education
                 </NavLink>
                 <NavLink
-                  to="/the-way/education/memberships/login"
+                  to="/the-way/education/website-membership/login"
                   className="wom-mobile-sublink"
                   onClick={closeMobileMenu}
                 >
                   Education Membership Login
                 </NavLink>
                 <NavLink
-                  to="/the-way/education/memberships/register"
+                  to="/the-way/education/website-membership/register"
                   className="wom-mobile-sublink"
                   onClick={closeMobileMenu}
                 >

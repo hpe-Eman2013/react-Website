@@ -41,6 +41,8 @@ import EducationPage from "./pages/the-way/education";
 import MissionVision from "./pages/the-way/mission";
 import OutreachPage from "./pages/the-way/outreach";
 import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
+import WebsiteMembershipLoginPage from "@/pages/the-way/education/website-membership/login";
+import WebsiteMembershipRegisterPage from "@/pages/the-way/education/website-membership/register";
 
 // ---- The Assembly children ----
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
@@ -86,6 +88,14 @@ function App() {
             <Route path="mission" element={<MissionVision />} />
             <Route path="outreach" element={<OutreachPage />} />
             <Route path="education" element={<EducationPage />} />
+            <Route
+              path="/the-way/education/website-membership/login"
+              element={<WebsiteMembershipLoginPage />}
+            />
+            <Route
+              path="/the-way/education/website-membership/register"
+              element={<WebsiteMembershipRegisterPage />}
+            />
 
             <Route
               path="/the-way/scriptural-discussions"

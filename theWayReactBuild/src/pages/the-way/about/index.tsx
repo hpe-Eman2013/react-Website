@@ -224,7 +224,7 @@ export default function AboutPage() {
             <Link className="theway-btn theway-btn-ghost" to="/memberships">
               Membership
             </Link>
-            <Link className="theway-btn theway-btn-ghost" to="/give">
+            <Link className="theway-btn theway-btn-ghost" to="/giving">
               Giving
             </Link>
           </div>
