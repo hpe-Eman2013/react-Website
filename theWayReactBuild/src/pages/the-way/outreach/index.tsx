@@ -29,7 +29,9 @@ export default function Outreach() {
 
         <div className="outreach-hero__content container outreach-hero__content--top">
           <p className="outreach-hero__kicker">The Way of Messiah</p>
+
           <h1 className="outreach-hero__title">Outreach</h1>
+
           <p className="outreach-hero__subtitle">
             Practical ministry rooted in the Word, the Law of Equity, and
             Stewardship of the Land.
@@ -103,6 +105,9 @@ export default function Outreach() {
             aria-label="Outreach roles table"
           >
             <table className="outreach-table">
+              <caption className="sr-only">
+                Summary of member roles in virtual and in-person outreach
+              </caption>
               <thead>
                 <tr>
                   <th scope="col">Member Type</th>
@@ -112,32 +117,48 @@ export default function Outreach() {
               </thead>
               <tbody>
                 <tr>
-                  <td>
+                  <td data-label="Member Type">
                     <strong>The Teacher</strong>
                   </td>
-                  <td>Record “Hebrew Word of the Day”</td>
-                  <td>Lead a Home Fellowship study</td>
+                  <td data-label="Virtual Outreach">
+                    Record “Hebrew Word of the Day”
+                  </td>
+                  <td data-label="In-Person Outreach">
+                    Lead a Home Fellowship study
+                  </td>
                 </tr>
                 <tr>
-                  <td>
+                  <td data-label="Member Type">
                     <strong>The Steward</strong>
                   </td>
-                  <td>Manage the Digital Seed Exchange</td>
-                  <td>Host a Garden/Homestead tour</td>
+                  <td data-label="Virtual Outreach">
+                    Manage the Digital Seed Exchange
+                  </td>
+                  <td data-label="In-Person Outreach">
+                    Host a Garden/Homestead tour
+                  </td>
                 </tr>
                 <tr>
-                  <td>
+                  <td data-label="Member Type">
                     <strong>The Counselor</strong>
                   </td>
-                  <td>Answer legal/Trust law questions</td>
-                  <td>Offer “Equity” consultations</td>
+                  <td data-label="Virtual Outreach">
+                    Answer legal/Trust law questions
+                  </td>
+                  <td data-label="In-Person Outreach">
+                    Offer “Equity” consultations
+                  </td>
                 </tr>
                 <tr>
-                  <td>
+                  <td data-label="Member Type">
                     <strong>The Helper</strong>
                   </td>
-                  <td>Share ministry graphics/posts</td>
-                  <td>Distribute “Free Corners” produce</td>
+                  <td data-label="Virtual Outreach">
+                    Share ministry graphics/posts
+                  </td>
+                  <td data-label="In-Person Outreach">
+                    Distribute “Free Corners” produce
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -304,6 +325,7 @@ export default function Outreach() {
               strength.
             </p>
           </div>
+
           <div className="outreach-footer-cta__actions">
             <Link className="btn-primary" to="/contact">
               Contact Us

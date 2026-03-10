@@ -1,4 +1,4 @@
-import React, { useId, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "@/assets/css/the-way/StatementOfFaith.css";
 
@@ -6,25 +6,21 @@ import heroImg from "@/assets/images/the-way/statement-of-faith/preview.jpg";
 
 type ScriptureProps = {
   reference: string;
-  verse: React.ReactNode; // <-- change here
+  verse: React.ReactNode;
   version: string;
 };
 
 function Scripture({ reference, verse, version }: ScriptureProps) {
-  const tipId = useId();
-
   return (
-    <span className="scripture">
-      <button type="button" className="scripture-ref" aria-describedby={tipId}>
-        {reference}
-      </button>
+    <details className="scripture">
+      <summary className="scripture-ref">{reference}</summary>
 
-      <span id={tipId} role="tooltip" className="scripture-tooltip">
-        {reference}
-        <span className="scripture-tooltip-verse">{verse}</span>
-        <span className="scripture-tooltip-version">— {version}</span>
-      </span>
-    </span>
+      <div className="scripture-panel">
+        <div className="scripture-panel__ref">{reference}</div>
+        <div className="scripture-panel__verse">{verse}</div>
+        <div className="scripture-panel__version">— {version}</div>
+      </div>
+    </details>
   );
 }
 
@@ -117,20 +113,20 @@ export default function StatementOfFaith() {
 
             <div className="sofa-scriptures">
               <Scripture
-                reference="Acts 9:1–2 "
+                reference="Acts 9:1–2"
                 verse={
                   <>
                     Now Saul, still breathing a threat even of murder to the
                     disciples of the Master, having approaching the high priest,
                     He requested from him letters to Damascus to the synagogues,
                     that if someone he should find of the Way being, both men
-                    and women, having been bound he may lead them to Jerusalem."
+                    and women, having been bound he may lead them to Jerusalem.
                   </>
                 }
                 version="Bayithamashiyach Paleo Hebrew Version"
               />
               <Scripture
-                reference="Acts 19:8–9, 23 "
+                reference="Acts 19:8–9, 23"
                 verse={
                   <>
                     And he went into the synagogue, and spoke boldly for the
@@ -139,14 +135,14 @@ export default function StatementOfFaith() {
                     hardened, and believe not, but spoke evil of the Way before
                     the multitude, he departed from them, and separated the
                     Talmidiym (disciples), disputing daily in the school of one
-                    Tyrannus. And the same time there arose no small stir about{" "}
+                    Tyrannus. And the same time there arose no small stir about
                     the Way.
                   </>
                 }
                 version="The Cepher Version"
               />
               <Scripture
-                reference="Acts 22:4–5 "
+                reference="Acts 22:4–5"
                 verse={
                   <>
                     I shall purse the strongholds of that Way to the death,
@@ -155,13 +151,13 @@ export default function StatementOfFaith() {
                     house of the elders, from whom I received letters to the
                     brothers, and went to Damascus to arrest even those who were
                     present there to bring them to Jerusalem, so that they may
-                    be punished."
+                    be punished.
                   </>
                 }
                 version="Bayithamashiyach Paleo Hebrew Version"
               />
               <Scripture
-                reference="Acts 24:14–15, 22 "
+                reference="Acts 24:14–15, 22"
                 verse={
                   <>
                     And this I confess to you, that according to the Way which
@@ -169,7 +165,7 @@ export default function StatementOfFaith() {
                     believing all that has been written in the Torah and in the
                     Nebi’im (prophets). And having heard this, having known more
                     exactly about the Way, Phelix put them off, saying, ‘When
-                    Lusias the commander comes down, I shall decide your case'
+                    Lusias the commander comes down, I shall decide your case.’
                   </>
                 }
                 version="YAH Scriptures Version"
@@ -556,27 +552,38 @@ export default function StatementOfFaith() {
 
   const allIds = useMemo(() => doctrines.map((d) => d.id), [doctrines]);
   const [openIds, setOpenIds] = useState<Set<string>>(() => new Set());
+  const [allowMultiple, setAllowMultiple] = useState(false);
 
   function setOneOpen(id: string, open: boolean) {
     setOpenIds((prev) => {
-      const next = new Set(prev);
-      if (open) next.add(id);
-      else next.delete(id);
-      return next;
+      if (!open) {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      }
+
+      if (allowMultiple) {
+        const next = new Set(prev);
+        next.add(id);
+        return next;
+      }
+
+      return new Set([id]);
     });
   }
 
   function expandAll() {
+    setAllowMultiple(true);
     setOpenIds(new Set(allIds));
   }
 
   function collapseAll() {
+    setAllowMultiple(false);
     setOpenIds(new Set());
   }
 
   return (
     <main className="container py-4 sofa-page">
-      {/* HERO */}
       <section className="sofa-hero" aria-label="Statement of Faith">
         <div className="sofa-hero__media">
           <img
@@ -597,7 +604,10 @@ export default function StatementOfFaith() {
           </p>
 
           <div className="sofa-hero__cta">
-            <Link className="theway-btn" to="/membership">
+            <Link
+              className="theway-btn"
+              to="/the-way/education/memberships/register"
+            >
               Membership
             </Link>
             <Link className="theway-btn theway-btn-ghost" to="/contact">
@@ -610,7 +620,6 @@ export default function StatementOfFaith() {
         </div>
       </section>
 
-      {/* INTRO */}
       <section className="sofa-panel" aria-labelledby="sofa-intro">
         <h2 id="sofa-intro" className="sofa-panel__title">
           We affirm
@@ -622,7 +631,6 @@ export default function StatementOfFaith() {
         </p>
       </section>
 
-      {/* CONTROLS */}
       <section className="sofa-controls" aria-label="Accordion controls">
         <div className="sofa-controls__left">
           <span className="sofa-muted">
@@ -643,7 +651,6 @@ export default function StatementOfFaith() {
         </div>
       </section>
 
-      {/* ACCORDION GRID */}
       <section className="sofa-grid" aria-label="Doctrinal statements">
         {doctrines.map((item) => (
           <DoctrineAccordionItem
@@ -655,7 +662,6 @@ export default function StatementOfFaith() {
         ))}
       </section>
 
-      {/* CLOSING CTA */}
       <section className="sofa-cta" aria-label="Next steps">
         <div className="sofa-cta__inner">
           <h2 className="sofa-cta__title">Next steps</h2>
@@ -668,7 +674,10 @@ export default function StatementOfFaith() {
             <Link className="theway-btn" to="/the-way">
               Read The Way
             </Link>
-            <Link className="theway-btn theway-btn-ghost" to="/membership">
+            <Link
+              className="theway-btn theway-btn-ghost"
+              to="/the-way/education/memberships/register"
+            >
               Membership
             </Link>
             <Link className="theway-btn theway-btn-ghost" to="/contact">

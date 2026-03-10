@@ -1,22 +1,53 @@
 /* Page wrapper */
 .wom-giving {
-  padding-bottom: 28px;
+  padding-bottom: 32px;
+  background: var(--color-bg);
 }
 
 /* Hero */
 .wom-giving-hero {
-  background: linear-gradient(180deg, rgba(201, 162, 39, 0.10), rgba(0, 0, 0, 0));
+  position: relative;
+  min-height: clamp(420px, 72vh, 680px);
+  overflow: hidden;
   border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.wom-giving-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.wom-giving-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.02);
+}
+
+.wom-giving-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.72)
+    ),
+    radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.18), transparent 55%);
 }
 
 .wom-giving-hero-inner {
+  position: relative;
+  z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 22px 14px;
+  padding: 88px 18px 34px;
 
   display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 14px;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 16px;
   align-items: start;
 }
 
@@ -24,12 +55,14 @@
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  border: 1px solid var(--color-border);
-  background: rgba(201, 162, 39, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.14);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
+  color: #ffffff;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
 .wom-giving-hero-icon svg {
@@ -37,65 +70,96 @@
   height: 26px;
 }
 
+.wom-giving-hero-copy {
+  max-width: 820px;
+}
+
+.wom-giving-kicker {
+  margin: 0 0 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.88);
+}
+
 .wom-giving-title {
   margin: 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
 }
 
 .wom-giving-subtitle {
-  margin: 6px 0 10px;
-  color: var(--text-muted);
+  margin: 10px 0 14px;
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.94);
+  line-height: 1.5;
 }
 
 .wom-giving-purpose {
   margin: 0;
-  max-width: 900px;
-  line-height: 1.6;
-  color: var(--text);
+  max-width: 760px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+}
+
+.wom-giving-purpose + .wom-giving-purpose {
+  margin-top: 12px;
+}
+
+.wom-giving-purpose--secondary {
+  color: rgba(255, 255, 255, 0.84);
 }
 
 /* Section */
+.wom-giving-section {
+  padding-top: 28px;
+}
+
 .wom-giving-section-head {
-  margin: 18px 0 12px;
+  margin: 0 0 18px;
   text-align: center;
 }
 
 .wom-section-title {
   margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.15;
 }
 
 .wom-section-muted {
-  margin: 6px 0 0;
-  color: var(--text-muted);
+  margin: 8px 0 0;
+  color: var(--color-text-muted, var(--text-muted));
+  font-size: 1rem;
 }
 
-/* Grid: centered cards */
+/* Grid */
 .wom-giving-grid {
   display: grid;
-  gap: 16px;
-
-  /* Center the whole grid and cards */
+  gap: 18px;
   justify-content: center;
-
-  /* responsive columns */
   grid-template-columns: repeat(2, minmax(320px, 520px));
 }
 
 /* Card */
 .wom-giving-card {
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: 18px;
   background: var(--color-surface);
-  padding: 14px;
+  padding: 16px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
 }
 
-/* Card header */
 .wom-card-top {
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 12px;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .wom-card-icon {
@@ -117,22 +181,24 @@
 
 .wom-card-title {
   margin: 0;
+  line-height: 1.2;
 }
 
 .wom-card-muted {
-  margin: 2px 0 0;
-  color: var(--text-muted);
+  margin: 3px 0 0;
+  color: var(--color-text-muted, var(--text-muted));
   font-size: 0.95rem;
 }
 
 .wom-card-body {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .wom-card-text {
   margin: 0;
-  color: var(--text);
+  color: var(--color-text, var(--text));
+  line-height: 1.65;
 }
 
 /* Stripe amount row */
@@ -145,7 +211,7 @@
 
 .wom-dollar {
   font-weight: 800;
-  color: var(--text);
+  color: var(--color-text, var(--text));
 }
 
 .wom-btn-row {
@@ -157,8 +223,35 @@
 
 .wom-help {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--color-text-muted, var(--text-muted));
   font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Better button polish */
+.wom-btn-primary,
+.wom-btn-outline {
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease,
+    border-color 140ms ease;
+}
+
+.wom-btn-primary:hover,
+.wom-btn-outline:hover {
+  transform: translateY(-1px);
+}
+
+.wom-btn-primary:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.wom-btn-outline:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
 }
 
 /* CashApp */
@@ -177,6 +270,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .wom-cashapp-tag {
@@ -185,7 +279,7 @@
   border-radius: 10px;
   border: 1px solid var(--color-border);
   background: rgba(0, 0, 0, 0.03);
-  color: var(--text);
+  color: var(--color-text, var(--text));
 }
 
 /* Mail */
@@ -194,11 +288,11 @@
   border-radius: 14px;
   padding: 12px;
   background: rgba(0, 0, 0, 0.03);
-  color: var(--text);
+  color: var(--color-text, var(--text));
 }
 
 .wom-mail-line {
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 /* Responsive */
@@ -207,12 +301,67 @@
     grid-template-columns: 1fr;
   }
 
+  .wom-giving-section-head {
+    text-align: left;
+  }
+
   .wom-qr {
     width: 160px;
     height: 160px;
   }
+}
 
-  .wom-giving-section-head {
-    text-align: left;
+@media (max-width: 767px) {
+  .wom-giving-hero {
+    min-height: 520px;
+  }
+
+  .wom-giving-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 84px 16px 24px;
+  }
+
+  .wom-giving-hero-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .wom-giving-title {
+    font-size: clamp(1.85rem, 8vw, 2.6rem);
+  }
+
+  .wom-giving-subtitle {
+    margin-bottom: 12px;
+  }
+
+  .wom-giving-purpose {
+    font-size: 0.98rem;
+  }
+
+  .wom-giving-section {
+    padding-top: 22px;
+  }
+
+  .wom-giving-grid {
+    gap: 14px;
+  }
+
+  .wom-giving-card {
+    padding: 14px;
+  }
+
+  .wom-btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .wom-btn-row > * {
+    width: 100%;
+  }
+
+  .wom-cashapp-row {
+    align-items: stretch;
+    flex-direction: column;
   }
 }

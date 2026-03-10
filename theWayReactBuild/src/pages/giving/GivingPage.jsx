@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cashappQr from "@/assets/images/giving/cashapp-qr.png";
+import heroImg from "@/assets/images/giving/giving.jpg";
 import "@/assets/css/giving/GivingPage.css";
 import {
   CreditCard,
@@ -20,7 +21,7 @@ const MONTHLY_TIERS = [
 
 export default function GivingPage() {
   const [amount, setAmount] = useState("25");
-  const [monthlyTier, setMonthlyTier] = useState(MONTHLY_TIERS[1].priceKey); // default $25
+  const [monthlyTier, setMonthlyTier] = useState(MONTHLY_TIERS[1].priceKey);
 
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -64,12 +65,24 @@ export default function GivingPage() {
   return (
     <main className="wom-giving">
       <header className="wom-giving-hero">
+        <div className="wom-giving-hero-media" aria-hidden="true">
+          <img
+            src={heroImg}
+            alt=""
+            className="wom-giving-hero-image"
+            loading="eager"
+          />
+          <div className="wom-giving-hero-overlay" />
+        </div>
+
         <div className="wom-giving-hero-inner">
           <div className="wom-giving-hero-icon" aria-hidden="true">
             <HeartHandshake />
           </div>
 
-          <div>
+          <div className="wom-giving-hero-copy">
+            <p className="wom-giving-kicker">The Way of Messiah</p>
+
             <h1 className="wom-giving-title">Giving / Donations</h1>
 
             <p className="wom-giving-subtitle">
@@ -80,10 +93,14 @@ export default function GivingPage() {
               Your gifts help build and share practical education that equips
               families and communities: trust and estate planning foundations,
               principles of equity law, agricultural planting and harvesting
-              guidance, outreach preparation, and more. As Hosea 4:6 warns, “My
-              people are destroyed for lack of knowledge.” Your contribution
-              helps restore knowledge and strengthen stewardship—so men and
-              women can walk wisely with what Yahuah has entrusted to them.
+              guidance, outreach preparation, and more.
+            </p>
+
+            <p className="wom-giving-purpose wom-giving-purpose--secondary">
+              As Hosea 4:6 warns, “My people are destroyed for lack of
+              knowledge.” Your contribution helps restore knowledge and
+              strengthen stewardship—so men and women can walk wisely with what
+              Yahuah has entrusted to them.
             </p>
           </div>
         </div>
@@ -98,7 +115,6 @@ export default function GivingPage() {
         </div>
 
         <div className="wom-giving-grid">
-          {/* Stripe */}
           <article
             className="wom-giving-card"
             aria-label="Give Online using Stripe"
@@ -159,7 +175,7 @@ export default function GivingPage() {
               <div className="wom-btn-row">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-primary wom-btn-primary"
                   disabled={loading}
                   onClick={() => startCheckout("one_time")}
                 >
@@ -168,7 +184,7 @@ export default function GivingPage() {
 
                 <button
                   type="button"
-                  className="btn btn-outline-primary"
+                  className="btn btn-outline-primary wom-btn-outline"
                   disabled={loading}
                   onClick={() => startCheckout("monthly")}
                 >
@@ -182,7 +198,6 @@ export default function GivingPage() {
             </div>
           </article>
 
-          {/* CashApp */}
           <article className="wom-giving-card" aria-label="Give via CashApp">
             <div className="wom-card-top">
               <div className="wom-card-icon" aria-hidden="true">
@@ -206,7 +221,7 @@ export default function GivingPage() {
 
                 <button
                   type="button"
-                  className="btn btn-sm btn-outline-primary"
+                  className="btn btn-sm btn-outline-primary wom-btn-outline"
                   onClick={copyCashTag}
                   title="Copy CashApp tag"
                 >
@@ -220,7 +235,6 @@ export default function GivingPage() {
             </div>
           </article>
 
-          {/* Give by Mail */}
           <article className="wom-giving-card" aria-label="Give by Mail">
             <div className="wom-card-top">
               <div className="wom-card-icon" aria-hidden="true">
@@ -254,7 +268,6 @@ export default function GivingPage() {
             </div>
           </article>
 
-          {/* Non-cash */}
           <article
             className="wom-giving-card"
             aria-label="Non-cash contributions"
@@ -275,7 +288,10 @@ export default function GivingPage() {
                 assets. Contact us and we’ll provide instructions.
               </p>
 
-              <a className="btn btn-outline-primary" href="/the-way/contact">
+              <a
+                className="btn btn-outline-primary wom-btn-outline"
+                href="/the-way/contact"
+              >
                 Contact Us
               </a>
             </div>
