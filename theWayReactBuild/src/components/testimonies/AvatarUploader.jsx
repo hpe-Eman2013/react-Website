@@ -48,16 +48,15 @@ export function AvatarUploader({ file, error, onFileChange, maxBytes }) {
   }
 
   return (
-    <fieldset className="border rounded-3 p-3 mb-3">
+    <fieldset className="border rounded-3 p-3 mb-3 tf-avatar-fieldset">
       <legend className="float-none w-auto px-2 fs-6 mb-0">
         Photo (optional)
       </legend>
 
-      <div className="d-flex gap-3 align-items-start flex-wrap">
+      <div className="d-flex gap-3 align-items-start flex-wrap tf-avatar-layout">
         {/* Preview */}
         <div
-          className="border rounded-3 d-flex align-items-center justify-content-center bg-light"
-          style={{ width: 96, height: 96, overflow: "hidden" }}
+          className="border rounded-3 d-flex align-items-center justify-content-center bg-light tf-avatar-preview"
           aria-hidden="true"
         >
           {previewUrl ? (
@@ -74,31 +73,31 @@ export function AvatarUploader({ file, error, onFileChange, maxBytes }) {
         </div>
 
         {/* Input + actions */}
-        <div style={{ minWidth: 280, flex: 1 }}>
+        <div className="tf-avatar-controls">
           <label htmlFor="avatarFile" className="form-label">
             Upload a photo
           </label>
 
-          <div className="d-flex gap-2 align-items-center">
-            <input
-              ref={inputRef}
-              id="avatarFile"
-              type="file"
-              className={`form-control ${error ? "is-invalid" : ""}`}
-              accept="image/jpeg,image/png,image/webp"
-              onChange={handleChange}
-            />
+          <input
+            ref={inputRef}
+            id="avatarFile"
+            type="file"
+            className={`form-control ${error ? "is-invalid" : ""}`}
+            accept="image/jpeg,image/png,image/webp"
+            onChange={handleChange}
+          />
 
-            {previewUrl ? (
+          {previewUrl ? (
+            <div className="tf-avatar-remove-wrap">
               <button
                 type="button"
-                className="btn btn-outline-secondary"
+                className="btn btn-outline-secondary tf-avatar-remove"
                 onClick={remove}
               >
                 Remove
               </button>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
 
           <div className="form-text">JPG, PNG, or WebP. Max 4MB.</div>
 

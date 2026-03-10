@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   padding: 2rem 1rem 4rem;
-
   background: var(--color-surface);
   color: var(--text);
 }
@@ -13,12 +12,10 @@
 .submit-card {
   width: 100%;
   max-width: 760px;
-
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 2rem 2rem 2.5rem;
-
   box-shadow: var(--shadow-soft);
 }
 
@@ -61,13 +58,141 @@
   margin-bottom: 1.25rem;
 }
 
+/* Keep the embedded testimony form inside the card */
+.submit-card .tf-card,
+.submit-card .tf-card * {
+  box-sizing: border-box;
+}
+
+.submit-card .tf-card {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Bootstrap row safety inside narrow cards */
+.submit-card .row {
+  --bs-gutter-x: 0.75rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.submit-card .row > * {
+  min-width: 0;
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+}
+
+/* Normal form controls only */
+.submit-card .form-control,
+.submit-card .form-select,
+.submit-card textarea,
+.submit-card input[type="text"],
+.submit-card input[type="email"],
+.submit-card input[type="file"],
+.submit-card select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Buttons size naturally unless explicitly given utility classes */
+.submit-card button {
+  box-sizing: border-box;
+}
+
+/* File input safety */
+.submit-card input[type="file"],
+.submit-card #avatarFile {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.submit-card input[type="file"]::file-selector-button {
+  margin-right: 10px;
+}
+
+/* Media stays contained */
+.submit-card img,
+.submit-card video,
+.submit-card canvas,
+.submit-card svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Avatar uploader */
+.tf-avatar-layout {
+  width: 100%;
+  min-width: 0;
+}
+
+.tf-avatar-preview {
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.tf-avatar-controls {
+  flex: 1 1 260px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.tf-avatar-remove-wrap {
+  margin-top: 10px;
+}
+
+.tf-avatar-remove {
+  width: auto;
+}
+
 /* Mobile adjustments */
 @media (max-width: 600px) {
+  .submit-page {
+    padding: 1.25rem 0.75rem 3rem;
+  }
+
   .submit-card {
     padding: 1.25rem 1rem 2rem;
+    border-radius: 14px;
+  }
+
+  .submit-header {
+    margin-bottom: 1.5rem;
   }
 
   .submit-header h1 {
     font-size: 1.6rem;
+    line-height: 1.15;
+  }
+
+  .submit-subtitle {
+    font-size: 0.98rem;
+  }
+
+  .tf-avatar-layout {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tf-avatar-controls {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .tf-avatar-remove {
+    width: 100%;
+  }
+
+  .submit-card input[type="file"],
+  .submit-card #avatarFile {
+    font-size: 0.95rem;
   }
 }
