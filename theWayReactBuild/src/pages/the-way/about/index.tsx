@@ -149,7 +149,6 @@ export default function AboutPage() {
               practice, not just ideas.
             </p>
 
-            {/* Optional: expandable "Read more" without creating a new page */}
             <details className="about-details">
               <summary>Read more</summary>
               <div className="about-details-body">
@@ -210,7 +209,7 @@ export default function AboutPage() {
       {/* CTA BAND */}
       <section className="about-cta">
         <div className="about-container about-cta-inner">
-          <div>
+          <div className="about-cta-copy">
             <h2 className="about-h2">Start Here</h2>
             <p className="about-lead">
               If you’re new, begin with our foundation, then take your next

@@ -56,11 +56,7 @@
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.08);
-
-  /* Safari support */
   -webkit-backdrop-filter: blur(4px);
-
-  /* Standard */
   backdrop-filter: blur(4px);
 }
 
@@ -258,9 +254,76 @@
   }
 }
 
+.about-cta-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .about-cta-actions {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.about-cta-actions .theway-btn {
+  min-height: 46px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 767px) {
+  .about-hero {
+    min-height: 72vh;
+    background-position: center top;
+  }
+
+  .about-hero-inner {
+    width: min(100%, calc(100% - 1.5rem));
+    padding-bottom: 12rem;
+  }
+
+  .about-hero-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .about-hero-actions .theway-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-header {
+    text-align: left;
+  }
+
+  .about-lead {
+    margin: 0;
+  }
+
+  .about-cta {
+    padding: 2rem 0;
+  }
+
+  .about-cta-inner {
+    gap: 1.25rem;
+  }
+
+  .about-cta-copy {
+    text-align: left;
+  }
+
+  .about-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .about-cta-actions .theway-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }
