@@ -1,78 +1,188 @@
 /* ==============================
-   Light Theme (Default)
+   LIGHT THEME (DEFAULT)
 ================================= */
 :root {
+  /* --------------------------------
+     Brand / palette
+  --------------------------------- */
   --color-primary: #0f1e2e;
   --color-secondary: #c9a227;
   --color-accent: #8c5a2b;
-  --color-surface: #f4f1ea;
 
   --color-success: #2e7d32;
   --color-danger: #b71c1c;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* --------------------------------
+     Surfaces / structure
+  --------------------------------- */
+  --color-page-bg: #f4f1ea;
+  --color-panel-bg: #ffffff;
+  --color-panel-alt: #ede7da;
   --color-border: #d8d3c6;
 
-  --color-text-dark: #1a1a1a;
-  --color-text-light: #ffffff;
-  --surface: var(--color-surface); /* page background */
-  --surface-panel: #ffffff; /* elevated panels/cards */
+  /* --------------------------------
+     Text
+  --------------------------------- */
+  --color-text: #1a1a1a;
+  --color-text-muted: rgba(26, 26, 26, 0.72);
+  --color-heading: #0f1e2e;
+
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-muted: rgba(255, 255, 255, 0.82);
+  --color-text-on-primary: #ffffff;
+
+  /* --------------------------------
+     Alerts / status
+  --------------------------------- */
+  --color-success-bg: rgba(46, 125, 50, 0.12);
+  --color-success-border: rgba(46, 125, 50, 0.32);
+
+  --color-danger-bg: rgba(183, 28, 28, 0.10);
+  --color-danger-border: rgba(183, 28, 28, 0.28);
+
+  /* --------------------------------
+     Hero / image overlays
+  --------------------------------- */
+  --hero-text: #ffffff;
+  --hero-text-muted: rgba(255, 255, 255, 0.9);
+  --hero-overlay-start: rgba(0, 0, 0, 0.35);
+  --hero-overlay-end: rgba(0, 0, 0, 0.58);
+
+  /* --------------------------------
+     Buttons / interactive
+  --------------------------------- */
+  --button-primary-bg: var(--color-primary);
+  --button-primary-fg: var(--color-text-on-primary);
+
+  --button-secondary-bg: var(--color-panel-alt);
+  --button-secondary-fg: var(--color-heading);
+  --button-secondary-border: var(--color-border);
+
   --btn-color: #91c7f6;
-  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
-  --radius: 10px;
 
-  --text: var(--color-text-dark);
-  --text-muted: rgba(26, 26, 26, 0.72);
-
-  --text-on-dark: var(--color-text-light);
-  --text-on-dark-muted: rgba(255, 255, 255, 0.82);
-
+  /* --------------------------------
+     Avatar / nav
+  --------------------------------- */
   --avatar-bg: var(--color-primary);
-  --avatar-fg: var(--color-text-light);
+  --avatar-fg: var(--color-white);
 
-  --nav-panel-bg: #0f1e2e; /* deep navy */
-  --nav-panel-fg: #ffffff; /* white text */
+  --nav-panel-bg: #0f1e2e;
+  --nav-panel-fg: #ffffff;
   --nav-panel-hover: rgba(255, 255, 255, 0.12);
   --nav-panel-border: rgba(255, 255, 255, 0.18);
+
+  /* --------------------------------
+     Shared effects
+  --------------------------------- */
+  --surface: var(--color-page-bg);
+  --surface-panel: var(--color-panel-bg);
+
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
+  --radius: 10px;
 }
 
 /* ==============================
-   Dark Theme Override
+   DARK THEME
 ================================= */
 [data-theme="dark"] {
+  /* --------------------------------
+     Brand / palette
+  --------------------------------- */
   --color-primary: #e9eef5;
   --color-secondary: #b8921f;
   --color-accent: #c9a227;
-  --color-surface: #12161c;
 
-  --color-success: #4caf50;
-  --color-danger: #e57373;
+  --color-success: #66bb6a;
+  --color-danger: #ef9a9a;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* --------------------------------
+     Surfaces / structure
+  --------------------------------- */
+  --color-page-bg: #12161c;
+  --color-panel-bg: #1b1f24;
+  --color-panel-alt: #222933;
   --color-border: #2c3542;
 
-  --color-text-dark: #e9eef5;
-  --color-text-light: #ffffff;
-  --surface-panel: #1b1f24;
+  /* --------------------------------
+     Text
+  --------------------------------- */
+  --color-text: #e9eef5;
+  --color-text-muted: rgba(233, 238, 245, 0.88);
+  --color-heading: #f5f7fb;
+
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-muted: rgba(255, 255, 255, 0.82);
+
+  /* Important:
+     In dark mode your primary is light,
+     so text on primary should be dark. */
+  --color-text-on-primary: #0f1e2e;
+
+  /* --------------------------------
+     Alerts / status
+  --------------------------------- */
+  --color-success-bg: rgba(102, 187, 106, 0.14);
+  --color-success-border: rgba(102, 187, 106, 0.34);
+
+  --color-danger-bg: rgba(239, 154, 154, 0.14);
+  --color-danger-border: rgba(239, 154, 154, 0.34);
+
+  /* --------------------------------
+     Hero / image overlays
+  --------------------------------- */
+  --hero-text: #ffffff;
+  --hero-text-muted: rgba(255, 255, 255, 0.88);
+  --hero-overlay-start: rgba(0, 0, 0, 0.35);
+  --hero-overlay-end: rgba(0, 0, 0, 0.62);
+
+  /* --------------------------------
+     Buttons / interactive
+  --------------------------------- */
+  --button-primary-bg: var(--color-primary);
+  --button-primary-fg: var(--color-text-on-primary);
+
+  --button-secondary-bg: var(--color-panel-alt);
+  --button-secondary-fg: var(--color-heading);
+  --button-secondary-border: var(--color-border);
+
   --btn-color: #4fa3f7;
-  --surface: var(--color-surface);
-  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
 
-  --text: var(
-    --color-text-dark
-  ); /* in dark, your color-text-dark is already light */
-  --text-muted: rgba(233, 238, 245, 0.88);
-
-  --text-on-dark: var(--color-text-light);
-  --text-on-dark-muted: rgba(255, 255, 255, 0.82);
-
+  /* --------------------------------
+     Avatar / nav
+  --------------------------------- */
   --avatar-bg: var(--color-secondary);
   --avatar-fg: #111111;
 
-  --nav-panel-bg: #0b0f14; /* keep panel dark in dark mode */
+  --nav-panel-bg: #0b0f14;
   --nav-panel-fg: #e9eef5;
   --nav-panel-hover: rgba(255, 255, 255, 0.12);
   --nav-panel-border: rgba(255, 255, 255, 0.18);
 
-  --hero-text-dark: #0f1e2e;
-  --hero-text-dark-muted: rgba(15, 30, 46, 0.92);
+  /* --------------------------------
+     Shared effects
+  --------------------------------- */
+  --surface: var(--color-page-bg);
+  --surface-panel: var(--color-panel-bg);
+
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --radius: 10px;
 }
+
+/* ==============================
+   GLOBAL TRANSITIONS
+================================= */
 body,
 main,
 section,

@@ -5,6 +5,7 @@
 .sofa-page {
   --radius: 18px;
   --radius-sm: 14px;
+  color: var(--color-text);
 }
 
 /* =========================
@@ -16,7 +17,7 @@
   overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid var(--color-border);
-  background: var(--surface);
+  background: var(--color-page-bg);
   box-shadow: var(--shadow-soft);
   margin-bottom: 18px;
   min-height: 75vh;
@@ -37,7 +38,11 @@
 .sofa-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));
+  background: linear-gradient(
+    180deg,
+    var(--hero-overlay-start),
+    var(--hero-overlay-end)
+  );
 }
 
 .sofa-hero__content {
@@ -53,7 +58,7 @@
 
 .sofa-hero__content,
 .sofa-hero__content * {
-  color: #fff;
+  color: var(--hero-text);
 }
 
 .sofa-hero__title {
@@ -66,7 +71,7 @@
 .sofa-hero__subtitle {
   margin: 0;
   max-width: 72ch;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--hero-text-muted);
 }
 
 .sofa-hero__cta {
@@ -80,13 +85,13 @@
 
 .sofa-hero__cta .theway-btn,
 .sofa-hero__cta .theway-btn:visited {
-  color: #fff;
+  color: var(--hero-text);
   border-color: rgba(255, 255, 255, 0.45);
 }
 
 .sofa-hero__cta .theway-btn:hover,
 .sofa-hero__cta .theway-btn:focus-visible {
-  color: #fff;
+  color: var(--hero-text);
   border-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -100,7 +105,7 @@
 
 .sofa-panel {
   border: 1px solid var(--color-border);
-  background: var(--surface-panel);
+  background: var(--color-panel-bg);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
   padding: 16px;
@@ -110,11 +115,12 @@
 .sofa-panel__title {
   margin: 0 0 6px;
   font-size: 1.1rem;
+  color: var(--color-heading);
 }
 
 .sofa-panel__text {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.55;
 }
 
@@ -131,7 +137,7 @@
 }
 
 .sofa-muted {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .sofa-controls__right {
@@ -142,16 +148,19 @@
 
 .sofa-btn {
   appearance: none;
-  border: 1px solid var(--color-border);
-  background: var(--surface-panel);
-  color: var(--color-primary);
+  border: 1px solid var(--button-secondary-border);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-fg);
   border-radius: 999px;
   padding: 8px 12px;
   cursor: pointer;
   box-shadow: var(--shadow-soft);
   transition:
     transform 150ms ease,
-    background 150ms ease;
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    opacity 150ms ease;
 }
 
 .sofa-btn:hover {
@@ -168,7 +177,15 @@
 }
 
 .sofa-btn--ghost {
-  background: transparent;
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-fg);
+  border-color: var(--button-secondary-border);
+}
+.sofa-btn:hover,
+.sofa-btn:focus-visible {
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--button-secondary-bg));
+  border-color: var(--color-primary);
+  color: var(--color-heading);
 }
 
 /* =========================
@@ -194,7 +211,7 @@
 
 .sofa-accordion {
   border: 1px solid var(--color-border);
-  background: var(--surface-panel);
+  background: var(--color-panel-bg);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
   overflow: visible;
@@ -232,7 +249,7 @@
   display: grid;
   place-items: center;
   border: 1px solid var(--color-border);
-  background: var(--surface);
+  background: var(--color-page-bg);
   color: var(--color-primary);
   font-weight: 700;
 }
@@ -240,11 +257,13 @@
 .sofa-accordion__title {
   font-weight: 700;
   letter-spacing: -0.01em;
+  color: var(--color-heading);
 }
 
 .sofa-accordion__chev {
   opacity: 0.8;
   transition: transform 160ms ease;
+  color: var(--color-text);
 }
 
 .sofa-accordion[open] .sofa-accordion__chev {
@@ -254,7 +273,7 @@
 .sofa-accordion__panel {
   border-top: 1px solid var(--color-border);
   padding: 14px 14px 16px;
-  color: var(--text);
+  color: var(--color-text);
   line-height: 1.6;
   overflow: visible;
 }
@@ -278,7 +297,7 @@
 
 .sofa-lead {
   margin: 0 0 12px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
@@ -297,6 +316,7 @@
   margin: 0 0 6px;
   font-size: 1.02rem;
   letter-spacing: -0.01em;
+  color: var(--color-heading);
 }
 
 .sofa-subsections {
@@ -307,22 +327,19 @@
 .sofa-subsection__title {
   margin: 0 0 6px;
   font-size: 1.02rem;
+  color: var(--color-heading);
 }
 
 .sofa-bullets {
   margin: 0;
   padding-left: 1.15rem;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .sofa-bullets ul {
   margin: 6px 0 0;
   padding-left: 1.1rem;
 }
-
-/* =========================
-   Scripture disclosure
-   ========================= */
 
 /* =========================
    Scripture disclosure
@@ -353,7 +370,7 @@
   display: inline-block;
   appearance: none;
   border: 1px solid var(--color-border);
-  background: var(--surface);
+  background: var(--color-page-bg);
   color: var(--color-primary);
   border-radius: 999px;
   padding: 6px 12px;
@@ -361,7 +378,8 @@
   transition:
     transform 150ms ease,
     background 150ms ease,
-    border-color 150ms ease;
+    border-color 150ms ease,
+    color 150ms ease;
 }
 
 .scripture-ref:hover {
@@ -375,7 +393,7 @@
 
 .scripture[open] .scripture-ref {
   background: var(--color-secondary);
-  color: var(--text-on-dark, #fff);
+  color: var(--color-text-on-dark);
   border-color: var(--color-secondary);
 }
 
@@ -386,10 +404,10 @@
   max-width: 100%;
   padding: 12px 14px;
   border-radius: 14px;
-  background: var(--surface-panel);
+  background: var(--color-panel-bg);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
-  color: var(--text);
+  color: var(--color-text);
   line-height: 1.6;
 }
 
@@ -400,19 +418,19 @@
 .scripture-panel__ref {
   font-weight: 700;
   margin-bottom: 6px;
-  color: var(--text);
+  color: var(--color-heading);
 }
 
 .scripture-panel__verse {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .scripture-panel__version {
   margin-top: 8px;
   font-size: 0.9rem;
   opacity: 0.8;
+  color: var(--color-text-muted);
 }
-
 
 /* =========================
    Closing CTA band
@@ -422,7 +440,7 @@
   margin-top: 16px;
   border-radius: var(--radius);
   border: 1px solid var(--color-border);
-  background: var(--surface-panel);
+  background: var(--color-panel-bg);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
 }
@@ -434,11 +452,12 @@
 .sofa-cta__title {
   margin: 0 0 6px;
   font-size: 1.2rem;
+  color: var(--color-heading);
 }
 
 .sofa-cta__text {
   margin: 0 0 12px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.55;
 }
 
@@ -460,7 +479,8 @@
 
 @media (max-width: 900px) {
   .sofa-hero {
-    --webkit-min-height: auto;
+    -webkit-min-height: auto;
+    min-height: auto;
   }
 
   .sofa-hero__content {
@@ -489,6 +509,7 @@
   .sofa-controls__right {
     width: 100%;
   }
+
   .sofa-cta__buttons {
     width: 100%;
   }
@@ -497,7 +518,7 @@
     width: 100%;
   }
 }
-  
+
 @media (max-width: 900px) {
   .sofa-scriptures {
     flex-direction: column;
@@ -519,5 +540,3 @@
     max-width: 100%;
   }
 }
-
-  

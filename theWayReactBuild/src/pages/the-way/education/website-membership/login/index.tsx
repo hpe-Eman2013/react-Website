@@ -1,7 +1,7 @@
 import React, { FormEvent, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "@/assets/css/the-way/WebsiteMembershipLogin.css";
-import loginHero from "@/assets/images/the-way/education/website-membership/login.jpg";
+import loginHero from "@/assets/images/the-way/education/login.png";
 
 type ViewState = "idle" | "submitting" | "success" | "error";
 
@@ -141,8 +141,11 @@ export default function WebsiteMembershipLoginPage() {
         />
         <div className="wm-login-hero__overlay" />
         <div className="wm-login-hero__content">
-          <p className="wm-login-hero__eyebrow">Website Membership</p>
-          <h1 className="wm-login-hero__title">Education Member Login</h1>
+          <div className="wm-login-hero__top">
+            <p className="wm-login-hero__eyebrow">Website Membership</p>
+            <h1 className="wm-login-hero__title">Education Member Login</h1>
+          </div>
+
           <p className="wm-login-hero__subtitle">
             Access study resources, protected education materials, and member
             content through your approved website membership account.

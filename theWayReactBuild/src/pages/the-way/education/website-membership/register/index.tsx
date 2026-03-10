@@ -1,7 +1,7 @@
 import React, { FormEvent, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "@/assets/css/the-way/WebsiteMembershipRegister.css";
-import registerHero from "@/assets/images/the-way/education/website-membership/register.jpg";
+import registerHero from "@/assets/images/the-way/education/register.jpg";
 
 type ViewState = "idle" | "submitting" | "success" | "error";
 
@@ -161,10 +161,13 @@ export default function WebsiteMembershipRegisterPage() {
         />
         <div className="wm-register-hero__overlay" />
         <div className="wm-register-hero__content">
-          <p className="wm-register-hero__eyebrow">Website Membership</p>
-          <h1 className="wm-register-hero__title">
-            Create Your Member Account
-          </h1>
+          <div className="wm-register-hero__top">
+            <p className="wm-register-hero__eyebrow">Website Membership</p>
+            <h1 className="wm-register-hero__title">
+              Create Your Member Account
+            </h1>
+          </div>
+
           <p className="wm-register-hero__subtitle">
             Register for website membership to begin your path toward protected
             education resources, study materials, and future member access.

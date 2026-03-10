@@ -1,14 +1,14 @@
 /* -------------------------------------------------------
    THE WAY — springboard page
    Requirements:
-   - Use theme.css variables only (colors, borders, shadows)
+   - Use theme.css variables only
    - Hero consistent with Home: image + overlay + centered copy
    - No walls of text; clean panels; responsive 8-card grid
 -------------------------------------------------------- */
 
 .theway {
-  background: var(--surface);
-  color: var(--text);
+  background: var(--color-page-bg);
+  color: var(--color-text);
 }
 
 /* CONTAINER */
@@ -22,7 +22,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--muted);
+  color: var(--color-text-muted);
   margin: 0 0 0.75rem;
 }
 
@@ -30,13 +30,14 @@
   font-size: clamp(1.9rem, 8vw, 2.6rem);
   text-align: center;
   max-width: 12ch;
-  color: var(--color-primary);
+  color: var(--color-heading);
+  margin: 0 auto;
 }
 
 .theway-subtitle {
   max-width: 68ch;
   margin: 0 auto;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   line-height: 1.55;
 }
@@ -45,10 +46,11 @@
   font-size: clamp(1.55rem, 2.2vw, 2rem);
   line-height: 1.2;
   margin: 0 0 0.75rem;
+  color: var(--color-heading);
 }
 
 .theway-muted {
-  color: var(--muted);
+  color: var(--color-text-muted);
   margin: 0;
   line-height: 1.6;
 }
@@ -58,6 +60,7 @@
 .theway-btn:hover {
   text-decoration: none;
 }
+
 .theway-btn {
   display: inline-flex;
   align-items: center;
@@ -65,7 +68,7 @@
   gap: 0.5rem;
 
   border-radius: 999px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-border);
   padding: 0.85rem 1.1rem;
 
   font-weight: 700;
@@ -76,11 +79,12 @@
   transition:
     transform 140ms ease,
     background 140ms ease,
-    border-color 140ms ease;
+    border-color 140ms ease,
+    color 140ms ease;
 }
 
 .theway-btn:focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
   outline-offset: 2px;
 }
 
@@ -89,14 +93,15 @@
 }
 
 .theway-btn-primary {
-  background: var(--brand);
-  color: var(--brand-contrast);
-  border-color: var(--brand);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+  border-color: var(--button-primary-bg);
 }
 
 .theway-btn-ghost {
-  background: color-mix(in srgb, var(--card) 65%, transparent);
-  color: var(--text);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-fg);
+  border-color: var(--button-secondary-border);
 }
 
 .theway-btn-small {
@@ -108,33 +113,30 @@
 .theway-hero {
   position: relative;
   min-height: 82vh;
-
   display: grid;
   place-items: center;
-
-  /* Replace this with your chosen image */
-  background: url("../../images/the-way/hero-nature.jpg") center / cover
-    no-repeat;
+  background: url("../../images/the-way/hero-nature.jpg") center / cover no-repeat;
 }
 
 .theway-hero-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--hero-overlay-start),
+    var(--hero-overlay-end)
+  );
 }
 
 .theway-hero-inner {
-  /* position: relative;
+  position: relative;
   z-index: 1;
-
-  width: min(980px, calc(100% - 2rem));
-  text-align: center;
-
-  padding: 10vh 0 8vh; */
   display: grid;
   place-items: start center;
   padding-bottom: 9rem;
   width: min(600px, calc(100% - 2rem));
+  text-align: center;
 }
 
 .theway-hero-ctas {
@@ -145,20 +147,26 @@
   flex-wrap: wrap;
 }
 
+.theway-hero .theway-eyebrow,
+.theway-hero .theway-title,
+.theway-hero .theway-subtitle {
+  color: var(--hero-text);
+}
+
 /* SECTIONS */
 .theway-section {
   padding: 3.5rem 0;
 }
 
 .theway-section-alt {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: var(--color-page-bg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .theway-prose {
   max-width: 78ch;
-  background: var(--surface-panel);
+  background: var(--color-panel-bg);
   border: 1px solid var(--color-border);
   border-radius: 18px;
   padding: 1.25rem 1.35rem;
@@ -168,7 +176,7 @@
 .theway-prose p {
   margin: 0 0 1rem;
   line-height: 1.75;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .theway-prose p:last-child {
@@ -186,12 +194,10 @@
 .theway-quote {
   grid-column: span 12;
   margin: 0;
-
-  background: var(--surface-panel);
+  background: var(--color-panel-bg);
   border: 1px solid var(--color-border);
   border-radius: 18px;
   padding: 1.15rem 1.25rem;
-
   box-shadow: var(--shadow-soft);
 }
 
@@ -199,14 +205,14 @@
   margin: 0;
   padding-left: 1rem;
   border-left: 4px solid var(--color-secondary);
-  color: var(--text);
+  color: var(--color-text);
   line-height: 1.7;
   font-style: italic;
 }
 
 .theway-quote figcaption {
   margin-top: 0.75rem;
-  color: var(--text);
+  color: var(--color-heading);
   font-weight: 800;
   font-size: 0.95rem;
 }
@@ -225,7 +231,7 @@
 }
 
 .theway-card {
-  background: var(--surface-panel);
+  background: var(--color-panel-bg);
   border: 1px solid var(--color-border);
   border-radius: 18px;
   padding: 1.25rem;
@@ -233,23 +239,29 @@
 
   display: flex;
   flex-direction: column;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
 }
 
 .theway-card:hover {
   transform: translateY(-2px);
-  border-color: var(--brand);
-  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 .theway-card-title {
   margin: 0 0 0.5rem;
   font-size: 1.15rem;
   line-height: 1.2;
+  color: var(--color-heading);
 }
 
 .theway-card-desc {
   margin: 0 0 1rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   line-height: 1.55;
   flex-grow: 1;
 }
@@ -268,10 +280,13 @@
   transition: color 160ms ease;
 }
 
-.theway-card-link:hover {
+.theway-card-link:hover,
+.theway-card-link:focus-visible {
   color: var(--color-accent);
   text-decoration: none;
+  outline: none;
 }
+
 /* CTA BOX */
 .theway-cta {
   display: flex;
@@ -280,12 +295,12 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: var(--color-panel-bg);
+  border: 1px solid var(--color-border);
   border-radius: 22px;
   padding: 1.25rem;
 
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-soft);
 }
 
 .theway-cta-text {
@@ -297,6 +312,7 @@
   gap: 0.75rem;
   flex-wrap: wrap;
 }
+
 /* =========================
    CTA Buttons (force style)
 ========================= */
@@ -312,8 +328,8 @@
   border-radius: 999px;
 
   border: 1px solid var(--color-border);
-  background: var(--surface-panel);
-  color: var(--text);
+  background: var(--color-panel-bg);
+  color: var(--color-text);
 
   font-weight: 800;
   text-decoration: none;
@@ -322,7 +338,8 @@
   transition:
     transform 160ms ease,
     background-color 160ms ease,
-    border-color 160ms ease;
+    border-color 160ms ease,
+    color 160ms ease;
 }
 
 .theway .theway-hero-ctas a.theway-btn:hover,
@@ -335,15 +352,15 @@
 /* Primary button */
 .theway .theway-hero-ctas a.theway-btn-primary,
 .theway .theway-cta-actions a.theway-btn-primary {
-  background: var(--color-secondary);
-  color: var(--text);
-  border-color: var(--color-secondary);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+  border-color: var(--button-primary-bg);
 }
 
 /* Ghost button */
 .theway .theway-hero-ctas a.theway-btn-ghost {
   background: var(--btn-color);
-  color: #0f1e2e; /* use your dark primary for contrast */
+  color: var(--color-black);
   border: 1px solid var(--btn-color);
 }
 
@@ -376,7 +393,8 @@
 
 @media (max-width: 767px) {
   .theway-hero {
-    --webkit-min-height: auto;
+    -webkit-min-height: auto;
+    min-height: auto;
     padding: 2rem 0 2.5rem;
     background-position: center center;
   }
@@ -387,13 +405,11 @@
     place-items: center;
     text-align: center;
   }
-  .theway-eyebrow,
-  .theway-title {
-    color: var(--hero-text-dark);
-  }
 
+  .theway-eyebrow,
+  .theway-title,
   .theway-subtitle {
-    color: var(--hero-text-dark-muted);
+    color: var(--hero-text);
   }
 
   .theway-eyebrow {
