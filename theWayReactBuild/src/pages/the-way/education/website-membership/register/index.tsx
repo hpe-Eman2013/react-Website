@@ -153,7 +153,7 @@ export default function WebsiteMembershipRegisterPage() {
 
   return (
     <main className="wm-register-page">
-      <section className="wm-register-hero">
+      <section className="wm-register-hero page-with-hero">
         <img
           src={registerHero}
           alt="Website membership registration"

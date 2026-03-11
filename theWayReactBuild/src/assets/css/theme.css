@@ -195,3 +195,17 @@ nav * {
     color 1000ms ease,
     border-color 1000ms ease;
 }
+:root {
+  --app-nav-offset: 56px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --app-nav-offset: 60px;
+  }
+}
+
+/* Generic page shell for pages that start with a hero */
+.page-with-hero {
+  padding-top: calc(var(--app-nav-offset) + 20px);
+}

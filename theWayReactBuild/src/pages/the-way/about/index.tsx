@@ -54,7 +54,7 @@ export default function AboutPage() {
   return (
     <main className="about-page">
       {/* HERO */}
-      <section className="about-hero" aria-label="About hero">
+      <section className="about-hero page-with-hero" aria-label="About hero">
         <div className="about-hero-overlay" />
         <div className="about-hero-inner">
           <h1 className="about-hero-title">About The Way of Messiah</h1>

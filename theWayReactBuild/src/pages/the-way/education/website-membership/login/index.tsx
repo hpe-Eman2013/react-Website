@@ -133,7 +133,7 @@ export default function WebsiteMembershipLoginPage() {
 
   return (
     <main className="wm-login-page">
-      <section className="wm-login-hero">
+      <section className="wm-login-hero page-with-hero">
         <img
           src={loginHero}
           alt="Education membership login"

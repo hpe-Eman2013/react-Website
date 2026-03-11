@@ -77,7 +77,7 @@ export default function Education() {
 
   return (
     <main className="container education-page">
-      <section className="education-hero" aria-label="Education">
+      <section className="education-hero page-with-hero" aria-label="Education">
         <div className="education-hero__media">
           <img
             src={heroImg}

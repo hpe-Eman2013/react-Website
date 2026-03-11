@@ -19,7 +19,6 @@
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  margin-top: 0;
   margin-bottom: 2rem;
   border: 1px solid var(--panel-border);
   background: var(--color-page-bg);
@@ -958,6 +957,28 @@ button.education-access-item {
   border-radius: inherit;
 }
 
+[data-theme="dark"] #education-topics {
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-soft);
+}
+
+[data-theme="dark"] #education-topics .education-head,
+[data-theme="dark"] #education-topics .education-section-title,
+[data-theme="dark"] #education-topics #education-topics-title,
+[data-theme="dark"] #education-topics h2 {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+[data-theme="dark"] #education-topics .education-head__sub,
+[data-theme="dark"] #education-topics .education-head > div {
+  color: rgba(255, 255, 255, 0.88);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.88);
+}
+
 [data-theme="dark"] .education-cta__actions .theway-btn-primary,
 [data-theme="dark"] .education-viewer__actions .theway-btn-primary {
   background: var(--button-primary-bg);
@@ -996,7 +1017,14 @@ button.education-access-item {
 
 @media (max-width: 900px) {
   .education-page {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     padding-bottom: 1rem;
+    box-sizing: border-box;
+  }
+
+  .education-page > section {
+    width: 100%;
   }
 
   .education-hero {
@@ -1089,84 +1117,4 @@ button.education-access-item {
     width: 100%;
     justify-content: center;
   }
-}
-/* =========================
-   MOBILE PAGE GUTTERS
-========================= */
-
-@media (max-width: 900px) {
-  .education-page {
-    padding-right: 0.75rem;
-    box-sizing: border-box;
-  }
-
-  .education-page > section {
-    width: 100%;
-  }
-}
-/* =========================
-   FORCE DARK MODE HEADING VISIBILITY
-========================= */
-
-[data-theme="dark"] #education-topics,
-[data-theme="dark"] #education-topics .education-head,
-[data-theme="dark"] #education-topics .education-section-title,
-[data-theme="dark"] #education-topics #education-topics-title,
-[data-theme="dark"] #education-topics .education-head__sub {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-[data-theme="dark"] #education-topics .education-section-title,
-[data-theme="dark"] #education-topics #education-topics-title {
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] #education-topics .education-head__sub {
-  color: rgba(255, 255, 255, 0.88) !important;
-}
-/* =========================
-   FINAL DARK FIX: STUDY AREAS HEADER
-========================= */
-
-[data-theme="dark"] #education-topics .education-head {
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] #education-topics .education-section-title,
-[data-theme="dark"] #education-topics #education-topics-title,
-[data-theme="dark"] #education-topics h2 {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-[data-theme="dark"] #education-topics .education-head__sub,
-[data-theme="dark"] #education-topics .education-head > div {
-  color: rgba(255, 255, 255, 0.88) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.88) !important;
-}
-/* =========================
-   FINAL FIX: STUDY AREAS SECTION IN DARK MODE
-========================= */
-
-[data-theme="dark"] #education-topics {
-  background: #111111 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 1rem !important;
-  padding: 1.25rem !important;
-  box-shadow: var(--shadow-soft) !important;
-}
-
-[data-theme="dark"] #education-topics .education-head,
-[data-theme="dark"] #education-topics .education-section-title,
-[data-theme="dark"] #education-topics #education-topics-title,
-[data-theme="dark"] #education-topics h2 {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-[data-theme="dark"] #education-topics .education-head__sub,
-[data-theme="dark"] #education-topics .education-head > div {
-  color: rgba(255, 255, 255, 0.88) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.88) !important;
 }

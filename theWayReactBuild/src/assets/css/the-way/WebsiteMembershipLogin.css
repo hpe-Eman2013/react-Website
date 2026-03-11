@@ -41,7 +41,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2.75rem 0 3rem;
 }
 
 .wm-login-hero__top {
@@ -51,10 +50,9 @@
 }
 
 .wm-login-hero__eyebrow {
-  margin: 0 0 0.35rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.82rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--hero-text);
   opacity: 0.92;
@@ -371,6 +369,15 @@
 ========================= */
 
 @media (max-width: 900px) {
+  .wm-login-hero__eyebrow {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    line-height: .5;
+  }
+  .wm-login-hero__title {
+    font-size: 1.4rem;
+  }
+
   .wm-login-shell {
     grid-template-columns: 1fr;
   }
@@ -384,7 +391,7 @@
   .wm-login-hero {
     min-height: 54vh;
   }
-
+ 
   .wm-login-card,
   .wm-login-sidecard {
     padding: 1.15rem;
@@ -400,12 +407,12 @@
   }
 
   .wm-login-hero__title {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     line-height: 1.2;
   }
 
   .wm-login-hero__eyebrow {
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     letter-spacing: 0.12em;
   }
 }

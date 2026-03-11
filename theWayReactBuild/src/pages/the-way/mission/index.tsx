@@ -6,9 +6,12 @@ import sharingTheWordImg from "@/assets/images/the-way/mission-vision/sharingThe
 
 export default function MissionVision() {
   return (
-    <main className="container py-4 mission-page">
+    <main className="container mission-page">
       {/* PAGE HEADER / HERO */}
-      <section className="mission-hero" aria-label="Mission and Vision">
+      <section
+        className="mission-hero page-with-hero"
+        aria-label="Mission and Vision"
+      >
         <div className="mission-hero__media">
           <img
             src={heroImg}

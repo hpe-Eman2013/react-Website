@@ -41,7 +41,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem 0 3rem;
 }
 
 .wm-register-hero__top {
@@ -51,19 +50,18 @@
 }
 
 .wm-register-hero__eyebrow {
-  margin: 0 0 0.35rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--hero-text);
   opacity: 0.92;
 }
 
 .wm-register-hero__title {
-  margin: 0 0 1rem;
+  margin-top: 80px;
   font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--hero-text);
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
 }
@@ -386,7 +384,7 @@
 
 @media (max-width: 640px) {
   .wm-register-hero {
-    min-height: 54vh;
+    min-height: vh;
   }
 
   .wm-register-card,
@@ -399,17 +397,26 @@
     align-items: flex-start;
   }
 
-  .wm-register-hero__content {
-    padding: 1.35rem 0 2rem;
+  .wm-register-hero {
+    min-height: 65vh;
   }
 
-  .wm-register-hero__title {
-    font-size: 1.35rem;
-    line-height: 1.2;
+  .wm-register-hero__top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* tighter spacing */
   }
 
+  /* WEBSITE MEMBERSHIP */
   .wm-register-hero__eyebrow {
-    font-size: 0.72rem;
+    font-size: 0.95rem;
     letter-spacing: 0.12em;
+  }
+
+  /* Create Your Member Account */
+  .wm-register-hero__title {
+    margin-top: 70px;
+    font-size: 2rem;
+    line-height: 1.1;
   }
 }

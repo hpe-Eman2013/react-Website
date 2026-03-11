@@ -174,13 +174,21 @@
 .sofa-btn:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-  background: color-mix(in srgb, var(--color-primary) 10%, var(--button-secondary-bg));
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 10%,
+    var(--button-secondary-bg)
+  );
   border-color: var(--color-primary);
   color: var(--color-heading);
 }
 
 .sofa-btn:hover {
-  background: color-mix(in srgb, var(--color-primary) 10%, var(--button-secondary-bg));
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 10%,
+    var(--button-secondary-bg)
+  );
   border-color: var(--color-primary);
   color: var(--color-heading);
 }
@@ -529,9 +537,7 @@
   .sofa-cta__buttons .theway-btn {
     width: 100%;
   }
-}
 
-@media (max-width: 900px) {
   .sofa-scriptures {
     flex-direction: column;
     align-items: stretch;
@@ -550,5 +556,8 @@
   .scripture-panel {
     width: 100%;
     max-width: 100%;
+  }
+  .sofa-page {
+     margin-top: 20px;
   }
 }

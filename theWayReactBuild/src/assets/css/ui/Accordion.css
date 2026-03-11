@@ -6,10 +6,10 @@
 ================================= */
 
 .acc {
+  margin: 1rem 0;
+  overflow: hidden;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  overflow: hidden;
-  margin: 1rem 0;
   background: var(--color-surface);
   color: var(--text);
   box-shadow: var(--shadow-soft);
@@ -22,17 +22,11 @@
   grid-template-columns: auto 1fr auto;
   gap: 0.75rem;
   align-items: center;
-
   padding: 0.95rem 1rem;
-  cursor: pointer;
-
   border: 0;
+  cursor: pointer;
   text-align: left;
-
-  /* IMPORTANT: force theme text (prevents inheriting white) */
   color: var(--text);
-
-  /* slightly tinted surface so it reads as a header row */
   background: color-mix(in srgb, var(--color-surface) 88%, var(--color-primary) 12%);
 }
 
@@ -41,20 +35,26 @@
   .acc-btn {
     background: rgba(0, 0, 0, 0.03);
   }
+
   [data-theme="dark"] .acc-btn {
     background: rgba(255, 255, 255, 0.04);
   }
 }
 
-.acc-btn:hover {
+.acc-btn:hover,
+.acc-btn:focus-visible {
   background: color-mix(in srgb, var(--color-surface) 82%, var(--color-primary) 18%);
+  outline: none;
 }
 
 @supports not (background: color-mix(in srgb, white 50%, black 50%)) {
-  .acc-btn:hover {
+  .acc-btn:hover,
+  .acc-btn:focus-visible {
     background: rgba(0, 0, 0, 0.06);
   }
-  [data-theme="dark"] .acc-btn:hover {
+
+  [data-theme="dark"] .acc-btn:hover,
+  [data-theme="dark"] .acc-btn:focus-visible {
     background: rgba(255, 255, 255, 0.07);
   }
 }
@@ -65,8 +65,6 @@
   transform: rotate(0deg);
   transition: transform 160ms ease;
   font-size: 0.9rem;
-
-  /* gold accent */
   color: var(--color-secondary);
 }
 
@@ -99,8 +97,56 @@
 }
 
 .acc-content blockquote {
-  border-left: 4px solid var(--color-secondary);
-  padding-left: 1rem;
   margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--color-secondary);
   color: var(--text-muted);
+}
+
+/* ==============================
+   DARK MODE HARDENING
+================================= */
+
+[data-theme="dark"] .acc {
+  background: #111111;
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="dark"] .acc-btn {
+  background: #111111;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .acc-btn:hover,
+[data-theme="dark"] .acc-btn:focus-visible {
+  background: #171717;
+}
+
+[data-theme="dark"] .acc-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .acc-action {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme="dark"] .acc-content {
+  background: #111111;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .acc-content p,
+[data-theme="dark"] .acc-content li,
+[data-theme="dark"] .acc-content strong,
+[data-theme="dark"] .acc-content span {
+  color: rgba(255, 255, 255, 0.92);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .acc-content blockquote {
+  color: rgba(255, 255, 255, 0.76);
 }

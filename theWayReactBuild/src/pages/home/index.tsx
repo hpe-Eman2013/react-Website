@@ -19,7 +19,7 @@ export default function HomePage() {
         <div className="home-hero-inner">
           <h1 className="home-hero-title">The Way of Messiah</h1>
 
-          <p className="home-hero-inner p">
+          <p className="home-hero-text">
             Returning to the ancient paths and restoring the Name of the Father
             and His Son.
           </p>
@@ -64,7 +64,6 @@ export default function HomePage() {
           pronunciation rather than replacing it with a title.
         </p>
 
-        {/* Accordions for Father section */}
         <AccordionGroup>
           <AccordionSection
             id="tetragrammaton-letters"
@@ -97,14 +96,15 @@ export default function HomePage() {
               text from one writing system or alphabet into another, typically
               on a character-by-character basis, to preserve the original
               spelling and allow approximate pronunciation in the target script.
-              <span className="d-flex flex-wrap">
-                <strong>
-                  Unlike translation, which conveys meaning, transliteration
-                  focuses on representing how words are written and pronounced
-                  in the source language.
-                </strong>{" "}
-                The pronounciation does not change.
-              </span>
+            </p>
+
+            <p>
+              <strong>
+                Unlike translation, which conveys meaning, transliteration
+                focuses on representing how words are written and pronounced in
+                the source language.
+              </strong>{" "}
+              The pronunciation does not change.
             </p>
           </AccordionSection>
 
@@ -115,11 +115,14 @@ export default function HomePage() {
             <p>
               In pictogram form, these characters convey the idea: “Behold, the
               nail, behold, the hands.”
+            </p>
+
+            <div>
               <img src={Yod} alt="Hand" aria-hidden="true" />
               <img src={Hey} alt="Behold" aria-hidden="true" />
               <img src={Vav} alt="Nail" aria-hidden="true" />
               <img src={Hey} alt="Behold" aria-hidden="true" />
-            </p>
+            </div>
 
             <p>
               This is a prophecy of the death of the Messiah, which means
@@ -171,7 +174,6 @@ export default function HomePage() {
           The name Yahusha carries the declaration that Yahuah is salvation.
         </p>
 
-        {/* Accordions for Son section */}
         <AccordionGroup>
           <AccordionSection
             id="yahusha-letter-sounds"
@@ -195,7 +197,6 @@ export default function HomePage() {
               <strong>Yahusha</strong>.
             </p>
 
-            {/* FIX: no nested <p> inside <p> */}
             <div>
               <span>The Hebrew pictograph is:</span>{" "}
               <img src={Yod} alt="Hand" aria-hidden="true" />

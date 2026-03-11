@@ -2,9 +2,22 @@
    MISSION & VISION PAGE
 ========================= */
 
+.mission-page {
+  padding-top: 60px;
+  padding-bottom: 1.5rem;
+}
+
+.mission-page .card {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-soft);
+}
+
 .mission-page .card-body {
   padding: 1.25rem;
   color: var(--color-text);
+  background: transparent;
 }
 
 .mission-section + .mission-section {
@@ -17,26 +30,25 @@
 
 .mission-hero {
   position: relative;
-  border-radius: var(--radius);
   overflow: hidden;
   margin-bottom: 1.5rem;
-  min-height: 50vh;
   border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   background: var(--color-page-bg);
   box-shadow: var(--shadow-soft);
 }
 
 .mission-hero__media {
   position: relative;
-  height: clamp(320px, 58vh, 560px);
+  height: clamp(360px, 62vh, 560px);
 }
 
 .mission-hero__img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  display: block;
+  object-position: center center;
 }
 
 .mission-hero__overlay {
@@ -51,20 +63,20 @@
 
 .mission-hero__content {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: auto;
+  top: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
-  padding: 1.25rem 1.25rem 0;
+  width: min(92%, 860px);
+  padding: 0;
   color: var(--hero-text);
   text-align: center;
 }
 
 .mission-hero-title {
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.25rem;
   font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 1.08;
+  line-height: 1.02;
   color: var(--hero-text);
   text-shadow:
     0 2px 8px rgba(0, 0, 0, 0.65),
@@ -73,8 +85,8 @@
 
 .mission-hero__subtitle {
   margin: 0;
-  opacity: 0.96;
   font-weight: 700;
+  line-height: 1.4;
   color: var(--hero-text-muted);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
@@ -90,11 +102,11 @@
 }
 
 .mission-panel {
+  min-width: 0;
+  padding: 0.95rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
-  padding: 0.95rem 1rem;
   background: var(--color-panel-alt);
-  min-width: 0;
   color: var(--color-text);
 }
 
@@ -109,9 +121,9 @@
   max-width: 100%;
   height: auto;
   max-height: 300px;
+  margin-top: 0.75rem;
   object-fit: cover;
   border-radius: var(--radius);
-  margin-top: 0.75rem;
 }
 
 /* =========================
@@ -119,9 +131,9 @@
 ========================= */
 
 .mission-details {
+  padding: 0.9rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
-  padding: 0.9rem 1rem;
   background: var(--color-panel-alt);
   color: var(--color-text);
 }
@@ -136,8 +148,16 @@
    TABLES
 ========================= */
 
+.mission-section .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .mission-table {
+  width: 100%;
+  min-width: 640px;
   margin-bottom: 0;
+  table-layout: fixed;
   color: var(--color-text);
 }
 
@@ -145,14 +165,15 @@
 .mission-table td {
   vertical-align: top;
   line-height: 1.5;
+  white-space: normal;
   word-break: normal;
   overflow-wrap: anywhere;
 }
 
 .mission-note {
+  padding: 1rem 1rem 0.95rem;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
-  padding: 1rem 1rem 0.95rem;
   background: var(--color-panel-bg);
   color: var(--color-text);
   box-shadow: var(--shadow-soft);
@@ -165,17 +186,17 @@
 }
 
 .mission-quote {
-  border-left: 4px solid var(--color-primary);
-  padding-left: 1rem;
   margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--color-primary);
 }
 
 .mission-quote p {
   margin: 0;
-  color: var(--color-text);
-  font-style: italic;
-  line-height: 1.25rem;
   font-size: 0.85rem;
+  line-height: 1.25rem;
+  font-style: italic;
+  color: var(--color-text);
 }
 
 .mission-quote__ref {
@@ -186,25 +207,8 @@
 }
 
 /* =========================
-   Our Core Pillars
+   OUR CORE PILLARS
 ========================= */
-
-.mission-section .table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.mission-table {
-  width: 100%;
-  min-width: 640px;
-  table-layout: fixed;
-}
-
-.mission-table th,
-.mission-table td {
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
 
 .mission-table-desktop {
   display: block;
@@ -215,9 +219,9 @@
 }
 
 .mission-pillar-card {
+  padding: 0.95rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
-  padding: 0.95rem 1rem;
   background: var(--color-panel-alt);
   color: var(--color-text);
 }
@@ -227,12 +231,12 @@
 }
 
 .mission-pillar-card__label {
+  margin-top: 0.75rem;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-top: 0.75rem;
 }
 
 .mission-pillar-card__label:first-child {
@@ -255,12 +259,12 @@
 }
 
 .mission-jurisdiction-card {
+  padding: 0.95rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
-  padding: 0.95rem 1rem;
   background: var(--color-panel-bg);
-  box-shadow: var(--shadow-soft);
   color: var(--color-text);
+  box-shadow: var(--shadow-soft);
 }
 
 .mission-jurisdiction-card + .mission-jurisdiction-card {
@@ -268,9 +272,9 @@
 }
 
 .mission-jurisdiction-card__concept {
-  font-weight: 800;
-  font-size: 1rem;
   margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 800;
   color: var(--color-heading);
 }
 
@@ -280,19 +284,135 @@
 
 .mission-jurisdiction-card__label {
   display: block;
+  margin-bottom: 0.2rem;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: 0.2rem;
 }
 
 .mission-jurisdiction-card__value {
   display: block;
-  color: var(--color-text);
   line-height: 1.5;
   overflow-wrap: anywhere;
+  color: var(--color-text);
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+[data-theme="dark"] .mission-page {
+  background: transparent;
+}
+
+[data-theme="dark"] .mission-page .card {
+  background: #111111;
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .mission-page .card-body {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .mission-section,
+[data-theme="dark"] .mission-note,
+[data-theme="dark"] .mission-panel,
+[data-theme="dark"] .mission-details,
+[data-theme="dark"] .mission-pillar-card,
+[data-theme="dark"] .mission-jurisdiction-card {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .mission-panel,
+[data-theme="dark"] .mission-details,
+[data-theme="dark"] .mission-note,
+[data-theme="dark"] .mission-pillar-card,
+[data-theme="dark"] .mission-jurisdiction-card {
+  background: #111111;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="dark"] .mission-page h2,
+[data-theme="dark"] .mission-page h3,
+[data-theme="dark"] .mission-page .h5,
+[data-theme="dark"] .mission-page .h6,
+[data-theme="dark"] .mission-page p,
+[data-theme="dark"] .mission-page li,
+[data-theme="dark"] .mission-page strong,
+[data-theme="dark"] .mission-page span,
+[data-theme="dark"] .mission-summary,
+[data-theme="dark"] .mission-jurisdiction-card__concept,
+[data-theme="dark"] .mission-jurisdiction-card__value,
+[data-theme="dark"] .mission-pillar-card__value,
+[data-theme="dark"] #pillars-heading,
+[data-theme="dark"] #why-heading,
+[data-theme="dark"] #foundations-heading,
+[data-theme="dark"] #jur-heading {
+  color: rgba(255, 255, 255, 0.92);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .mission-pillar-card__label,
+[data-theme="dark"] .mission-jurisdiction-card__label,
+[data-theme="dark"] .mission-quote__ref {
+  color: rgba(255, 255, 255, 0.72);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme="dark"] .mission-summary {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+[data-theme="dark"] .mission-quote p {
+  color: rgba(255, 255, 255, 0.84);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.84);
+}
+
+/* Dark table body visibility */
+[data-theme="dark"] .mission-table {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .mission-table thead,
+[data-theme="dark"] .mission-table thead tr,
+[data-theme="dark"] .mission-table thead th {
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .mission-table tbody,
+[data-theme="dark"] .mission-table tbody tr,
+[data-theme="dark"] .mission-table tbody td,
+[data-theme="dark"] .mission-table > :not(caption) > * > * {
+  background: #111111;
+  color: rgba(255, 255, 255, 0.92);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .mission-table tbody strong,
+[data-theme="dark"] .mission-table td strong {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+[data-theme="dark"] .table-responsive,
+[data-theme="dark"] .mission-table-wrap,
+[data-theme="dark"] .mission-pillars-mobile,
+[data-theme="dark"] .mission-jurisdiction-mobile {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 /* =========================
@@ -300,6 +420,14 @@
 ========================= */
 
 @media (max-width: 900px) {
+  .mission-page {
+    padding-top: 60px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+  }
+
   .mission-page .card-body {
     padding: 1rem;
   }
@@ -308,20 +436,29 @@
     grid-template-columns: 1fr;
   }
 
+  .mission-hero {
+    min-height: 0;
+  }
+
   .mission-hero__media {
-    height: clamp(240px, 42vh, 320px);
+    height: clamp(320px, 48vh, 380px);
   }
 
   .mission-hero__content {
-    padding: 1rem 0.9rem 0;
+    top: 2.25rem;
+    width: min(92%, 320px);
+    transform: translateX(-50%);
   }
 
   .mission-hero-title {
-    font-size: clamp(1.45rem, 7vw, 2rem);
+    margin-bottom: 0.2rem;
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+    line-height: 1.02;
   }
 
   .mission-hero__subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
   }
 
   .mission-panel {
@@ -333,13 +470,14 @@
   }
 
   .mission-table {
-    font-size: 0.92rem;
+    min-width: 560px;
+    font-size: 0.9rem;
   }
 
   .mission-table th,
   .mission-table td {
     min-width: 140px;
-    padding: 0.6rem;
+    padding: 0.55rem;
   }
 
   .mission-section .table-responsive {
@@ -347,21 +485,12 @@
     margin-right: -0.25rem;
   }
 
-  .mission-table {
-    min-width: 560px;
-    font-size: 0.9rem;
-  }
-
-  .mission-table th,
-  .mission-table td {
-    padding: 0.55rem;
-  }
-
   .mission-table-desktop {
     display: none;
   }
 
-  .mission-pillars-mobile {
+  .mission-pillars-mobile,
+  .mission-jurisdiction-mobile {
     display: block;
   }
 
@@ -381,13 +510,6 @@
   .mission-quote__ref {
     display: inline;
     white-space: normal;
-  }
-
-  /* =========================
-     JURISDICTION
-  ========================= */
-  .mission-jurisdiction-mobile {
-    display: block;
   }
 
   .mission-section .table-responsive.mission-table-desktop {
