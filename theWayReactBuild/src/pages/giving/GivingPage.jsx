@@ -64,7 +64,7 @@ export default function GivingPage() {
 
   return (
     <main className="wom-giving">
-      <header className="wom-giving-hero">
+      <header className="wom-giving-hero page-with-hero">
         <div className="wom-giving-hero-media" aria-hidden="true">
           <img
             src={heroImg}
