@@ -451,7 +451,7 @@
   }
 
   .mission-hero-title {
-    margin-bottom: 0.2rem;
+    padding-top: 2rem;
     font-size: clamp(1.3rem, 6vw, 1.8rem);
     line-height: 1.02;
   }
