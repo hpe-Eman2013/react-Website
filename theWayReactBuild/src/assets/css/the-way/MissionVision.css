@@ -3,7 +3,7 @@
 ========================= */
 
 .mission-page {
-  padding-top: 60px;
+  padding-top: 0;
   padding-bottom: 1.5rem;
 }
 
@@ -63,7 +63,7 @@
 
 .mission-hero__content {
   position: absolute;
-  top: 2.25rem;
+  top: 5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -421,7 +421,7 @@
 
 @media (max-width: 900px) {
   .mission-page {
-    padding-top: 60px;
+    padding-top: 0;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     padding-bottom: 1rem;
@@ -445,7 +445,7 @@
   }
 
   .mission-hero__content {
-    top: 2.25rem;
+    top: 4.75rem;
     width: min(92%, 320px);
     transform: translateX(-50%);
   }
@@ -515,4 +515,69 @@
   .mission-section .table-responsive.mission-table-desktop {
     display: none;
   }
+}
+/* =========================
+   MISSION PAGE FINAL DARK FIX
+========================= */
+
+[data-theme="dark"] .mission-page .card {
+  background: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+[data-theme="dark"] .mission-page .card-body {
+  background: #111111 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+[data-theme="dark"] .mission-page .mission-section {
+  background: transparent !important;
+}
+
+[data-theme="dark"] .mission-page h2,
+[data-theme="dark"] .mission-page h3,
+[data-theme="dark"] .mission-page .h5,
+[data-theme="dark"] .mission-page .h6,
+[data-theme="dark"] .mission-page p,
+[data-theme="dark"] .mission-page li,
+[data-theme="dark"] .mission-page strong,
+[data-theme="dark"] .mission-page span,
+[data-theme="dark"] .mission-page blockquote,
+[data-theme="dark"] .mission-page summary,
+[data-theme="dark"] .mission-page .mission-summary,
+[data-theme="dark"] .mission-page .mission-quote,
+[data-theme="dark"] .mission-page .mission-quote p,
+[data-theme="dark"] .mission-page .mission-quote__ref,
+[data-theme="dark"] .mission-page #pillars-heading,
+[data-theme="dark"] .mission-page #why-heading,
+[data-theme="dark"] .mission-page #foundations-heading,
+[data-theme="dark"] .mission-page #jur-heading {
+  color: rgba(255, 255, 255, 0.92) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+[data-theme="dark"] .mission-page .mission-table,
+[data-theme="dark"] .mission-page .mission-table thead,
+[data-theme="dark"] .mission-page .mission-table tbody,
+[data-theme="dark"] .mission-page .mission-table tr,
+[data-theme="dark"] .mission-page .mission-table th,
+[data-theme="dark"] .mission-page .mission-table td,
+[data-theme="dark"] .mission-page .mission-table > :not(caption) > * > * {
+  background: #111111 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .mission-page .mission-table thead th,
+[data-theme="dark"] .mission-page .mission-table th strong,
+[data-theme="dark"] .mission-page .mission-table td strong {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+[data-theme="dark"] .mission-page hr {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  opacity: 1 !important;
 }
