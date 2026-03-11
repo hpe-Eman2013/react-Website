@@ -3,18 +3,16 @@
 ========================= */
 
 .outreach-page {
-  background: var(--color-bg);
+  background: var(--color-page-bg);
   color: var(--color-text);
 }
 
 /* -------------------------
-   Theme-aware glass variables
+   Component-local glass variables
 -------------------------- */
-
-/* Default (light) */
-:root {
+.outreach-page {
   --pillar-glass-bg: rgba(255, 255, 255, 0.08);
-  --pillar-glass-text: rgba(15, 23, 42, 0.92);
+  --pillar-glass-text: var(--hero-text);
   --pillar-glass-border: rgba(255, 255, 255, 0.35);
 
   --pillar-glass-blur: 6px;
@@ -23,15 +21,9 @@
   --pillar-bgshade-bot: rgba(0, 0, 0, 0.55);
 }
 
-/* Dark mode */
-html[data-theme="dark"],
-body[data-theme="dark"],
-[data-theme="dark"],
-html.dark,
-body.dark,
-.dark {
+[data-theme="dark"] .outreach-page {
   --pillar-glass-bg: rgba(0, 0, 0, 0.22);
-  --pillar-glass-text: rgba(255, 255, 255, 0.94);
+  --pillar-glass-text: var(--hero-text);
   --pillar-glass-border: rgba(255, 255, 255, 0.24);
 
   --pillar-bgshade-top: rgba(0, 0, 0, 0.28);
@@ -56,7 +48,7 @@ body.dark,
 /* ---- HERO ---- */
 .outreach-hero {
   position: relative;
-  min-height: clamp(500px, 78svh, 760px);
+  min-height: 50vh;
   display: grid;
   align-items: end;
   overflow: hidden;
@@ -78,7 +70,7 @@ body.dark,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.72)),
+    linear-gradient(to bottom, var(--hero-overlay-start), var(--hero-overlay-end)),
     radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.22), transparent 55%);
 }
 
@@ -100,28 +92,28 @@ body.dark,
   text-transform: uppercase;
   font-weight: 700;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--hero-text);
 }
 
 .outreach-hero__title {
   margin: 0 0 10px;
   font-size: clamp(2rem, 5vw, 3.2rem);
   line-height: 1.05;
-  color: #fff;
+  color: var(--hero-text);
 }
 
 .outreach-hero__subtitle {
   margin: 0 0 16px;
   max-width: 820px;
   font-size: clamp(1rem, 2.2vw, 1.08rem);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--hero-text-muted);
   line-height: 1.6;
 }
 
 .outreach-hero__micro {
   margin-top: 14px;
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--hero-text-muted);
 }
 
 .outreach-hero__actions {
@@ -153,36 +145,43 @@ body.dark,
 }
 
 .btn-primary {
-  background: var(--btn-color, #91c7f6);
-  color: #0b1a2a;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+  border: 1px solid var(--button-primary-bg);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible {
   transform: translateY(-1px);
-  background-color: var(--color-primary) !important;
   text-decoration: none;
+  opacity: 0.96;
+  outline: none;
 }
 
 .btn-ghost {
   background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  color: var(--hero-text);
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.btn-ghost:hover {
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.12);
+  outline: none;
 }
 
 .btn-tertiary {
-  background: transparent;
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
+  background: var(--button-secondary-bg);
+  border: 1px solid var(--button-secondary-border);
+  color: var(--button-secondary-fg);
 }
 
-.btn-tertiary:hover {
+.btn-tertiary:hover,
+.btn-tertiary:focus-visible {
   transform: translateY(-1px);
+  border-color: var(--color-primary);
+  outline: none;
 }
 
 /* ---- Sections ---- */
@@ -190,6 +189,7 @@ body.dark,
   margin: 0 0 8px;
   font-size: clamp(1.4rem, 2.4vw, 1.85rem);
   line-height: 1.2;
+  color: var(--color-heading);
 }
 
 .outreach-sub {
@@ -216,10 +216,10 @@ body.dark,
 
 .outreach-panel {
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-panel-bg);
   border-radius: 18px;
   padding: 18px;
-  box-shadow: var(--shadow-sm, 0 8px 26px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--shadow-soft);
 }
 
 /* ---- Intro ---- */
@@ -231,6 +231,7 @@ body.dark,
 .outreach-pillars {
   padding: 10px 16px 24px;
 }
+
 .outreach-section-head {
   margin-bottom: 16px;
 }
@@ -247,8 +248,8 @@ body.dark,
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-sm, 0 10px 32px rgba(0, 0, 0, 0.1));
+  background: var(--color-panel-bg);
+  box-shadow: var(--shadow-soft);
 }
 
 .pillar-card__media {
@@ -291,6 +292,7 @@ body.dark,
   margin: 0 0 14px;
   font-size: 1.35rem;
   line-height: 1.25;
+  color: var(--color-heading);
 }
 
 .pillar-card__muted {
@@ -308,7 +310,7 @@ body.dark,
 
 .pillar-box {
   border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  background: var(--color-page-bg);
   border-radius: 18px;
   padding: 14px;
 }
@@ -316,12 +318,14 @@ body.dark,
 .pillar-box h4 {
   margin: 0 0 8px;
   font-size: 1.02rem;
+  color: var(--color-heading);
 }
 
 .pillar-box ul {
   margin: 0;
   padding-left: 18px;
   line-height: 1.55;
+  color: var(--color-text);
 }
 
 .pillar-box li + li {
@@ -378,7 +382,7 @@ body.dark,
 .pillar-split--bg .pillar-box h4,
 .pillar-split--bg .pillar-box li,
 .pillar-split--bg .pillar-box strong {
-  color: #ffffff !important;
+  color: var(--hero-text) !important;
   text-shadow:
     0 1px 3px rgba(0, 0, 0, 0.55),
     0 0 6px rgba(0, 0, 0, 0.25);
@@ -444,7 +448,8 @@ body.dark,
 .outreach-table {
   width: 100%;
   border-collapse: collapse;
-  background: var(--color-bg);
+  background: var(--color-page-bg);
+  color: var(--color-text);
 }
 
 .outreach-table th,
@@ -456,13 +461,18 @@ body.dark,
 }
 
 .outreach-table thead th {
-  background: var(--color-surface);
+  background: var(--color-panel-bg);
+  color: var(--color-heading);
 }
 
 /* ---- Participate ---- */
 .outreach-participate {
   padding: 28px 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-primary) 3%, transparent),
+    transparent
+  );
 }
 
 .outreach-feature-grid {
@@ -474,10 +484,10 @@ body.dark,
 
 .outreach-feature {
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-panel-bg);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm, 0 8px 26px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--shadow-soft);
 }
 
 .outreach-feature img {
@@ -493,11 +503,13 @@ body.dark,
 .outreach-feature__body h3 {
   margin: 0 0 8px;
   font-size: 1.1rem;
+  color: var(--color-heading);
 }
 
 .outreach-feature__body p {
   margin: 0;
   line-height: 1.65;
+  color: var(--color-text);
 }
 
 .outreach-cta {
@@ -515,9 +527,9 @@ body.dark,
 .outreach-quote {
   margin: 14px 0 0;
   padding: 14px;
-  border-left: 4px solid var(--btn-color, #91c7f6);
+  border-left: 4px solid var(--btn-color);
   border-radius: 12px;
-  background: var(--color-bg);
+  background: var(--color-page-bg);
   border: 1px solid var(--color-border);
 }
 
@@ -525,6 +537,7 @@ body.dark,
   margin: 0;
   font-weight: 700;
   line-height: 1.65;
+  color: var(--color-text);
 }
 
 .outreach-quote footer {
@@ -542,8 +555,8 @@ body.dark,
 .outreach-details {
   border: 1px solid var(--color-border);
   border-radius: 18px;
-  background: var(--color-surface);
-  box-shadow: var(--shadow-sm, 0 8px 26px rgba(0, 0, 0, 0.08));
+  background: var(--color-panel-bg);
+  box-shadow: var(--shadow-soft);
   overflow: hidden;
 }
 
@@ -553,6 +566,7 @@ body.dark,
   padding: 14px 16px;
   font-weight: 800;
   line-height: 1.5;
+  color: var(--color-heading);
 }
 
 .outreach-details[open] .outreach-details__summary {
@@ -561,6 +575,7 @@ body.dark,
 
 .outreach-details__body {
   padding: 14px 16px 18px;
+  color: var(--color-text);
 }
 
 .outreach-actions {
@@ -572,7 +587,7 @@ body.dark,
 
 .outreach-note {
   border: 1px dashed var(--color-border);
-  background: var(--color-bg);
+  background: var(--color-page-bg);
   border-radius: 14px;
   padding: 12px;
 }
@@ -580,6 +595,7 @@ body.dark,
 .outreach-note h3 {
   margin: 0 0 6px;
   font-size: 1.02rem;
+  color: var(--color-heading);
 }
 
 .mb0 {
@@ -590,7 +606,7 @@ body.dark,
 .outreach-footer-cta {
   padding: 28px 0;
   border-top: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-panel-bg);
 }
 
 .outreach-footer-cta__inner {
@@ -603,6 +619,7 @@ body.dark,
 .outreach-footer-cta h2 {
   margin: 0 0 8px;
   font-size: 1.4rem;
+  color: var(--color-heading);
 }
 
 .outreach-footer-cta p {
@@ -620,15 +637,18 @@ body.dark,
 
 /* ---- Inverse buttons ---- */
 .btn-inverse {
-  background-color: var(--color-surface);
+  background-color: var(--button-secondary-bg);
   color: var(--color-secondary);
   border: 1px solid var(--color-secondary);
 }
 
-.btn-inverse:hover {
-  background-color: var(--color-primary) !important;
+.btn-inverse:hover,
+.btn-inverse:focus-visible {
+  background-color: var(--button-primary-bg) !important;
+  color: var(--button-primary-fg);
   text-decoration: none;
   transform: translateY(-1px);
+  outline: none;
 }
 
 /* =========================
@@ -767,9 +787,9 @@ body.dark,
   .outreach-table tr {
     border: 1px solid var(--color-border);
     border-radius: 16px;
-    background: var(--color-surface);
+    background: var(--color-panel-bg);
     overflow: hidden;
-    box-shadow: var(--shadow-sm, 0 8px 24px rgba(0, 0, 0, 0.06));
+    box-shadow: var(--shadow-soft);
   }
 
   .outreach-table td {
@@ -799,9 +819,6 @@ body.dark,
   .outreach-details__body {
     padding: 14px;
   }
-  /*------------------ 
-    Outreach Pillars 
-  -------------------*/
 
   .outreach-pillars {
     padding: 10px 16px 24px;

@@ -65,9 +65,7 @@ export default function TheWayPage() {
         <div className="theway-hero-inner">
           <h2 className="theway-eyebrow">THE WAY</h2>
 
-          <h1 className="theway-title">
-            Restoring the Ancient Paths — Returning to the Names &amp; the Word
-          </h1>
+          <h1 className="theway-title">Restoring the Ancient Paths</h1>
 
           <p className="theway-subtitle">
             We’re rebuilding what was fractured by compromise: recovering the

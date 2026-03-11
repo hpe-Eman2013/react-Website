@@ -2,11 +2,11 @@
    Sticky Navbar (Themed)
 ================================= */
 .wom-sticky-nav {
-  position: sticky;
-  top: 0.25rem;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 5000;
 
   background: var(--color-secondary);
   border-bottom: 1px solid rgba(15, 30, 46, 0.18);
@@ -252,6 +252,7 @@
   width: 100%;
   border-top: 1px solid var(--color-border);
   background: var(--color-surface, #fff);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
 .wom-mobile-menu.is-open {
@@ -319,8 +320,13 @@
 ================================= */
 @media (max-width: 900px) {
   .wom-sticky-nav {
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5000;
     border-radius: 0;
+    padding-right: 10px;
   }
 
   .wom-nav-inner {
@@ -358,8 +364,7 @@
     right: 0;
     width: 100%;
     max-width: 100%;
-    z-index: 1100;
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+    z-index: 5100;
   }
 
   .wom-mobile-nav {

@@ -13,7 +13,6 @@ import {
   educationTopics,
 } from "@/components/education/registry";
 import type { EducationTopicKey } from "@/components/education/types";
-import { Underline } from "lucide-react";
 
 function isEducationTopicKey(value: string | null): value is EducationTopicKey {
   if (!value) return false;
@@ -77,7 +76,7 @@ export default function Education() {
   }
 
   return (
-    <main className="container py-4 education-page">
+    <main className="container education-page">
       <section className="education-hero" aria-label="Education">
         <div className="education-hero__media">
           <img
@@ -97,10 +96,10 @@ export default function Education() {
       </section>
 
       <section
-        className="card shadow-sm mb-4 education-intro"
+        className="education-intro mb-4"
         aria-labelledby="education-intro-title"
       >
-        <div className="card-body education-intro__body">
+        <div className="education-intro__body">
           <div className="education-intro__eyebrow" id="education-intro-title">
             Education Mission
           </div>
@@ -123,15 +122,15 @@ export default function Education() {
       </section>
 
       <section
-        className="card shadow-sm mb-4 education-access"
+        className="education-access mb-4"
         aria-labelledby="education-access-title"
       >
-        <div className="card-body">
+        <div className="education-access__body">
           <div className="education-head">
-            <h2 id="education-access-title" className="h5 mb-1">
+            <h2 id="education-access-title" className="education-section-title">
               How Access Works
             </h2>
-            <div className="text-muted">
+            <div className="education-head__sub">
               Public preview, Website Membership, and support-backed learning
             </div>
           </div>
@@ -201,10 +200,10 @@ export default function Education() {
         aria-labelledby="education-topics-title"
       >
         <div className="education-head">
-          <h2 id="education-topics-title" className="h5 mb-1">
+          <h2 id="education-topics-title" className="education-section-title">
             Study Areas
           </h2>
-          <div className="text-muted">
+          <div className="education-head__sub">
             Explore the educational paths available through The Way
           </div>
         </div>
@@ -224,15 +223,12 @@ export default function Education() {
         <ContentStageViewer topic={activeTopic} />
       </section>
 
-      <section
-        className="card shadow-sm education-cta"
-        aria-labelledby="education-cta-title"
-      >
-        <div className="card-body">
-          <h2 id="education-cta-title" className="h5 mb-2">
+      <section className="education-cta" aria-labelledby="education-cta-title">
+        <div className="education-cta__body">
+          <h2 id="education-cta-title" className="education-section-title">
             Support the Work of Education
           </h2>
-          <p className="mb-3">
+          <p className="education-cta__text">
             Your support helps maintain and expand educational materials in
             stewardship, trust, equity, scripture, and agricultural instruction
             so that the work remains current, useful, and available.

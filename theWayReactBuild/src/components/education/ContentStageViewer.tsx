@@ -23,7 +23,7 @@ function getStatusLabel(status: EducationTopic["status"]): string {
 
 export default function ContentStageViewer({ topic }: ContentStageViewerProps) {
   return (
-    <section className="education-viewer card shadow-sm" tabIndex={0}>
+    <section className="education-viewer" tabIndex={0}>
       <div className="education-viewer__layout">
         <div className="education-viewer__media">
           <img
@@ -33,7 +33,7 @@ export default function ContentStageViewer({ topic }: ContentStageViewerProps) {
           />
         </div>
 
-        <div className="card-body education-viewer__body">
+        <div className="education-viewer__body">
           <div className="education-viewer__header">
             <div>
               {topic.eyebrow ? (
@@ -92,7 +92,7 @@ export default function ContentStageViewer({ topic }: ContentStageViewerProps) {
           {topic.supportNote ? (
             <div className="education-viewer__callout education-viewer__callout--support">
               <h3 className="education-viewer__callout-title">
-                Support & Access
+                Support &amp; Access
               </h3>
               <p className="education-viewer__callout-text">
                 {topic.supportNote}
