@@ -16,7 +16,7 @@ export default function Outreach() {
   return (
     <main className="outreach-page" aria-label="Outreach page">
       {/* HERO */}
-      <header className="outreach-hero" aria-label="Outreach">
+      <header className="outreach-hero page-with-hero" aria-label="Outreach">
         <div className="outreach-hero__media" aria-hidden="true">
           <img
             src={heroImg}

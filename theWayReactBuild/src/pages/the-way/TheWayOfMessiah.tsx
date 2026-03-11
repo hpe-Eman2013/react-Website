@@ -60,7 +60,7 @@ export default function TheWayPage() {
   return (
     <main className="theway">
       {/* HERO */}
-      <section className="theway-hero">
+      <section className="theway-hero page-with-hero">
         <div className="theway-hero-overlay" />
         <div className="theway-hero-inner">
           <h2 className="theway-eyebrow">THE WAY</h2>

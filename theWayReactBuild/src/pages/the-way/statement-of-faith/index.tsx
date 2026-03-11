@@ -58,7 +58,7 @@ function DoctrineAccordionItem({
             {item.number}
           </span>
 
-          <span className="sofa-accordion__title">{item.title}</span>
+          <span className="sofa-accordion__title ">{item.title}</span>
 
           <span className="sofa-accordion__chev" aria-hidden="true">
             ▾
