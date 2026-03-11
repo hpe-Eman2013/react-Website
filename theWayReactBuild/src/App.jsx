@@ -19,6 +19,7 @@ import GivingCancel from "./pages/giving/GivingCancel";
 // existing top-level pages you already had
 import Home from "./pages/home";
 import ContactPage from "./pages/contact";
+import EventsPage from "./pages/events";
 
 // admin
 import AdminTestimonies from "./pages/admin/AdminTestimonies";
@@ -142,6 +143,8 @@ function App() {
           <Route path="/giving" element={<GivingPage />} />
           <Route path="/giving/success" element={<GivingSuccess />} />
           <Route path="/giving/cancel" element={<GivingCancel />} />
+
+          <Route path="/events" element={<EventsPage />} />
 
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/testimonies" element={<AdminTestimonies />} />
