@@ -34,7 +34,7 @@ import TheWayLayout from "./pages/the-way/Layout";
 import TheWayPage from "./pages/the-way/TheWayOfMessiah";
 import AssemblyLayout from "./pages/the-assembly";
 import AccountsLayout from "./pages/accounts";
-import BibleLayout from "./pages/the-way/scriptural-discussions";
+import BibleLayout from "./pages/the-way/scriptural-discussions/Layout";
 
 // ---- The Way children ----
 import AboutPage from "./pages/the-way/about";
