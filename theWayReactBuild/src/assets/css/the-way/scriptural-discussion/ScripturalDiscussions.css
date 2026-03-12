@@ -1,0 +1,395 @@
+.scriptural-page {
+  width: 100%;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.scriptural-hero {
+  position: relative;
+  min-height: 82vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    radial-gradient(circle at top, rgb(255 208 122 / 0.22), transparent 36%),
+    linear-gradient(135deg, rgb(13 18 28 / 0.92), rgb(31 19 10 / 0.82)),
+    linear-gradient(180deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0));
+  border-bottom: 1px solid var(--color-border);
+}
+
+.scriptural-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0.18) 0%,
+      rgb(0 0 0 / 0.34) 50%,
+      rgb(0 0 0 / 0.48) 100%
+    );
+}
+
+.scriptural-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(5rem, 8vw, 7rem) 0;
+}
+
+.scriptural-eyebrow,
+.scriptural-kicker {
+  margin: 0 0 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.scriptural-hero__title {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.02;
+  color: #fff;
+  text-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
+}
+
+.scriptural-hero__subtitle {
+  width: min(800px, 100%);
+  margin: 1.25rem auto 0;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.8;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.scriptural-hero__actions,
+.scriptural-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-top: 1.75rem;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.scriptural-shell {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.scriptural-shell--narrow {
+  width: min(900px, calc(100% - 2rem));
+}
+
+.scriptural-shell--split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.scriptural-section {
+  padding: clamp(3.25rem, 6vw, 5.5rem) 0;
+}
+
+.scriptural-section--alt {
+  background: var(--color-surface-alt, color-mix(in srgb, var(--color-surface) 78%, var(--color-bg) 22%));
+  border-block: 1px solid var(--color-border);
+}
+
+.scriptural-section--cta {
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-primary) 18%, transparent),
+      transparent 65%
+    ),
+    var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.scriptural-section__heading {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.scriptural-section__heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.1;
+  color: var(--color-heading, var(--color-text));
+}
+
+.scriptural-section__heading p:last-child {
+  width: min(780px, 100%);
+  margin: 1rem auto 0;
+  line-height: 1.75;
+  color: var(--color-text-muted, var(--color-text));
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.scriptural-panel,
+.scriptural-prophecy,
+.scriptural-card,
+.scriptural-witness,
+.scriptural-approach-card,
+.scriptural-cta {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.08);
+}
+
+.scriptural-panel,
+.scriptural-prophecy,
+.scriptural-cta {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.scriptural-panel h2,
+.scriptural-cta h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.15;
+  color: var(--color-heading, var(--color-text));
+}
+
+.scriptural-panel p,
+.scriptural-prophecy p,
+.scriptural-cta p {
+  margin: 0.85rem 0 0;
+  line-height: 1.8;
+  color: var(--color-text-muted, var(--color-text));
+}
+
+.scriptural-prophecy {
+  text-align: left;
+}
+
+.scriptural-prophecy__verse {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+  color: var(--color-primary);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* =========================
+   TIMELINE GRID
+========================= */
+
+.scriptural-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.scriptural-card {
+  height: 100%;
+  padding: 1.15rem 1.15rem 1.2rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.scriptural-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+  box-shadow: 0 18px 42px rgb(0 0 0 / 0.12);
+}
+
+.scriptural-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.scriptural-card__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  color: var(--color-primary);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.scriptural-card__books {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: right;
+  color: var(--color-text-muted, var(--color-text));
+}
+
+.scriptural-card h3,
+.scriptural-witness h3,
+.scriptural-approach-card h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--color-heading, var(--color-text));
+}
+
+.scriptural-card p,
+.scriptural-witness p,
+.scriptural-approach-card p {
+  margin: 0;
+  line-height: 1.75;
+  color: var(--color-text-muted, var(--color-text));
+}
+
+/* =========================
+   ANCIENT WITNESSES
+========================= */
+
+.scriptural-witness-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.scriptural-witness {
+  padding: 1.15rem;
+}
+
+/* =========================
+   APPROACH
+========================= */
+
+.scriptural-approach-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.scriptural-approach-card {
+  padding: 1.15rem;
+}
+
+.scriptural-approach-card__number {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  color: var(--color-primary);
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.scriptural-cta {
+  text-align: center;
+}
+
+/* =========================
+   DARK MODE SUPPORT
+========================= */
+
+:root.dark .scriptural-panel,
+:root.dark .scriptural-prophecy,
+:root.dark .scriptural-card,
+:root.dark .scriptural-witness,
+:root.dark .scriptural-approach-card,
+:root.dark .scriptural-cta,
+[data-theme="dark"] .scriptural-panel,
+[data-theme="dark"] .scriptural-prophecy,
+[data-theme="dark"] .scriptural-card,
+[data-theme="dark"] .scriptural-witness,
+[data-theme="dark"] .scriptural-approach-card,
+[data-theme="dark"] .scriptural-cta,
+body.dark .scriptural-panel,
+body.dark .scriptural-prophecy,
+body.dark .scriptural-card,
+body.dark .scriptural-witness,
+body.dark .scriptural-approach-card,
+body.dark .scriptural-cta {
+  background: color-mix(in srgb, var(--color-surface) 92%, black 8%);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.28);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .scriptural-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .scriptural-witness-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .scriptural-approach-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .scriptural-hero {
+    min-height: 74vh;
+  }
+
+  .scriptural-shell--split {
+    grid-template-columns: 1fr;
+  }
+
+  .scriptural-timeline,
+  .scriptural-witness-grid,
+  .scriptural-approach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scriptural-section {
+    padding: 3rem 0;
+  }
+
+  .scriptural-hero__actions,
+  .scriptural-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .scriptural-hero__actions .theway-btn,
+  .scriptural-cta__actions .theway-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .scriptural-card__top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .scriptural-card__books {
+    text-align: left;
+  }
+}

@@ -495,32 +495,11 @@ export default function AppNavbar() {
                   Overview
                 </NavLink>
                 <NavLink
-                  to="/the-way/scriptural-discussions/apocrypha"
-                  className="wom-mobile-sublink"
-                  onClick={closeMobileMenu}
-                >
-                  Apocrypha
-                </NavLink>
-                <NavLink
                   to="/the-way/scriptural-discussions/lectures-sermons"
                   className="wom-mobile-sublink"
                   onClick={closeMobileMenu}
                 >
                   Lectures &amp; Sermons
-                </NavLink>
-                <NavLink
-                  to="/the-way/scriptural-discussions/old-covenant"
-                  className="wom-mobile-sublink"
-                  onClick={closeMobileMenu}
-                >
-                  Old Covenant
-                </NavLink>
-                <NavLink
-                  to="/the-way/scriptural-discussions/renewed-covenant"
-                  className="wom-mobile-sublink"
-                  onClick={closeMobileMenu}
-                >
-                  Renewed Covenant
                 </NavLink>
                 <NavLink
                   to="/the-way/scriptural-discussions/scriptural-studies"

@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/css/scriptural-discussion/OldCovenant.css";
+import "@/assets/css/the-way/scriptural-discussion/OldCovenant.css";
 
 export default function OldCovenant() {
   return (

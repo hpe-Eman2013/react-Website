@@ -1,9 +1,9 @@
 import React from "react";
-export default function ScriptualStudies() {
+export default function ScripturalStudies() {
   return (
     <div>
       <h2>Scriptural Studies Material</h2>
-      <p>Scriptual Studies content will be displayed here.</p>
+      <p>Scriptural Studies content will be displayed here.</p>
     </div>
   );
 }

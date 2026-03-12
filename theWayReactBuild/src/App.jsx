@@ -62,11 +62,8 @@ import RegisterPage from "./pages/accounts/register";
 import VerifyEmailPage from "./pages/accounts/verify-email";
 
 // ---- Bible children (Scriptural Discussions) ----
-import ApocryphaPage from "./pages/the-way/scriptural-discussions/apocrypha";
 import LecturesPage from "./pages/the-way/scriptural-discussions/lectures-sermons";
-import OldCovenantPage from "./pages/the-way/scriptural-discussions/old-covenant";
-import RenewedCovenantPage from "./pages/the-way/scriptural-discussions/renewed-covenant";
-import ScriptualStudies from "./pages/the-way/scriptural-discussions/scriptural-studies";
+import ScripturalStudies from "./pages/the-way/scriptural-discussions/scriptural-studies";
 
 function App() {
   return (
@@ -98,19 +95,13 @@ function App() {
               element={<WebsiteMembershipRegisterPage />}
             />
 
-            <Route
-              path="/the-way/scriptural-discussions"
-              element={<BibleLayout />}
-            >
-              <Route index element={<ScriptualStudies />} />
-              <Route path="old-covenant" element={<OldCovenantPage />} />
-              <Route
-                path="renewed-covenant"
-                element={<RenewedCovenantPage />}
-              />
-              <Route path="apocrypha" element={<ApocryphaPage />} />
+            <Route path="scriptural-discussions" element={<BibleLayout />}>
+              <Route index element={<ScripturalStudies />} />
               <Route path="lectures-sermons" element={<LecturesPage />} />
-              <Route path="scriptural-studies" element={<ScriptualStudies />} />
+              <Route
+                path="scriptural-studies"
+                element={<ScripturalStudies />}
+              />
             </Route>
           </Route>
 
