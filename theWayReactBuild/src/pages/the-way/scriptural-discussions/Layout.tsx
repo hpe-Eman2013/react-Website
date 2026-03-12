@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import "@/assets/css/the-way/scriptural-discussion/ScripturalDiscussions.css";
+import "@/assets/css/the-way/scriptural-discussions/ScripturalDiscussions.css";
 
 export default function ScripturalDiscussionsLayout() {
   return (
@@ -28,41 +28,6 @@ export default function ScripturalDiscussionsLayout() {
               Back to The Way
             </Link>
           </div>
-        </div>
-      </section>
-
-      <section className="scriptural-subnav">
-        <div className="scriptural-shell">
-          <nav
-            className="scriptural-subnav__inner"
-            aria-label="Scriptural Discussions sections"
-          >
-            <NavLink
-              end
-              to="/the-way/scriptural-discussions"
-              className="scriptural-subnav__link"
-            >
-              Overview
-            </NavLink>
-            <NavLink
-              to="/the-way/scriptural-discussions/genesis"
-              className="scriptural-subnav__link"
-            >
-              Genesis
-            </NavLink>
-            <NavLink
-              to="/the-way/scriptural-discussions/ancient-witnesses"
-              className="scriptural-subnav__link"
-            >
-              Ancient Witnesses
-            </NavLink>
-            <NavLink
-              to="/the-way/scriptural-discussions/revelation"
-              className="scriptural-subnav__link"
-            >
-              Revelation
-            </NavLink>
-          </nav>
         </div>
       </section>
 

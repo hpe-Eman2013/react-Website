@@ -1,6 +1,7 @@
 import React from "react";
+import ScriptureTooltip from "@/components/ScriptureTooltip";
 import { Link } from "react-router-dom";
-import "@/assets/css/the-way/scriptural-discussion/ScripturalDiscussions.css";
+import "@/assets/css/the-way/scriptural-discussions/ScripturalDiscussions.css";
 
 const timelineSections = [
   {
@@ -150,35 +151,9 @@ const studyApproach = [
   },
 ];
 
-export default function ScripturalDiscussionsPage() {
+export default function ScripturalDiscussionsOverview() {
   return (
-    <main className="scriptural-page">
-      <section className="scriptural-hero">
-        <div className="scriptural-hero__overlay" />
-        <div className="scriptural-hero__inner">
-          <p className="scriptural-eyebrow">The Way of Messiah</p>
-          <h1 className="scriptural-hero__title">Scriptural Discussions</h1>
-          <p className="scriptural-hero__subtitle">
-            From the fall in Eden to the final judgment of the serpent, the
-            Scriptures record the conflict between two seeds, the loss of
-            dominion, the preservation of the righteous line, and the lawful
-            restoration of all things through the Elect One.
-          </p>
-
-          <div className="scriptural-hero__actions">
-            <a className="theway-btn theway-btn-primary" href="#begin-journey">
-              Begin the Journey
-            </a>
-            <a className="theway-btn theway-btn-ghost" href="#timeline">
-              Explore the Path
-            </a>
-            <Link className="theway-btn theway-btn-secondary" to="/the-way">
-              Back to The Way
-            </Link>
-          </div>
-        </div>
-      </section>
-
+    <>
       <section className="scriptural-section scriptural-section--intro">
         <div className="scriptural-shell scriptural-shell--narrow">
           <div className="scriptural-section__heading">
@@ -188,6 +163,12 @@ export default function ScripturalDiscussionsPage() {
 
           <div className="scriptural-prophecy">
             <div className="scriptural-prophecy__verse">Genesis 3:15</div>
+            <ScriptureTooltip
+              reference="Genesis 3:15"
+              verse="And I shall put enmity between you and the woman, and between your seed and her seed; He shall bruise your head, and you shall bruise his heel."
+              source="Bayithamashiyach Paleo Hebrew Version"
+              link="http://www.bayithamashiyach.com/Genesis_3.pdf"
+            />
             <p>
               What begins in the garden is not merely the story of human
               failure. It is the unveiling of a conflict that stretches across
@@ -332,15 +313,15 @@ export default function ScripturalDiscussionsPage() {
             <div className="scriptural-cta__actions">
               <Link
                 className="theway-btn theway-btn-primary"
-                to="/the-way/scriptural-discussions/genesis"
+                to="/the-way/scriptural-discussions/scriptural-studies"
               >
-                Start with Genesis
+                View Scriptural Studies
               </Link>
               <Link
                 className="theway-btn theway-btn-ghost"
-                to="/the-way/scriptural-discussions/studies"
+                to="/the-way/scriptural-discussions/lectures-sermons"
               >
-                View All Studies
+                View Lectures &amp; Sermons
               </Link>
               <Link className="theway-btn theway-btn-secondary" to="/events">
                 View Events
@@ -349,6 +330,6 @@ export default function ScripturalDiscussionsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

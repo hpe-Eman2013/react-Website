@@ -158,14 +158,14 @@ export default function AppNavbar() {
                 Education
               </NavLink>
               <NavLink
-                to="/the-way/education/memberships/login"
+                to="/the-way/education/website-membership/login"
                 className="wom-mega-item"
                 onClick={() => closeAllDesktop(null)}
               >
                 Education Membership Login
               </NavLink>
               <NavLink
-                to="/the-way/education/memberships/register"
+                to="/the-way/education/website-membership/register"
                 className="wom-mega-item"
                 onClick={() => closeAllDesktop(null)}
               >
@@ -193,32 +193,11 @@ export default function AppNavbar() {
                 Overview
               </NavLink>
               <NavLink
-                to="/the-way/scriptural-discussions/apocrypha"
-                className="wom-mega-item"
-                onClick={() => closeAllDesktop(null)}
-              >
-                Apocrypha
-              </NavLink>
-              <NavLink
                 to="/the-way/scriptural-discussions/lectures-sermons"
                 className="wom-mega-item"
                 onClick={() => closeAllDesktop(null)}
               >
                 Lectures &amp; Sermons
-              </NavLink>
-              <NavLink
-                to="/the-way/scriptural-discussions/old-covenant"
-                className="wom-mega-item"
-                onClick={() => closeAllDesktop(null)}
-              >
-                Old Covenant
-              </NavLink>
-              <NavLink
-                to="/the-way/scriptural-discussions/renewed-covenant"
-                className="wom-mega-item"
-                onClick={() => closeAllDesktop(null)}
-              >
-                Renewed Covenant
               </NavLink>
               <NavLink
                 to="/the-way/scriptural-discussions/scriptural-studies"

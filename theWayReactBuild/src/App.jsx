@@ -35,6 +35,7 @@ import TheWayPage from "./pages/the-way/TheWayOfMessiah";
 import AssemblyLayout from "./pages/the-assembly";
 import AccountsLayout from "./pages/accounts";
 import BibleLayout from "./pages/the-way/scriptural-discussions/Layout";
+import ScripturalDiscussionsOverview from "./pages/the-way/scriptural-discussions";
 
 // ---- The Way children ----
 import AboutPage from "./pages/the-way/about";
@@ -96,7 +97,7 @@ function App() {
             />
 
             <Route path="scriptural-discussions" element={<BibleLayout />}>
-              <Route index element={<ScripturalStudies />} />
+              <Route index element={<ScripturalDiscussionsOverview />} />
               <Route path="lectures-sermons" element={<LecturesPage />} />
               <Route
                 path="scriptural-studies"

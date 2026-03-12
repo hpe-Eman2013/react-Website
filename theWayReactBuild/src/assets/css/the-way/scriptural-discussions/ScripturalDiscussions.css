@@ -1,7 +1,7 @@
 .scriptural-page {
   width: 100%;
   color: var(--color-text);
-  background: var(--color-bg);
+  background: var(--color-page-bg);
 }
 
 /* =========================
@@ -27,13 +27,12 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgb(0 0 0 / 0.18) 0%,
-      rgb(0 0 0 / 0.34) 50%,
-      rgb(0 0 0 / 0.48) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0.18) 0%,
+    rgb(0 0 0 / 0.34) 50%,
+    rgb(0 0 0 / 0.48) 100%
+  );
 }
 
 .scriptural-hero__inner {
@@ -45,7 +44,15 @@
   padding: clamp(5rem, 8vw, 7rem) 0;
 }
 
-.scriptural-eyebrow,
+.scriptural-eyebrow {
+  margin: 0 0 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
 .scriptural-kicker {
   margin: 0 0 0.65rem;
   font-size: 0.82rem;
@@ -79,7 +86,130 @@
   justify-content: center;
   margin-top: 1.75rem;
 }
+.scriptural-hero .theway-btn-primary {
+  background: #0b2242;
+  border-color: #0b2242;
+  color: #fff;
+}
 
+.scriptural-hero .theway-btn-secondary,
+.scriptural-hero .theway-btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.scriptural-hero .theway-btn-secondary:hover,
+.scriptural-hero .theway-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+/* =========================
+    SUBNAV
+==========================*/
+.scriptural-subnav {
+  position: sticky;
+  top: var(--app-nav-offset);
+  z-index: 20;
+  background: var(--color-panel-bg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.scriptural-subnav__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 0;
+}
+
+.scriptural-subnav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-bg);
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.scriptural-subnav__link:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.scriptural-subnav__link.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+/* =========================
+   SCRIPTURE TOOLTIP
+========================= */
+.scripture-tooltip {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+.scripture-tooltip__box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 130%;
+  width: min(360px, 80vw);
+
+  background: var(--color-panel-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  padding: 0.9rem 1rem;
+  box-shadow: var(--shadow-soft);
+
+  z-index: 1000;
+}
+
+.scripture-tooltip__box strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--color-heading);
+}
+
+.scripture-tooltip__box p {
+  margin: 0.25rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.scripture-tooltip__source {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.scripture-tooltip__link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-secondary);
+}
 /* =========================
    LAYOUT
 ========================= */
@@ -102,20 +232,18 @@
 .scriptural-section {
   padding: clamp(3.25rem, 6vw, 5.5rem) 0;
 }
+.scriptural-section--intro {
+  background: var(--color-page-bg);
+}
 
 .scriptural-section--alt {
-  background: var(--color-surface-alt, color-mix(in srgb, var(--color-surface) 78%, var(--color-bg) 22%));
-  border-block: 1px solid var(--color-border);
+  background: var(--color-panel-alt);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .scriptural-section--cta {
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--color-primary) 18%, transparent),
-      transparent 65%
-    ),
-    var(--color-surface);
+  background: var(--color-page-bg);
   border-top: 1px solid var(--color-border);
 }
 
@@ -124,20 +252,25 @@
   margin-bottom: 1.8rem;
 }
 
-.scriptural-section__heading h2 {
-  margin: 0;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  line-height: 1.1;
-  color: var(--color-heading, var(--color-text));
+.scriptural-section__heading h2,
+.scriptural-panel h2,
+.scriptural-cta h2,
+.scriptural-card h3,
+.scriptural-witness h3,
+.scriptural-approach-card h3 {
+  color: var(--color-text);
 }
 
-.scriptural-section__heading p:last-child {
-  width: min(780px, 100%);
-  margin: 1rem auto 0;
-  line-height: 1.75;
+.scriptural-section__heading p:last-child,
+.scriptural-panel p,
+.scriptural-prophecy p,
+.scriptural-cta p,
+.scriptural-card p,
+.scriptural-witness p,
+.scriptural-approach-card p,
+.scriptural-card__books {
   color: var(--color-text-muted, var(--color-text));
 }
-
 /* =========================
    PANELS
 ========================= */
@@ -148,16 +281,22 @@
 .scriptural-witness,
 .scriptural-approach-card,
 .scriptural-cta {
-  background: var(--color-surface);
+  background: var(--color-panel-bg);
   border: 1px solid var(--color-border);
   border-radius: 22px;
-  box-shadow: 0 16px 40px rgb(0 0 0 / 0.08);
+  box-shadow: var(--shadow-soft);
 }
 
 .scriptural-panel,
 .scriptural-prophecy,
 .scriptural-cta {
   padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.scriptural-card,
+.scriptural-witness,
+.scriptural-approach-card {
+  padding: 1.15rem;
 }
 
 .scriptural-panel h2,
@@ -186,8 +325,8 @@
   min-height: 40px;
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+  background: var(--color-panel-alt);
+  border: 1px solid var(--color-border);
   color: var(--color-primary);
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -214,7 +353,7 @@
 
 .scriptural-card:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+  border-color: var(--color-border);
   box-shadow: 0 18px 42px rgb(0 0 0 / 0.12);
 }
 
@@ -225,7 +364,10 @@
   gap: 0.75rem;
   margin-bottom: 0.85rem;
 }
-
+.scriptural-card__number,
+.scriptural-approach-card__number {
+  color: var(--color-primary);
+}
 .scriptural-card__number {
   display: inline-flex;
   align-items: center;
@@ -234,7 +376,6 @@
   min-height: 52px;
   border-radius: 16px;
   background: color-mix(in srgb, var(--color-primary) 16%, transparent);
-  color: var(--color-primary);
   font-size: 0.95rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -310,32 +451,6 @@
 }
 
 /* =========================
-   DARK MODE SUPPORT
-========================= */
-
-:root.dark .scriptural-panel,
-:root.dark .scriptural-prophecy,
-:root.dark .scriptural-card,
-:root.dark .scriptural-witness,
-:root.dark .scriptural-approach-card,
-:root.dark .scriptural-cta,
-[data-theme="dark"] .scriptural-panel,
-[data-theme="dark"] .scriptural-prophecy,
-[data-theme="dark"] .scriptural-card,
-[data-theme="dark"] .scriptural-witness,
-[data-theme="dark"] .scriptural-approach-card,
-[data-theme="dark"] .scriptural-cta,
-body.dark .scriptural-panel,
-body.dark .scriptural-prophecy,
-body.dark .scriptural-card,
-body.dark .scriptural-witness,
-body.dark .scriptural-approach-card,
-body.dark .scriptural-cta {
-  background: color-mix(in srgb, var(--color-surface) 92%, black 8%);
-  box-shadow: 0 16px 40px rgb(0 0 0 / 0.28);
-}
-
-/* =========================
    RESPONSIVE
 ========================= */
 
@@ -391,5 +506,23 @@ body.dark .scriptural-cta {
 
   .scriptural-card__books {
     text-align: left;
+  }
+  /* =======================
+    SUBNAV
+  ======================= */
+  .scriptural-subnav {
+    top: 56px;
+  }
+
+  .scriptural-subnav__inner {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 0.75rem 0;
+  }
+
+  .scriptural-subnav__link {
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
 }
