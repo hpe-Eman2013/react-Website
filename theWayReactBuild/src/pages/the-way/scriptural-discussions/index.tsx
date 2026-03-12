@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "@/assets/css/the-way/ScripturalDiscussions.css";
+import "@/assets/css/the-way/scriptural-discussion/ScripturalDiscussions.css";
 
 const timelineSections = [
   {
