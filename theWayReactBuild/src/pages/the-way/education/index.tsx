@@ -4,15 +4,15 @@ import "@/assets/css/the-way/Education.css";
 
 import heroImg from "@/assets/images/the-way/education/preview.jpg";
 
-import ContentStageViewer from "@/components/education/ContentStageViewer";
-import StageNavigation from "@/components/education/StageNavigation";
-import TopicGrid from "@/components/education/TopicGrid";
+import ContentStageViewer from "@/components/the-way/education/ContentStageViewer";
+import StageNavigation from "@/components/the-way/education/StageNavigation";
+import TopicGrid from "@/components/the-way/education/TopicGrid";
 import {
   defaultEducationTopicKey,
   educationTopicMap,
   educationTopics,
-} from "@/components/education/registry";
-import type { EducationTopicKey } from "@/components/education/types";
+} from "@/components/the-way/education/registry";
+import type { EducationTopicKey } from "@/components/the-way/education/types";
 
 function isEducationTopicKey(value: string | null): value is EducationTopicKey {
   if (!value) return false;
