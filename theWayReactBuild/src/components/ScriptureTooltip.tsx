@@ -16,22 +16,25 @@ export default function ScriptureTooltip({
   const [open, setOpen] = useState(false);
 
   return (
-    <span
-      className="scripture-tooltip"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onClick={() => setOpen(!open)}
-    >
-      {reference}
+    <div className="scripture-tooltip">
+      <button
+        type="button"
+        className="scriptural-prophecy__verse scripture-tooltip__trigger"
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        {reference}
+      </button>
 
       {open && (
-        <span className="scripture-tooltip__box">
+        <div className="scripture-tooltip__box">
           <strong>{reference}</strong>
           <p>{verse}</p>
 
-          {source && <p className="scripture-tooltip__source">{source}</p>}
+          {source ? (
+            <p className="scripture-tooltip__source">{source}</p>
+          ) : null}
 
-          {link && (
+          {link ? (
             <a
               href={link}
               target="_blank"
@@ -40,9 +43,9 @@ export default function ScriptureTooltip({
             >
               Read full chapter →
             </a>
-          )}
-        </span>
+          ) : null}
+        </div>
       )}
-    </span>
+    </div>
   );
 }

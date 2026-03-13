@@ -1,92 +1,93 @@
 import React from "react";
-import ScriptureTooltip from "@/components/ScriptureTooltip";
+import Scripture from "@/components/Scripture";
 import { Link } from "react-router-dom";
 import "@/assets/css/the-way/scriptural-discussions/ScripturalDiscussions.css";
 
 const timelineSections = [
   {
     number: "01",
-    title: "The Fall and the Loss of Dominion",
+    title: "The Attack on Man: Dominion Lost",
     books: "Genesis 3",
     description:
-      "The garden becomes the place of legal collapse, breached stewardship, and the rise of hostile administration. What was entrusted to man under obedience is forfeited through disobedience.",
+      "The serpent’s deception results in the loss of delegated dominion. Humanity falls under hostile administration, and the legal struggle for authority over the earth begins.",
   },
   {
     number: "02",
-    title: "The Seed Clause and the Two Lines",
-    books: "Genesis 3:15",
+    title: "The Attack on Adam and Hawwah",
+    books: "Genesis, 1 Adam and Hawwah",
     description:
-      "In the midst of judgment, Yahuah declares enmity between the serpent and the woman, between two seeds, and introduces the promise of final victory.",
+      "After the fall, the adversary immediately attempts to destroy the first parents through despair, deception, violence, counterfeit light, and interruption of repentance.",
   },
   {
     number: "03",
-    title: "Attacks on Adam and Hawwah",
-    books: "Genesis, 1 Adam and Hawwah",
+    title: "The Attack on the Holy Line",
+    books: "Genesis 4–5",
     description:
-      "The serpent wages immediate war against the first parents through fear, despair, deception, violence, counterfeit light, and interruption of repentance and worship.",
+      "The adversary shifts his assault to the righteous seed. The murder of Abel and the corruption of generations reveal the strategy to extinguish the covenant line.",
   },
   {
     number: "04",
-    title: "Cain, Abel, and the First Bloodshed",
-    books: "Genesis 4",
+    title: "The Corruption of All Mankind",
+    books: "Genesis 6, Enoch, Jubilees",
     description:
-      "When the parents are not destroyed, the adversary turns toward their children. The murder of Abel becomes the first open strike against the righteous seed.",
+      "Violence, mixture, rebellion, and corruption spread across the earth until nearly all flesh becomes defiled.",
   },
   {
     number: "05",
-    title: "The Holy Line and the Threat of Mixture",
-    books: "Genesis, 2 Adam and Hawwah",
+    title: "Yahuah Wipes the Earth of Rebellion",
+    books: "Genesis 6–9",
     description:
-      "The line of Seth is preserved, warned, and separated, yet gradually pressured by fascination, compromise, counterfeit authority, and unlawful mixture.",
+      "The flood becomes divine judgment against universal corruption while preserving the righteous line through Noah.",
   },
   {
     number: "06",
-    title: "Corruption Before the Flood",
-    books: "Genesis 6, Enoch, Jubilees",
+    title: "The Children of Noah and the Holy Line",
+    books: "Genesis 10–11",
     description:
-      "Violence, corruption, rebellion, and defilement spread across the earth until judgment comes upon a world that has turned aside from divine order.",
+      "After the flood, humanity spreads again across the earth. Nations rise, rebellion reappears, and the covenant line must once again be preserved.",
   },
   {
     number: "07",
-    title: "Preservation Through Noah and the Patriarchs",
-    books: "Genesis 6–50",
+    title: "Yahuah Chooses Abram",
+    books: "Genesis 12–22; Jasher 7,9,11-12,13; Jubilees 11-12,17,19",
     description:
-      "Though the world is judged, the promise is not lost. Through Noah, Abraham, Isaac, and Jacob, the line of promise is preserved by covenant mercy.",
+      "Abram is chosen as the vessel through whom the covenant line will continue and the promise to the nations will unfold.",
   },
   {
     number: "08",
-    title: "The Covenant Nation and the Battle for Worship",
-    books: "Exodus–Kings",
+    title: "The Holy Seed and the Exodus",
+    books: "Genesis 25 – Exodus",
     description:
-      "Israel is formed into a covenant people, called to holiness, worship, inheritance, and obedience, while constantly opposed by idolatry, rebellion, and corruption.",
+      "Through Yitschaq (Isaac), Ya'aqov (Jacob), and the tribes of Yashar'el (Israel), the covenant line becomes a nation delivered from bondage and established under divine law.",
   },
   {
     number: "09",
-    title: "The Promise of the Coming Heir",
-    books: "Prophets, Psalms",
+    title: "The Prophets, Judges, and Kings Protect the Seed",
+    books: "Judges – Kings – Prophets",
     description:
-      "The prophets announce the righteous Branch, the Servant, the King, and the One through whom restoration, judgment, and the kingdom will come.",
+      "Through cycles of rebellion and restoration, Yahuah preserves the covenant people and continually announces the coming righteous King.",
   },
   {
     number: "10",
-    title: "The Elect One Revealed",
+    title: "The Revealing of the Elect One — The True Seed",
     books: "Gospels",
     description:
-      "Yahusha appears as the lawful Heir, the obedient Son, and the promised Seed who succeeds where Adam failed and confronts the adversary face to face.",
+      "Yahusha appears as the promised seed of the woman and heir of the kingdom, confronting the adversary directly.",
   },
   {
     number: "11",
-    title: "The War Against the Saints",
+    title: "The War Against the Heirs of Earth’s Dominion",
     books: "Acts–Epistles",
     description:
-      "The same conflict continues against the assembly through persecution, false teaching, counterfeit messengers, pressure to compromise, and attacks on faithful obedience.",
+      "The conflict continues through persecution, deception, and spiritual warfare against those who follow the Elect One.",
   },
   {
     number: "12",
     title: "The Final Restoration of Dominion",
-    books: "Revelation",
+    books:
+      "Enoch 10, Jubilees 10, Isaiah 14, Daniel, Ezekiel 28, Revelation 20",
     description:
-      "The serpent’s administration is terminated, the faithful inherit with the Elect One, and the restoration promised from the beginning is brought to completion.",
+      "The serpent’s rule is destroyed, the faithful inherit with the Elect One, and the dominion lost in Eden is restored.",
   },
 ];
 
@@ -162,13 +163,12 @@ export default function ScripturalDiscussionsOverview() {
           </div>
 
           <div className="scriptural-prophecy">
-            <div className="scriptural-prophecy__verse">Genesis 3:15</div>
-            <ScriptureTooltip
+            <Scripture
               reference="Genesis 3:15"
               verse="And I shall put enmity between you and the woman, and between your seed and her seed; He shall bruise your head, and you shall bruise his heel."
-              source="Bayithamashiyach Paleo Hebrew Version"
-              link="http://www.bayithamashiyach.com/Genesis_3.pdf"
+              version="Bayithamashiyach Paleo Hebrew Version"
             />
+
             <p>
               What begins in the garden is not merely the story of human
               failure. It is the unveiling of a conflict that stretches across

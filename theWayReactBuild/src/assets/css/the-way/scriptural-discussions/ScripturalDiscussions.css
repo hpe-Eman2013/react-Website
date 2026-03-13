@@ -163,52 +163,79 @@
 .scripture-tooltip {
   position: relative;
   display: inline-block;
-  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.scripture-tooltip__trigger {
+  -webkit-appearance: none;
+  appearance: none;
+  font: inherit;
+  line-height: 1;
   cursor: pointer;
+}
+
+.scriptural-prophecy__verse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--color-panel-alt);
+  border: 1px solid var(--color-border);
   color: var(--color-primary);
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .scripture-tooltip__box {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 130%;
-  width: min(360px, 80vw);
-
+  left: 0;
+  top: calc(100% + 12px);
+  width: min(380px, 80vw);
   background: var(--color-panel-bg);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-
+  border-radius: 14px;
   padding: 0.9rem 1rem;
   box-shadow: var(--shadow-soft);
-
-  z-index: 1000;
+  z-index: 9999;
+  text-align: left;
 }
 
 .scripture-tooltip__box strong {
   display: block;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.45rem;
   color: var(--color-heading);
 }
 
 .scripture-tooltip__box p {
-  margin: 0.25rem 0;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  margin: 0.35rem 0;
+  line-height: 1.6;
+  color: var(--color-text);
 }
 
 .scripture-tooltip__source {
-  font-size: 0.8rem;
-  opacity: 0.75;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
 }
 
 .scripture-tooltip__link {
   display: inline-block;
-  margin-top: 0.35rem;
-  font-size: 0.8rem;
-  font-weight: 600;
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-decoration: none;
   color: var(--color-secondary);
+}
+
+.scripture-tooltip__link:hover {
+  text-decoration: underline;
+}
+
+.scriptural-prophecy,
+.scriptural-section,
+.scriptural-shell {
+  overflow: visible;
 }
 /* =========================
    LAYOUT
@@ -332,6 +359,11 @@
   letter-spacing: 0.04em;
 }
 
+.scriptural-prophecy,
+.scriptural-section,
+.scriptural-shell {
+  overflow: visible;
+}
 /* =========================
    TIMELINE GRID
 ========================= */
