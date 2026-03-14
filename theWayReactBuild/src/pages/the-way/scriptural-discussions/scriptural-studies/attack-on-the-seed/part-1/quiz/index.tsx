@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import AccessibleButton from "@/components/ui/AccessibleButton";
-import AccessibleLink from "@/components/ui/AccessibleLink";
+
 import { getPartQuiz } from "@/services/scripturalDiscussionApi";
-import type { StudyQuiz } from "@/types/scriptural-discussions";
 import { useStudyProgress } from "@/hooks/useStudyProgress";
+import type { StudyQuiz } from "@/types/scriptural-discussions";
 
 type AnswersState = Record<string, string>;
 
@@ -15,10 +14,14 @@ const AttackOnTheSeedPart1QuizPage = () => {
   const [loading, setLoading] = useState(true);
   const [answers, setAnswers] = useState<AnswersState>({});
   const [submitted, setSubmitted] = useState(false);
-  const { completeQuiz } = useStudyProgress({
+
+  const { completeQuiz, getPartProgress } = useStudyProgress({
     seriesSlug: "attack-on-the-seed",
     totalParts: 12,
   });
+
+  const savedProgress = getPartProgress(1);
+
   useEffect(() => {
     let active = true;
 
@@ -58,7 +61,9 @@ const AttackOnTheSeedPart1QuizPage = () => {
     return Math.round((correctCount / totalQuestions) * 100);
   }, [correctCount, totalQuestions]);
 
-  const passed = submitted && scorePercent >= PASSING_PERCENT;
+  const passedCurrentAttempt = submitted && scorePercent >= PASSING_PERCENT;
+  const alreadyPassed = savedProgress.quizPassed;
+  const effectivePassed = alreadyPassed || passedCurrentAttempt;
 
   const allAnswered = useMemo(() => {
     if (!quiz) return false;
@@ -131,6 +136,12 @@ const AttackOnTheSeedPart1QuizPage = () => {
           <strong>{quiz.passPercent}%</strong> to unlock the next lesson and
           enable study notes download.
         </p>
+
+        {alreadyPassed ? (
+          <div className="mt-3">
+            <strong>Status:</strong> Passed previously
+          </div>
+        ) : null}
       </header>
 
       <form onSubmit={handleSubmit} className="d-grid gap-4">
@@ -173,13 +184,13 @@ const AttackOnTheSeedPart1QuizPage = () => {
           </p>
 
           <div className="d-flex flex-wrap gap-3 mt-4">
-            <AccessibleButton
+            <button
               type="submit"
               className="btn btn-primary"
               disabled={!allAnswered}
             >
               Submit Quiz
-            </AccessibleButton>
+            </button>
 
             <button
               type="button"
@@ -206,11 +217,11 @@ const AttackOnTheSeedPart1QuizPage = () => {
             Score: {correctCount}/{totalQuestions} ({scorePercent}%)
           </h3>
 
-          {passed ? (
+          {effectivePassed ? (
             <>
               <p className="mb-3">
-                You passed Part 1. The notes download can now be enabled, and
-                Part 2 can be unlocked in the next progression pass.
+                You passed Part 1. The notes download is now enabled, and Part 2
+                is unlocked in the study progression.
               </p>
 
               <div className="d-flex flex-wrap gap-3">
@@ -221,12 +232,12 @@ const AttackOnTheSeedPart1QuizPage = () => {
                   View Notes Access
                 </Link>
 
-                <AccessibleLink
+                <Link
                   className="btn btn-outline-secondary"
                   to="/the-way/scriptural-discussions/scriptural-studies/attack-on-the-seed/part-2"
                 >
                   Continue to Part 2
-                </AccessibleLink>
+                </Link>
               </div>
             </>
           ) : (

@@ -2,13 +2,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import ProgressRail from "@/components/the-way/scriptural-discussions/ProgressRail";
-import {
-  getPartProgress,
-  getSeriesBundle,
-} from "@/services/scripturalDiscussionApi";
+import { getSeriesBundle } from "@/services/scripturalDiscussionApi";
+import { useStudyProgress } from "@/hooks/useStudyProgress";
 import { buildProgressRailItems } from "@/utils/scriptural-discussions/buildProgressRailItems";
 import type {
-  StudyPartProgress,
   StudyPart,
   StudySeriesSummary,
 } from "@/types/scriptural-discussions";
@@ -20,13 +17,15 @@ type SeriesBundleState = {
 
 const AttackOnTheSeedLayout = () => {
   const [bundle, setBundle] = useState<SeriesBundleState>(null);
-  const [progressByPart, setProgressByPart] = useState<
-    Record<number, StudyPartProgress>
-  >({});
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const { progressMap } = useStudyProgress({
+    seriesSlug: "attack-on-the-seed",
+    totalParts: 12,
+  });
 
   useEffect(() => {
     let active = true;
@@ -35,25 +34,8 @@ const AttackOnTheSeedLayout = () => {
       try {
         const result = await getSeriesBundle("attack-on-the-seed");
 
-        if (!active || !result) {
-          if (active) setBundle(result);
-          return;
-        }
-
-        const progressEntries = await Promise.all(
-          result.parts.map(async (part) => {
-            const progress = await getPartProgress(
-              "attack-on-the-seed",
-              part.partNumber,
-            );
-            return [part.partNumber, progress] as const;
-          }),
-        );
-
         if (!active) return;
-
         setBundle(result);
-        setProgressByPart(Object.fromEntries(progressEntries));
       } finally {
         if (active) {
           setLoading(false);
@@ -91,9 +73,9 @@ const AttackOnTheSeedLayout = () => {
       seriesSlug: "attack-on-the-seed",
       parts: bundle.parts,
       currentPartNumber: activePartNumber,
-      progressByPart,
+      progressByPart: progressMap,
     });
-  }, [activePartNumber, bundle, progressByPart]);
+  }, [activePartNumber, bundle, progressMap]);
 
   if (loading) {
     return (
@@ -169,7 +151,20 @@ const AttackOnTheSeedLayout = () => {
             className="attack-seed-layout__rail"
             aria-label="Series progression"
           >
-            <ProgressRail items={railItems} title="All 12 Parts" />
+            <ProgressRail
+              items={railItems}
+              title="All 12 Parts"
+              description="Pass each quiz with at least 70% to unlock the next lesson and enable notes access."
+            />
+
+            <div className="mt-3">
+              <Link
+                className="btn btn-outline-secondary w-100"
+                to="/the-way/scriptural-discussions/overview"
+              >
+                Back to Overview
+              </Link>
+            </div>
           </aside>
 
           <main className="attack-seed-layout__content">

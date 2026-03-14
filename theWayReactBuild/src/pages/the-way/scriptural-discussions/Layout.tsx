@@ -5,7 +5,7 @@ import "@/assets/css/the-way/scriptural-discussions/ScripturalDiscussions.css";
 export default function ScripturalDiscussionsLayout() {
   return (
     <main className="scriptural-page">
-      <section className="scriptural-hero">
+      <section className="scriptural-hero hero-context">
         <div className="scriptural-hero__overlay" />
         <div className="scriptural-hero__inner">
           <p className="scriptural-eyebrow">The Way of Messiah</p>

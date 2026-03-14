@@ -4,9 +4,9 @@ import "@/assets/css/the-way/Outreach.css";
 
 import heroImg from "@/assets/images/the-way/outreach/preview.jpg";
 
-import ScriptureOutreach from "@/components/outreach/scripture/ScriptureOutreach";
-import EquityOutreach from "@/components/outreach/equity/EquityOutreach";
-import AgricultureOutreach from "@/components/outreach/agriculture/AgricultureOutreach";
+import ScriptureOutreach from "@/components/the-way/outreach/scripture/ScriptureOutreach";
+import EquityOutreach from "@/components/the-way/outreach/equity/EquityOutreach";
+import AgricultureOutreach from "@/components/the-way/outreach/agriculture/AgricultureOutreach";
 
 import communityImg from "@/assets/images/the-way/outreach/community.jpg";
 import foodDistributionImg from "@/assets/images/the-way/outreach/foodDistribution.jpg";

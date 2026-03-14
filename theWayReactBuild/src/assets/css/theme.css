@@ -198,7 +198,23 @@ nav * {
 :root {
   --app-nav-offset: 56px;
 }
+/* =================================
+   BUTTON CONTEXT TOKENS
+================================= */
 
+/* default page buttons */
+:root {
+  --btn-secondary-bg: var(--color-panel-alt);
+  --btn-secondary-fg: var(--color-heading);
+  --btn-secondary-border: var(--color-border);
+}
+
+/* hero / dark background buttons */
+.hero-context {
+  --btn-secondary-bg: transparent;
+  --btn-secondary-fg: var(--color-text-on-dark);
+  --btn-secondary-border: rgba(255,255,255,0.45);
+}
 @media (max-width: 900px) {
   :root {
     --app-nav-offset: 60px;
