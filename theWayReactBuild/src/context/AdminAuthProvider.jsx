@@ -1,7 +1,7 @@
 import React from "react";
 import { useCallback, useEffect, useMemo, useState, useContext } from "react";
 import PropTypes from "prop-types";
-import apiClient from "../services/apiClient";
+import apiClient from "@/services/apiClient";
 import { AdminAuthContext } from "./AdminAuthContext";
 
 export const AdminAuthProvider = ({ children }) => {

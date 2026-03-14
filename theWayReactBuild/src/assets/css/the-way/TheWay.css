@@ -115,7 +115,7 @@
   min-height: 50vh;
   display: grid;
   place-items: center;
-  background: url("../../images/the-way/hero-nature.jpg") center / cover no-repeat;
+  background: url("src/assets/images/the-way/hero-nature.jpg") center / cover no-repeat;
 }
 
 .theway-hero-overlay {

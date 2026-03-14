@@ -239,5 +239,5 @@ nav * {
 
 /* Generic page shell for pages that start with a hero */
 .page-with-hero {
-  padding-top: calc(var(--app-nav-offset) + 20px);
+  padding-top: var(--app-nav-offset);
 }

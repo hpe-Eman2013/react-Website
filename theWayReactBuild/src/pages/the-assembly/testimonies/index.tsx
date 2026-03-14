@@ -4,7 +4,7 @@ import TestimonyCard from "@/components/testimonies/TestimonyCard";
 import {
   fetchApprovedTestimonies,
   fetchVoteMap,
-} from "../../../services/testimonyService";
+} from "@/services/testimonyService";
 
 type ViewStatus = "idle" | "loading" | "success" | "error";
 type Vote = "like" | "dislike" | null;

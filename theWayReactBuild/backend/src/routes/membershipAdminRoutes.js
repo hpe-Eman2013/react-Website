@@ -1,6 +1,6 @@
 import express from "express";
-import MembershipRequest from "../models/MembershipRequest.js";
-import requireAdminAuth from "../middleware/requireAdminAuth.js";
+import MembershipRequest from "@/models/MembershipRequest.js";
+import requireAdminAuth from "@/middleware/requireAdminAuth.js";
 import mongoose from "mongoose";
 
 const router = express.Router();

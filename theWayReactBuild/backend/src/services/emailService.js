@@ -1,4 +1,4 @@
-import { sendMail } from "../utils/mailer.js";
+import { sendMail } from "@/utils/mailer.js";
 
 function safe(v) {
   return (v ?? "").toString().trim();

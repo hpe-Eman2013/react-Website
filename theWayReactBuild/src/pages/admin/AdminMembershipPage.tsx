@@ -6,7 +6,7 @@ import {
   rejectMembershipRequest,
   type MembershipRequest,
   type MembershipStatus,
-} from "../../services/membershipAdminService";
+} from "@/services/membershipAdminService";
 
 export default function AdminMembershipPage() {
   const [status, setStatus] = useState<MembershipStatus>("pending");

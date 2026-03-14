@@ -1,8 +1,8 @@
 import express from "express";
 import multer from "multer";
-import MembershipRequest from "../models/MembershipRequest.js";
-import { uploadBufferToCloudinary } from "../utils/cloudinaryUpload.js";
-import { sendMembershipNotification } from "../services/emailService.js";
+import MembershipRequest from "@/models/MembershipRequest.js";
+import { uploadBufferToCloudinary } from "@/utils/cloudinaryUpload.js";
+import { sendMembershipNotification } from "@/services/emailService.js";
 
 const router = express.Router();
 

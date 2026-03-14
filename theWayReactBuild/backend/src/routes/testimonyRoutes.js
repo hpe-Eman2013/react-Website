@@ -1,9 +1,9 @@
 import express from "express";
-import Testimony from "../models/Testimony.js";
+import Testimony from "@/models/Testimony.js";
 import multer from "multer";
 import rateLimit from "express-rate-limit";
-import requireUserAuth from "../middleware/requireUserAuth.js";
-import TestimonyPrayer from "../models/TestimonyPrayer.js";
+import requireUserAuth from "@/middleware/requireUserAuth.js";
+import TestimonyPrayer from "@/models/TestimonyPrayer.js";
 
 const router = express.Router();
 

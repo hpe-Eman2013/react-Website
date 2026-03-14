@@ -10,7 +10,6 @@ import Ayin from "@/assets/images/home/ayin.png";
 
 import { AccordionGroup } from "@/components/ui/AccordionGroup";
 import AccordionSection from "@/components/ui/AccordionSection";
-
 export default function HomePage() {
   return (
     <div className="home-page">

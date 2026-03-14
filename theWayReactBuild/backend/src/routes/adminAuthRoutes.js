@@ -1,12 +1,12 @@
 import express from "express";
 import bcrypt from "bcryptjs";
-import AdminUser from "../models/AdminUser.js";
-import { signAdminToken } from "../utils/adminJwt.js";
+import AdminUser from "@/models/AdminUser.js";
+import { signAdminToken } from "@/utils/adminJwt.js";
 import {
   getAdminCookieName,
   getAdminCookieOptions,
-} from "../utils/adminCookie.js";
-import requireAdminAuth from "../middleware/requireAdminAuth.js";
+} from "@/utils/adminCookie.js";
+import requireAdminAuth from "@/middleware/requireAdminAuth.js";
 
 const router = express.Router();
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import apiClient from "../../services/apiClient";
+import apiClient from "@/services/apiClient";
 
 const AdminLogin = () => {
   const navigate = useNavigate();

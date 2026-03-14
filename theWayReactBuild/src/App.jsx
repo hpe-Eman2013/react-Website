@@ -16,12 +16,12 @@ import GivingPage from "./pages/giving/GivingPage";
 import GivingSuccess from "./pages/giving/GivingSuccess";
 import GivingCancel from "./pages/giving/GivingCancel";
 
-// existing top-level pages you already had
+// Existing top-level pages
 import Home from "./pages/home";
 import ContactPage from "./pages/contact";
 import EventsPage from "./pages/events";
 
-// admin
+// Admin
 import AdminTestimonies from "./pages/admin/AdminTestimonies";
 import AdminLogin from "./pages/admin/AdminLogin";
 import { AdminAuthProvider } from "./context/AdminAuthProvider";
@@ -29,15 +29,14 @@ import AdminMembershipPage from "./pages/admin/AdminMembershipPage";
 import RequireAuth from "./auth/RequireAuth";
 import RequireAdmin from "./auth/RequireAdmin";
 
-// ---- Domain layouts (index.jsx) ----
+// Domain layouts
 import TheWayLayout from "./pages/the-way/Layout";
 import TheWayPage from "./pages/the-way/TheWayOfMessiah";
 import AssemblyLayout from "./pages/the-assembly";
 import AccountsLayout from "./pages/accounts";
-import BibleLayout from "./pages/the-way/scriptural-discussions/Layout";
-import ScripturalDiscussionsOverview from "./pages/the-way/scriptural-discussions";
+import ScripturalDiscussionsLayout from "./pages/the-way/scriptural-discussions/Layout";
 
-// ---- The Way children ----
+// The Way children
 import AboutPage from "./pages/the-way/about";
 import EducationPage from "./pages/the-way/education";
 import MissionVision from "./pages/the-way/mission";
@@ -46,7 +45,7 @@ import StatementOfFaithPage from "./pages/the-way/statement-of-faith";
 import WebsiteMembershipLoginPage from "@/pages/the-way/education/website-membership/login";
 import WebsiteMembershipRegisterPage from "@/pages/the-way/education/website-membership/register";
 
-// ---- The Assembly children ----
+// The Assembly children
 import AssemblyLocalAssemblies from "./pages/the-assembly/local-assemblies";
 import AssemblyMemberships from "./pages/the-assembly/memberships";
 import RequestMembershipPage from "./pages/the-assembly/memberships/requests";
@@ -56,15 +55,20 @@ import AssemblyPositions from "./pages/the-assembly/positions";
 import AssemblySubmissions from "./pages/the-assembly/submissions";
 import AssemblyTestimonies from "./pages/the-assembly/testimonies";
 
-// ---- Accounts children ----
+// Accounts children
 import LoginPage from "./pages/accounts/login";
 import ProfilePage from "./pages/accounts/profile";
 import RegisterPage from "./pages/accounts/register";
 import VerifyEmailPage from "./pages/accounts/verify-email";
 
-// ---- Bible children (Scriptural Discussions) ----
+// Scriptural Discussions children
+import ScripturalDiscussionsOverview from "./pages/the-way/scriptural-discussions";
+import ScripturalDiscussionsAccessPage from "./pages/the-way/scriptural-discussions/access";
 import LecturesPage from "./pages/the-way/scriptural-discussions/lectures-sermons";
 import ScripturalStudies from "./pages/the-way/scriptural-discussions/scriptural-studies";
+import AttackOnTheSeedPage from "./pages/the-way/scriptural-discussions/scriptural-studies/attack-on-the-seed";
+import AttackOnTheSeedPart1Page from "./pages/the-way/scriptural-discussions/scriptural-studies/attack-on-the-seed/part-1";
+import AttackOnTheSeedPart2Page from "./pages/the-way/scriptural-discussions/scriptural-studies/attack-on-the-seed/part-2";
 
 function App() {
   return (
@@ -75,7 +79,7 @@ function App() {
       <AdminAuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="contact" element={<ContactPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
           <Route path="/the-way" element={<TheWayLayout />}>
             <Route index element={<TheWayPage />} />
@@ -88,20 +92,43 @@ function App() {
             <Route path="outreach" element={<OutreachPage />} />
             <Route path="education" element={<EducationPage />} />
             <Route
-              path="/the-way/education/website-membership/login"
+              path="education/website-membership/login"
               element={<WebsiteMembershipLoginPage />}
             />
             <Route
-              path="/the-way/education/website-membership/register"
+              path="education/website-membership/register"
               element={<WebsiteMembershipRegisterPage />}
             />
 
-            <Route path="scriptural-discussions" element={<BibleLayout />}>
+            <Route
+              path="scriptural-discussions"
+              element={<ScripturalDiscussionsLayout />}
+            >
               <Route index element={<ScripturalDiscussionsOverview />} />
+              <Route
+                path="overview"
+                element={<ScripturalDiscussionsOverview />}
+              />
+              <Route
+                path="access"
+                element={<ScripturalDiscussionsAccessPage />}
+              />
               <Route path="lectures-sermons" element={<LecturesPage />} />
               <Route
                 path="scriptural-studies"
                 element={<ScripturalStudies />}
+              />
+              <Route
+                path="scriptural-studies/attack-on-the-seed"
+                element={<AttackOnTheSeedPage />}
+              />
+              <Route
+                path="scriptural-studies/attack-on-the-seed/part-1"
+                element={<AttackOnTheSeedPart1Page />}
+              />
+              <Route
+                path="scriptural-studies/attack-on-the-seed/part-2"
+                element={<AttackOnTheSeedPart2Page />}
               />
             </Route>
           </Route>

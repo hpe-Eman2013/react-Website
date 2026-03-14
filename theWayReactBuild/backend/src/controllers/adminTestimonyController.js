@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Testimony from "../models/Testimony.js"; // <-- adjust path/name if yours differs
+import Testimony from "@/models/Testimony.js"; // <-- adjust path/name if yours differs
 
 // GET /api/admin/testimonies/pending
 export async function getPendingTestimonies(req, res) {

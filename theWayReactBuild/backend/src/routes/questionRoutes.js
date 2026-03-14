@@ -1,6 +1,6 @@
 import express from "express";
-import Question from "../models/Question.js";
-import { sendQuestionNotification } from "../services/emailService.js";
+import Question from "@/models/Question.js";
+import { sendQuestionNotification } from "@/services/emailService.js";
 
 const router = express.Router();
 

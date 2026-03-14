@@ -5,7 +5,7 @@ import {
   approveBulk,
   deleteOne,
   deleteBulk,
-} from "../controllers/adminTestimonyController.js";
+} from "@/controllers/adminTestimonyController.js";
 
 const router = express.Router();
 

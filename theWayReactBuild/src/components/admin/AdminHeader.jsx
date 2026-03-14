@@ -5,7 +5,7 @@ import {
   faArrowsRotate,
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { useAdminAuth } from "../../context/useAdminAuth";
+import { useAdminAuth } from "@/context/useAdminAuth";
 import { useNavigate } from "react-router-dom";
 
 const AdminHeader = ({ pendingCount, selectedCount, onRefresh, disabled }) => {

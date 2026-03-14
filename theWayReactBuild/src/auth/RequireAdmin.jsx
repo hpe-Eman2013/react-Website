@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
-import { useAdminAuth } from "../context/AdminAuthProvider"; // adjust if needed
+import { useAdminAuth } from "@/context/AdminAuthProvider"; // adjust if needed
 
 export default function RequireAdmin({ children }) {
   const { admin, status } = useAdminAuth();

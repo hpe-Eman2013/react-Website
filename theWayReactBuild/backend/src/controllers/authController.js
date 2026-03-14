@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
-import User from "../models/User.js";
-import EmailVerification from "../models/EmailVerification.js";
-import { sendMail } from "../utils/mailer.js";
-import { hashCode, make6DigitCode } from "../utils/codeHash.js";
-import { signUserToken, userCookieOptions } from "../utils/userJwt.js";
+import User from "@/models/User.js";
+import EmailVerification from "@/models/EmailVerification.js";
+import { sendMail } from "@/utils/mailer.js";
+import { hashCode, make6DigitCode } from "@/utils/codeHash.js";
+import { signUserToken, userCookieOptions } from "@/utils/userJwt.js";
 
 const VERIFICATION_EXPIRY_MINUTES = 15;
 const MAX_ATTEMPTS = 6;

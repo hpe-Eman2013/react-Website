@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAdminAuth } from "../context/AdminAuthProvider"; // adjust if your hook path differs
+import { useAdminAuth } from "@/context/AdminAuthProvider"; // adjust if your hook path differs
 
 export default function RequireAuth({ children }) {
   const location = useLocation();

@@ -1,6 +1,6 @@
-import AdminUser from "../models/AdminUser.js";
-import { getAdminCookieName } from "../utils/adminCookie.js";
-import { verifyAdminToken } from "../utils/adminJwt.js";
+import AdminUser from "@/models/AdminUser.js";
+import { getAdminCookieName } from "@/utils/adminCookie.js";
+import { verifyAdminToken } from "@/utils/adminJwt.js";
 
 export async function requireAdminAuth(req, res, next) {
   try {

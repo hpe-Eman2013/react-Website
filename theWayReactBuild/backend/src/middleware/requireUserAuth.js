@@ -1,5 +1,5 @@
-import User from "../models/User.js";
-import { verifyUserToken } from "../utils/userJwt.js";
+import User from "@/models/User.js";
+import { verifyUserToken } from "@/utils/userJwt.js";
 
 export default async function requireUserAuth(req, res, next) {
   try {
