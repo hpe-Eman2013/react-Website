@@ -274,3 +274,20 @@ input::placeholder {
 .btn-secondary:focus {
   background-color: rgba(15, 30, 46, 0.85) !important;
 }
+
+.btn-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.is-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.scriptural-access-notice {
+  border: 1px dashed var(--color-border);
+  padding: 1.2rem;
+  border-radius: 14px;
+  background: var(--surface);
+}
