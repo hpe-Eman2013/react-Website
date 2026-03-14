@@ -85,6 +85,25 @@
 
   --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
   --radius: 10px;
+
+  /* --------------------------------
+     Border accents / design tokens
+  --------------------------------- */
+  --color-border-accent: var(--color-border);
+  --color-border-accent-mixed: color-mix(
+    in srgb,
+    var(--color-primary) 28%,
+    var(--color-border)
+  );
+
+  /* --------------------------------
+     Button context tokens
+  --------------------------------- */
+  --btn-secondary-bg: var(--color-panel-alt);
+  --btn-secondary-fg: var(--color-heading);
+  --btn-secondary-border: var(--color-border);
+
+  --app-nav-offset: 56px;
 }
 
 /* ==============================
@@ -121,10 +140,6 @@
 
   --color-text-on-dark: #ffffff;
   --color-text-on-dark-muted: rgba(255, 255, 255, 0.82);
-
-  /* Important:
-     In dark mode your primary is light,
-     so text on primary should be dark. */
   --color-text-on-primary: #0f1e2e;
 
   /* --------------------------------
@@ -178,6 +193,32 @@
 
   --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
   --radius: 10px;
+
+  /* --------------------------------
+     Border accents / design tokens
+  --------------------------------- */
+  --color-border-accent: var(--color-border);
+  --color-border-accent-mixed: color-mix(
+    in srgb,
+    var(--color-primary) 18%,
+    var(--color-border)
+  );
+}
+
+/* =================================
+   BUTTON CONTEXT TOKENS
+================================= */
+
+.hero-context {
+  --btn-secondary-bg: transparent;
+  --btn-secondary-fg: var(--color-text-on-dark);
+  --btn-secondary-border: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 900px) {
+  :root {
+    --app-nav-offset: 60px;
+  }
 }
 
 /* ==============================
@@ -194,31 +235,6 @@ nav * {
     background-color 1000ms ease,
     color 1000ms ease,
     border-color 1000ms ease;
-}
-:root {
-  --app-nav-offset: 56px;
-}
-/* =================================
-   BUTTON CONTEXT TOKENS
-================================= */
-
-/* default page buttons */
-:root {
-  --btn-secondary-bg: var(--color-panel-alt);
-  --btn-secondary-fg: var(--color-heading);
-  --btn-secondary-border: var(--color-border);
-}
-
-/* hero / dark background buttons */
-.hero-context {
-  --btn-secondary-bg: transparent;
-  --btn-secondary-fg: var(--color-text-on-dark);
-  --btn-secondary-border: rgba(255,255,255,0.45);
-}
-@media (max-width: 900px) {
-  :root {
-    --app-nav-offset: 60px;
-  }
 }
 
 /* Generic page shell for pages that start with a hero */
