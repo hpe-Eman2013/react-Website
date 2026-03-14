@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-
+import AccessibleButton from "@/components/ui/AccessibleButton";
+import AccessibleLink from "@/components/ui/AccessibleLink";
 import { getPartQuiz } from "@/services/scripturalDiscussionApi";
 import type { StudyQuiz } from "@/types/scriptural-discussions";
+import { useStudyProgress } from "@/hooks/useStudyProgress";
 
 type AnswersState = Record<string, string>;
 
@@ -13,7 +15,10 @@ const AttackOnTheSeedPart1QuizPage = () => {
   const [loading, setLoading] = useState(true);
   const [answers, setAnswers] = useState<AnswersState>({});
   const [submitted, setSubmitted] = useState(false);
-
+  const { completeQuiz } = useStudyProgress({
+    seriesSlug: "attack-on-the-seed",
+    totalParts: 12,
+  });
   useEffect(() => {
     let active = true;
 
@@ -74,12 +79,11 @@ const AttackOnTheSeedPart1QuizPage = () => {
 
     setSubmitted(true);
 
-    /**
-     * Later:
-     * - persist attempt result to backend or localStorage
-     * - unlock notes download
-     * - unlock part 2
-     */
+    completeQuiz({
+      partNumber: 1,
+      passed: scorePercent >= PASSING_PERCENT,
+      scorePercent,
+    });
   };
 
   const handleReset = () => {
@@ -169,13 +173,13 @@ const AttackOnTheSeedPart1QuizPage = () => {
           </p>
 
           <div className="d-flex flex-wrap gap-3 mt-4">
-            <button
+            <AccessibleButton
               type="submit"
               className="btn btn-primary"
               disabled={!allAnswered}
             >
               Submit Quiz
-            </button>
+            </AccessibleButton>
 
             <button
               type="button"
@@ -217,12 +221,12 @@ const AttackOnTheSeedPart1QuizPage = () => {
                   View Notes Access
                 </Link>
 
-                <Link
+                <AccessibleLink
                   className="btn btn-outline-secondary"
                   to="/the-way/scriptural-discussions/scriptural-studies/attack-on-the-seed/part-2"
                 >
                   Continue to Part 2
-                </Link>
+                </AccessibleLink>
               </div>
             </>
           ) : (

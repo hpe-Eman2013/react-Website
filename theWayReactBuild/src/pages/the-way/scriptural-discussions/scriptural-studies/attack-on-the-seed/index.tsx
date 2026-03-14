@@ -1,8 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
-import { getSeriesBundle } from "@/services/scripturalDiscussionApi";
+import ProgressRail from "@/components/the-way/scriptural-discussions/ProgressRail";
+import {
+  getPartProgress,
+  getSeriesBundle,
+} from "@/services/scripturalDiscussionApi";
+import { buildProgressRailItems } from "@/utils/scriptural-discussions/buildProgressRailItems";
 import type {
+  StudyPartProgress,
   StudyPart,
   StudySeriesSummary,
 } from "@/types/scriptural-discussions";
@@ -14,6 +20,9 @@ type SeriesBundleState = {
 
 const AttackOnTheSeedLayout = () => {
   const [bundle, setBundle] = useState<SeriesBundleState>(null);
+  const [progressByPart, setProgressByPart] = useState<
+    Record<number, StudyPartProgress>
+  >({});
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();
@@ -26,8 +35,25 @@ const AttackOnTheSeedLayout = () => {
       try {
         const result = await getSeriesBundle("attack-on-the-seed");
 
+        if (!active || !result) {
+          if (active) setBundle(result);
+          return;
+        }
+
+        const progressEntries = await Promise.all(
+          result.parts.map(async (part) => {
+            const progress = await getPartProgress(
+              "attack-on-the-seed",
+              part.partNumber,
+            );
+            return [part.partNumber, progress] as const;
+          }),
+        );
+
         if (!active) return;
+
         setBundle(result);
+        setProgressByPart(Object.fromEntries(progressEntries));
       } finally {
         if (active) {
           setLoading(false);
@@ -41,8 +67,6 @@ const AttackOnTheSeedLayout = () => {
       active = false;
     };
   }, []);
-
-  const parts = useMemo(() => bundle?.parts ?? [], [bundle]);
 
   useEffect(() => {
     if (loading || !bundle) return;
@@ -59,6 +83,17 @@ const AttackOnTheSeedLayout = () => {
     const match = location.pathname.match(/part-(\d+)/);
     return match ? Number(match[1]) : 1;
   }, [location.pathname]);
+
+  const railItems = useMemo(() => {
+    if (!bundle) return [];
+
+    return buildProgressRailItems({
+      seriesSlug: "attack-on-the-seed",
+      parts: bundle.parts,
+      currentPartNumber: activePartNumber,
+      progressByPart,
+    });
+  }, [activePartNumber, bundle, progressByPart]);
 
   if (loading) {
     return (
@@ -134,62 +169,7 @@ const AttackOnTheSeedLayout = () => {
             className="attack-seed-layout__rail"
             aria-label="Series progression"
           >
-            <div className="scriptural-panel">
-              <p className="eyebrow mb-2">Series Progress</p>
-              <h2 className="attack-seed-layout__rail-title">All 12 Parts</h2>
-              <p className="attack-seed-layout__rail-copy">
-                Pass each quiz with at least 70% to unlock the next lesson and
-                enable notes access.
-              </p>
-
-              <div className="attack-seed-layout__part-list">
-                {parts.map((part) => {
-                  const isUnlocked = part.partNumber === 1;
-                  const isActive = activePartNumber === part.partNumber;
-
-                  return isUnlocked ? (
-                    <Link
-                      key={part.slug}
-                      to={`/the-way/scriptural-discussions/scriptural-studies/attack-on-the-seed/part-${part.partNumber}`}
-                      className={`attack-seed-layout__part-link${
-                        isActive ? " is-active" : ""
-                      }`}
-                    >
-                      <span className="attack-seed-layout__part-number">
-                        {String(part.partNumber).padStart(2, "0")}
-                      </span>
-                      <span className="attack-seed-layout__part-text">
-                        <strong>{part.title}</strong>
-                        <small>{part.durationLabel}</small>
-                      </span>
-                    </Link>
-                  ) : (
-                    <div
-                      key={part.slug}
-                      className="attack-seed-layout__part-link is-locked"
-                      aria-disabled="true"
-                    >
-                      <span className="attack-seed-layout__part-number">
-                        {String(part.partNumber).padStart(2, "0")}
-                      </span>
-                      <span className="attack-seed-layout__part-text">
-                        <strong>{part.title}</strong>
-                        <small>Locked until prior quiz pass</small>
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="attack-seed-layout__rail-actions">
-                <Link
-                  className="btn btn-outline-secondary w-100"
-                  to="/the-way/scriptural-discussions/overview"
-                >
-                  Back to Overview
-                </Link>
-              </div>
-            </div>
+            <ProgressRail items={railItems} title="All 12 Parts" />
           </aside>
 
           <main className="attack-seed-layout__content">
